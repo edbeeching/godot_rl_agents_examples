@@ -6,49 +6,37 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
-_global_script_classes=[ {
+_global_script_classes=[{
 "base": "Node2D",
-"class": "DrawLine3D",
-"language": "GDScript",
-"path": "res://addons/godot_rl_agents/sensors/sensors_3d/DrawLine3D.gd"
-}, {
-"base": "Node2D",
-"class": "ISensor2D",
-"language": "GDScript",
+"class": &"ISensor2D",
+"language": &"GDScript",
 "path": "res://addons/godot_rl_agents/sensors/sensors_2d/ISensor2D.gd"
 }, {
-"base": "Spatial",
-"class": "ISensor3D",
-"language": "GDScript",
+"base": "Node3D",
+"class": &"ISensor3D",
+"language": &"GDScript",
 "path": "res://addons/godot_rl_agents/sensors/sensors_3d/ISensor3D.gd"
 }, {
-"base": "KinematicBody",
-"class": "Player",
-"language": "GDScript",
-"path": "res://Player.gd"
-}, {
-"base": "Spatial",
-"class": "RGBCameraSensor3D",
-"language": "GDScript",
+"base": "Node3D",
+"class": &"RGBCameraSensor3D",
+"language": &"GDScript",
 "path": "res://addons/godot_rl_agents/sensors/sensors_3d/RGBCameraSensor3D.gd"
 }, {
 "base": "ISensor3D",
-"class": "RayCastSensor3D",
-"language": "GDScript",
+"class": &"RayCastSensor3D",
+"language": &"GDScript",
 "path": "res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd"
 }, {
 "base": "ISensor2D",
-"class": "RaycastSensor2D",
-"language": "GDScript",
+"class": &"RaycastSensor2D",
+"language": &"GDScript",
 "path": "res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd"
-} ]
+}]
 _global_script_class_icons={
-"DrawLine3D": "",
 "ISensor2D": "",
 "ISensor3D": "",
-"Player": "",
 "RGBCameraSensor3D": "",
 "RayCastSensor3D": "",
 "RaycastSensor2D": ""
@@ -58,6 +46,7 @@ _global_script_class_icons={
 
 config/name="VirtualCamera"
 run/main_scene="res://Env.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [display]
@@ -67,34 +56,34 @@ window/size/height=720
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/godot_rl_agents/plugin.cfg" )
+enabled=PackedStringArray()
 
 [input]
 
 turn_left={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
 }
 turn_right={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
 }
 move_forwards={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
 }
 move_backwards={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
 }
 r_key={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"unicode":0,"echo":false,"script":null)
+]
 }
 
 [physics]
