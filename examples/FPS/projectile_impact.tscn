@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://lqaiiw8tlnuw"]
+
+[ext_resource type="Material" uid="uid://bqsk3pllkvs3s" path="res://projectile_mat.tres" id="1_0lss6"]
+[ext_resource type="Script" path="res://projectile_impact.gd" id="1_bfhg6"]
+
+[sub_resource type="Curve" id="Curve_3wa3r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.256724, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h3rh8"]
+curve = SubResource("Curve_3wa3r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m3c3g"]
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.8
+initial_velocity_max = 1.2
+angular_velocity_max = 720.0
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+scale_curve = SubResource("CurveTexture_h3rh8")
+attractor_interaction_enabled = false
+
+[sub_resource type="SphereMesh" id="SphereMesh_n2se1"]
+radius = 0.1
+height = 0.2
+
+[node name="ProjectileImpact" type="Node3D"]
+script = ExtResource("1_bfhg6")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = ExtResource("1_0lss6")
+amount = 20
+explosiveness = 0.9
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_m3c3g")
+draw_pass_1 = SubResource("SphereMesh_n2se1")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

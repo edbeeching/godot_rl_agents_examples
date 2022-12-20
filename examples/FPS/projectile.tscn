@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyoqwue7xeer0"]
+
+[ext_resource type="Script" path="res://projectile.gd" id="1_amsy6"]
+[ext_resource type="Material" uid="uid://bqsk3pllkvs3s" path="res://projectile_mat.tres" id="2_ewugf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dgerb"]
+radius = 0.05
+height = 0.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u2k1u"]
+material = ExtResource("2_ewugf")
+radius = 0.05
+height = 0.5
+
+[node name="Projectile" type="Area3D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_amsy6")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_dgerb")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CapsuleMesh_u2k1u")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_projectile_area_entered"]
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
