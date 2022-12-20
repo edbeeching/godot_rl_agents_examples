@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbff8k34q71ji"]
+
+[ext_resource type="Texture2D" uid="uid://peqcg52efhhf" path="res://assets/anim.png" id="1_myvo7"]
+
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_tcpca"]
+emission_shape = 2
+emission_sphere_radius = 2.0
+direction = Vector3(1, 1, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_max = 360.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c40xw"]
+transparency = 1
+albedo_texture = ExtResource("1_myvo7")
+metallic_specular = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_4eww3"]
+material = SubResource("StandardMaterial3D_c40xw")
+flip_faces = true
+
+[node name="TestParticles" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221817, -0.257963)
+explosiveness = 0.6
+transform_align = 1
+process_material = SubResource("ParticlesMaterial_tcpca")
+draw_pass_1 = SubResource("QuadMesh_4eww3")

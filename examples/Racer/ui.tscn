@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7se0fb7br3f0"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_aynm8"]
+
+[sub_resource type="SystemFont" id="SystemFont_oggpj"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_5dtk3"]
+font = SubResource("SystemFont_oggpj")
+font_size = 32
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_aynm8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -245.0
+offset_right = 245.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="CurrentLabel" type="Label" parent="HBoxContainer"]
+offset_right = 262.0
+offset_bottom = 48.0
+text = "Current: 00:00:00"
+label_settings = SubResource("LabelSettings_5dtk3")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+offset_left = 266.0
+offset_right = 276.0
+offset_bottom = 48.0
+
+[node name="BestLabel" type="Label" parent="HBoxContainer"]
+offset_left = 280.0
+offset_right = 491.0
+offset_bottom = 48.0
+text = "Best: 00:00:00"
+label_settings = SubResource("LabelSettings_5dtk3")
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true

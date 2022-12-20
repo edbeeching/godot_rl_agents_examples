@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd5r0lautiwdx"]
+
+[ext_resource type="Script" path="res://UICountDown.gd" id="1_83bhs"]
+
+[sub_resource type="SystemFont" id="SystemFont_2jko6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0e3nt"]
+font = SubResource("SystemFont_2jko6")
+font_size = 140
+
+[node name="UICountDown" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_83bhs")
+
+[node name="CountDownLabel" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 349.0
+offset_right = -349.0
+offset_bottom = -335.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+label_settings = SubResource("LabelSettings_0e3nt")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true

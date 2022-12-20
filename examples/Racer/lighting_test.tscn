@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://sgm3h5j8x3lc"]
+
+[ext_resource type="Texture2D" uid="uid://s0js8o5ixt3v" path="res://assets/je_gray_park_4k.hdr" id="1_4f3e6"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mqfwp"]
+panorama = ExtResource("1_4f3e6")
+
+[sub_resource type="Sky" id="Sky_swyw8"]
+sky_material = SubResource("PanoramaSkyMaterial_mqfwp")
+
+[sub_resource type="Environment" id="Environment_h0emh"]
+background_mode = 2
+sky = SubResource("Sky_swyw8")
+ambient_light_source = 3
+ambient_light_color = Color(0.501961, 0.501961, 0.501961, 1)
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_min_cell_size = 0.976562
+sdfgi_cascade0_distance = 62.5
+sdfgi_max_distance = 1000.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7pd1"]
+albedo_color = Color(0.705882, 0.705882, 0.705882, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jhy4y"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbooh"]
+albedo_color = Color(0.439216, 0.439216, 0.439216, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_70twm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5gw7"]
+albedo_color = Color(0.0666667, 0.156863, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rtkii"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdowj"]
+albedo_color = Color(0.662745, 0.027451, 0.0705882, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gynv5"]
+
+[node name="LightingTest" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.782652, 0.319834, -0.534006, -0.576087, -0.697109, 0.426805, -0.235754, 0.641674, 0.729846, 0.177933, -12.2864, 0)
+light_energy = 3.215
+shadow_enabled = true
+directional_shadow_max_distance = 250.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h0emh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.169425, 0)
+material_override = SubResource("StandardMaterial3D_j7pd1")
+mesh = SubResource("PlaneMesh_jhy4y")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.336207, 0)
+material_override = SubResource("StandardMaterial3D_gbooh")
+mesh = SubResource("BoxMesh_70twm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45112, 0.336207, 0.753382)
+material_override = SubResource("StandardMaterial3D_y5gw7")
+mesh = SubResource("BoxMesh_rtkii")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84576, 0.336207, -1.41678)
+material_override = SubResource("StandardMaterial3D_vdowj")
+mesh = SubResource("BoxMesh_gynv5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.286486, -0.611322, 0.737707, 0, 0.769981, 0.638067, -0.958084, 0.182797, -0.220589, 4.68259, 4.05013, -1.40019)

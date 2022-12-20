@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://7k1j7146sms7"]
+
+[ext_resource type="PackedScene" uid="uid://85wbuok3ghxw" path="res://vehicle.tscn" id="1_kvc78"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ia1jb"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_aly0m"]
+sky_material = SubResource("ProceduralSkyMaterial_ia1jb")
+
+[sub_resource type="Environment" id="Environment_8r2v8"]
+background_mode = 2
+sky = SubResource("Sky_aly0m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsty3"]
+albedo_color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fk11a"]
+material = SubResource("StandardMaterial3D_qsty3")
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tgsbr"]
+size = Vector3(50, 1, 50)
+
+[node name="TestCar" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.537838, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8r2v8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.00258417, 0.323881, -0.946094, 0, 0.946097, 0.323882, 0.999997, -0.000836966, 0.00244488, -9.652, 9.76948, 0)
+fov = 89.5002
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.670351, 0)
+mesh = SubResource("BoxMesh_fk11a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_tgsbr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.665048, 0.746801, 0, -0.746801, -0.665048, 0, 16.1045, 0)
+
+[node name="vehicle" parent="." instance=ExtResource("1_kvc78")]

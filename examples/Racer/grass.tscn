@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyug8w3n1gu7q"]
+
+[ext_resource type="Material" uid="uid://bn5xuf3in8pv" path="res://grass.tres" id="1_8t6bt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pdxit"]
+material = ExtResource("1_8t6bt")
+size = Vector3(140, 1, 140)
+
+[node name="grass" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pdxit")

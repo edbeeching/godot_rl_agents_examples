@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfuxeygow5dxx"]
+
+[ext_resource type="PackedScene" uid="uid://4cc2pbxkyxe4" path="res://game.tscn" id="1_6xgfn"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_xigme"]
+
+[node name="Train" type="Node3D"]
+
+[node name="Sync" type="Node" parent="."]
+process_priority = -1
+script = ExtResource("2_xigme")
+
+[node name="Game" parent="." instance=ExtResource("1_6xgfn")]

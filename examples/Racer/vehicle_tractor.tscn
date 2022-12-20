@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=3 uid="uid://bngsymqdaxosg"]
+
+[ext_resource type="Script" path="res://vehicle.gd" id="1_tkrah"]
+[ext_resource type="PackedScene" uid="uid://bcrr8ep63dbqm" path="res://assets/glb_files/kenny/wheelTractorFront.glb" id="3_8f4bl"]
+[ext_resource type="Script" path="res://CameraSmoother.gd" id="3_wyn5u"]
+[ext_resource type="PackedScene" uid="uid://vrvy32vvl3qc" path="res://assets/glb_files/kenny/wheelTractorBack.glb" id="3_xjr3j"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="4_sj4wa"]
+[ext_resource type="PackedScene" uid="uid://dl1hyoi8qeqeg" path="res://assets/tractor.tscn" id="6_rctse"]
+[ext_resource type="PackedScene" uid="uid://dd3dwyrmywqag" path="res://assets/tractorShovel.tscn" id="7_wdvr1"]
+[ext_resource type="PackedScene" uid="uid://dji2n1mh133sj" path="res://assets/tractorPolice.tscn" id="8_7d4f0"]
+
+[sub_resource type="PhysicsMaterial" id="1"]
+friction = 0.5
+
+[sub_resource type="BoxShape3D" id="7"]
+size = Vector3(0.954, 0.577, 2)
+
+[node name="Vehicle" type="VehicleBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -0.0955184)
+center_of_mass_mode = 1
+physics_material_override = SubResource("1")
+script = ExtResource("1_tkrah")
+
+[node name="FrontLeftWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.573678, 0.115169, 1.05129)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.4
+wheel_radius = 0.25
+wheel_friction_slip = 1.0
+suspension_travel = 0.2
+suspension_stiffness = 40.0
+damping_compression = 0.88
+
+[node name="wheelTractorFront" parent="FrontLeftWheel" instance=ExtResource("3_8f4bl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="BackLeftWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.574, 0.265, -0.184)
+use_as_traction = true
+wheel_roll_influence = 0.4
+wheel_radius = 0.4
+wheel_friction_slip = 1.0
+suspension_travel = 0.2
+suspension_stiffness = 40.0
+damping_compression = 0.88
+
+[node name="wheelTractorBack" parent="BackLeftWheel" instance=ExtResource("3_xjr3j")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="FrontRightWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.573678, 0.115169, 1.05129)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.4
+wheel_radius = 0.25
+wheel_friction_slip = 1.0
+suspension_travel = 0.2
+suspension_stiffness = 40.0
+damping_compression = 0.88
+
+[node name="wheelTractorFront" parent="FrontRightWheel" instance=ExtResource("3_8f4bl")]
+
+[node name="BackRightWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.574, 0.265, -0.184)
+use_as_traction = true
+wheel_roll_influence = 0.4
+wheel_radius = 0.4
+wheel_friction_slip = 1.0
+suspension_travel = 0.2
+suspension_stiffness = 40.0
+damping_compression = 0.88
+
+[node name="wheelTractorBack" parent="BackRightWheel" instance=ExtResource("3_xjr3j")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4366, 0.296582)
+shape = SubResource("7")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="CameraSmoother" type="Node3D" parent="Node3D"]
+transform = Transform3D(-0.999762, -0.0158309, 0.015023, 0, 0.688355, 0.725374, -0.0218244, 0.725201, -0.688191, 0, 6.02, -6.197)
+visible = false
+script = ExtResource("3_wyn5u")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node"]
+transform = Transform3D(-0.999762, -0.0158308, 0.0150229, 0, 0.688355, 0.725374, -0.0218244, 0.725201, -0.688191, -0.00169557, 6.24287, -6.29252)
+script = ExtResource("4_sj4wa")
+target_path = NodePath("../..")
+offset = Vector3(-0.00169557, 6.24287, -6.29252)
+
+[node name="Meshes" type="Node3D" parent="."]
+
+[node name="tractor" parent="Meshes" instance=ExtResource("6_rctse")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.128599, 0.234303)
+
+[node name="tractorShovel" parent="Meshes" instance=ExtResource("7_wdvr1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.124239, 0.229516)
+visible = false
+
+[node name="tractorPolice" parent="Meshes" instance=ExtResource("8_7d4f0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.126508, 0.238916)
+visible = false

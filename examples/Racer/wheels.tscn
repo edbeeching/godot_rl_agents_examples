@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://cercj6sge2c4o"]
+
+[ext_resource type="PackedScene" uid="uid://bjy3k3efsqamb" path="res://assets/glb_files/kenny/wheelDark.glb" id="1_085wk"]
+[ext_resource type="PackedScene" uid="uid://vmd5yve7ctqx" path="res://assets/glb_files/kenny/wheelDefault.glb" id="2_xnrig"]
+[ext_resource type="PackedScene" uid="uid://bxbhoxfo1gwa4" path="res://assets/glb_files/kenny/wheelRacing.glb" id="3_66rdc"]
+[ext_resource type="PackedScene" uid="uid://vrvy32vvl3qc" path="res://assets/glb_files/kenny/wheelTractorBack.glb" id="4_ctf3m"]
+[ext_resource type="PackedScene" uid="uid://bmfufnry40l4p" path="res://assets/glb_files/kenny/wheelTractorDarkBack.glb" id="5_ivxaq"]
+[ext_resource type="PackedScene" uid="uid://dpdjdjbpn3fks" path="res://assets/glb_files/kenny/wheelTractorDarkFront.glb" id="6_8eqv4"]
+[ext_resource type="PackedScene" uid="uid://bcrr8ep63dbqm" path="res://assets/glb_files/kenny/wheelTractorFront.glb" id="7_2h8gt"]
+[ext_resource type="PackedScene" uid="uid://bh5mm3ahmityn" path="res://assets/glb_files/kenny/wheelTruck.glb" id="8_5ie6e"]
+
+[node name="Node3d" type="Node3D"]
+
+[node name="wheelDark" parent="." instance=ExtResource("1_085wk")]
+visible = false
+
+[node name="wheelDefault" parent="." instance=ExtResource("2_xnrig")]
+visible = false
+
+[node name="wheelRacing" parent="." instance=ExtResource("3_66rdc")]
+visible = false
+
+[node name="wheelTractorBack" parent="." instance=ExtResource("4_ctf3m")]
+visible = false
+
+[node name="wheelTractorDarkBack" parent="." instance=ExtResource("5_ivxaq")]
+visible = false
+
+[node name="wheelTractorDarkFront" parent="." instance=ExtResource("6_8eqv4")]
+visible = false
+
+[node name="wheelTractorFront" parent="." instance=ExtResource("7_2h8gt")]
+visible = false
+
+[node name="wheelTruck" parent="." instance=ExtResource("8_5ie6e")]
+visible = false

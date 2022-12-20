@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxg3msdocg1ia"]
+
+[ext_resource type="Script" path="res://Waypoint.gd" id="1_yf3qi"]
+[ext_resource type="PackedScene" uid="uid://cllodsickd68o" path="res://assets/waypoint_mesh.tscn" id="2_w80yj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_amchi"]
+size = Vector3(8, 5, 1)
+
+[node name="Waypoint" type="Area3D"]
+collision_mask = 3
+script = ExtResource("1_yf3qi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_amchi")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0471935, 0)
+pixel_size = 0.1
+texture_filter = 0
+text = "Text"
+font_size = 22
+
+[node name="WaypointMesh" parent="." instance=ExtResource("2_w80yj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.30672, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_waypoint_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_waypoint_body_exited"]

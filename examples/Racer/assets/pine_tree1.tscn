@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bav7d1oeyp1eo"]
+
+[ext_resource type="ArrayMesh" uid="uid://c7wjag4ypye31" path="res://assets/pine_tree1.tres" id="1_iyaon"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oogte"]
+height = 1.4364
+radius = 0.15
+
+[node name="pine_tree1" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75545, 0, 0)
+mesh = ExtResource("1_iyaon")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76658, 0.621135, -0.00408024)
+shape = SubResource("CylinderShape3D_oogte")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/ground.tscn" id="2_osf7x"]
+[ext_resource type="PackedScene" uid="uid://ykdg1edn1c0v" path="res://vehicle.tscn" id="2_qwju7"]
+[ext_resource type="PackedScene" path="res://assets/track.tscn" id="3_2aaen"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7fhah"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_oj57q"]
+sky_material = SubResource("ProceduralSkyMaterial_7fhah")
+
+[sub_resource type="Environment" id="Environment_1irsi"]
+background_mode = 2
+sky = SubResource("Sky_oj57q")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TestTrack" type="Node3D"]
+
+[node name="Vehicle" parent="." instance=ExtResource("2_qwju7")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1irsi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.640257, 0.768161, -2.2893e-08, 0.515801, 0.429917, 0.741027, 0.569228, 0.474448, -0.671475, -5.58157, 24.1126, 0)
+
+[node name="Cube" parent="." instance=ExtResource("2_osf7x")]
+
+[node name="track3" parent="." instance=ExtResource("3_2aaen")]
