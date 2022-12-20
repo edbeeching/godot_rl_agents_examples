@@ -170,7 +170,7 @@ func hit_player(other_player):
 	
 # Camera toggling, refactor to manager?    
 func activate_first_person():
-	character.toggle_model_mesh(false)
+	#character.toggle_model_mesh(false)
 	first_person_camera.make_current()
 	
 func activate_third_person():

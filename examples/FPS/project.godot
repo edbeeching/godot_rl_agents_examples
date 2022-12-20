@@ -19,6 +19,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://tbot_model.gd"
 }, {
+"base": "Node2D",
+"class": &"ISensor2D",
+"language": &"GDScript",
+"path": "res://addons/godot_rl_agents/sensors/sensors_2d/ISensor2D.gd"
+}, {
+"base": "Node3D",
+"class": &"ISensor3D",
+"language": &"GDScript",
+"path": "res://addons/godot_rl_agents/sensors/sensors_3d/ISensor3D.gd"
+}, {
 "base": "CharacterBody3D",
 "class": &"Player",
 "language": &"GDScript",
@@ -39,6 +49,21 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://projectile.gd"
 }, {
+"base": "Node3D",
+"class": &"RGBCameraSensor3D",
+"language": &"GDScript",
+"path": "res://addons/godot_rl_agents/sensors/sensors_3d/RGBCameraSensor3D.gd"
+}, {
+"base": "ISensor3D",
+"class": &"RayCastSensor3D",
+"language": &"GDScript",
+"path": "res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd"
+}, {
+"base": "ISensor2D",
+"class": &"RaycastSensor2D",
+"language": &"GDScript",
+"path": "res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd"
+}, {
 "base": "Node",
 "class": &"State",
 "language": &"GDScript",
@@ -52,10 +77,15 @@ _global_script_classes=[{
 _global_script_class_icons={
 "AIController": "",
 "CharacterModel": "",
+"ISensor2D": "",
+"ISensor3D": "",
 "Player": "",
 "PlayerHitBox": "",
 "PlayerState": "",
 "Projectile": "",
+"RGBCameraSensor3D": "",
+"RayCastSensor3D": "",
+"RaycastSensor2D": "",
 "State": "",
 "StateMachine": ""
 }
