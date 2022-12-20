@@ -12,7 +12,7 @@ var message_center
 var should_connect = true
 var agents
 var need_to_send_obs = false
-@onready var start_time = Time.get_ticks_msec()
+onready var start_time = OS.get_ticks_msec()
 
 func _ready():
 	_get_agents()
@@ -61,14 +61,12 @@ func _get_dict_json_message():
 		OS.delay_usec(10)
 		
 	var message = client.get_string()
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(message).result
-	var json_data = test_json_conv.get_data()
+	var json_data = JSON.parse(message).result
 	
 	return json_data
 
 func _send_dict_as_json_message(dict):
-	client.put_string(JSON.new().stringify(dict))
+	client.put_string(to_json(dict))
 
 func _send_env_info():
 	var json_dict = _get_dict_json_message()

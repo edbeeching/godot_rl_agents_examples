@@ -1,8 +1,8 @@
-extends Node3D
+extends Spatial
 
 
-@export var speed = 10
-@export var lifetime = 1.0
+export var speed = 10
+export var lifetime = 1.0
 
 var velocity = Vector3.ZERO
 
