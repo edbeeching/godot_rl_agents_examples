@@ -52,15 +52,6 @@ script = ExtResource("5_mm0y5")
 [node name="WideRaycastSensor" type="Node3D" parent="CameraPivot/AIController"]
 transform = Transform3D(-1, 0, -8.74228e-08, -1.77636e-15, 1, 0, 8.74228e-08, 0, -1, 0, 1.54159, -0.124174)
 script = ExtResource("5_guii7")
-collision_mask = 3
-boolean_class_mask = 2
-n_rays_width = 25.0
-n_rays_height = 5.0
-ray_length = 80.0
-cone_width = 120.0
-cone_height = 20.0
-collide_with_areas = true
-class_sensor = true
 
 [node name="@node_0 0@16817" type="RayCast3D" parent="CameraPivot/AIController/WideRaycastSensor"]
 target_position = Vector3(-66.8889, -11.1338, 42.449)
@@ -690,15 +681,6 @@ collide_with_areas = true
 [node name="NarrowRaycastSensor" type="Node3D" parent="CameraPivot/AIController"]
 transform = Transform3D(-1, 0, -8.74228e-08, -1.77636e-15, 1, 0, 8.74228e-08, 0, -1, 0, 1.54159, -0.124174)
 script = ExtResource("5_guii7")
-collision_mask = 3
-boolean_class_mask = 2
-n_rays_width = 25.0
-n_rays_height = 25.0
-ray_length = 80.0
-cone_width = 20.0
-cone_height = 20.0
-collide_with_areas = true
-class_sensor = true
 
 [node name="@node_0 0@16818" type="RayCast3D" parent="CameraPivot/AIController/NarrowRaycastSensor"]
 target_position = Vector3(-13.1547, -13.3415, 77.7751)
