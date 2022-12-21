@@ -24,6 +24,21 @@ var n_steps = 0
 func init(player):
 	_player=player
 
+func set_team(value):
+	wide_raycast_sensor.team = value
+	narrow_raycast_sensor.team = value
+	if value == 0:
+		wide_raycast_sensor.team_collision_mask = 8
+		wide_raycast_sensor.enemy_collision_mask = 16
+		narrow_raycast_sensor.team_collision_mask = 8
+		narrow_raycast_sensor.enemy_collision_mask = 16
+	elif value == 1:
+		wide_raycast_sensor.team_collision_mask = 16
+		wide_raycast_sensor.enemy_collision_mask = 8
+		narrow_raycast_sensor.team_collision_mask = 16
+		narrow_raycast_sensor.enemy_collision_mask = 8
+	
+
 func reset():
 	n_steps_without_positive_reward = 0
 	n_steps = 0

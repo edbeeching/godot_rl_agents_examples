@@ -14,7 +14,7 @@ func register_player(player):
 func _process(delta):
 	
 	if Input.is_action_just_pressed("toggle_next_player"):
-		print("toggle_next_player")
+		prints("toggle_next_player", current_id)
 		var current_player = player_camera_slots[current_id]
 		current_player.deactivate_control()
 		current_id = wrapi(current_id+1, 0, len(player_camera_slots))
@@ -27,7 +27,7 @@ func _process(delta):
 			current_player.activate_first_person()
 		
 	if Input.is_action_just_pressed("toggle_previous_player"):
-		print("toggle_previous_player")
+		prints("toggle_previous_player", current_id)
 		var current_player = player_camera_slots[current_id]
 		current_player.deactivate_control()
 		current_id = wrapi(current_id-1, 0, len(player_camera_slots))

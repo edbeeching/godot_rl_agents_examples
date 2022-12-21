@@ -92,7 +92,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="fps_state_machine"
+config/name="FPS"
 run/main_scene="res://train.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
@@ -189,6 +189,8 @@ toggle_orbitcam={
 3d_physics/layer_1="world"
 3d_physics/layer_2="hit_boxes"
 3d_physics/layer_3="hurt_boxes"
+3d_physics/layer_4="team0"
+3d_physics/layer_5="team1"
 
 [rendering]
 

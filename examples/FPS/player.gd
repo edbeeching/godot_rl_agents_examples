@@ -25,6 +25,7 @@ var input_dir : Vector2
 var can_shoot := true
 var needs_respawn = false
 var human_control = false
+var team = -1
 
 func _ready():
 	health_system.init(self)
@@ -32,7 +33,22 @@ func _ready():
 	CameraManager.register_player(self)
 	ai_controller.init(self)
 	$PlayerHitBox._player = self
+
+func set_team(value):
+	team = value
+	# for detection of different team classes
+	ai_controller.set_team(team)
+	# update the material of the tbot model
+	character.set_team(team)
 	
+	# update the collision mask
+	if team == 0:
+		$PlayerHitBox.collision_layer = $PlayerHitBox.collision_layer | 8
+		$PlayerHitBox.collision_mask = $PlayerHitBox.collision_mask | 8
+	elif team == 1:
+		$PlayerHitBox.collision_layer = $PlayerHitBox.collision_layer | 16
+		$PlayerHitBox.collision_mask = $PlayerHitBox.collision_mask | 16
+
 func respawn():
 	GameManager.respawn(self)
 	camera_pivot.rotation.x = 0
@@ -60,6 +76,7 @@ func _shoot():
 	projectile.set_as_top_level(true)
 
 	projectile.shooter = self
+	projectile.set_team(team)
 	var info = character.get_gun_info()
 	
 	projectile.global_position = info
@@ -165,12 +182,16 @@ func hit_player(other_player):
 	if other_player == self:
 		#print("player hit self")
 		return
-	#print("player hit another player")
+	if team != -1 and other_player.team == team:
+		print("player hit teammate")
+		return
+		
+	print("player hit another player")
 	ai_controller.reward += 1.0
 	
 # Camera toggling, refactor to manager?    
 func activate_first_person():
-	#character.toggle_model_mesh(false)
+	character.toggle_model_mesh(false)
 	first_person_camera.make_current()
 	
 func activate_third_person():
@@ -188,4 +209,5 @@ func deactivate_control():
 
 func _on_player_hit_box_area_entered(area):
 	if area is Projectile and area.shooter != self:
-		health_system.take_damage(area.damage)
+		if team != -1 and area.shooter.team != team:
+			health_system.take_damage(area.damage)

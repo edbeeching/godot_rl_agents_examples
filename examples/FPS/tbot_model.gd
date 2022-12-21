@@ -12,6 +12,15 @@ func _ready():
 #    $Armature/Skeleton3D.modification_stack.get_modification(0).set_target_node("")
 	$Armature/Skeleton3D.modification_stack.get_modification(0).set_target_node("../../Gun/LeftHandMarker")
 
+func set_team(value):
+	var material: Material
+	if value == 0:
+		material = load("res://tbot_model_green_team.tres")
+	elif value == 1:
+		material = load("res://tbot_model_red_team.tres")
+	print("setting tbot material")
+	$Armature/Skeleton3D/Mesh.set_surface_override_material(0, material)
+
 func transition_to(state_id: States): 
 
 	match state_id:

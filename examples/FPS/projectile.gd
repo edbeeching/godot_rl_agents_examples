@@ -9,11 +9,13 @@ var shooter = null
 var ProjectileImpact = preload("res://projectile_impact.tscn")
 
 var team_materials = {
-	-1 : preload("res://projectile_mat.tres"),
 	0: preload("res://projectile_mat_green_team.tres"),
 	1: preload("res://projectile_mat_red_team.tres"),
 }
 
+func set_team(value):
+	if value != -1:
+		$MeshInstance3d.set_surface_override_material(0, team_materials[value])
 
 func _physics_process(delta):
 	#look_at(transform.origin + velocity.normalized(), Vector3.UP)
