@@ -183,10 +183,8 @@ func hit_player(other_player):
 		#print("player hit self")
 		return
 	if team != -1 and other_player.team == team:
-		print("player hit teammate")
 		return
-		
-	print("player hit another player")
+	
 	ai_controller.reward += 1.0
 	
 # Camera toggling, refactor to manager?    

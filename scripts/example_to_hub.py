@@ -5,7 +5,7 @@ import sys
 from huggingface_hub import HfApi, Repository, repocard, upload_file, upload_folder
 
 
-def generate_model_card(
+def generate_dataset_card(
     dir_path: str, 
     env: str,
     repo_id: str,
@@ -20,7 +20,7 @@ This environment was created with: https://github.com/edbeeching/godot_rl_agents
 ## Downloading the environment \n
 After installing Godot RL Agents, download the environment with: \n
 ```
-gdrl.load_from_hub -r {repo_id}
+gdrl.env_from_hub -r {repo_id}
 ```
 \n
 
@@ -45,6 +45,7 @@ def push_to_hf(dir_path: str, repo_name: str):
         repo_id=repo_name,
         private=False,
         exist_ok=True,
+        repo_type="dataset"
     )
 
     upload_folder(
@@ -52,6 +53,7 @@ def push_to_hf(dir_path: str, repo_name: str):
         folder_path=dir_path,
         path_in_repo=".",
         ignore_patterns=[".git/*"],
+        repo_type="dataset"
     )
 
 
@@ -85,7 +87,7 @@ def main():
     )
     args = parser.parse_args()
 
-    generate_model_card(args.dir_path, args.env_name, args.hf_repository)
+    generate_dataset_card(args.dir_path, args.env_name, args.hf_repository)
     push_to_hf(args.dir_path, args.hf_repository)
 
 
