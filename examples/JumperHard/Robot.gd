@@ -11,8 +11,6 @@ extends Node3D
 func _ready():
 	pass # Replace with function body.
 
-
-
 func set_animation(anim):
 	if player.current_animation == anim:
 		return

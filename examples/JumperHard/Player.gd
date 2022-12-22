@@ -85,15 +85,15 @@ func _physics_process(_delta):
 		y_velo = -MAX_FALL_SPEED
 	
 	if y_velo < 0 and !grounded :
-		robot.set_animation("falling-cycle")
+		robot.set_animation("falling")
 	
 	var horizontal_speed = Vector2(move_vec.x, move_vec.z)
 	if horizontal_speed.length() < 0.1 and grounded:
 		robot.set_animation("idle")
 	elif horizontal_speed.length() < 1.0 and grounded:
-		robot.set_animation("walk-cycle")    
+		robot.set_animation("walk")    
 	elif horizontal_speed.length() >= 1.0 and grounded:
-		robot.set_animation("run-cycle")
+		robot.set_animation("run")
 	
 	update_reward()
 	
