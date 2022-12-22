@@ -75,7 +75,7 @@ func _physics_process(_delta):
 	y_velo -= GRAVITY
 	var just_jumped = false
 	if grounded and get_jump_action():
-		robot.set_animation("jump-up-cycle")
+		robot.set_animation("jump")
 		just_jumped = true
 		y_velo = JUMP_FORCE
 		grounded = false

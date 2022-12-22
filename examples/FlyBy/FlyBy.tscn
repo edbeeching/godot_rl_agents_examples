@@ -272,6 +272,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
 [node name="Plane15" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 27, -1)
 
+[node name="Plane16" parent="." instance=ExtResource("5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 27, -1)
+
 [node name="Walls" type="Node" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls"]
