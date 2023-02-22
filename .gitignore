@@ -23,3 +23,6 @@ examples/Racer/.godot
 examples/GridWorld/.godot
 examples/VirtualCamera/.godot
 builds/
+
+# Apple
+.DS_Store
