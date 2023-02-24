@@ -6,7 +6,7 @@ uid="uid://c6u013jfdw24i"
 path.s3tc="res://.godot/imported/tree_leaves1.png-0867bac062600ebd64b9c3b351e8ee13.s3tc.ctex"
 path.etc2="res://.godot/imported/tree_leaves1.png-0867bac062600ebd64b9c3b351e8ee13.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
@@ -18,9 +18,9 @@ dest_files=["res://.godot/imported/tree_leaves1.png-0867bac062600ebd64b9c3b351e8
 [params]
 
 compress/mode=2
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

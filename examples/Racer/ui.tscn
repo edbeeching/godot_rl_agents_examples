@@ -20,7 +20,7 @@ mouse_filter = 1
 script = ExtResource("1_aynm8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = 5
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -245.0
@@ -29,8 +29,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 
 [node name="CurrentLabel" type="Label" parent="HBoxContainer"]
-offset_right = 262.0
-offset_bottom = 48.0
+layout_mode = 2
 text = "Current: 00:00:00"
 label_settings = SubResource("LabelSettings_5dtk3")
 metadata/_edit_layout_mode = 1
@@ -38,14 +37,10 @@ metadata/_edit_use_custom_anchors = true
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
-offset_left = 266.0
-offset_right = 276.0
-offset_bottom = 48.0
+layout_mode = 2
 
 [node name="BestLabel" type="Label" parent="HBoxContainer"]
-offset_left = 280.0
-offset_right = 491.0
-offset_bottom = 48.0
+layout_mode = 2
 text = "Best: 00:00:00"
 label_settings = SubResource("LabelSettings_5dtk3")
 metadata/_edit_layout_mode = 1

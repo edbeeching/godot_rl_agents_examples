@@ -68,5 +68,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+textures/vram_compression/import_s3tc_bptc=true
 quality/filters/msaa=1
 environment/default_environment="res://default_env.tres"
