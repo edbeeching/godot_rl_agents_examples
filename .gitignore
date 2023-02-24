@@ -1,3 +1,4 @@
+.env
 
 # Godot-specific ignores
 .import/
@@ -7,6 +8,7 @@ export.cfg
 .mono/
 data_*/
 
+# Project ignores
 examples/SpaceShooter/assets/
 examples/SpaceShooter/.import
 examples/FlyBy/assets/
@@ -23,5 +25,5 @@ examples/GridWorld/.godot
 examples/VirtualCamera/.godot
 examples/*/bin
 
-# Apple
+# Apple ignores
 .DS_Store
