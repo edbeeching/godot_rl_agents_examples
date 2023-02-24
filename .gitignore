@@ -21,7 +21,7 @@ examples/FPS/.godot
 examples/Racer/.godot
 examples/GridWorld/.godot
 examples/VirtualCamera/.godot
-builds/
+examples/*/bin
 
 # Apple
 .DS_Store

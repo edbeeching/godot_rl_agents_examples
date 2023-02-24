@@ -9,11 +9,16 @@ font = SubResource("SystemFont_2jko6")
 font_size = 140
 
 [node name="UICountDown" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_83bhs")
 
 [node name="CountDownLabel" type="Label" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 349.0
