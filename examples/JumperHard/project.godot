@@ -12,8 +12,12 @@ config_version=5
 
 config/name="JumperHard"
 run/main_scene="res://BatchEnvs.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.0", "C#")
 config/icon="res://icon.png"
+
+[dotnet]
+
+project/assembly_name="JumperHard"
 
 [editor_plugins]
 

@@ -50,6 +50,7 @@ shape = SubResource("1")
 
 [node name="RaycastSensor2D" type="Node2D" parent="Player"]
 script = ExtResource("2")
+collide_with_areas = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.9, 0.9)

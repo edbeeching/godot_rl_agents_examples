@@ -55,7 +55,6 @@ position = Vector2(3922.87, 2243.04)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(640, 360)
-current = true
 script = ExtResource("3")
 
 [node name="Sync" type="Node" parent="."]
