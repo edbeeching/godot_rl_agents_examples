@@ -10,7 +10,7 @@ func _ready():
 	
 #    $Armature/Skeleton3D.get_modification_stack().enable_all_modifications(true)
 #    $Armature/Skeleton3D.modification_stack.get_modification(0).set_target_node("")
-	$Armature/Skeleton3D.modification_stack.get_modification(0).set_target_node("../../Gun/LeftHandMarker")
+#	$Armature/Skeleton3D.modification_stack.get_modification(0).set_target_node("../../Gun/LeftHandMarker")
 
 func set_team(value):
 	var material: Material
