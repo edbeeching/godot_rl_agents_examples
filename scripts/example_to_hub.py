@@ -52,7 +52,7 @@ def push_to_hf(dir_path: str, repo_name: str):
         repo_id=repo_name,
         folder_path=dir_path,
         path_in_repo=".",
-        ignore_patterns=[".git/*"],
+        ignore_patterns=[".git/*", ".godot/*"],
         repo_type="dataset"
     )
 
