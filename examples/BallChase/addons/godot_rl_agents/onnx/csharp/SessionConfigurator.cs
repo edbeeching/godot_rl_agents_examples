@@ -19,8 +19,6 @@ namespace GodotONNX
             SystemCheck();
             return options;
         }
-        /// <include file='docs/SessionConfigurator.xml' path='docs/members[@name="SessionConfigurator"]/SystemCheck/*'/>
-
         public enum ComputeNames
         {
             CUDA,
@@ -29,6 +27,7 @@ namespace GodotONNX
             CoreML,
             CPU
         }
+        /// <include file='docs/SessionConfigurator.xml' path='docs/members[@name="SessionConfigurator"]/SystemCheck/*'/>
         static public void SystemCheck()
         {
             //Most code for this function is verbose only, the only reason it exists is to track
