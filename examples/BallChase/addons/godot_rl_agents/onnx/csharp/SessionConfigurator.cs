@@ -100,11 +100,15 @@ namespace GodotONNX
             //string adapterVendor = Godot.RenderingServer.GetVideoAdapterVendor();
             adapterName = adapterName.ToUpper(new System.Globalization.CultureInfo(""));
             //TODO: GPU vendors for MacOS, what do they even use these days?
+
+            // Due to issues on RX 570 and RTX 3060 in Windows
+            // temporarily disabling the DirectML option so it will use CPU
+            /*   
             if (adapterName.Contains("INTEL"))
             {
                 return ComputeName.DirectML;
             }
-            if (adapterName.Contains("AMD"))
+            if (adapterName.Contains("AMD") || adapterName.Contains("RADEON"))
             {
                 return ComputeName.DirectML;
             }
@@ -113,7 +117,8 @@ namespace GodotONNX
                 return ComputeName.CUDA;
             }
 
-            GD.Print("Graphics Card not recognized."); //Should use CPU
+            //GD.Print("Graphics Card not recognized."); //Should use CPU
+            */
             return ComputeName.CPU;
         }
     }
