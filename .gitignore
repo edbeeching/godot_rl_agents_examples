@@ -26,3 +26,4 @@ builds/
 
 # Apple
 .DS_Store
+*.import
