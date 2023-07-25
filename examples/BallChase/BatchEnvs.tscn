@@ -59,3 +59,4 @@ script = ExtResource("3")
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2")
+speed_up = 8
