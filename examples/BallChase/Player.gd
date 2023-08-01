@@ -16,9 +16,11 @@ var _velocity := Vector2.ZERO
 var _action = Vector2.ZERO
 var _heuristic = "player"
 @onready var fruit = $"../Fruit"
-@onready var raycast_sensor = $"RaycastSensor2D"
+
 @onready var walls := $"../Walls"
 @onready var colision_shape := $"CollisionShape2D"
+@onready var ai_controller = $AIController
+
 var fruit_just_entered = false
 var just_hit_wall = false
 var done = false
@@ -27,20 +29,20 @@ var fruit_count = 0
 var n_steps = 0
 var MAX_STEPS = 20000
 var needs_reset = false
-var reward = 0.0
+# var reward = 0.0
 
 func _ready():
-	raycast_sensor.activate()
+	ai_controller.player = self
 	reset()
 
 func _physics_process(delta):
 	n_steps +=1    
 	if n_steps >= MAX_STEPS:
-		done = true
-		needs_reset = true
+		ai_controller.done = true
+		ai_controller.needs_reset = true
 
-	if needs_reset:
-		needs_reset = false
+	if ai_controller.needs_reset:
+		ai_controller.needs_reset = false
 		reset()
 		return
 	
@@ -122,22 +124,7 @@ func reset_if_done():
 	if done:
 		reset()
 		
-func get_obs():
-	var relative = fruit.position - position
-	var distance = relative.length() / 1500.0 
-	relative = relative.normalized() 
-	var result := []
-	result.append(((position.x / WIDTH)-0.5) * 2)
-	result.append(((position.y / HEIGHT)-0.5) * 2)  
-	result.append(relative.x)
-	result.append(relative.y)
-	result.append(distance)
-	var raycast_obs = raycast_sensor.get_observation()
-	result.append_array(raycast_obs)
 
-	return {
-		"obs": result,
-	}
 	
 	
 func update_reward():

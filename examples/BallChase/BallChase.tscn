@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bj8j0v5unredq"]
+[gd_scene load_steps=14 format=3 uid="uid://bj8j0v5unredq"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1"]
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://ct0su528pg5yn" path="res://cherry.png" id="3_25acu"]
-[ext_resource type="Texture2D" uid="uid://d331sjr0acihm" path="res://lollipopGreen.png" id="3_ty2qt"]
+[ext_resource type="Texture2D" uid="uid://6303w1vjemkx" path="res://cherry.png" id="3_25acu"]
+[ext_resource type="Texture2D" uid="uid://76gmtvtrybol" path="res://lollipopGreen.png" id="3_ty2qt"]
+[ext_resource type="Script" path="res://AIController.gd" id="4_yofcr"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 30.0
@@ -44,17 +45,23 @@ glow_blend_mode = 0
 [node name="Player" type="CharacterBody2D" parent="." groups=["AGENT"]]
 position = Vector2(281.728, 162.943)
 script = ExtResource("1")
+speed = null
+friction = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("1")
 
-[node name="RaycastSensor2D" type="Node2D" parent="Player"]
-script = ExtResource("2")
-collide_with_areas = true
-
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("3_ty2qt")
+
+[node name="AIController" type="Node2D" parent="Player"]
+script = ExtResource("4_yofcr")
+reset_after = null
+
+[node name="RaycastSensor2D" type="Node2D" parent="Player/AIController"]
+script = ExtResource("2")
+collide_with_areas = true
 
 [node name="Fruit" type="Area2D" parent="."]
 position = Vector2(1095.01, 578.224)
