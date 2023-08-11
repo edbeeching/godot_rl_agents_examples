@@ -1,0 +1,32 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="GridSensor3DExample"
+run/main_scene="res://game.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
+config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="GridSensor3DExample"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_rl_agents/plugin.cfg")
+
+[layer_names]
+
+3d_physics/layer_1="PLAYER"
+3d_physics/layer_2="ENEMY"
+3d_physics/layer_3="WORLD"
+3d_physics/layer_4="FOOD"
+3d_physics/layer_5="DANGER"
