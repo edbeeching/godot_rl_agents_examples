@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpdxuymjylis5"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_et66q"]
+[ext_resource type="Script" path="res://AIController3D.gd" id="2_3ydot"]
+[ext_resource type="PackedScene" uid="uid://bqj6y8aikg4yf" path="res://assets/ship_light.gltf" id="3_6et4q"]
+[ext_resource type="PackedScene" uid="uid://px62msmlcd4u" path="res://health_bar.tscn" id="4_bnrq3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ducxu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frsmg"]
+albedo_color = Color(0.337255, 0.541176, 0.223529, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qxuji"]
+material = SubResource("StandardMaterial3D_frsmg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwitp"]
+albedo_color = Color(0.403922, 0.403922, 0.403922, 0.113725)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lctik"]
+material = SubResource("StandardMaterial3D_bwitp")
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 0
+script = ExtResource("1_et66q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ducxu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_qxuji")
+
+[node name="AIController3D" type="Node3D" parent="."]
+script = ExtResource("2_3ydot")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94942, 1.44458, 0)
+visible = false
+mesh = SubResource("BoxMesh_lctik")
+
+[node name="ship_light" parent="." instance=ExtResource("3_6et4q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457339, 0, 0)
+
+[node name="HealthBar" parent="." instance=ExtResource("4_bnrq3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.35306, 0)

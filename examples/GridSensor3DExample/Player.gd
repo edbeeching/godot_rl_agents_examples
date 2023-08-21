@@ -1,12 +1,13 @@
 extends CharacterBody3D
 class_name Player
 
-const SPEED = 10.0
-const JUMP_VELOCITY = 4.5
-const TURN_SENS = 2.0
+const SPEED := 10.0
+const JUMP_VELOCITY := 4.5
+const TURN_SENS := 2.0
+
+var health := 3
 
 func _physics_process(delta):
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var fb = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
@@ -25,3 +26,11 @@ func _physics_process(delta):
 
 func chest_collected():
 	print("chest collected")
+
+
+func mine_hit():
+	print("mine hit")
+	
+	health -= 1
+	$HealthBar.update_health(health)
+	
