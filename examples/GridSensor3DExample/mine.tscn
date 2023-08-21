@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkpr7mt3rwxj3"]
+
+[ext_resource type="PackedScene" uid="uid://b00tgg3r346it" path="res://assets/mine.blend" id="1_tx8dm"]
+
+[node name="mine" instance=ExtResource("1_tx8dm")]

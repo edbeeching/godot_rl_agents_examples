@@ -1,0 +1,215 @@
+[gd_scene load_steps=30 format=3 uid="uid://bufeymuvmqxji"]
+
+[ext_resource type="Texture2D" uid="uid://bca4idta1iw8e" path="res://assets/sunflowers_puresky_2k.hdr" id="1_wokcl"]
+[ext_resource type="Script" path="res://AIController3D.gd" id="2_08hkn"]
+[ext_resource type="Shader" uid="uid://8su6ti3hlgpy" path="res://WaterShader.tres" id="2_478ao"]
+[ext_resource type="Script" path="res://Player.gd" id="2_sk2vf"]
+[ext_resource type="Script" path="res://PathFollower.gd" id="4_0ci74"]
+[ext_resource type="PackedScene" uid="uid://dciuls4r0h7tg" path="res://assets/ship_light.gltf" id="5_7ms1u"]
+[ext_resource type="PackedScene" uid="uid://dh6iu0ai4cp85" path="res://chest.tscn" id="6_26mat"]
+[ext_resource type="PackedScene" uid="uid://bkpr7mt3rwxj3" path="res://mine.tscn" id="7_vjl56"]
+[ext_resource type="PackedScene" uid="uid://di53apenhbht2" path="res://island.tscn" id="8_b3wbg"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xdu73"]
+panorama = ExtResource("1_wokcl")
+
+[sub_resource type="Sky" id="Sky_x0a2e"]
+sky_material = SubResource("PanoramaSkyMaterial_xdu73")
+
+[sub_resource type="Environment" id="Environment_72mj5"]
+background_energy_multiplier = 0.68
+sky = SubResource("Sky_x0a2e")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftdnw"]
+albedo_color = Color(0.0627451, 0.231373, 0.282353, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e4d0m"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yjpi3"]
+noise = SubResource("FastNoiseLite_e4d0m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_geos3"]
+render_priority = 0
+shader = ExtResource("2_478ao")
+shader_parameter/wave_scale = 0.2
+shader_parameter/water_speed2 = 0.003
+shader_parameter/water_color = Color(0, 0.341783, 0.638043, 1)
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/foam_threshold = 0.5
+shader_parameter/detail_water_speed = 0.002
+shader_parameter/main_noise2 = SubResource("NoiseTexture2D_yjpi3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mi2vx"]
+material = SubResource("ShaderMaterial_geos3")
+size = Vector2(1000, 1000)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ducxu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frsmg"]
+albedo_color = Color(0.337255, 0.541176, 0.223529, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qxuji"]
+material = SubResource("StandardMaterial3D_frsmg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwitp"]
+albedo_color = Color(0.403922, 0.403922, 0.403922, 0.113725)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lctik"]
+material = SubResource("StandardMaterial3D_bwitp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qgiun"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vur7c"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="Curve3D" id="Curve3D_ccve6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6.76369, 0, -3.99764, 0, 0, 0, 0, 0, 0, 9.24348, 0, -2.20192, 0, 0, 0, 0, 0, 0, 7.27675, 0, 5.23747, 0, 0, 0, 0, 0, 0, 2.65919, 0, 7.28972, 0, 0, 0, 0, 0, 0, -3.32652, 0, 7.28972, 0, 0, 0, 0, 0, 0, -3.75408, 0, 3.35625, 0, 0, 0, 0, 0, 0, -12.1782, 0, -3.23315, 0, 0, 0, 0, 0, 0, -3.49755, 0, -2.97151, 0, 0, 0, 0, 0, 0, 1.37654, 0, -3.14253, 0, 0, 0, 0, 0, 0, 4.3694, 0, -7.58907, 0, 0, 0, 0, 0, 0, 6.76369, 0, -3.99764),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 11
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohsfn"]
+albedo_color = Color(0.584314, 0.0431373, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2ik4k"]
+material = SubResource("StandardMaterial3D_ohsfn")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wm0me"]
+
+[sub_resource type="Curve3D" id="Curve3D_3j3fn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -2.31664, 0, -3.18268, 0, 0, 0, 0, 0, 0, -0.0476809, 0, -7.04603, 0, 0, 0, 0, 0, 0, 4.85816, 0, -7.29132, 0, 0, 0, 0, 0, 0, 5.53271, 0, -4.47046, 0, 0, 0, 0, 0, 0, 6.08462, 0, -1.64961, 0, 0, 0, 0, 0, 0, 3.75434, 0, -0.607114, 0, 0, 0, 0, 0, 0, 3.3864, 0, 4.17608, 0, 0, 0, 0, 0, 0, 3.32508, 0, 6.87429, 0, 0, 0, 0, 0, 0, -1.82605, 0, 6.629, 0, 0, 0, 0, 0, 0, -2.13266, 0, 0.558021, 0, 0, 0, 0, 0, 0, -7.22247, 0, -2.01754, 0, 0, 0, 0, 0, 0, -2.31664, 0, -3.18268),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_72mj5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.539841, 0.598176, -0.592247, 0.0483619, 0.680374, 0.731268, 0.840376, -0.423411, 0.338365, -14.2717, 35.5205, -0.747414)
+shadow_enabled = true
+
+[node name="Sea" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ftdnw")
+mesh = SubResource("PlaneMesh_mi2vx")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+collision_mask = 0
+script = ExtResource("2_sk2vf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ducxu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_qxuji")
+
+[node name="AIController3D" type="Node3D" parent="Player"]
+script = ExtResource("2_08hkn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94942, 1.44458, 0)
+visible = false
+mesh = SubResource("BoxMesh_lctik")
+
+[node name="ship_light" parent="Player" instance=ExtResource("5_7ms1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457339, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.66262, -0.668801, 0.337103, 0, 0.450098, 0.892979, -0.748955, -0.591706, 0.298244, 5.60665, 14.7144, 5.8439)
+current = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -16, 0, 3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_qgiun")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_vur7c")
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+shape = SubResource("BoxShape3D_qgiun")
+
+[node name="Enemies" type="Node3D" parent="."]
+visible = false
+
+[node name="ExampleEnemy" type="Path3D" parent="Enemies"]
+curve = SubResource("Curve3D_ccve6")
+
+[node name="PathFollower" type="PathFollow3D" parent="Enemies/ExampleEnemy"]
+transform = Transform3D(-0.586509, 0, -0.809937, 0, 1, 0, 0.809937, 0, -0.586509, 6.76369, 0, -3.99764)
+script = ExtResource("4_0ci74")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/ExampleEnemy/PathFollower"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_2ik4k")
+
+[node name="Area3D" type="Area3D" parent="Enemies/ExampleEnemy/PathFollower"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/ExampleEnemy/PathFollower/Area3D"]
+shape = SubResource("CapsuleShape3D_wm0me")
+
+[node name="ExampleEnemy3" type="Path3D" parent="Enemies"]
+curve = SubResource("Curve3D_ccve6")
+
+[node name="PathFollower" type="PathFollow3D" parent="Enemies/ExampleEnemy3"]
+transform = Transform3D(-0.586509, 0, -0.809937, 0, 1, 0, 0.809937, 0, -0.586509, 6.76369, 0, -3.99764)
+script = ExtResource("4_0ci74")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/ExampleEnemy3/PathFollower"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_2ik4k")
+
+[node name="Area3D" type="Area3D" parent="Enemies/ExampleEnemy3/PathFollower"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 1, 0)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/ExampleEnemy3/PathFollower/Area3D"]
+shape = SubResource("CapsuleShape3D_wm0me")
+
+[node name="ExampleEnemy2" type="Path3D" parent="Enemies"]
+curve = SubResource("Curve3D_3j3fn")
+
+[node name="PathFollower" type="PathFollow3D" parent="Enemies/ExampleEnemy2"]
+transform = Transform3D(0.862281, 0, -0.506421, 0, 1, 0, 0.506421, 0, 0.862281, -2.31664, 0, -3.18268)
+script = ExtResource("4_0ci74")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/ExampleEnemy2/PathFollower"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_2ik4k")
+
+[node name="Area3D" type="Area3D" parent="Enemies/ExampleEnemy2/PathFollower"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/ExampleEnemy2/PathFollower/Area3D"]
+shape = SubResource("CapsuleShape3D_wm0me")
+
+[node name="chest2" parent="." instance=ExtResource("6_26mat")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.37548, 0, -4.18009)
+
+[node name="mine" parent="." instance=ExtResource("7_vjl56")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.40019, 0, 0)
+
+[node name="island" parent="." instance=ExtResource("8_b3wbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.90866, 0, 8.98698)
+
+[node name="island2" parent="." instance=ExtResource("8_b3wbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4753, 0, -18.5065)
+
+[node name="island3" parent="." instance=ExtResource("8_b3wbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5303, 0, -7.78907)
+
+[node name="island4" parent="." instance=ExtResource("8_b3wbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.55735, 0, -20.6814)
