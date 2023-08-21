@@ -121,6 +121,7 @@ height = 0.8
 radius = 0.778727
 
 [node name="chest" type="MeshInstance3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ycdmf")
 skeleton = NodePath("")
 script = ExtResource("1_bycqm")

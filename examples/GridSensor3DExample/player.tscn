@@ -1791,7 +1791,7 @@ albedo_color = Color(0.403922, 0.403922, 0.403922, 0.113725)
 [sub_resource type="BoxMesh" id="BoxMesh_lctik"]
 material = SubResource("StandardMaterial3D_bwitp")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e8pgx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_wbqml"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Player" type="CharacterBody3D"]
@@ -7120,4 +7120,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457339, 0, 0)
 
 [node name="HealthBar" parent="." instance=ExtResource("4_bnrq3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.35306, 0)
-texture = SubResource("ViewportTexture_e8pgx")
+texture = SubResource("ViewportTexture_wbqml")
