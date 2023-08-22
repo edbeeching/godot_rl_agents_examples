@@ -5,7 +5,15 @@ const SPEED := 10.0
 const JUMP_VELOCITY := 4.5
 const TURN_SENS := 2.0
 
-var health := 3
+@onready var health_bar = $HealthBar
+
+var score := 0
+var health := 3:
+	set(value):
+		health = value
+		health_bar.update_health(health)
+		if health == 0:
+			reset()
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -23,14 +31,16 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
+func reset():
+	position = Vector3.ZERO
+	health = 3
+	score = 0
+	
 func chest_collected():
 	print("chest collected")
-
+	score += 1
 
 func mine_hit():
 	print("mine hit")
-	
+	score -= 1	
 	health -= 1
-	$HealthBar.update_health(health)
-	

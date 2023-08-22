@@ -9,7 +9,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_vqdft"]
 size = Vector3(2, 2, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_aup5x"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nksa2"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x01ay"]
@@ -4011,7 +4011,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.738133, 0, 0)
 
 [node name="HealthBar" parent="." instance=ExtResource("4_bnrq3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.35306, 0)
-texture = SubResource("ViewportTexture_aup5x")
+texture = SubResource("ViewportTexture_nksa2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.755033, 0)
