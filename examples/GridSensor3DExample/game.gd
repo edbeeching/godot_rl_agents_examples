@@ -34,8 +34,8 @@ func spawn_world():
 	spawn_mines()
 	
 	
-func bb_overlaps(rect: Rect2)->bool:
-	var expanded_rect = rect.grow(5.0)
+func bb_overlaps(rect: Rect2, border:float)->bool:
+	var expanded_rect = rect.grow(border)
 	for bb in bbs:
 		if bb.intersects(expanded_rect):
 			return true
@@ -43,23 +43,23 @@ func bb_overlaps(rect: Rect2)->bool:
 	return false
 
 
-func find_valid_position(aabb) -> Vector2:
+func find_valid_position(aabb, border:float) -> Vector2:
 	var x_pos = randf_range(world_size.position.x, world_size.end.x)
 	var z_pos = randf_range(world_size.position.y, world_size.end.y)
 	var aabb2d = Rect2(Vector2(aabb.position.x+x_pos, aabb.position.z+z_pos), Vector2(aabb.size.x, aabb.size.z))
 
-	while bb_overlaps(aabb2d): # change to n_tries
+	while bb_overlaps(aabb2d, border): # change to n_tries
 		x_pos = randf_range(world_size.position.x, world_size.end.x)
 		z_pos = randf_range(world_size.position.y, world_size.end.y)
 		aabb2d = Rect2(Vector2(aabb.position.x+x_pos, aabb.position.z+z_pos), Vector2(aabb.size.x, aabb.size.z))
 		
 	return Vector2(aabb.position.x+x_pos, aabb.position.z+z_pos)
 	
-func spawn_scene(scene):
+func spawn_scene(scene, border:float):
 	var instance = scene.instantiate()
 	var aabb = instance.get_mesh_aabb()
 	print(aabb)
-	var spawn_position = find_valid_position(aabb)
+	var spawn_position = find_valid_position(aabb,border)
 	var aabb2d = Rect2(spawn_position, Vector2(aabb.size.x, aabb.size.z))
 	
 	bbs.append(aabb2d)
@@ -70,18 +70,18 @@ func spawn_scene(scene):
 	return instance
 
 
-func clear_and_spawn(parent, scenes: Array, count):
+func clear_and_spawn(parent, scenes: Array, count, border: float=5.0):
 	for child in parent.get_children():
 		child.queue_free()	
 
 	for i in count:
 		var scene = scenes.pick_random()
-		var instance = spawn_scene(scene)
+		var instance = spawn_scene(scene, border)
 		parent.add_child(instance)
 		instance.set_owner(get_tree().edited_scene_root)
 
 func spawn_islands():
-	clear_and_spawn(islands, island_scenes, n_islands)
+	clear_and_spawn(islands, island_scenes, n_islands, 7.0)
 	
 func spawn_chests():
 	clear_and_spawn(chests, chest_scenes, n_chests)

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-const SPEED := 10.0
+const SPEED := 30.0
 const JUMP_VELOCITY := 4.5
 const TURN_SENS := 2.0
 
@@ -44,3 +44,7 @@ func mine_hit():
 	print("mine hit")
 	score -= 1	
 	health -= 1
+
+func _on_game_area_body_exited(body):
+	print("left game area")
+	reset()

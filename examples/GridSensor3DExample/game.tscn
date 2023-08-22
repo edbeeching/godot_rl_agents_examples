@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://game.gd" id="1_u4uwx"]
 [ext_resource type="Texture2D" uid="uid://7dtbyhardfx3" path="res://assets/sunflowers_puresky_2k.hdr" id="1_wokcl"]
-[ext_resource type="Shader" uid="uid://8su6ti3hlgpy" path="res://WaterShader.tres" id="2_478ao"]
 [ext_resource type="PackedScene" uid="uid://bpdxuymjylis5" path="res://player.tscn" id="3_hm3tp"]
+[ext_resource type="Shader" uid="uid://dkh57lx7eqcsg" path="res://water_shader.tres" id="3_s5i1u"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xdu73"]
 panorama = ExtResource("1_wokcl")
@@ -17,28 +17,28 @@ sky = SubResource("Sky_x0a2e")
 ambient_light_source = 3
 reflected_light_source = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ftdnw"]
-albedo_color = Color(0.0627451, 0.231373, 0.282353, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_e4d0m"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yjpi3"]
-noise = SubResource("FastNoiseLite_e4d0m")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_geos3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ljqpd"]
 render_priority = 0
-shader = ExtResource("2_478ao")
-shader_parameter/wave_scale = 0.2
-shader_parameter/water_speed2 = 0.003
-shader_parameter/water_color = Color(0, 0.341783, 0.638043, 1)
-shader_parameter/foam_color = Color(1, 1, 1, 1)
-shader_parameter/foam_threshold = 0.5
-shader_parameter/detail_water_speed = 0.002
-shader_parameter/main_noise2 = SubResource("NoiseTexture2D_yjpi3")
+shader = ExtResource("3_s5i1u")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_mi2vx"]
-material = SubResource("ShaderMaterial_geos3")
-size = Vector2(1000, 1000)
+[sub_resource type="QuadMesh" id="QuadMesh_ugw64"]
+material = SubResource("ShaderMaterial_ljqpd")
+size = Vector2(300, 300)
+subdivide_width = 10
+subdivide_depth = 10
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wpn3"]
+albedo_color = Color(0.18483, 0.36409, 0.234525, 1)
+disable_receive_shadows = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_wfiqy"]
+material = SubResource("StandardMaterial3D_8wpn3")
+size = Vector2(300, 300)
+orientation = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hydvp"]
+size = Vector3(230, 50, 230)
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_u4uwx")
@@ -55,17 +55,36 @@ transform = Transform3D(0.539841, 0.598176, -0.592247, 0.0483619, 0.680374, 0.73
 shadow_enabled = true
 
 [node name="Sea" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_ftdnw")
-mesh = SubResource("PlaneMesh_mi2vx")
+mesh = SubResource("QuadMesh_ugw64")
+
+[node name="Sand" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.5439, 0)
+mesh = SubResource("QuadMesh_wfiqy")
 
 [node name="Player" parent="." instance=ExtResource("3_hm3tp")]
 
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(0.505331, -0.780183, 0.36872, 0, 0.427291, 0.904114, -0.862925, -0.456877, 0.215923, 14.7604, 39.8596, 9.90097)
-current = true
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
+remote_path = NodePath("../../Node")
+update_rotation = false
 
 [node name="Islands" type="Node3D" parent="."]
 
 [node name="Mines" type="Node3D" parent="."]
 
 [node name="Chests" type="Node3D" parent="."]
+
+[node name="Node" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Node"]
+transform = Transform3D(0.505331, -0.780183, 0.36872, 0, 0.427291, 0.904114, -0.862925, -0.456877, 0.215924, 14.7604, 39.8596, 9.90097)
+current = true
+
+[node name="GameArea" type="Area3D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameArea"]
+shape = SubResource("BoxShape3D_hydvp")
+
+[connection signal="body_exited" from="GameArea" to="Player" method="_on_game_area_body_exited"]
