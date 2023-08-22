@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://di53apenhbht2"]
+[gd_scene load_steps=4 format=3 uid="uid://bxuhi3w5vyrp7"]
 
 [ext_resource type="PackedScene" uid="uid://cth6lm2ymel08" path="res://assets/island.blend" id="1_rsik5"]
-[ext_resource type="Script" path="res://island.gd" id="2_x5agm"]
+
+[sub_resource type="GDScript" id="GDScript_gc01q"]
+script/source = "extends Node3D
+
+
+func get_mesh_aabb() -> AABB:
+	return $Island.mesh.get_aabb()
+"
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mbdkf"]
 points = PackedVector3Array(-0.576966, 0.607148, 2.32992, -0.458076, 0.122998, -2.60199, 3.63513, -0.401968, 1.59659, -2.87192, -0.0870461, 1.38655, 0.467492, 0.897353, -1.28825, 1.95577, -0.50699, -2.1819, 0.695913, -0.50699, 3.17163, 3.42472, 0.122998, 1.28181, -1.77831, 0.619091, -1.81535, -2.45241, -0.0870461, -1.76181, -1.95731, 0.693244, 1.08166, 0.179036, 0.227876, 3.07492, -0.982796, -0.191924, 3.27694, 0.88632, 0.83812, 0.250503, 2.69024, -0.50699, -1.55177, 2.9, 0.227876, 1.80663, -3.08233, -0.0870461, 0.441635, 2.48049, -0.50699, 2.54208, -0.017232, 0.52195, -2.31026, -0.83582, 0.876968, -1.33125, -2.68307, 0.42505, 0.830276, -0.994872, 0.227876, 2.88006, 1.94321, -0.164366, -1.91812, 1.74535, -0.50699, -2.1819, -1.82248, 0.017976, -2.28664, 1.22063, -0.296946, -2.49668, -1.84309, 0.61315, 1.59011, 3.63513, -0.401968, 0.861723, -0.24832, -0.401968, 3.27694, -2.31322, 0.227876, -1.65474, -0.250202, 0.666952, 2.00613, 2.20458, 0.0442512, -1.0399)
 
 [node name="island" instance=ExtResource("1_rsik5")]
-script = ExtResource("2_x5agm")
+script = SubResource("GDScript_gc01q")
 
 [node name="Area3D" type="Area3D" parent="Island" index="0"]
 collision_layer = 4

@@ -8,17 +8,18 @@ extends Node3D
 @export var n_chests := 100
 @export var n_mines := 100
 
-var world_size := Rect2(-50, -50, 100, 100)
-var spawn_zone := Rect2(-5, -5, 10, 10)
+@export var world_size := Rect2(-50, -50, 100, 100)
+@export var spawn_zone := Rect2(-5, -5, 10, 10)
 
-var island_scene = preload("res://island.tscn")
-var chest_scene = preload("res://chest.tscn")
-var mine_scene = preload("res://mine.tscn")
+var island_scenes = [preload("res://islands.tscn")]
+var chest_scenes = [preload("res://chest.tscn")]
+var mine_scenes = [preload("res://mine.tscn")]
 
 var bbs : Array[Rect2]= []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	bbs.append(spawn_zone)
 	spawn_world()
 
 
@@ -34,8 +35,9 @@ func spawn_world():
 	
 	
 func bb_overlaps(rect: Rect2)->bool:
+	var expanded_rect = rect.grow(5.0)
 	for bb in bbs:
-		if bb.intersects(rect):
+		if bb.intersects(expanded_rect):
 			return true
 	
 	return false
@@ -56,23 +58,33 @@ func find_valid_position(aabb) -> Vector2:
 func spawn_scene(scene):
 	var instance = scene.instantiate()
 	var aabb = instance.get_mesh_aabb()
+	print(aabb)
 	var spawn_position = find_valid_position(aabb)
 	var aabb2d = Rect2(spawn_position, Vector2(aabb.size.x, aabb.size.z))
 	
 	bbs.append(aabb2d)
 	instance.position = Vector3(spawn_position.x, 0.0, spawn_position.y)
 	
+	#instance.rotate_y(randf_range(0,2*PI))
+	
 	return instance
 
+
+func clear_and_spawn(parent, scenes: Array, count):
+	for child in parent.get_children():
+		child.queue_free()	
+
+	for i in count:
+		var scene = scenes.pick_random()
+		var instance = spawn_scene(scene)
+		parent.add_child(instance)
+		instance.set_owner(get_tree().edited_scene_root)
+
 func spawn_islands():
-	for i in n_islands:
-		islands.add_child(spawn_scene(island_scene))
-	
+	clear_and_spawn(islands, island_scenes, n_islands)
 	
 func spawn_chests():
-	for i in n_chests:
-		chests.add_child(spawn_scene(chest_scene))
+	clear_and_spawn(chests, chest_scenes, n_chests)
 	
 func spawn_mines():
-	for i in n_mines:
-		mines.add_child(spawn_scene(mine_scene))
+	clear_and_spawn(mines, mine_scenes, n_mines)

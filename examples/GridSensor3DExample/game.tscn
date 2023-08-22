@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bufeymuvmqxji"]
+[gd_scene load_steps=13 format=3 uid="uid://bufeymuvmqxji"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_u4uwx"]
 [ext_resource type="Texture2D" uid="uid://7dtbyhardfx3" path="res://assets/sunflowers_puresky_2k.hdr" id="1_wokcl"]
 [ext_resource type="Shader" uid="uid://8su6ti3hlgpy" path="res://WaterShader.tres" id="2_478ao"]
 [ext_resource type="PackedScene" uid="uid://bpdxuymjylis5" path="res://player.tscn" id="3_hm3tp"]
-[ext_resource type="PackedScene" uid="uid://bkpr7mt3rwxj3" path="res://mine.tscn" id="7_vjl56"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xdu73"]
 panorama = ExtResource("1_wokcl")
@@ -43,6 +42,10 @@ size = Vector2(1000, 1000)
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_u4uwx")
+n_islands = 20
+n_chests = 50
+n_mines = 50
+world_size = Rect2(-100, -100, 200, 200)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_72mj5")
@@ -64,23 +67,5 @@ current = true
 [node name="Islands" type="Node3D" parent="."]
 
 [node name="Mines" type="Node3D" parent="."]
-
-[node name="mine" parent="Mines" instance=ExtResource("7_vjl56")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.40019, 0, 0)
-
-[node name="mine2" parent="Mines" instance=ExtResource("7_vjl56")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.1333, 0, 15.9185)
-
-[node name="mine3" parent="Mines" instance=ExtResource("7_vjl56")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86674, 0, -33.0815)
-
-[node name="mine4" parent="Mines" instance=ExtResource("7_vjl56")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5998, 0, 25)
-
-[node name="mine5" parent="Mines" instance=ExtResource("7_vjl56")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1333, 0, -11.0815)
-
-[node name="mine6" parent="Mines" instance=ExtResource("7_vjl56")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1333, 0, -16.0815)
 
 [node name="Chests" type="Node3D" parent="."]

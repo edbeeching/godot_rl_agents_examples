@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cic47j3ixh261"]
+
+[ext_resource type="PackedScene" uid="uid://dplv61rnlprym" path="res://assets/islands.blend" id="1_170qk"]
+[ext_resource type="Script" path="res://islands.gd" id="2_4rvkp"]
+
+[node name="islands" instance=ExtResource("1_170qk")]
+script = ExtResource("2_4rvkp")
+
+[node name="Area3D" type="Area3D" parent="." index="3"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="4"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]

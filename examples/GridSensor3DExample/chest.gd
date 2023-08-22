@@ -17,4 +17,7 @@ func _on_area_3d_body_entered(body):
 		queue_free()
 
 func get_mesh_aabb() -> AABB:
-	return mesh.get_aabb()
+	var aabb = mesh.get_aabb()
+	aabb.position *= 2.0
+	aabb.size *= 2.0
+	return aabb
