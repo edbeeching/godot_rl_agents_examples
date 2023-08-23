@@ -1,21 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bufeymuvmqxji"]
+[gd_scene load_steps=9 format=3 uid="uid://bufeymuvmqxji"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_u4uwx"]
-[ext_resource type="Texture2D" uid="uid://7dtbyhardfx3" path="res://assets/sunflowers_puresky_2k.hdr" id="1_wokcl"]
 [ext_resource type="PackedScene" uid="uid://bpdxuymjylis5" path="res://player.tscn" id="3_hm3tp"]
 [ext_resource type="Shader" uid="uid://dkh57lx7eqcsg" path="res://water_shader.tres" id="3_s5i1u"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xdu73"]
-panorama = ExtResource("1_wokcl")
-
-[sub_resource type="Sky" id="Sky_x0a2e"]
-sky_material = SubResource("PanoramaSkyMaterial_xdu73")
-
-[sub_resource type="Environment" id="Environment_72mj5"]
-background_energy_multiplier = 0.68
-sky = SubResource("Sky_x0a2e")
-ambient_light_source = 3
-reflected_light_source = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ljqpd"]
 render_priority = 0
@@ -42,17 +29,10 @@ size = Vector3(230, 50, 230)
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_u4uwx")
-n_islands = 20
+n_islands = 10
 n_chests = 50
 n_mines = 50
 world_size = Rect2(-100, -100, 200, 200)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_72mj5")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.539841, 0.598176, -0.592247, 0.0483619, 0.680374, 0.731268, 0.840376, -0.423411, 0.338365, -14.2717, 35.5205, -0.747414)
-shadow_enabled = true
 
 [node name="Sea" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_ugw64")
@@ -64,21 +44,21 @@ mesh = SubResource("QuadMesh_wfiqy")
 [node name="Player" parent="." instance=ExtResource("3_hm3tp")]
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
-remote_path = NodePath("../../Node")
+remote_path = NodePath("../../CameraBase")
 update_rotation = false
+
+[node name="CameraBase" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraBase"]
+transform = Transform3D(0.505331, -0.780183, 0.36872, 0, 0.427291, 0.904114, -0.862925, -0.456877, 0.215924, 9.43706, 26.8066, 6.78361)
+current = true
 
 [node name="Islands" type="Node3D" parent="."]
 
 [node name="Mines" type="Node3D" parent="."]
 
 [node name="Chests" type="Node3D" parent="."]
-
-[node name="Node" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Node"]
-transform = Transform3D(0.505331, -0.780183, 0.36872, 0, 0.427291, 0.904114, -0.862925, -0.456877, 0.215924, 14.7604, 39.8596, 9.90097)
-current = true
 
 [node name="GameArea" type="Area3D" parent="."]
 collision_layer = 0

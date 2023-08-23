@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://fksmswbxg0pe"]
+
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="1_akerp"]
+[ext_resource type="PackedScene" uid="uid://bufeymuvmqxji" path="res://game.tscn" id="2_rofxx"]
+[ext_resource type="Texture2D" uid="uid://7dtbyhardfx3" path="res://assets/sunflowers_puresky_2k.hdr" id="3_vckwj"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tj0lf"]
+panorama = ExtResource("3_vckwj")
+
+[sub_resource type="Sky" id="Sky_x0a2e"]
+sky_material = SubResource("PanoramaSkyMaterial_tj0lf")
+
+[sub_resource type="Environment" id="Environment_2sf7y"]
+background_energy_multiplier = 0.68
+sky = SubResource("Sky_x0a2e")
+ambient_light_source = 3
+reflected_light_source = 2
+
+[node name="Train" type="Node3D"]
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("1_akerp")
+speed_up = 8
+
+[node name="Game" parent="." instance=ExtResource("2_rofxx")]
+n_islands = 0
+
+[node name="Game2" parent="." instance=ExtResource("2_rofxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 313, 0, 0)
+n_islands = 0
+
+[node name="Game3" parent="." instance=ExtResource("2_rofxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 313)
+n_islands = 0
+
+[node name="Game4" parent="." instance=ExtResource("2_rofxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 313, 0, 313)
+n_islands = 0
+
+[node name="Game5" parent="." instance=ExtResource("2_rofxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 623, 0, 0)
+n_islands = 0
+
+[node name="Game6" parent="." instance=ExtResource("2_rofxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 936, 0, 0)
+n_islands = 0
+
+[node name="Game7" parent="." instance=ExtResource("2_rofxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 623, 0, 313)
+n_islands = 0
+
+[node name="Game8" parent="." instance=ExtResource("2_rofxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 936, 0, 313)
+n_islands = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2sf7y")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.539841, 0.598176, -0.592247, 0.0483619, 0.680374, 0.731268, 0.840376, -0.423411, 0.338365, -14.2717, 35.5205, -0.747414)
+shadow_enabled = true

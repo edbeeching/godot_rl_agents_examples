@@ -58,14 +58,13 @@ func find_valid_position(aabb, border:float) -> Vector2:
 func spawn_scene(scene, border:float):
 	var instance = scene.instantiate()
 	var aabb = instance.get_mesh_aabb()
-	print(aabb)
 	var spawn_position = find_valid_position(aabb,border)
 	var aabb2d = Rect2(spawn_position, Vector2(aabb.size.x, aabb.size.z))
 	
 	bbs.append(aabb2d)
 	instance.position = Vector3(spawn_position.x, 0.0, spawn_position.y)
 	
-	#instance.rotate_y(randf_range(0,2*PI))
+	instance.rotate_y(randf_range(0,2*PI))
 	
 	return instance
 
@@ -81,10 +80,12 @@ func clear_and_spawn(parent, scenes: Array, count, border: float=5.0):
 		instance.set_owner(get_tree().edited_scene_root)
 
 func spawn_islands():
-	clear_and_spawn(islands, island_scenes, n_islands, 7.0)
+	clear_and_spawn(islands, island_scenes, n_islands, 10.0)
 	
 func spawn_chests():
 	clear_and_spawn(chests, chest_scenes, n_chests)
 	
 func spawn_mines():
 	clear_and_spawn(mines, mine_scenes, n_mines)
+	
+	
