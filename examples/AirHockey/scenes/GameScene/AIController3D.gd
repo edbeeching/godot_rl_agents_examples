@@ -4,8 +4,8 @@ extends AIController3D
 @export var other_player_raycast_sensor: Node3D
 @export var puck: RigidBody3D
 
-var grid_sensor_previous_frame
-var other_player_grid_sensor_previous_frame
+var raycast_sensor_previous_frame
+var other_player_raycast_sensor_previous_frame
 
 const POSITION_NORMALIZATION_FACTOR: float = 6.50
 const VELOCITY_NORMALIZATION_FACTOR: float = 5.8
@@ -72,28 +72,28 @@ func get_obs() -> Dictionary:
 	obs.append_array(ray_obs)
 	
 	# If there is not a previous frame, repeat the current frame
-	if not grid_sensor_previous_frame:
-		grid_sensor_previous_frame = ray_obs
+	if not raycast_sensor_previous_frame:
+		raycast_sensor_previous_frame = ray_obs
 
-	obs.append_array(grid_sensor_previous_frame)
+	obs.append_array(raycast_sensor_previous_frame)
 
-	grid_sensor_previous_frame = ray_obs
+	raycast_sensor_previous_frame = ray_obs
 	
 	var other_player_ray_obs = other_player_raycast_sensor.get_observation()
 	obs.append_array(other_player_ray_obs)
 	
-	if not other_player_grid_sensor_previous_frame:
-		other_player_grid_sensor_previous_frame = other_player_ray_obs
+	if not other_player_raycast_sensor_previous_frame:
+		other_player_raycast_sensor_previous_frame = other_player_ray_obs
 	
-	obs.append_array(other_player_ray_obs)
+	obs.append_array(other_player_raycast_sensor_previous_frame)
 
-	other_player_grid_sensor_previous_frame = other_player_ray_obs
+	other_player_raycast_sensor_previous_frame = other_player_ray_obs
 	
 	return {"obs": obs}
 
 func reset():
-	grid_sensor_previous_frame = null
-	other_player_grid_sensor_previous_frame = null
+	raycast_sensor_previous_frame = null
+	other_player_raycast_sensor_previous_frame = null
 	n_steps = 0
 	needs_reset = false
 
