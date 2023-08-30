@@ -1,4 +1,4 @@
-[gd_scene load_steps=235 format=3 uid="uid://bpdxuymjylis5"]
+[gd_scene load_steps=9 format=3 uid="uid://bpdxuymjylis5"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_et66q"]
 [ext_resource type="Script" path="res://AIController3D.gd" id="2_3ydot"]
@@ -6,914 +6,10 @@
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/GridSensor3D.gd" id="3_gxsr5"]
 [ext_resource type="PackedScene" uid="uid://px62msmlcd4u" path="res://health_bar.tscn" id="4_bnrq3"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eminm"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_lpids"]
 size = Vector3(4, 2, 4)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0p4ng"]
-transparency = 1
-albedo_color = Color(0.392157, 0.392157, 0.392157, 0.392157)
-
-[sub_resource type="BoxMesh" id="BoxMesh_yvpve"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xi5vi"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ifk4i"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_4412e"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_gvgdk"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2lbkb"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_n51t7"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_784ad"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6wo6q"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ckhuv"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_y7bwb"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_arcrw"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pj5yq"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_htww6"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_hr7ss"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nes1f"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_50cwh"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_g28v7"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jfp7p"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mvwsf"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_fimb0"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rw05u"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_k1kwn"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_keuti"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qfgvu"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cjqba"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ehrie"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_augh7"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cmcct"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mtx8a"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_r7j1h"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_u6cju"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ehsp7"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_626cx"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0a1jk"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jgqnf"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_m6k8m"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_a0m4k"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nv0s7"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_s7yrs"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_b6cea"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_u4gkx"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_er3ct"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_prfwn"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_iupuf"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_4pdm2"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6c0ij"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_tsqg6"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qabu8"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jrmj4"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_oobir"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_asq8c"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_iigrp"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_colsx"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vv58k"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_o4qj1"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_es6ke"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_q63c5"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_fthi8"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_b3adi"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3iw5c"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nlm4h"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_edrct"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1s7ul"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_7onrj"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_62cyu"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nh2vc"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_esblu"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_me706"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_gu533"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3h0wn"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0ublf"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_wnel1"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_auggl"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_m1onl"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2btai"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1k1t6"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_7neoj"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_doa15"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ieegl"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_sg8qk"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_puv1p"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0wwpo"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cb5rf"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rhhdn"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1a2qc"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_op87l"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nawr7"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_s18f8"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_kyb7m"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2uiew"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vi344"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6gj88"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cblqd"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jgtbt"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6s1gi"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_58xv3"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2smdc"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_e26fx"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_an8i7"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_sgcf6"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_2osql"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xeg2j"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_88g7x"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_bgmc5"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3rj3v"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_x1ebp"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3qm2v"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_13tf2"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_erm3s"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6pmm2"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_26xpp"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_7kao2"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_x8yve"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ckdq1"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_kada6"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_4pf6v"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_l3i0f"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_x5nme"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pui5o"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jtl6w"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ch745"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ma1eb"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1j08t"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_k8fjw"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xy3gj"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rc3l8"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8cp4l"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_j2iej"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_3vvqa"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_n8gsf"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nn6bm"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xt6cx"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ca8v4"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_873e7"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mqdrf"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6ll7p"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6g3my"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_wx6qt"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_eunjx"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mp75d"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_uv4sm"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_pak1q"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_4gqly"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_skas4"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_dtdiy"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8ds68"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8apf0"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_503n3"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_tahsp"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_r2g0m"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_f6kh2"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6fw7o"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xvkt3"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ws4bw"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ruab4"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_bdi2u"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_4rpn7"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_lyuj4"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_j58o3"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_a3vm5"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_t3ecb"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_fa4tv"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_dcxd4"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_lmdb6"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ohnay"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_f5e2g"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5hwbi"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_siuy1"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_g3oq8"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vgx7n"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_dhidy"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1mg6q"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_plgld"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rta0k"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_16lmn"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_y0ysy"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6p5bf"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qlc0j"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_acuvi"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_sbr84"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_yrsa1"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_kj71d"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0yp3e"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rl8w8"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_bv0wo"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_bpaws"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xj2ns"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_tbpju"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_npws3"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_spx26"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_l4k00"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ganlx"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8uj1f"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_722rm"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mpgr2"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5rdwy"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_x6p5s"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_gfttj"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_cvtmm"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qdkov"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_tx3vs"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_sc0wb"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ygh76"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jurvh"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ca3u4"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_y34xa"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_gv2ml"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_7gmth"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_er8jt"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6ctwd"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_epeic"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_klnq5"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rx1lx"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_fs75t"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_f78f0"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_mvkyk"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6u1lt"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6rx78"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_uiryk"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rjtrk"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_sxd4j"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_afof7"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_xpsda"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_d2yl0"]
-material = SubResource("StandardMaterial3D_0p4ng")
-size = Vector3(4, 2, 4)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_7qe5a"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fs01n"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x01ay"]
@@ -935,7 +31,6 @@ reset_after = 8000
 
 [node name="GridSensor3D" type="Node3D" parent="AIController3D"]
 script = ExtResource("3_gxsr5")
-debug_view = true
 detection_mask = 28
 collide_with_areas = true
 cell_width = 4.0
@@ -950,10 +45,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 0"]
-mesh = SubResource("BoxMesh_yvpve")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -24)
@@ -962,10 +54,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 1"]
-mesh = SubResource("BoxMesh_xi5vi")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -20)
@@ -974,10 +63,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 2"]
-mesh = SubResource("BoxMesh_ifk4i")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -16)
@@ -986,10 +72,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 3"]
-mesh = SubResource("BoxMesh_4412e")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -12)
@@ -998,10 +81,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 4"]
-mesh = SubResource("BoxMesh_gvgdk")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -8)
@@ -1010,10 +90,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 5"]
-mesh = SubResource("BoxMesh_2lbkb")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -4)
@@ -1022,10 +99,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 6"]
-mesh = SubResource("BoxMesh_n51t7")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 0)
@@ -1034,10 +108,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 7"]
-mesh = SubResource("BoxMesh_784ad")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 4)
@@ -1046,10 +117,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 8"]
-mesh = SubResource("BoxMesh_6wo6q")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 8)
@@ -1058,10 +126,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 9"]
-mesh = SubResource("BoxMesh_ckhuv")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 12)
@@ -1070,10 +135,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 10"]
-mesh = SubResource("BoxMesh_y7bwb")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 16)
@@ -1082,10 +144,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 11"]
-mesh = SubResource("BoxMesh_arcrw")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 20)
@@ -1094,10 +153,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 12"]
-mesh = SubResource("BoxMesh_pj5yq")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 24)
@@ -1106,10 +162,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 13"]
-mesh = SubResource("BoxMesh_htww6")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 0 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 28)
@@ -1118,10 +171,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 0 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 0 14"]
-mesh = SubResource("BoxMesh_hr7ss")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -28)
@@ -1130,10 +180,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 0"]
-mesh = SubResource("BoxMesh_nes1f")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -24)
@@ -1142,10 +189,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 1"]
-mesh = SubResource("BoxMesh_50cwh")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -20)
@@ -1154,10 +198,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 2"]
-mesh = SubResource("BoxMesh_g28v7")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -16)
@@ -1166,10 +207,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 3"]
-mesh = SubResource("BoxMesh_jfp7p")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -12)
@@ -1178,10 +216,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 4"]
-mesh = SubResource("BoxMesh_mvwsf")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -8)
@@ -1190,10 +225,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 5"]
-mesh = SubResource("BoxMesh_fimb0")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -4)
@@ -1202,10 +234,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 6"]
-mesh = SubResource("BoxMesh_rw05u")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0)
@@ -1214,10 +243,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 7"]
-mesh = SubResource("BoxMesh_k1kwn")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 4)
@@ -1226,10 +252,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 8"]
-mesh = SubResource("BoxMesh_keuti")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 8)
@@ -1238,10 +261,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 9"]
-mesh = SubResource("BoxMesh_qfgvu")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 12)
@@ -1250,10 +270,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 10"]
-mesh = SubResource("BoxMesh_cjqba")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 16)
@@ -1262,10 +279,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 11"]
-mesh = SubResource("BoxMesh_ehrie")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 20)
@@ -1274,10 +288,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 12"]
-mesh = SubResource("BoxMesh_augh7")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 24)
@@ -1286,10 +297,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 13"]
-mesh = SubResource("BoxMesh_cmcct")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 1 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 28)
@@ -1298,10 +306,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 1 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 1 14"]
-mesh = SubResource("BoxMesh_mtx8a")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -28)
@@ -1310,10 +315,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 0"]
-mesh = SubResource("BoxMesh_r7j1h")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -24)
@@ -1322,10 +324,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 1"]
-mesh = SubResource("BoxMesh_u6cju")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -20)
@@ -1334,10 +333,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 2"]
-mesh = SubResource("BoxMesh_ehsp7")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -16)
@@ -1346,10 +342,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 3"]
-mesh = SubResource("BoxMesh_626cx")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -12)
@@ -1358,10 +351,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 4"]
-mesh = SubResource("BoxMesh_0a1jk")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -8)
@@ -1370,10 +360,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 5"]
-mesh = SubResource("BoxMesh_jgqnf")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -4)
@@ -1382,10 +369,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 6"]
-mesh = SubResource("BoxMesh_m6k8m")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)
@@ -1394,10 +378,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 7"]
-mesh = SubResource("BoxMesh_a0m4k")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 4)
@@ -1406,10 +387,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 8"]
-mesh = SubResource("BoxMesh_nv0s7")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 8)
@@ -1418,10 +396,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 9"]
-mesh = SubResource("BoxMesh_s7yrs")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 12)
@@ -1430,10 +405,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 10"]
-mesh = SubResource("BoxMesh_b6cea")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 16)
@@ -1442,10 +414,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 11"]
-mesh = SubResource("BoxMesh_u4gkx")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 20)
@@ -1454,10 +423,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 12"]
-mesh = SubResource("BoxMesh_er3ct")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 24)
@@ -1466,10 +432,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 13"]
-mesh = SubResource("BoxMesh_prfwn")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 2 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 28)
@@ -1478,10 +441,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 2 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 2 14"]
-mesh = SubResource("BoxMesh_iupuf")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -28)
@@ -1490,10 +450,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 0"]
-mesh = SubResource("BoxMesh_4pdm2")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -24)
@@ -1502,10 +459,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 1"]
-mesh = SubResource("BoxMesh_6c0ij")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -20)
@@ -1514,10 +468,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 2"]
-mesh = SubResource("BoxMesh_tsqg6")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -16)
@@ -1526,10 +477,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 3"]
-mesh = SubResource("BoxMesh_qabu8")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -12)
@@ -1538,10 +486,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 4"]
-mesh = SubResource("BoxMesh_jrmj4")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -8)
@@ -1550,10 +495,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 5"]
-mesh = SubResource("BoxMesh_oobir")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -4)
@@ -1562,10 +504,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 6"]
-mesh = SubResource("BoxMesh_asq8c")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
@@ -1574,10 +513,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 7"]
-mesh = SubResource("BoxMesh_iigrp")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 4)
@@ -1586,10 +522,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 8"]
-mesh = SubResource("BoxMesh_colsx")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 8)
@@ -1598,10 +531,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 9"]
-mesh = SubResource("BoxMesh_vv58k")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 12)
@@ -1610,10 +540,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 10"]
-mesh = SubResource("BoxMesh_o4qj1")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 16)
@@ -1622,10 +549,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 11"]
-mesh = SubResource("BoxMesh_es6ke")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 20)
@@ -1634,10 +558,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 12"]
-mesh = SubResource("BoxMesh_q63c5")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 24)
@@ -1646,10 +567,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 13"]
-mesh = SubResource("BoxMesh_fthi8")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 3 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 28)
@@ -1658,10 +576,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 3 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 3 14"]
-mesh = SubResource("BoxMesh_b3adi")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -28)
@@ -1670,10 +585,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 0"]
-mesh = SubResource("BoxMesh_3iw5c")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -24)
@@ -1682,10 +594,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 1"]
-mesh = SubResource("BoxMesh_nlm4h")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -20)
@@ -1694,10 +603,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 2"]
-mesh = SubResource("BoxMesh_edrct")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -16)
@@ -1706,10 +612,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 3"]
-mesh = SubResource("BoxMesh_1s7ul")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12)
@@ -1718,10 +621,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 4"]
-mesh = SubResource("BoxMesh_7onrj")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
@@ -1730,10 +630,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 5"]
-mesh = SubResource("BoxMesh_62cyu")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
@@ -1742,10 +639,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 6"]
-mesh = SubResource("BoxMesh_nh2vc")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
@@ -1754,10 +648,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 7"]
-mesh = SubResource("BoxMesh_esblu")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 4)
@@ -1766,10 +657,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 8"]
-mesh = SubResource("BoxMesh_me706")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
@@ -1778,10 +666,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 9"]
-mesh = SubResource("BoxMesh_gu533")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
@@ -1790,10 +675,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 10"]
-mesh = SubResource("BoxMesh_3h0wn")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 16)
@@ -1802,10 +684,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 11"]
-mesh = SubResource("BoxMesh_0ublf")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 20)
@@ -1814,10 +693,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 12"]
-mesh = SubResource("BoxMesh_wnel1")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 24)
@@ -1826,10 +702,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 13"]
-mesh = SubResource("BoxMesh_auggl")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 4 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 28)
@@ -1838,10 +711,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 4 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 4 14"]
-mesh = SubResource("BoxMesh_m1onl")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -28)
@@ -1850,10 +720,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 0"]
-mesh = SubResource("BoxMesh_2btai")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -24)
@@ -1862,10 +729,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 1"]
-mesh = SubResource("BoxMesh_1k1t6")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -20)
@@ -1874,10 +738,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 2"]
-mesh = SubResource("BoxMesh_7neoj")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -16)
@@ -1886,10 +747,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 3"]
-mesh = SubResource("BoxMesh_doa15")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12)
@@ -1898,10 +756,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 4"]
-mesh = SubResource("BoxMesh_ieegl")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
@@ -1910,10 +765,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 5"]
-mesh = SubResource("BoxMesh_sg8qk")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
@@ -1922,10 +774,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 6"]
-mesh = SubResource("BoxMesh_puv1p")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
@@ -1934,10 +783,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 7"]
-mesh = SubResource("BoxMesh_0wwpo")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
@@ -1946,10 +792,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 8"]
-mesh = SubResource("BoxMesh_cb5rf")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
@@ -1958,10 +801,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 9"]
-mesh = SubResource("BoxMesh_rhhdn")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 12)
@@ -1970,10 +810,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 10"]
-mesh = SubResource("BoxMesh_1a2qc")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 16)
@@ -1982,10 +819,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 11"]
-mesh = SubResource("BoxMesh_op87l")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 20)
@@ -1994,10 +828,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 12"]
-mesh = SubResource("BoxMesh_nawr7")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 24)
@@ -2006,10 +837,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 13"]
-mesh = SubResource("BoxMesh_s18f8")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 5 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 28)
@@ -2018,10 +846,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 5 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 5 14"]
-mesh = SubResource("BoxMesh_kyb7m")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -28)
@@ -2030,10 +855,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 0"]
-mesh = SubResource("BoxMesh_2uiew")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -24)
@@ -2042,10 +864,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 1"]
-mesh = SubResource("BoxMesh_vi344")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20)
@@ -2054,10 +873,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 2"]
-mesh = SubResource("BoxMesh_6gj88")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16)
@@ -2066,10 +882,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 3"]
-mesh = SubResource("BoxMesh_cblqd")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12)
@@ -2078,10 +891,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 4"]
-mesh = SubResource("BoxMesh_jgtbt")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
@@ -2090,10 +900,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 5"]
-mesh = SubResource("BoxMesh_6s1gi")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
@@ -2102,10 +909,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 6"]
-mesh = SubResource("BoxMesh_58xv3")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
@@ -2114,10 +918,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 7"]
-mesh = SubResource("BoxMesh_2smdc")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
@@ -2126,10 +927,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 8"]
-mesh = SubResource("BoxMesh_e26fx")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
@@ -2138,10 +936,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 9"]
-mesh = SubResource("BoxMesh_an8i7")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 12)
@@ -2150,10 +945,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 10"]
-mesh = SubResource("BoxMesh_sgcf6")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 16)
@@ -2162,10 +954,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 11"]
-mesh = SubResource("BoxMesh_2osql")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 20)
@@ -2174,10 +963,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 12"]
-mesh = SubResource("BoxMesh_xeg2j")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 24)
@@ -2186,10 +972,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 13"]
-mesh = SubResource("BoxMesh_88g7x")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 6 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 28)
@@ -2198,10 +981,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 6 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 6 14"]
-mesh = SubResource("BoxMesh_bgmc5")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28)
@@ -2210,10 +990,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 0"]
-mesh = SubResource("BoxMesh_3rj3v")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
@@ -2222,10 +999,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 1"]
-mesh = SubResource("BoxMesh_x1ebp")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
@@ -2234,10 +1008,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 2"]
-mesh = SubResource("BoxMesh_3qm2v")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
@@ -2246,10 +1017,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 3"]
-mesh = SubResource("BoxMesh_13tf2")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
@@ -2258,10 +1026,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 4"]
-mesh = SubResource("BoxMesh_erm3s")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
@@ -2270,10 +1035,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 5"]
-mesh = SubResource("BoxMesh_6pmm2")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
@@ -2282,10 +1044,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 6"]
-mesh = SubResource("BoxMesh_26xpp")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 collision_layer = 0
@@ -2293,10 +1052,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 7"]
-mesh = SubResource("BoxMesh_7kao2")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
@@ -2305,10 +1061,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 8"]
-mesh = SubResource("BoxMesh_x8yve")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
@@ -2317,10 +1070,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 9"]
-mesh = SubResource("BoxMesh_ckdq1")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
@@ -2329,10 +1079,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 10"]
-mesh = SubResource("BoxMesh_kada6")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
@@ -2341,10 +1088,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 11"]
-mesh = SubResource("BoxMesh_4pf6v")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
@@ -2353,10 +1097,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 12"]
-mesh = SubResource("BoxMesh_l3i0f")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
@@ -2365,10 +1106,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 13"]
-mesh = SubResource("BoxMesh_x5nme")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 7 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
@@ -2377,10 +1115,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 7 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 7 14"]
-mesh = SubResource("BoxMesh_pui5o")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -28)
@@ -2389,10 +1124,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 0"]
-mesh = SubResource("BoxMesh_jtl6w")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -24)
@@ -2401,10 +1133,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 1"]
-mesh = SubResource("BoxMesh_ch745")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20)
@@ -2413,10 +1142,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 2"]
-mesh = SubResource("BoxMesh_ma1eb")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -16)
@@ -2425,10 +1151,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 3"]
-mesh = SubResource("BoxMesh_1j08t")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
@@ -2437,10 +1160,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 4"]
-mesh = SubResource("BoxMesh_k8fjw")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
@@ -2449,10 +1169,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 5"]
-mesh = SubResource("BoxMesh_xy3gj")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
@@ -2461,10 +1178,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 6"]
-mesh = SubResource("BoxMesh_rc3l8")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
@@ -2473,10 +1187,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 7"]
-mesh = SubResource("BoxMesh_8cp4l")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
@@ -2485,10 +1196,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 8"]
-mesh = SubResource("BoxMesh_j2iej")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
@@ -2497,10 +1205,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 9"]
-mesh = SubResource("BoxMesh_3vvqa")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 12)
@@ -2509,10 +1214,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 10"]
-mesh = SubResource("BoxMesh_n8gsf")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 16)
@@ -2521,10 +1223,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 11"]
-mesh = SubResource("BoxMesh_nn6bm")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 20)
@@ -2533,10 +1232,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 12"]
-mesh = SubResource("BoxMesh_xt6cx")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 24)
@@ -2545,10 +1241,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 13"]
-mesh = SubResource("BoxMesh_ca8v4")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 8 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 28)
@@ -2557,10 +1250,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 8 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 8 14"]
-mesh = SubResource("BoxMesh_873e7")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -28)
@@ -2569,10 +1259,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 0"]
-mesh = SubResource("BoxMesh_mqdrf")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -24)
@@ -2581,10 +1268,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 1"]
-mesh = SubResource("BoxMesh_6ll7p")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -20)
@@ -2593,10 +1277,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 2"]
-mesh = SubResource("BoxMesh_6g3my")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -16)
@@ -2605,10 +1286,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 3"]
-mesh = SubResource("BoxMesh_wx6qt")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -12)
@@ -2617,10 +1295,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 4"]
-mesh = SubResource("BoxMesh_eunjx")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
@@ -2629,10 +1304,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 5"]
-mesh = SubResource("BoxMesh_mp75d")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
@@ -2641,10 +1313,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 6"]
-mesh = SubResource("BoxMesh_uv4sm")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
@@ -2653,10 +1322,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 7"]
-mesh = SubResource("BoxMesh_pak1q")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
@@ -2665,10 +1331,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 8"]
-mesh = SubResource("BoxMesh_4gqly")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
@@ -2677,10 +1340,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 9"]
-mesh = SubResource("BoxMesh_skas4")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 12)
@@ -2689,10 +1349,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 10"]
-mesh = SubResource("BoxMesh_dtdiy")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16)
@@ -2701,10 +1358,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 11"]
-mesh = SubResource("BoxMesh_8ds68")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 20)
@@ -2713,10 +1367,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 12"]
-mesh = SubResource("BoxMesh_8apf0")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 24)
@@ -2725,10 +1376,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 13"]
-mesh = SubResource("BoxMesh_503n3")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 9 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 28)
@@ -2737,10 +1385,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 9 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 9 14"]
-mesh = SubResource("BoxMesh_tahsp")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -28)
@@ -2749,10 +1394,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 0"]
-mesh = SubResource("BoxMesh_r2g0m")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -24)
@@ -2761,10 +1403,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 1"]
-mesh = SubResource("BoxMesh_f6kh2")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -20)
@@ -2773,10 +1412,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 2"]
-mesh = SubResource("BoxMesh_6fw7o")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -16)
@@ -2785,10 +1421,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 3"]
-mesh = SubResource("BoxMesh_xvkt3")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12)
@@ -2797,10 +1430,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 4"]
-mesh = SubResource("BoxMesh_ws4bw")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
@@ -2809,10 +1439,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 5"]
-mesh = SubResource("BoxMesh_ruab4")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -4)
@@ -2821,10 +1448,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 6"]
-mesh = SubResource("BoxMesh_bdi2u")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
@@ -2833,10 +1457,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 7"]
-mesh = SubResource("BoxMesh_4rpn7")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
@@ -2845,10 +1466,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 8"]
-mesh = SubResource("BoxMesh_lyuj4")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
@@ -2857,10 +1475,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 9"]
-mesh = SubResource("BoxMesh_j58o3")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
@@ -2869,10 +1484,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 10"]
-mesh = SubResource("BoxMesh_a3vm5")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 16)
@@ -2881,10 +1493,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 11"]
-mesh = SubResource("BoxMesh_t3ecb")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 20)
@@ -2893,10 +1502,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 12"]
-mesh = SubResource("BoxMesh_fa4tv")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 24)
@@ -2905,10 +1511,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 13"]
-mesh = SubResource("BoxMesh_dcxd4")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 10 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 28)
@@ -2917,10 +1520,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 10 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 10 14"]
-mesh = SubResource("BoxMesh_lmdb6")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -28)
@@ -2929,10 +1529,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 0"]
-mesh = SubResource("BoxMesh_ohnay")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -24)
@@ -2941,10 +1538,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 1"]
-mesh = SubResource("BoxMesh_f5e2g")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -20)
@@ -2953,10 +1547,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 2"]
-mesh = SubResource("BoxMesh_5hwbi")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -16)
@@ -2965,10 +1556,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 3"]
-mesh = SubResource("BoxMesh_siuy1")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -12)
@@ -2977,10 +1565,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 4"]
-mesh = SubResource("BoxMesh_g3oq8")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -8)
@@ -2989,10 +1574,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 5"]
-mesh = SubResource("BoxMesh_vgx7n")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -4)
@@ -3001,10 +1583,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 6"]
-mesh = SubResource("BoxMesh_dhidy")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
@@ -3013,10 +1592,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 7"]
-mesh = SubResource("BoxMesh_1mg6q")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 4)
@@ -3025,10 +1601,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 8"]
-mesh = SubResource("BoxMesh_plgld")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
@@ -3037,10 +1610,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 9"]
-mesh = SubResource("BoxMesh_rta0k")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 12)
@@ -3049,10 +1619,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 10"]
-mesh = SubResource("BoxMesh_16lmn")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16)
@@ -3061,10 +1628,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 11"]
-mesh = SubResource("BoxMesh_y0ysy")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 20)
@@ -3073,10 +1637,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 12"]
-mesh = SubResource("BoxMesh_6p5bf")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 24)
@@ -3085,10 +1646,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 13"]
-mesh = SubResource("BoxMesh_qlc0j")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 11 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 28)
@@ -3097,10 +1655,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 11 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 11 14"]
-mesh = SubResource("BoxMesh_acuvi")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -28)
@@ -3109,10 +1664,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 0"]
-mesh = SubResource("BoxMesh_sbr84")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -24)
@@ -3121,10 +1673,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 1"]
-mesh = SubResource("BoxMesh_yrsa1")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -20)
@@ -3133,10 +1682,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 2"]
-mesh = SubResource("BoxMesh_kj71d")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -16)
@@ -3145,10 +1691,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 3"]
-mesh = SubResource("BoxMesh_0yp3e")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -12)
@@ -3157,10 +1700,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 4"]
-mesh = SubResource("BoxMesh_rl8w8")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -8)
@@ -3169,10 +1709,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 5"]
-mesh = SubResource("BoxMesh_bv0wo")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -4)
@@ -3181,10 +1718,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 6"]
-mesh = SubResource("BoxMesh_bpaws")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
@@ -3193,10 +1727,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 7"]
-mesh = SubResource("BoxMesh_xj2ns")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 4)
@@ -3205,10 +1736,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 8"]
-mesh = SubResource("BoxMesh_tbpju")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 8)
@@ -3217,10 +1745,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 9"]
-mesh = SubResource("BoxMesh_npws3")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 12)
@@ -3229,10 +1754,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 10"]
-mesh = SubResource("BoxMesh_spx26")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 16)
@@ -3241,10 +1763,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 11"]
-mesh = SubResource("BoxMesh_l4k00")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 20)
@@ -3253,10 +1772,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 12"]
-mesh = SubResource("BoxMesh_ganlx")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 24)
@@ -3265,10 +1781,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 13"]
-mesh = SubResource("BoxMesh_8uj1f")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 12 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 28)
@@ -3277,10 +1790,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 12 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 12 14"]
-mesh = SubResource("BoxMesh_722rm")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -28)
@@ -3289,10 +1799,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 0"]
-mesh = SubResource("BoxMesh_mpgr2")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -24)
@@ -3301,10 +1808,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 1"]
-mesh = SubResource("BoxMesh_5rdwy")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -20)
@@ -3313,10 +1817,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 2"]
-mesh = SubResource("BoxMesh_x6p5s")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -16)
@@ -3325,10 +1826,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 3"]
-mesh = SubResource("BoxMesh_gfttj")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -12)
@@ -3337,10 +1835,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 4"]
-mesh = SubResource("BoxMesh_cvtmm")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -8)
@@ -3349,10 +1844,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 5"]
-mesh = SubResource("BoxMesh_qdkov")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -4)
@@ -3361,10 +1853,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 6"]
-mesh = SubResource("BoxMesh_tx3vs")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
@@ -3373,10 +1862,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 7"]
-mesh = SubResource("BoxMesh_sc0wb")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 4)
@@ -3385,10 +1871,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 8"]
-mesh = SubResource("BoxMesh_ygh76")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 8)
@@ -3397,10 +1880,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 9"]
-mesh = SubResource("BoxMesh_jurvh")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 12)
@@ -3409,10 +1889,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 10"]
-mesh = SubResource("BoxMesh_ca3u4")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 16)
@@ -3421,10 +1898,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 11"]
-mesh = SubResource("BoxMesh_y34xa")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 20)
@@ -3433,10 +1907,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 12"]
-mesh = SubResource("BoxMesh_gv2ml")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 24)
@@ -3445,10 +1916,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 13"]
-mesh = SubResource("BoxMesh_7gmth")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 13 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 28)
@@ -3457,10 +1925,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 13 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 13 14"]
-mesh = SubResource("BoxMesh_er8jt")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 0" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -28)
@@ -3469,10 +1934,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 0"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 0"]
-mesh = SubResource("BoxMesh_6ctwd")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 1" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -24)
@@ -3481,10 +1943,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 1"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 1"]
-mesh = SubResource("BoxMesh_epeic")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 2" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -20)
@@ -3493,10 +1952,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 2"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 2"]
-mesh = SubResource("BoxMesh_klnq5")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 3" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -16)
@@ -3505,10 +1961,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 3"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 3"]
-mesh = SubResource("BoxMesh_rx1lx")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 4" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -12)
@@ -3517,10 +1970,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 4"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 4"]
-mesh = SubResource("BoxMesh_fs75t")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 5" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -8)
@@ -3529,10 +1979,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 5"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 5"]
-mesh = SubResource("BoxMesh_f78f0")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 6" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -4)
@@ -3541,10 +1988,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 6"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 6"]
-mesh = SubResource("BoxMesh_mvkyk")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 7" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 0)
@@ -3553,10 +1997,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 7"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 7"]
-mesh = SubResource("BoxMesh_6u1lt")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 8" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 4)
@@ -3565,10 +2006,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 8"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 8"]
-mesh = SubResource("BoxMesh_6rx78")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 9" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 8)
@@ -3577,10 +2015,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 9"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 9"]
-mesh = SubResource("BoxMesh_uiryk")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 10" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 12)
@@ -3589,10 +2024,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 10"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 10"]
-mesh = SubResource("BoxMesh_rjtrk")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 11" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 16)
@@ -3601,10 +2033,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 11"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 11"]
-mesh = SubResource("BoxMesh_sxd4j")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 12" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 20)
@@ -3613,10 +2042,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 12"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 12"]
-mesh = SubResource("BoxMesh_afof7")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 13" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 24)
@@ -3625,10 +2051,7 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 13"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 13"]
-mesh = SubResource("BoxMesh_xpsda")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="GridCell 14 14" type="Area3D" parent="AIController3D/GridSensor3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 28)
@@ -3637,17 +2060,14 @@ collision_mask = 28
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIController3D/GridSensor3D/GridCell 14 14"]
-shape = SubResource("BoxShape3D_eminm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AIController3D/GridSensor3D/GridCell 14 14"]
-mesh = SubResource("BoxMesh_d2yl0")
+shape = SubResource("BoxShape3D_lpids")
 
 [node name="ship_light" parent="." instance=ExtResource("3_6et4q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.738133, 0, 0)
 
 [node name="HealthBar" parent="." instance=ExtResource("4_bnrq3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.35306, 0)
-texture = SubResource("ViewportTexture_7qe5a")
+texture = SubResource("ViewportTexture_fs01n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.755033, 0)

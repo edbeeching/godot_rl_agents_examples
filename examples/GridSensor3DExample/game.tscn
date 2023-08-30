@@ -42,16 +42,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.5439, 0)
 mesh = SubResource("QuadMesh_wfiqy")
 
 [node name="Player" parent="." instance=ExtResource("3_hm3tp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21881, -0.5, 0)
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
 remote_path = NodePath("../../CameraBase")
 update_rotation = false
 
 [node name="CameraBase" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21881, -0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraBase"]
-transform = Transform3D(0.505331, -0.780183, 0.36872, 0, 0.427291, 0.904114, -0.862925, -0.456877, 0.215924, 9.43706, 26.8066, 6.78361)
+transform = Transform3D(0.505331, -0.780183, 0.36872, 0, 0.427291, 0.904114, -0.862925, -0.456877, 0.215924, 13.3135, 36.3117, 9.05366)
 current = true
 
 [node name="Islands" type="Node3D" parent="."]

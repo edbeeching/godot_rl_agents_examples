@@ -7,12 +7,12 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tj0lf"]
 panorama = ExtResource("3_vckwj")
 
-[sub_resource type="Sky" id="Sky_x0a2e"]
+[sub_resource type="Sky" id="Sky_1k11o"]
 sky_material = SubResource("PanoramaSkyMaterial_tj0lf")
 
 [sub_resource type="Environment" id="Environment_2sf7y"]
 background_energy_multiplier = 0.68
-sky = SubResource("Sky_x0a2e")
+sky = SubResource("Sky_1k11o")
 ambient_light_source = 3
 reflected_light_source = 2
 
@@ -20,38 +20,29 @@ reflected_light_source = 2
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("1_akerp")
-speed_up = 8
 
 [node name="Game" parent="." instance=ExtResource("2_rofxx")]
-n_islands = 0
 
 [node name="Game2" parent="." instance=ExtResource("2_rofxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 313, 0, 0)
-n_islands = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 308, 0, 0)
 
 [node name="Game3" parent="." instance=ExtResource("2_rofxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 313)
-n_islands = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 310)
 
 [node name="Game4" parent="." instance=ExtResource("2_rofxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 313, 0, 313)
-n_islands = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 308, 0, 310)
 
 [node name="Game5" parent="." instance=ExtResource("2_rofxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 623, 0, 0)
-n_islands = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 614, 0, 0)
 
 [node name="Game6" parent="." instance=ExtResource("2_rofxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 936, 0, 0)
-n_islands = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 922, 0, 0)
 
 [node name="Game7" parent="." instance=ExtResource("2_rofxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 623, 0, 313)
-n_islands = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 614, 0, 310)
 
 [node name="Game8" parent="." instance=ExtResource("2_rofxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 936, 0, 313)
-n_islands = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 922, 0, 310)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2sf7y")

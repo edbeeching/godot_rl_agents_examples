@@ -26,11 +26,9 @@ func game_over():
 
 func _physics_process(delta):
 	if ai_controller_3d.needs_reset:
-		ai_controller_3d.reset()
 		reset()
+		ai_controller_3d.reset()
 		return
-		
-	
 		
 	var fb : float
 	var turn : float
@@ -56,6 +54,7 @@ func _physics_process(delta):
 	var collided = move_and_slide()
 	if collided:
 		obstacle_hit() 
+	print(ai_controller_3d.keep_moving_reward())
 
 func reset():
 	position = Vector3.ZERO
@@ -75,7 +74,8 @@ func mine_hit():
 	
 func obstacle_hit():
 	#print("obstacle hit")
-	ai_controller_3d.reward -= 0.01
+	pass
+	#ai_controller_3d.reward -= 0.01
 
 func _on_game_area_body_exited(body):
 	#print("left game area")
