@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Player
 
+signal reset_signal
+
 const SPEED := 30.0
 const JUMP_VELOCITY := 4.5
 const TURN_SENS := 2.0
@@ -54,12 +56,12 @@ func _physics_process(delta):
 	var collided = move_and_slide()
 	if collided:
 		obstacle_hit() 
-	print(ai_controller_3d.keep_moving_reward())
 
 func reset():
 	position = Vector3.ZERO
 	health = 3
 	score = 0
+	reset_signal.emit()
 	
 func chest_collected():
 	#print("chest collected")

@@ -19,16 +19,13 @@ var bbs : Array[Rect2]= []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	bbs.append(spawn_zone)
 	spawn_world()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	$Player.reset_signal.connect(spawn_world)
 
 
 func spawn_world():
+	bbs.clear()
+	bbs.append(spawn_zone)
 	spawn_islands()
 	spawn_chests()
 	spawn_mines()

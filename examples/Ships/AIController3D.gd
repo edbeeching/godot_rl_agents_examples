@@ -32,7 +32,7 @@ func keep_moving_reward() -> float:
 	
 	#prints("penalty", 0.01*(penalty / _player_positions.size()))
 	
-	return 0.01*(penalty / _player_positions.size())
+	return 0.005*(penalty / _player_positions.size())
 
 func _physics_process(delta):
 	_player_positions.push_back(_player.position)
@@ -41,6 +41,7 @@ func reset():
 	super.reset()
 	_player_positions.clear()
 	_player_positions.push_back(_player.position)
+	
 
 
 func get_action_space() -> Dictionary:
