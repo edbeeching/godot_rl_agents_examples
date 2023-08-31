@@ -60,11 +60,15 @@ var rays := []
 var geo = null
 
 func _update():
-	if Engine.is_editor_hint() and is_node_ready():
-		_spawn_nodes()	
+	if Engine.is_editor_hint():
+		if is_node_ready():
+			_spawn_nodes()	
 
 func _ready() -> void:
-	if not 	Engine.is_editor_hint():
+	if Engine.is_editor_hint():	
+		if get_child_count() == 0:
+			_spawn_nodes()
+	else:
 		_spawn_nodes()
 
 func _spawn_nodes():
