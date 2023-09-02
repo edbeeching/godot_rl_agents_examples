@@ -33,7 +33,6 @@ fov = 69.1
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("1_1321i")
 action_repeat = 6
-speed_up = 8
 
 [node name="GameScene" parent="." instance=ExtResource("2_uqciq")]
 
