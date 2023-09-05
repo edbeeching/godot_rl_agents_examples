@@ -1,0 +1,4 @@
+This license is only for the assets in the file "assets\table.blend", and the assets imported from that file used in Godot scenes in this example.
+
+Author: https://github.com/Ivan-267
+License: https://creativecommons.org/licenses/by/4.0/

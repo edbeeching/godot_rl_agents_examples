@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5sssiagwbsw2"]
+
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="1_1321i"]
+[ext_resource type="PackedScene" uid="uid://bsicj1i5eb7rm" path="res://scenes/GameScene/game_scene.tscn" id="2_uqciq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ywvgy"]
+
+[sub_resource type="Sky" id="Sky_vix84"]
+sky_material = SubResource("ProceduralSkyMaterial_ywvgy")
+
+[sub_resource type="Environment" id="Environment_exi2s"]
+background_mode = 2
+sky = SubResource("Sky_vix84")
+ssr_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+glow_strength = 0.85
+glow_bloom = 0.03
+
+[node name="TrainingScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.906308, 0.422618, 0, 0.422618, 0.906308, -1, 3.9616e-08, -1.84732e-08, 0, 0.49795, 0)
+light_energy = 1.2
+light_indirect_energy = 1.3
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.587785, 0.572062, -0.572061, 0, 0.707107, 0.707107, 0.809017, -0.415627, 0.415627, -3.919, 3.645, 3.178)
+environment = SubResource("Environment_exi2s")
+fov = 69.1
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("1_1321i")
+action_repeat = 6
+
+[node name="GameScene" parent="." instance=ExtResource("2_uqciq")]
+
+[node name="GameScene2" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="GameScene3" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="GameScene4" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="GameScene5" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+
+[node name="GameScene6" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+
+[node name="GameScene7" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="GameScene8" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+
+[node name="GameScene9" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+
+[node name="GameScene10" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+
+[node name="GameScene11" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 30)
+
+[node name="GameScene12" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 30)
+
+[node name="GameScene13" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="GameScene14" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 20)
+
+[node name="GameScene15" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 20)
+
+[node name="GameScene16" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+
+[node name="GameScene17" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 40)
+
+[node name="GameScene18" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 40)
+
+[node name="GameScene19" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+
+[node name="GameScene20" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -30)
+
+[node name="GameScene21" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -30)
+
+[node name="GameScene22" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+
+[node name="GameScene23" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -40)
+
+[node name="GameScene24" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -40)
+
+[node name="GameScene25" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="GameScene26" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
+
+[node name="GameScene27" parent="." instance=ExtResource("2_uqciq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -20)
