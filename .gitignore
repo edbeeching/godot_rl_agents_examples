@@ -22,6 +22,7 @@ examples/FPS/.godot
 examples/Racer/.godot
 examples/GridWorld/.godot
 examples/VirtualCamera/.godot
+examples/Ships/.godot
 builds/
 
 # Apple

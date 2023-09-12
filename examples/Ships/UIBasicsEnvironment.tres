@@ -1,0 +1,64 @@
+[gd_resource type="Environment" load_steps=8 format=3 uid="uid://bsg17rom7hmrb"]
+
+[sub_resource type="Shader" id="Shader_18b1f"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.0.alpha3's PanoramaSkyMaterial.
+shader_type sky;
+
+uniform sampler2D sky_texture : filter_linear;
+uniform sampler2D flow_texture : hint_normal;
+uniform sampler2D noise_texture;
+
+void sky() {
+    float noise = texture(noise_texture, SKY_COORDS).r;
+    float time = TIME * .1 + noise;
+    
+    vec2 flow_vectors = (texture(flow_texture, SKY_COORDS).rg - .5) * 2.0;
+    float timer1 = fract(time);
+    float timer2 = fract(time + 0.5);
+    float mix_timer = min(fract(time), 1.0 - fract(time)) * 2.0;
+    
+    vec4 color1 = texture(sky_texture, SKY_COORDS + flow_vectors * timer1 * .03);
+    vec4 color2 = texture(sky_texture, SKY_COORDS + flow_vectors * timer2 * .03);
+    
+    vec4 final_color = mix(color2, color1, mix_timer);
+    
+    COLOR = final_color.rgb;
+}"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_edjfr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_naxpu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a2b1s"]
+noise = SubResource("FastNoiseLite_naxpu")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nda5t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gaoht"]
+shader = SubResource("Shader_18b1f")
+shader_parameter/sky_texture = SubResource("CompressedTexture2D_nda5t")
+shader_parameter/flow_texture = SubResource("CompressedTexture2D_edjfr")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_a2b1s")
+
+[sub_resource type="Sky" id="Sky_xke1b"]
+sky_material = SubResource("ShaderMaterial_gaoht")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_xke1b")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_white = 1.2
+ssao_enabled = true
+ssao_light_affect = 0.3
+ssil_enabled = true
+glow_enabled = true
+glow_normalized = true
+glow_strength = 0.5
+glow_bloom = 0.04
+glow_blend_mode = 0
+volumetric_fog_density = 0.04
+volumetric_fog_albedo = Color(0.662745, 0.866667, 1, 1)
+volumetric_fog_emission = Color(0, 0.537255, 0.890196, 1)
+volumetric_fog_sky_affect = 0.8
