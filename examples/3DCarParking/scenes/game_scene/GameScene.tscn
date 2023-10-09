@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=3 uid="uid://ca6csk8y5nvuu"]
+
+[ext_resource type="PackedScene" uid="uid://cn2van3bgkmch" path="res://scenes/car/Car.tscn" id="1_5vpyy"]
+[ext_resource type="Script" path="res://scenes/game_scene/ParkingSpotManager.gd" id="3_0vbrg"]
+[ext_resource type="Script" path="res://scenes/game_scene/ParkingManager.gd" id="3_x8b77"]
+[ext_resource type="PackedScene" uid="uid://cvaj7gdsqflcd" path="res://scenes/car/StaticCar.tscn" id="4_tyjtq"]
+[ext_resource type="PackedScene" uid="uid://cc7x3j2c0bo3i" path="res://scenes/blender/parking.blend" id="5_x8abj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0d82"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nr3lu"]
+resource_local_to_scene = true
+shading_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxaf6"]
+size = Vector3(20, 5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_evajx"]
+size = Vector3(12.2, 2.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_75vn3"]
+size = Vector3(2, 10, 23.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_65cdh"]
+data = PackedVector3Array(5.9011, -0.0092, -0.8469, -5.9011, -0.0092, 0.8469, -5.9011, -0.0092, -0.8469, 5.9011, -0.0092, -0.8469, 5.9011, -0.0092, 0.8469, -5.9011, -0.0092, 0.8469, 5.9011, -0.0092, 0.8469, -6.0066, 0.1706, 0.9483, -5.9011, -0.0092, 0.8469, 5.9011, -0.0092, 0.8469, 6.0066, 0.1706, 0.9483, -6.0066, 0.1706, 0.9483, -5.9011, -0.0092, -0.8469, 6.0066, 0.1706, -0.9483, 5.9011, -0.0092, -0.8469, -5.9011, -0.0092, -0.8469, -6.0066, 0.1706, -0.9483, 6.0066, 0.1706, -0.9483, 5.9011, -0.0092, -0.8469, 6.0066, 0.1706, 0.9483, 5.9011, -0.0092, 0.8469, 5.9011, -0.0092, -0.8469, 6.0066, 0.1706, -0.9483, 6.0066, 0.1706, 0.9483, -6.0737, -0.0534, 1.0128, -6.0737, 0.1348, -1.0128, -6.0737, 0.1348, 1.0128, -6.0737, -0.0534, 1.0128, -6.0737, -0.0534, -1.0128, -6.0737, 0.1348, -1.0128, -6.0737, -0.0534, -1.0128, 6.0737, -0.0534, 1.0128, 6.0737, -0.0534, -1.0128, -6.0737, -0.0534, -1.0128, -6.0737, -0.0534, 1.0128, 6.0737, -0.0534, 1.0128, -6.0737, -0.0534, -1.0128, 6.0737, 0.1348, -1.0128, -6.0737, 0.1348, -1.0128, -6.0737, -0.0534, -1.0128, 6.0737, -0.0534, -1.0128, 6.0737, 0.1348, -1.0128, 6.0737, -0.0534, -1.0128, 6.0737, 0.1348, 1.0128, 6.0737, 0.1348, -1.0128, 6.0737, -0.0534, -1.0128, 6.0737, -0.0534, 1.0128, 6.0737, 0.1348, 1.0128, -5.9011, -0.0092, 0.8469, -6.0066, 0.1706, -0.9483, -5.9011, -0.0092, -0.8469, -5.9011, -0.0092, 0.8469, -6.0066, 0.1706, 0.9483, -6.0066, 0.1706, -0.9483, -6.0066, 0.1706, 0.9483, -6.0737, 0.1348, -1.0128, -6.0066, 0.1706, -0.9483, -6.0066, 0.1706, 0.9483, -6.0737, 0.1348, 1.0128, -6.0737, 0.1348, -1.0128, -6.0066, 0.1706, -0.9483, 6.0737, 0.1348, -1.0128, 6.0066, 0.1706, -0.9483, -6.0066, 0.1706, -0.9483, -6.0737, 0.1348, -1.0128, 6.0737, 0.1348, -1.0128, 6.0066, 0.1706, -0.9483, 6.0737, 0.1348, 1.0128, 6.0066, 0.1706, 0.9483, 6.0066, 0.1706, -0.9483, 6.0737, 0.1348, -1.0128, 6.0737, 0.1348, 1.0128, 6.0066, 0.1706, 0.9483, -6.0737, 0.1348, 1.0128, -6.0066, 0.1706, 0.9483, 6.0066, 0.1706, 0.9483, 6.0737, 0.1348, 1.0128, -6.0737, 0.1348, 1.0128, 6.0737, -0.0534, 1.0128, -6.0737, 0.1348, 1.0128, 6.0737, 0.1348, 1.0128, 6.0737, -0.0534, 1.0128, -6.0737, -0.0534, 1.0128, -6.0737, 0.1348, 1.0128)
+
+[sub_resource type="PrismMesh" id="PrismMesh_f41ct"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbhkg"]
+albedo_color = Color(0, 1, 0.0627451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0kec2"]
+size = Vector3(0.5, 1, 0.5)
+
+[node name="GameScene" type="Node3D"]
+
+[node name="Car" parent="." node_paths=PackedStringArray("parking_manager", "goal_marker") instance=ExtResource("1_5vpyy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.22273, 0.919515, 7.72317)
+collision_mask = 513
+contact_monitor = true
+parking_manager = NodePath("../Parking")
+goal_marker = NodePath("../GoalMarker")
+braking_material = SubResource("StandardMaterial3D_u0d82")
+reversing_material = SubResource("StandardMaterial3D_nr3lu")
+
+[node name="Static" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="Static"]
+collision_layer = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+shape = SubResource("BoxShape3D_nxaf6")
+
+[node name="GreenSpace" type="Area3D" parent="Static"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Static/GreenSpace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32474, 0)
+shape = SubResource("BoxShape3D_evajx")
+
+[node name="Walls" type="Area3D" parent="Static"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Static/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.75, 0, 0)
+shape = SubResource("BoxShape3D_75vn3")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Static/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 0, 0)
+shape = SubResource("BoxShape3D_75vn3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Static/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 10.75)
+shape = SubResource("BoxShape3D_75vn3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Static/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -10.75)
+shape = SubResource("BoxShape3D_75vn3")
+
+[node name="Parking" parent="." instance=ExtResource("5_x8abj")]
+script = ExtResource("3_x8b77")
+parked_car_transform_randomness = 0.35
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Parking/GreenSpace" index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Parking/GreenSpace/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_65cdh")
+
+[node name="ParkingSpots" parent="Parking" index="4"]
+script = ExtResource("3_0vbrg")
+
+[node name="Cart" parent="Parking/ParkingSpots/ParkingSpot" index="0" instance=ExtResource("4_tyjtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.704576, -0.203074)
+
+[node name="Cart2" parent="Parking/ParkingSpots/ParkingSpot_001" index="0" instance=ExtResource("4_tyjtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, -0.203)
+
+[node name="Cart3" parent="Parking/ParkingSpots/ParkingSpot_002" index="0" instance=ExtResource("4_tyjtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, -0.203)
+
+[node name="Cart4" parent="Parking/ParkingSpots/ParkingSpot_003" index="0" instance=ExtResource("4_tyjtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, -0.203)
+
+[node name="Cart5" parent="Parking/ParkingSpots/ParkingSpot_004" index="0" instance=ExtResource("4_tyjtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, -0.203)
+
+[node name="Cart6" parent="Parking/ParkingSpots/ParkingSpot_005" index="0" instance=ExtResource("4_tyjtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, 0.203)
+
+[node name="Cart7" parent="Parking/ParkingSpots/ParkingSpot_006" index="0" instance=ExtResource("4_tyjtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, 0.203)
+
+[node name="Cart8" parent="Parking/ParkingSpots/ParkingSpot_007" index="0" instance=ExtResource("4_tyjtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, 0.203)
+
+[node name="Cart9" parent="Parking/ParkingSpots/ParkingSpot_008" index="0" instance=ExtResource("4_tyjtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, 0.203)
+
+[node name="Cart10" parent="Parking/ParkingSpots/ParkingSpot_009" index="0" instance=ExtResource("4_tyjtq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, 0.203)
+
+[node name="GoalMarker" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.17536, 0)
+mesh = SubResource("PrismMesh_f41ct")
+surface_material_override/0 = SubResource("StandardMaterial3D_cbhkg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GoalMarker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("BoxMesh_0kec2")
+surface_material_override/0 = SubResource("StandardMaterial3D_cbhkg")
+
+[connection signal="body_entered" from="Static/GreenSpace" to="Car" method="_on_green_space_body_entered"]
+[connection signal="body_entered" from="Static/Walls" to="Car" method="_on_walls_body_entered"]
+
+[editable path="Parking"]

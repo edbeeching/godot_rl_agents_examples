@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://00lmrvmkwpim"]
+
+[ext_resource type="PackedScene" uid="uid://ca6csk8y5nvuu" path="res://scenes/game_scene/GameScene.tscn" id="1_cnrg2"]
+[ext_resource type="Script" path="res://scenes/sync_override.gd" id="2_xg13p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwcdc"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2b80"]
+resource_local_to_scene = true
+shading_mode = 0
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g5l5s"]
+
+[sub_resource type="Sky" id="Sky_a413c"]
+sky_material = SubResource("ProceduralSkyMaterial_g5l5s")
+
+[sub_resource type="Environment" id="Environment_x2xl3"]
+background_mode = 2
+background_energy_multiplier = 1.2
+sky = SubResource("Sky_a413c")
+sdfgi_enabled = true
+glow_enabled = true
+glow_bloom = 0.02
+volumetric_fog_density = 0.01
+
+[node name="TrainingScene" type="Node3D"]
+
+[node name="GameScene" parent="." instance=ExtResource("1_cnrg2")]
+
+[node name="Car" parent="GameScene" index="0"]
+braking_material = SubResource("StandardMaterial3D_vwcdc")
+reversing_material = SubResource("StandardMaterial3D_k2b80")
+
+[node name="Camera3D" type="Camera3D" parent="GameScene/Car" index="8"]
+transform = Transform3D(-1, 2.99003e-08, -8.21505e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 1.63, -2.105)
+current = true
+fov = 100.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.857167, 0.364187, -0.364187, 0, 0.707107, 0.707107, 0.515038, -0.606109, 0.606109, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x2xl3")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_xg13p")
+speed_up = 3
+onnx_model_path = "onnx/model.onnx"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999998, 0.0014048, -0.00103571, 0, 0.593419, 0.804894, 0.00174533, -0.804893, 0.593418, 0, 11.05, 9.648)
+current = true
+fov = 80.0
+size = 20.0
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(0.707106, 0.294355, -0.642927, 0, 0.909236, 0.416281, 0.707106, -0.294355, 0.642927, -7, 2.28, 7)
+fov = 91.6
+size = 20.0
+
+[editable path="GameScene"]
+[editable path="GameScene/Parking"]

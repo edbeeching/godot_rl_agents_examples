@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvaj7gdsqflcd"]
+
+[ext_resource type="Script" path="res://scenes/car/StaticCar.gd" id="1_pf02e"]
+[ext_resource type="PackedScene" uid="uid://d3saly1xwj5s" path="res://scenes/car/Wheel.tscn" id="2_tfmok"]
+[ext_resource type="PackedScene" uid="uid://rfo6asayjvm8" path="res://scenes/blender/car_base.blend" id="3_wccuk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x1u3"]
+size = Vector3(1.5, 1.5, 1.85183)
+
+[node name="StaticCart" type="StaticBody3D"]
+script = ExtResource("1_pf02e")
+
+[node name="Wheel" parent="." instance=ExtResource("2_tfmok")]
+transform = Transform3D(-2.18557e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -2.18557e-07, 9.55345e-15, -0.7, -0.426319, -0.45)
+
+[node name="Wheel3" parent="." instance=ExtResource("2_tfmok")]
+transform = Transform3D(1.31135e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31135e-07, -5.73207e-15, 0.7, -0.426473, -0.45)
+
+[node name="Wheel2" parent="." instance=ExtResource("2_tfmok")]
+transform = Transform3D(1.31135e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31135e-07, -5.73207e-15, -0.7, -0.426473, 0.45)
+
+[node name="Wheel4" parent="." instance=ExtResource("2_tfmok")]
+transform = Transform3D(1.31135e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 1.31135e-07, -5.73207e-15, 0.7, -0.426473, 0.45)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7x1u3")
+
+[node name="car_base" parent="." instance=ExtResource("3_wccuk")]

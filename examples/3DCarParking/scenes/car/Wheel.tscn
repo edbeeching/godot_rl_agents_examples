@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3saly1xwj5s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_emc8j"]
+albedo_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+roughness = 0.46
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qqye"]
+albedo_color = Color(0.619608, 0.619608, 0.619608, 1)
+
+[node name="Wheel" type="CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+inner_radius = 0.191
+outer_radius = 0.349
+sides = 16
+ring_sides = 5
+material = SubResource("StandardMaterial3D_emc8j")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+radius = 0.296
+height = 0.112
+material = SubResource("StandardMaterial3D_5qqye")
