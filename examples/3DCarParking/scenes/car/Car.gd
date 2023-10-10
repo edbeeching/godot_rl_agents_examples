@@ -61,7 +61,6 @@ func reset():
 	angular_velocity = Vector3.ZERO
 	
 	transform.basis = transform.basis.rotated(Vector3.UP, randf_range(-0.3, 0.3))
-	transform.translated_local(Vector3.LEFT * randf_range(-2.5, 0))
 	
 	parking_manager.disable_random_cars()
 	
