@@ -1,0 +1,151 @@
+[gd_scene load_steps=9 format=3 uid="uid://cn2van3bgkmch"]
+
+[ext_resource type="Script" path="res://scenes/car/Car.gd" id="1_22tkk"]
+[ext_resource type="Material" uid="uid://chim7hdhvacuf" path="res://scenes/car/rear_light_braking.tres" id="2_on5f3"]
+[ext_resource type="Material" uid="uid://d0fd3s7j6iaxc" path="res://scenes/car/rear_light_reversing.tres" id="3_ic80y"]
+[ext_resource type="PackedScene" uid="uid://rfo6asayjvm8" path="res://scenes/blender/car_base.blend" id="4_5vyrv"]
+[ext_resource type="PackedScene" uid="uid://d3saly1xwj5s" path="res://scenes/car/Wheel.tscn" id="5_htwgt"]
+[ext_resource type="Script" path="res://scenes/car/CarAIController.gd" id="6_h3eqj"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="7_r8420"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ey2uy"]
+points = PackedVector3Array(-1.07131, 0.109052, -1.54357, 1.08983, 0.83316, 1.90767, -1.10341, 0.822321, 1.8853, 0.989547, -0.97941, 1.03135, 1.08983, 0.83316, -1.90767, -1.01606, -0.97941, -1.03135, -1.01606, -0.97941, 1.03135, 0.989547, -0.97941, -1.03135, -1.10341, 0.822321, -1.8853, 1.04556, -0.463054, -1.25862, 1.05067, -0.349671, 1.32232, -1.07441, 0.683148, 1.83514, -1.07441, 0.683148, -1.83514, -1.07131, 0.109052, 1.54357, 1.04556, -0.463054, 1.25862, 1.05067, -0.349671, -1.32232)
+
+[node name="Car" type="VehicleBody3D"]
+collision_layer = 2
+mass = 1000.0
+continuous_cd = true
+max_contacts_reported = 1
+script = ExtResource("1_22tkk")
+braking_material = ExtResource("2_on5f3")
+reversing_material = ExtResource("3_ic80y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -0.5, 7.54979e-08, 0, -7.54979e-08, -0.5, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_ey2uy")
+
+[node name="car_base" parent="." instance=ExtResource("4_5vyrv")]
+
+[node name="BackWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.7, -0.426319, -0.45)
+use_as_traction = true
+wheel_radius = 0.349
+suspension_travel = 0.3
+suspension_stiffness = 40.0
+
+[node name="Wheel" parent="BackWheel" instance=ExtResource("5_htwgt")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+
+[node name="BackWheel2" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.7, -0.426473, -0.45)
+use_as_traction = true
+wheel_radius = 0.349
+suspension_travel = 0.3
+suspension_stiffness = 40.0
+
+[node name="Wheel3" parent="BackWheel2" instance=ExtResource("5_htwgt")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+
+[node name="FrontWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.7, -0.426473, 0.45)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.349
+suspension_travel = 0.3
+suspension_stiffness = 40.0
+
+[node name="Wheel2" parent="FrontWheel" instance=ExtResource("5_htwgt")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+
+[node name="FrontWheel2" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.7, -0.426473, 0.45)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.349
+suspension_travel = 0.3
+suspension_stiffness = 40.0
+
+[node name="Wheel4" parent="FrontWheel2" instance=ExtResource("5_htwgt")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+
+[node name="AIController3D" type="Node3D" parent="."]
+script = ExtResource("6_h3eqj")
+reset_after = 1750
+
+[node name="RayCastSensor3D" type="Node3D" parent="."]
+script = ExtResource("7_r8420")
+n_rays_width = 17.0
+n_rays_height = 1.0
+cone_width = 360.0
+cone_height = 0.0
+collide_with_areas = true
+
+[node name="@RayCast3D@23670" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(-1.8375, 0, -9.82973)
+collide_with_areas = true
+
+[node name="node_1 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(-5.26432, 0, -8.50217)
+collide_with_areas = true
+
+[node name="node_2 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(-7.98017, 0, -6.02635)
+collide_with_areas = true
+
+[node name="node_3 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(-9.61826, 0, -2.73663)
+collide_with_areas = true
+
+[node name="node_4 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(-9.95734, 0, 0.922684)
+collide_with_areas = true
+
+[node name="node_5 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(-8.95163, 0, 4.45738)
+collide_with_areas = true
+
+[node name="node_6 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(-6.73696, 0, 7.39009)
+collide_with_areas = true
+
+[node name="node_7 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(-3.61242, 0, 9.32472)
+collide_with_areas = true
+
+[node name="node_8 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(0, 0, 10)
+collide_with_areas = true
+
+[node name="node_9 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(3.61242, 0, 9.32472)
+collide_with_areas = true
+
+[node name="node_10 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(6.73696, 0, 7.39009)
+collide_with_areas = true
+
+[node name="node_11 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(8.95163, 0, 4.45738)
+collide_with_areas = true
+
+[node name="node_12 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(9.95734, 0, 0.922684)
+collide_with_areas = true
+
+[node name="node_13 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(9.61826, 0, -2.73663)
+collide_with_areas = true
+
+[node name="node_14 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(7.98017, 0, -6.02635)
+collide_with_areas = true
+
+[node name="node_15 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(5.26432, 0, -8.50217)
+collide_with_areas = true
+
+[node name="node_16 0" type="RayCast3D" parent="RayCastSensor3D"]
+target_position = Vector3(1.8375, 0, -9.82973)
+collide_with_areas = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

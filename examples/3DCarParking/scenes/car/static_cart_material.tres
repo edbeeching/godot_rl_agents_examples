@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bn1o1m8nhe72c"]
+
+[resource]
+resource_local_to_scene = true
+metallic = 0.16
+roughness = 0.29
