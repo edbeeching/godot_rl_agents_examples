@@ -9,20 +9,9 @@ export_presets.cfg
 data_*/
 
 examples/SpaceShooter/assets/
-examples/SpaceShooter/.import
-examples/FlyBy/assets/
-examples/FlyBy/.import
-examples/BallChase/.godot/
-examples/BulletHell/.godot/
-examples/JumperHard/.godot/
-examples/BallChase/.mono/
-examples/SpaceShooter/.godot
-examples/FlyBy/.godot
-examples/FPS/.godot
-examples/Racer/.godot
-examples/GridWorld/.godot
-examples/VirtualCamera/.godot
-examples/Ships/.godot
+examples/*/.godot
+examples/*/.mono
+examples/*/.import
 builds/
 
 # Apple
