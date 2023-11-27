@@ -144,7 +144,7 @@ func get_obs():
        }
     
 func get_obs_space():
-    # typs of obs space: box, discrete, repeated
+    # types of obs space: box, discrete, repeated
     return {
         "camera_2d":{
             "size": virtual_camera.get_camera_shape(),

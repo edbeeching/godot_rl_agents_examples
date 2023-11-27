@@ -192,7 +192,7 @@ func get_obs():
 	}
 	
 func get_obs_space():
-	# typs of obs space: box, discrete, repeated
+	# types of obs space: box, discrete, repeated
 	return {
 		"obs": {
 			"size": [len(get_obs()["obs"])],
