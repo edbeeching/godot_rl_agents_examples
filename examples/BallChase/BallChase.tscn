@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Player.gd" id="1"]
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://c77mj86i50gub" path="res://cherry.png" id="3_25acu"]
-[ext_resource type="Texture2D" uid="uid://cy4acafft8vjv" path="res://lollipopGreen.png" id="3_ty2qt"]
+[ext_resource type="Texture2D" uid="uid://cyretkgnb04t8" path="res://cherry.png" id="3_25acu"]
+[ext_resource type="Texture2D" uid="uid://c0cw3f0lg6pwm" path="res://lollipopGreen.png" id="3_ty2qt"]
 
 [sub_resource type="CircleShape2D" id="1"]
 radius = 30.0
