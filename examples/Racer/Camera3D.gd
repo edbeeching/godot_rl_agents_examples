@@ -3,7 +3,7 @@ extends Camera3D
 
 
 @export var lerp_speed = 3.0
-@export_node_path(VehicleBody3D) var target_path
+@export_node_path("VehicleBody3D") var target_path
 @export var offset := Vector3.ZERO
 
 var target = null
