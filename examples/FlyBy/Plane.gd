@@ -38,7 +38,6 @@ var reward = 0.0
 
 func _ready():
 	transform_backup = transform
-	pass
 	
 func reset():
 	needs_reset = false

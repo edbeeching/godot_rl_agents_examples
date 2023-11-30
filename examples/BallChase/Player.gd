@@ -1,9 +1,6 @@
 extends CharacterBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 const pad = 100
 const WIDTH = 1280
 const HEIGHT = 720

@@ -122,7 +122,6 @@ func reset():
 	just_reached_negative = false
 	just_reached_positive = false
 	jump_action = false
-	# Replace with function body.
 	set_position(Vector3(0,1.5,0))
 	rotation_degrees.y = randf_range(-180,180)
 	y_velo = 0.1
