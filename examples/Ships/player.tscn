@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://Player.gd" id="1_et66q"]
 [ext_resource type="Script" path="res://AIController3D.gd" id="2_3ydot"]
-[ext_resource type="PackedScene" uid="uid://bqj6y8aikg4yf" path="res://assets/ship_light.gltf" id="3_6et4q"]
+[ext_resource type="PackedScene" uid="uid://di6shb3jquhjd" path="res://assets/ship_light.gltf" id="3_6et4q"]
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/GridSensor3D.gd" id="3_gxsr5"]
 [ext_resource type="PackedScene" uid="uid://px62msmlcd4u" path="res://health_bar.tscn" id="4_bnrq3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lpids"]
 size = Vector3(4, 2, 4)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qgoip"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_aypwr"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x01ay"]
@@ -2067,7 +2067,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.738133, 0, 0)
 
 [node name="HealthBar" parent="." instance=ExtResource("4_bnrq3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.35306, 0)
-texture = SubResource("ViewportTexture_qgoip")
+texture = SubResource("ViewportTexture_aypwr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.755033, 0)

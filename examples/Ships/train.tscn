@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="1_akerp"]
 [ext_resource type="PackedScene" uid="uid://bufeymuvmqxji" path="res://game.tscn" id="2_rofxx"]
-[ext_resource type="Texture2D" uid="uid://7dtbyhardfx3" path="res://assets/sunflowers_puresky_2k.hdr" id="3_vckwj"]
+[ext_resource type="Texture2D" uid="uid://cjsq2r87b3kby" path="res://assets/sunflowers_puresky_2k.hdr" id="3_cexxv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tj0lf"]
-panorama = ExtResource("3_vckwj")
+panorama = ExtResource("3_cexxv")
 
 [sub_resource type="Sky" id="Sky_1k11o"]
 sky_material = SubResource("PanoramaSkyMaterial_tj0lf")
