@@ -1,7 +1,7 @@
 extends Node
 # --fixed-fps 2000 --disable-render-loop
-@export var action_repeat := 8
-@export var speed_up = 1
+@export_range(1, 10, 1, "or_greater") var action_repeat := 8
+@export_range(1, 10, 1, "or_greater") var speed_up = 1
 @export var onnx_model_path := ""
 
 @onready var start_time = Time.get_ticks_msec()
@@ -10,7 +10,6 @@ const MAJOR_VERSION := "0"
 const MINOR_VERSION := "3" 
 const DEFAULT_PORT := "11008"
 const DEFAULT_SEED := "1"
-const DEFAULT_ACTION_REPEAT := "8"
 var stream : StreamPeerTCP = null
 var connected = false
 var message_center
@@ -44,17 +43,20 @@ func _initialize():
 	Engine.time_scale = _get_speedup() * 1.0
 	prints("physics ticks", Engine.physics_ticks_per_second, Engine.time_scale, _get_speedup(), speed_up)
 	
-
-	connected = connect_to_server()
-	if connected:
-		_set_heuristic("model")
-		_handshake()
-		_send_env_info()
-	elif onnx_model_path != "":
+	# Run inference if onnx model path is set, otherwise wait for server connection
+	var run_onnx_model_inference : bool = onnx_model_path != ""
+	if run_onnx_model_inference:
+		assert(FileAccess.file_exists(onnx_model_path), "Onnx Model Path set on Sync node does not exist: " + onnx_model_path)
 		onnx_model = ONNXModel.new(onnx_model_path, 1)
 		_set_heuristic("model")
-	else:
-		_set_heuristic("human")  
+	else:		
+		connected = connect_to_server()
+		if connected:
+			_set_heuristic("model")
+			_handshake()
+			_send_env_info()
+		else:
+			_set_heuristic("human")  
 		
 	_set_seed()
 	_set_action_repeat()
@@ -232,7 +234,7 @@ func _set_seed():
 	seed(_seed)
 
 func _set_action_repeat():
-	action_repeat = args.get("action_repeat", DEFAULT_ACTION_REPEAT).to_int()
+	action_repeat = args.get("action_repeat", str(action_repeat)).to_int()
 	
 func disconnect_from_server():
 	stream.disconnect_from_host()
