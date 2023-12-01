@@ -101,6 +101,9 @@ Altering the main noise texture, along with changing `size`, `subdivisions` and 
 A part of the terrain is made relatively flat so that there is always somewhere the lander can land safely. 
 You can adjust the radius of that area by changing `Landing Surface Radius`. 
 
+![surface_radius_changes](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/29361c4b-2b9d-42e5-bcdc-5b7fa7131775)
+(Left: Landing Surface Radius = 10, Right: Landing Surface Radius = 60)
+
 The position of the landing surface is randomized when the terrain is generated.
 You can adjust how far away from the center it can be by using the `Landing Surface Max Dist From Center Ratio` parameter.
 
