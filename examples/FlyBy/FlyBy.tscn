@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="1"]
 [ext_resource type="Script" path="res://GameArea.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://qc8322nt23gm" path="res://alps_field_2k.hdr" id="2_retnu"]
-[ext_resource type="PackedScene" path="res://Goal.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://cc7fd3cl63ky1" path="res://alps_field_2k.hdr" id="2_retnu"]
+[ext_resource type="PackedScene" uid="uid://bjx0dykb8q6kf" path="res://Goal.tscn" id="3"]
 [ext_resource type="Script" path="res://FlyBy.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://3xxv82w5v8bo" path="res://Plane.tscn" id="5"]
-[ext_resource type="Texture2D" uid="uid://b4gk76wqo0qd0" path="res://concrete_wall_004_diff_1k.jpg" id="7_mnp35"]
-[ext_resource type="Texture2D" uid="uid://du1nsduyampaf" path="res://concrete_wall_004_ao_1k.jpg" id="8_mhe64"]
-[ext_resource type="Texture2D" uid="uid://cdd36bxxl3r6v" path="res://concrete_wall_004_arm_1k.jpg" id="9_1x60u"]
-[ext_resource type="Texture2D" uid="uid://dsn8fi1krp836" path="res://concrete_wall_004_nor_gl_1k.jpg" id="10_x6htc"]
+[ext_resource type="Texture2D" uid="uid://bddbiy7gwtdyh" path="res://concrete_wall_004_diff_1k.jpg" id="7_mnp35"]
+[ext_resource type="Texture2D" uid="uid://bj56jsr1idhhk" path="res://concrete_wall_004_ao_1k.jpg" id="8_mhe64"]
+[ext_resource type="Texture2D" uid="uid://ow81638q14o" path="res://concrete_wall_004_arm_1k.jpg" id="9_1x60u"]
+[ext_resource type="Texture2D" uid="uid://drkdgeq22xo2f" path="res://concrete_wall_004_nor_gl_1k.jpg" id="10_x6htc"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_88xh0"]
 panorama = ExtResource("2_retnu")
@@ -229,51 +229,67 @@ script = ExtResource("1")
 
 [node name="Plane" parent="." instance=ExtResource("5")]
 transform = Transform3D(-0.372224, 0.0145406, -0.928029, 0, 0.999877, 0.0156663, 0.928143, 0.00583138, -0.372178, -111.001, 77.3255, -109.24)
+turn_acc = 4.0
 
 [node name="Plane2" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane3" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane4" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane5" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane6" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane7" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane8" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane9" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane10" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane11" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane12" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane13" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane14" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 0)
+turn_acc = 4.0
 
 [node name="Plane15" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 27, -1)
+turn_acc = 4.0
 
 [node name="Plane16" parent="." instance=ExtResource("5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 27, -1)
+turn_acc = 4.0
 
 [node name="Walls" type="Node" parent="."]
 
