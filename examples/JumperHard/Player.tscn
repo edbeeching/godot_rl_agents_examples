@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://btjelqxpc6evr"]
+[gd_scene load_steps=9 format=3 uid="uid://btjelqxpc6evr"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1"]
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://dmvrtwu4ml51r" path="res://robot2.tscn" id="3_pt6ta"]
+[ext_resource type="Script" path="res://AIController3D.gd" id="4_grup7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5nui"]
 
@@ -20,7 +21,7 @@ ambient_light_energy = 0.79
 tonemap_mode = 3
 glow_intensity = 0.65
 
-[node name="Player" type="CharacterBody3D" groups=["AGENT"]]
+[node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1")
 
@@ -478,3 +479,7 @@ target_position = Vector3(6.14364, 6.92623, 11.8018)
 
 [node name="Robot" parent="." instance=ExtResource("3_pt6ta")]
 transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, -0.951698, 0)
+
+[node name="AIController3D" type="Node3D" parent="."]
+script = ExtResource("4_grup7")
+reset_after = 20000
