@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://4cc2pbxkyxe4"]
 
-[ext_resource type="Texture2D" uid="uid://dstn578b6g2ad" path="res://assets/lilienstein_1k.hdr" id="1_005ev"]
+[ext_resource type="Texture2D" uid="uid://d0mpabcwlpoah" path="res://assets/lilienstein_1k.hdr" id="1_005ev"]
 [ext_resource type="Script" path="res://game.gd" id="1_6oqji"]
 [ext_resource type="PackedScene" uid="uid://b1bwg2tirgxwk" path="res://vehicle.tscn" id="6_lk73p"]
 [ext_resource type="Script" path="res://Waypoints.gd" id="7_60see"]
