@@ -119,7 +119,8 @@ You may be able to train the environment with the main branch and run inference 
 
 ## Running inference:
 To start inference using the pretrained onnx, open the `testing_scene` in Godot Editor, then press `F6` or click on the scene starting icon:
-[TODO: Add screenshot from Github interface]
+
+![lander3d_testing_scene](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/4d54189d-4749-46af-8ba7-2edc955f7b3a)
 
 You can adjust the `Speed Up` parameter of the `Sync` node to change the speed of the environment.
 
@@ -128,7 +129,7 @@ Due to using discrete actions, this environment comes packaged the plugin from t
 ## Manually playing:
 You can start the `Manual Test Scene` to control the environment manually.
 
-[TODO: Add video from Github interface]
+https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/03b3b316-e2e0-4340-b739-73487484f02a
 
 `WASD` activate the 4-direction `navigation` thrusters, 
 `Q` and `E` activate the `rotation` thrusters,
