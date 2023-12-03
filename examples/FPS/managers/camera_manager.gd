@@ -11,7 +11,7 @@ func register_player(player):
 	player_camera_slots.append(player)
 
 
-func _process(delta):
+func _process(_delta):
 	
 	if Input.is_action_just_pressed("toggle_next_player"):
 		prints("toggle_next_player", current_id)
