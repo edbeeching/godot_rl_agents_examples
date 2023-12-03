@@ -5,7 +5,9 @@
 This environment was inspired by the gymnasium Lunar Lander env. 
 
 The goal is to land safely, with faster landing and less usage of thrusters giving higher rewards. 
-It is not required to land inside of the goal zone, but landing closer to the center of the zone gives a higher reward.
+It is not required to land inside the goal zone, but landing closer to the center of the zone gives a higher reward.
+
+On each (re)start, the lander is randomly positioned with a random velocity added.
 
 ### Observations:
 Vector based, including:
@@ -14,7 +16,6 @@ Vector based, including:
 - Current step / episode length in steps,
 - How many of the lander's legs are currently in contact with the ground,
 - The orientation of the lander (basis y and x vectors),
-- The location of the lander relative to the center of the terrain (was previously used to tell the agent how close it is to the game area boundaries, may not be needed in current version as CollisionShape walls are added which the RayCast sensor can detect),
 - The position of the goal (landing zone) relative to the lander,
 - The direction difference between the goal direction (Y axis pointing upward) and the current direction,
 - Observations from a RayCast sensor attached to the lander.
@@ -58,12 +59,12 @@ func get_action_space() -> Dictionary:
 ```
 
 ### Rewards and episode end conditions:
-The requirement for "succesfully landing" includes all legs being on the ground, velocities being low and thruster activity being very low (the tresholds can be adjusted in the `_is_goal_reached()` method of `Lander.gd`.
+The requirement for "successfully landing" includes all legs being on the ground, velocities being low and thruster activity being very low (the thresholds can be adjusted in the `_is_goal_reached()` method of `Lander.gd`).
 
 Every time a leg collides the ground, a positive reward is given. Every time a leg loses contact with the ground, a negative reward is given (in the current version, there may be a case where the negative reward is given after restarting the episode, this hasn't been checked in-depth). 
 
 The episode is restarted if:
-- The lander successfully lands (along with a positive reward reduced by the time it took to land and the distance from the center of the landing area).
+- The lander successfully lands (along with a positive reward reduced by the distance from the center of the landing area).
 - The body of lander collides with the ground or one of the walls around the game area (along with a negative reward)
 - The episodes times out (along with a negative reward)
 
@@ -81,7 +82,7 @@ There is also a negative reward added for every thruster used during that step.
 The lander consists of a RigidBody for the main body and a RigidBody for each leg.
 The legs are connected by a `Generic6DOFJoint3D` to the body.
 
-A 360 degree RayCast sensor with 10 x 10 rays is added to the lander to enable it to detect the terrain features as well as the invisible walls / game area boundaries.
+A 360 degree RayCast sensor is added to the lander to enable it to detect the terrain features as well as the invisible walls / game area boundaries.
 
 The motion of the lander is caused by applying forces from the locations of the thrusters.
 
@@ -109,3 +110,28 @@ You can adjust how far away from the center it can be by using the `Landing Surf
 
 `Regenerate Terrain` can be used to regenerate the terrain in the inspector after changing settings. This is not done automatically after every change as regenerating the terrain could take some time, especially if a lot of subdivisions are used.
 
+## Training:
+The included onnx file was trained with SB3.
+
+Because this is the first environment to use only discrete actions which are not fully supported with Godot-RL with SB3 at this moment, this  environment was trained using relevant files [from the discrete actions branch](https://github.com/edbeeching/godot_rl_agents/tree/discrete_actions_experimental) of Godot-RL.
+
+You may be able to train the environment with the main branch and run inference from Python, but exporting to onnx will need require this branch and is recommended for training as well.
+
+## Running inference:
+To start inference using the pretrained onnx, open the `testing_scene` in Godot Editor, then press `F6` or click on the scene starting icon:
+[TODO: Add screenshot from Github interface]
+
+You can adjust the `Speed Up` parameter of the `Sync` node to change the speed of the environment.
+
+Due to using discrete actions, this environment comes packaged the plugin from the [discrete actions PR](https://github.com/edbeeching/godot_rl_agents_plugin/pull/16), which adds the support.
+
+## Manually playing:
+You can start the `Manual Test Scene` to control the environment manually.
+
+[TODO: Add video from Github interface]
+
+`WASD` activate the 4-direction `navigation` thrusters, 
+`Q` and `E` activate the `rotation` thrusters,
+`SPACE` activates the main `up` thruster.
+
+The camera is not optimally adjusted for human control, as the scene is mainly there to test out the behavior of the environment.
