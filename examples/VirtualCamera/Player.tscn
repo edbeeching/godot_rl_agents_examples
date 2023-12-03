@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwipllxvgnle4"]
+[gd_scene load_steps=7 format=3 uid="uid://dwipllxvgnle4"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://b4hphc8dab5h" path="res://Robot.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://b30vsuwotx0u2" path="res://VirtualCamera.tscn" id="3_tv0v5"]
+[ext_resource type="Script" path="res://AIController3D.gd" id="4_rq7t7"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 1.6
@@ -10,7 +11,7 @@ height = 3.2
 
 [sub_resource type="CapsuleMesh" id="2"]
 
-[node name="Player" type="CharacterBody3D" groups=["AGENT"]]
+[node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 script = ExtResource("1")
 
@@ -27,3 +28,7 @@ mesh = SubResource("2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.43952, 0.0576344)
 
 [node name="RGBCameraSensor3D" parent="." instance=ExtResource("3_tv0v5")]
+
+[node name="AIController3D" type="Node3D" parent="."]
+script = ExtResource("4_rq7t7")
+reset_after = 10000
