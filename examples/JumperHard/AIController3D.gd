@@ -8,7 +8,6 @@ func _physics_process(_delta):
 		needs_reset = true
 
 	if needs_reset:
-		needs_reset = false
 		_player.game_over()
 
 
