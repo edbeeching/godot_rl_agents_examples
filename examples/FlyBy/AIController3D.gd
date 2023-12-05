@@ -31,8 +31,8 @@ func get_obs():
 
 func get_action_space():
 	return {
-		"turn": {"size": 1, "action_type": "continuous"},
-		"pitch": {"size": 1, "action_type": "continuous"}
+		"pitch": {"size": 1, "action_type": "continuous"},
+		"turn": {"size": 1, "action_type": "continuous"}
 	}
 
 
