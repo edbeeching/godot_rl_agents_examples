@@ -46,7 +46,6 @@ func game_over():
 	rotation = Vector3.ZERO
 	found_goal = false
 	exited_arena = false
-	ai_controller.done = false
 	best_goal_distance = to_local(cur_goal.position).length()
 	ai_controller.reset()
 
