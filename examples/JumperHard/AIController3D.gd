@@ -46,14 +46,14 @@ func get_obs():
 func set_action(action):
 	_player.move_action = action["move"][0]
 	_player.turn_action = action["turn"][0]
-	_player.jump_action = action["jump"] == 1
+	_player.jump_action = action["jump"][0] > 0
 
 
 func get_action_space():
 	return {
+		"jump": {"size": 1, "action_type": "continuous"},
 		"move": {"size": 1, "action_type": "continuous"},
-		"turn": {"size": 1, "action_type": "continuous"},
-		"jump": {"size": 2, "action_type": "discrete"}
+		"turn": {"size": 1, "action_type": "continuous"}
 	}
 
 
