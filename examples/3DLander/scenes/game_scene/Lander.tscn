@@ -852,7 +852,7 @@ linear_limit_y/damping = 0.06
 
 [node name="AIController3D" type="Node3D" parent="."]
 script = ExtResource("5_w0bd1")
-reset_after = 8000
+reset_after = 6000
 
 [connection signal="body_entered" from="Lander" to="." method="_on_lander_body_entered"]
 [connection signal="body_entered" from="LandingLeg" to="." method="_on_landing_leg_body_entered"]

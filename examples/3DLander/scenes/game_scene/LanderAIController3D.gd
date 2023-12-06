@@ -82,7 +82,7 @@ func _physics_process(delta):
 	if n_steps > reset_after:
 		needs_reset = true
 		done = true
-		reward = _player.episode_ended_unsuccessfully_reward / 3.0
+		reward = _player.episode_ended_unsuccessfully_reward / 10.0
 
 func set_action(action) -> void:
 	_player.up_thruster.thruster_strength = (

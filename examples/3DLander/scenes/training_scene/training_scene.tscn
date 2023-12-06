@@ -54,7 +54,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9023, 0, 3013)
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_st3rd")
-action_repeat = 6
 speed_up = 10
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

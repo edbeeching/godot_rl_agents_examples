@@ -30,20 +30,22 @@ var _landing_leg_initial_transforms: Dictionary
 var thrusters: Array
 
 var landing_position := Vector3(0.0, 0.0, 0.0)
-var episode_ended_unsuccessfully_reward := -30.0
+var episode_ended_unsuccessfully_reward := -5.0
 
 var times_restarted := 0
 var _initial_transform: Transform3D
 
 var _legs_in_contact_with_ground: int
-var _all_legs_grounded_reward_given := false
 
 var	_previous_goal_distance: float
 var	_previous_angular_velocity: float
 var	_previous_direction_difference: float
 var	_previous_linear_velocity: float
 
-var _thruster_reward_multiplier: float = 0.01125
+var _thruster_reward_multiplier: float = 0.0325
+var _shaped_reward_multiplier: float = 0.3
+
+var _previous_thruster_usage: float
 
 func _ready():
 	ai_controller.init(self)
@@ -108,6 +110,8 @@ func reset():
 	_previous_goal_distance = _get_normalized_distance_to_goal()
 	_previous_angular_velocity = get_normalized_angular_velocity()
 	_previous_direction_difference = get_player_goal_direction_difference()
+	
+	_previous_thruster_usage = _get_normalized_current_total_thruster_strength()
 	pass
 
 func _physics_process(delta):
@@ -160,8 +164,8 @@ func _end_episode_on_goal_reached():
 		# The reward for succesfully landing is reduced by
 		# the distance from the goal position
 		var successfully_landed_reward: float = (
-			20.0
-			- _get_normalized_distance_to_goal() * 2.5
+			10.0
+			- _get_normalized_distance_to_goal() * 6.0
 		)
 		_end_episode(successfully_landed_reward)
 
@@ -179,30 +183,33 @@ func _update_reward():
 	if times_restarted == 0:
 		return
 
-	# Reward decreases when using thrusters
-	ai_controller.reward -= (
-		_get_normalized_current_total_thruster_strength()
-		* _thruster_reward_multiplier
-	)
+	# Positive reward if the parameters are approaching the goal values,
+	# negative reward if they are moving away from the goal values	
+	var vel_reward := (_previous_linear_velocity - get_normalized_linear_velocity())
+	var thruster_usage_reward := (_previous_thruster_usage - _get_normalized_current_total_thruster_strength()) * 0.06
+	var ang_vel_reward := (_previous_angular_velocity - get_normalized_angular_velocity())
+		
+	var dist_reward := 0.0
+	var dir_reward := 0.0
 
-	# Positive reward if the position, angle alignment and velocity deltas are approaching the goal values
-	# negative reward if they are moving away from the goal values
-	var dist_reward = (_previous_goal_distance - _get_normalized_distance_to_goal()) * 3.25
-	var vel_reward = (_previous_linear_velocity - get_normalized_linear_velocity()) * 1.5
-	var ang_vel_reward = (_previous_angular_velocity - get_normalized_angular_velocity())
-	var dir_reward = (_previous_direction_difference	- get_player_goal_direction_difference()) * 0.1
+	if _legs_in_contact_with_ground == 0:
+		dist_reward = (_previous_goal_distance - _get_normalized_distance_to_goal()) * 6.0
+		dir_reward = (_previous_direction_difference - get_player_goal_direction_difference()) * 0.25
 
 	ai_controller.reward += (
 		dist_reward +
 		vel_reward +
 		dir_reward +
-		ang_vel_reward
-		) * 65.0
+		ang_vel_reward + 
+		thruster_usage_reward
+		) * 65.0 * _shaped_reward_multiplier
 
 	_previous_linear_velocity = get_normalized_linear_velocity()
 	_previous_goal_distance = _get_normalized_distance_to_goal()
 	_previous_angular_velocity = get_normalized_angular_velocity()
 	_previous_direction_difference = get_player_goal_direction_difference()
+	
+	_previous_thruster_usage = _get_normalized_current_total_thruster_strength()
 	pass
 
 # Returns the difference between current direction and goal direction in range 0,1
@@ -295,7 +302,7 @@ func get_orientation_as_array() -> Array[float]:
 		basis_x.y,
 		basis_x.z
 	]
-
+	
 func get_normalized_linear_velocity() -> float:
 	return minf(50.0, _lander.linear_velocity.length()) / 50.0
 
@@ -311,8 +318,8 @@ func get_lander_global_position():
 func _on_landing_leg_body_exited(body):
 	# Possible bug to consider: upon restarting, this reward may be given in the first frame of the next episode
 	_legs_in_contact_with_ground -= 1
-	ai_controller.reward -= 1.0
+	ai_controller.reward -= 0.25
 
 func _on_landing_leg_body_entered(body):
 	_legs_in_contact_with_ground += 1
-	ai_controller.reward += 0.85
+	ai_controller.reward += 0.25
