@@ -4,7 +4,7 @@
 
 This environment was inspired by the gymnasium Lunar Lander env. 
 
-The goal is to land safely, with faster landing and less usage of thrusters giving higher rewards. 
+The goal is to land safely as close to the goal as possible. 
 It is not required to land inside the goal zone, but landing closer to the center of the zone gives a higher reward.
 
 On each (re)start, the lander is randomly positioned with a random velocity added.
@@ -73,8 +73,7 @@ On every physics step, a reward is added based on:
 - Linear velocity delta (positive if the velocity is decreasing, negative if increasing)
 - Angular velocity delta (same as above)
 - Direction to goal difference delta (positive if the difference from the goal direction is decreasing, negative if increasing)
-
-There is also a negative reward added for every thruster used during that step.
+- Thruster usage delta (positive if less thrusters are used than before, negative if more thrusters are used than before)
 
 ### Lander:
 ![lander](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/290d73b1-789d-4af0-8911-3be584b9c0a8)
@@ -116,6 +115,15 @@ The included onnx file was trained with SB3.
 Because this is the first environment to use only discrete actions which are not fully supported with Godot-RL with SB3 at this moment, this  environment was trained using relevant files [from the discrete actions branch](https://github.com/edbeeching/godot_rl_agents/tree/discrete_actions_experimental) of Godot-RL.
 
 You may be able to train the environment with the main branch and run inference from Python, but exporting to onnx will need require this branch and is recommended for training as well.
+
+The used parameters during training were (by modifying [sb3_example](https://github.com/edbeeching/godot_rl_agents/blob/main/examples/stable_baselines3_example.py)):
+```
+model = PPO("MultiInputPolicy", env, ent_coef=0.02, n_steps=768, verbose=2, tensorboard_log=args.experiment_dir,
+                learning_rate=learning_rate, n_epochs=4)
+```
+
+Training stats screenshot from Tensorboard:
+![lander3d_training_stats](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/6e6e432f-6e99-4451-93d2-66c9936ebf8d)
 
 ## Running inference:
 To start inference using the pretrained onnx, open the `testing_scene` in Godot Editor, then press `F6` or click on the scene starting icon:
