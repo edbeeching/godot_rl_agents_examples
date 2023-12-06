@@ -116,7 +116,7 @@ Because this is the first environment to use only discrete actions which are not
 
 You may be able to train the environment with the main branch and run inference from Python, but exporting to onnx will need require this branch and is recommended for training as well.
 
-The used parameters during training were (by modifying [sb3_example](https://github.com/edbeeching/godot_rl_agents/blob/main/examples/stable_baselines3_example.py)):
+The parameters used during training were (you can set them by modifying [sb3_example](https://github.com/edbeeching/godot_rl_agents/blob/main/examples/stable_baselines3_example.py)):
 ```
 model = PPO("MultiInputPolicy", env, ent_coef=0.02, n_steps=768, verbose=2, tensorboard_log=args.experiment_dir,
                 learning_rate=learning_rate, n_epochs=4)
@@ -132,7 +132,7 @@ To start inference using the pretrained onnx, open the `testing_scene` in Godot 
 
 You can adjust the `Speed Up` parameter of the `Sync` node to change the speed of the environment.
 
-Due to using discrete actions, this environment comes packaged the plugin from the [discrete actions PR](https://github.com/edbeeching/godot_rl_agents_plugin/pull/16), which adds the support.
+Due to using discrete actions, this environment comes packaged with the plugin from the [discrete actions PR](https://github.com/edbeeching/godot_rl_agents_plugin/pull/16), which adds the support.
 
 ## Manually playing:
 You can start the `Manual Test Scene` to control the environment manually.
