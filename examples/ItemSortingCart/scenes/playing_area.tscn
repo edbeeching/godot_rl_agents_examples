@@ -1,0 +1,134 @@
+[gd_scene load_steps=19 format=3 uid="uid://ca6csk8y5nvuu"]
+
+[ext_resource type="PackedScene" uid="uid://cn2van3bgkmch" path="res://scenes/cart/cart.tscn" id="1_5vpyy"]
+[ext_resource type="Material" uid="uid://bbj7kkw608aly" path="res://scenes/materials/category2.tres" id="1_fjj1a"]
+[ext_resource type="Material" uid="uid://bs65q68vluuqx" path="res://scenes/materials/category.tres" id="1_y8o8n"]
+[ext_resource type="Script" path="res://scenes/Item.gd" id="4_tsx37"]
+[ext_resource type="PackedScene" uid="uid://cfw2e6n32ytu6" path="res://scenes/static_decorations/static_decorations.blend" id="5_8mptk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4l0bm"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sngf0"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omkpg"]
+albedo_color = Color(0.14902, 0.678431, 0.176471, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3ht2"]
+size = Vector3(22, 1, 22)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8nd8"]
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.85
+
+[sub_resource type="BoxMesh" id="BoxMesh_cdf32"]
+material = SubResource("StandardMaterial3D_v8nd8")
+size = Vector3(2, 0.1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbjub"]
+albedo_color = Color(0.984314, 1, 1, 1)
+roughness = 0.85
+
+[sub_resource type="QuadMesh" id="QuadMesh_v1ff1"]
+material = SubResource("StandardMaterial3D_qbjub")
+size = Vector2(0.2, 17.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o6ona"]
+material = ExtResource("1_y8o8n")
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3cyms"]
+material = ExtResource("1_fjj1a")
+size = Vector3(2, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63osm"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0.505882, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yu25s"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_63osm")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6wisu"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="playing_area" type="Node3D"]
+
+[node name="Map" type="StaticBody3D" parent="."]
+collision_layer = 5
+physics_material_override = SubResource("PhysicsMaterial_4l0bm")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Map"]
+mesh = SubResource("PlaneMesh_sngf0")
+material = SubResource("StandardMaterial3D_omkpg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_x3ht2")
+
+[node name="Road" type="MeshInstance3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0382012, 0)
+mesh = SubResource("BoxMesh_cdf32")
+
+[node name="Line" type="MeshInstance3D" parent="Map/Road"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.942, 0.06, 0)
+mesh = SubResource("QuadMesh_v1ff1")
+skeleton = NodePath("../..")
+
+[node name="Line2" type="MeshInstance3D" parent="Map/Road"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.942, 0.06, 0)
+mesh = SubResource("QuadMesh_v1ff1")
+skeleton = NodePath("../..")
+
+[node name="Destination" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0117988, 9.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Destination"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_o6ona")
+
+[node name="Destination2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0117988, -9.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Destination2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_3cyms")
+
+[node name="Cart" parent="." node_paths=PackedStringArray("destination", "destination2", "item") instance=ExtResource("1_5vpyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84082, 0)
+axis_lock_linear_x = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+lock_rotation = true
+destination = NodePath("../Destination")
+destination2 = NodePath("../Destination2")
+item = NodePath("../Item")
+
+[node name="Item" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.07822, 0)
+collision_layer = 2
+collision_mask = 7
+gravity_scale = 0.04
+can_sleep = false
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("4_tsx37")
+category_material = ExtResource("1_y8o8n")
+category2_material = ExtResource("1_fjj1a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Item"]
+mesh = SubResource("BoxMesh_yu25s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Item"]
+shape = SubResource("BoxShape3D_6wisu")
+
+[node name="static_decorations" parent="." instance=ExtResource("5_8mptk")]
+
+[node name="grass" parent="static_decorations" index="2"]
+cast_shadow = 0
+
+[connection signal="body_entered" from="Item" to="Cart" method="_on_item_body_entered"]
+
+[editable path="static_decorations"]
