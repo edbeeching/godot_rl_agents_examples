@@ -122,6 +122,8 @@ model = PPO("MultiInputPolicy", env, ent_coef=0.02, n_steps=768, verbose=2, tens
                 learning_rate=learning_rate, n_epochs=4)
 ```
 
+And also, `n_parallel=4` argument was used when for training.
+
 Training stats screenshot from Tensorboard:
 ![lander3d_training_stats](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/6e6e432f-6e99-4451-93d2-66c9936ebf8d)
 
