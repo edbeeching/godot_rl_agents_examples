@@ -49,7 +49,9 @@ After opening the project in Godot, open the main_scene (should open by default)
 
 - Set the game mode to `Training` before starting starting training. You can use for instance the [sb3 example](https://github.com/edbeeching/godot_rl_agents/blob/main/examples/stable_baselines3_example.py) to train.
 
-- In the `game_scene`, there's a property `Number of Car Groups To Spawn` which allows multiple car groups to spawn and collect experiences during training (during inference, only 1 car group is spawned). Since this is a `1v1` example, each car group is set so a car can only collide with the other car from its own group and the walls. This is done by the car manager script by setting each car to its own physics layer and adjusting the masks (also for the raycast sensor that detects the other car). Settings this value too high may make the environment not work correctly, as there is a limit in the number of physics layers available.
+- In the `game_scene`'s `Cars` node, there's a property `Number of Car Groups To Spawn` which allows multiple car groups to spawn and collect experiences during training (during inference, only 1 car group is spawned). Since this is a `1v1` example, each car group is set so a car can only collide with the other car from its own group and the walls. This is done by the car manager script by setting each car to its own physics layer and adjusting the masks (also for the raycast sensor that detects the other car). Settings this value too high may make the environment not work correctly, as there is a limit in the number of physics layers available.
 
-![image](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/6a6f3880-50ca-4090-b5ea-a8435cf473c3)
+![image](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/94752856-8729-4cde-8151-3aaf65bab155)
+
+
 
