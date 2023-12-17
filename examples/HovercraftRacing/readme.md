@@ -6,16 +6,16 @@ A 1v1 hovercraft racing environment with:
 
 - `Human VS AI` or `AI vs AI` mode,
 - Adjustable number of laps (can be set to 0 for infinite race),
-- Basic powerups (push forward or push backward)
+- Basic powerups (push forward or push backward).
 
 ### Observations:
-- Velocity of the car in local reference
-- 3 sampled `next track points` in the car's local reference
-- Wall detecting raycast sensor observations
-- Other car detecting raycast sensor observations
-- Position of the other car in the current car's local reference
-- Position of the nearest powerup in the car's local reference
-- Category of the powerup, as there are only two powerups it can be either `[0, 1]` or `[1, 0]` 
+- Velocity of the car in local reference,
+- 3 sampled `next track points` in the car's local reference,
+- Wall detecting raycast sensor observations,
+- Other car detecting raycast sensor observations,
+- Position of the other car in the current car's local reference,
+- Position of the nearest powerup in the car's local reference,
+- Category of the powerup, as there are only two powerups it can be either `[0, 1]` or `[1, 0]`.
 
 ### Action space:
 ```gdscript
@@ -28,9 +28,9 @@ func get_action_space() -> Dictionary:
 
 ### Rewards:
 - Step reward based on the car's track offset difference from the previous step (advancing on the track gives a positive reward, moving backward gives a negative reward),
-- Negative step reward for moving backward
-- Negative reward for colliding with a wall or the other car
-- Optional reward for picking a powerup (can be adjusted in Godot Editor in the scene of the powerup), currently set to 0 for both powerups
+- Negative step reward for moving backward,
+- Negative reward for colliding with a wall or the other car,
+- Optional reward for driving over a powerup (can be adjusted in Godot Editor in the scene of the powerup), currently set to 0 for both powerups.
 
 ### Game over / episode end conditions:
 ![image](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/d9fdf617-0c4a-479e-8feb-cab9880345e6)
