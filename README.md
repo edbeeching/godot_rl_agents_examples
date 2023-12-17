@@ -1,8 +1,15 @@
-# godot_rl_agents_examples
-Example Environments for the Godot RL Agents library
+# Godot RL Agents Examples
+Example Environments for the [Godot RL Agents library](https://github.com/edbeeching/godot_rl_agents).
 
-#### 3D Car Parking Example video:
+### Requirements:
+Running these examples requires [Godot](https://godotengine.org/) with .NET/mono installed, some of the examples also require [Blender](https://www.blender.org/), and for training Godot-RL library (linked above) is also required.
+
+### Videos:
+#### 3D Car Parking:
 https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/3a71a48b-47df-4036-9c61-26b0ec0aeb3c
 
-#### Item Sorting Cart Example video:
+#### Item Sorting Cart:
 https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/647e5549-fde4-404b-96fa-f8931f110439
+
+#### Hovercraft racing:
+https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/09cfa8ef-4d1a-46d3-a38a-0b7cdf1e1000
