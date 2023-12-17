@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://btq75ag6rkb8w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgr52"]
+albedo_color = Color(0.968627, 0.811765, 0.105882, 1)
+roughness = 0.9
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 0)
+size = Vector3(1, 4, 1)
+material = SubResource("StandardMaterial3D_hgr52")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 0)
+size = Vector3(1, 4, 1)
+material = SubResource("StandardMaterial3D_hgr52")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+size = Vector3(13, 1, 1)
+material = SubResource("StandardMaterial3D_hgr52")

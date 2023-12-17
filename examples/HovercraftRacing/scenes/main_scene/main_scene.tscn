@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://7oe2m3pdd0sr"]
+
+[ext_resource type="Script" path="res://scenes/game_scene/game_manager.gd" id="1_akdmg"]
+[ext_resource type="PackedScene" uid="uid://dqb4x6b4gfiq3" path="res://scenes/game_scene/game_scene.tscn" id="2_wgm2p"]
+
+[node name="GameManager" type="Node3D"]
+script = ExtResource("1_akdmg")
+game_mode = 2
+game_scene = ExtResource("2_wgm2p")
+total_laps = 3
+seconds_until_race_begins = 3

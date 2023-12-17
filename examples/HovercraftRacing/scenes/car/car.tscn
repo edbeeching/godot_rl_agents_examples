@@ -1,0 +1,281 @@
+[gd_scene load_steps=16 format=3 uid="uid://c68mety64bigp"]
+
+[ext_resource type="Script" path="res://scenes/car/car.gd" id="1_0gshy"]
+[ext_resource type="PackedScene" uid="uid://c7pyws8sguicn" path="res://scenes/blender/car_base.blend" id="2_lbr3a"]
+[ext_resource type="Script" path="res://scenes/car/propeller.gd" id="3_s0gu7"]
+[ext_resource type="Script" path="res://scenes/car/raycast_sensor_3d_add_set_collision_mask_value.gd" id="4_e1dys"]
+[ext_resource type="Script" path="res://scenes/car/car_ai_controller.gd" id="5_e2db2"]
+[ext_resource type="Script" path="res://scenes/car/thruster.gd" id="6_k7k6o"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ypfti"]
+friction = 0.55
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_av0n1"]
+radius = 1.86536
+height = 3.80065
+
+[sub_resource type="Gradient" id="Gradient_mgod5"]
+offsets = PackedFloat32Array(0, 0.481113, 0.578529)
+colors = PackedColorArray(1, 0.635294, 0, 1, 0.811765, 0.109804, 0, 0.0235294, 0, 0, 0, 0.0784314)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vuvka"]
+gradient = SubResource("Gradient_mgod5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3cba4"]
+resource_local_to_scene = true
+direction = Vector3(0, 0, -1)
+spread = 2.0
+initial_velocity_min = 0.02
+initial_velocity_max = 0.1
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+color_ramp = SubResource("GradientTexture1D_vuvka")
+
+[sub_resource type="Gradient" id="Gradient_nm2v8"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vf6a5"]
+gradient = SubResource("Gradient_nm2v8")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_618ls"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_vf6a5")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_4n6j1"]
+material = SubResource("StandardMaterial3D_618ls")
+size = Vector2(0.1, 0.1)
+
+[node name="Car" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 0
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_ypfti")
+continuous_cd = true
+max_contacts_reported = 1
+contact_monitor = true
+linear_damp = 1.0
+angular_damp = 1.0
+script = ExtResource("1_0gshy")
+
+[node name="car_base" parent="." instance=ExtResource("2_lbr3a")]
+
+[node name="Propeller" parent="car_base" index="5"]
+process_mode = 1
+script = ExtResource("3_s0gu7")
+
+[node name="Propeller_001" parent="car_base" index="6"]
+process_mode = 1
+script = ExtResource("3_s0gu7")
+
+[node name="Propeller_002" parent="car_base" index="7"]
+process_mode = 1
+script = ExtResource("3_s0gu7")
+
+[node name="Propeller_003" parent="car_base" index="8"]
+process_mode = 1
+script = ExtResource("3_s0gu7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0.102682, 4.48839e-09)
+shape = SubResource("CapsuleShape3D_av0n1")
+
+[node name="RayCastSensorWall" type="Node3D" parent="."]
+script = ExtResource("4_e1dys")
+n_rays_width = 17.0
+n_rays_height = 1.0
+ray_length = 45.0
+cone_width = 360.0
+cone_height = 0.0
+collide_with_areas = true
+
+[node name="@RayCast3D@70840" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(-8.26873, 0, -44.2338)
+collide_with_areas = true
+
+[node name="@RayCast3D@70841" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(-23.6894, 0, -38.2598)
+collide_with_areas = true
+
+[node name="@RayCast3D@70842" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(-35.9108, 0, -27.1186)
+collide_with_areas = true
+
+[node name="@RayCast3D@70843" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(-43.2822, 0, -12.3148)
+collide_with_areas = true
+
+[node name="@RayCast3D@70844" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(-44.808, 0, 4.15208)
+collide_with_areas = true
+
+[node name="@RayCast3D@70845" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(-40.2823, 0, 20.0582)
+collide_with_areas = true
+
+[node name="@RayCast3D@70846" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(-30.3163, 0, 33.2554)
+collide_with_areas = true
+
+[node name="@RayCast3D@70847" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(-16.2559, 0, 41.9613)
+collide_with_areas = true
+
+[node name="@RayCast3D@70848" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(0, 0, 45)
+collide_with_areas = true
+
+[node name="@RayCast3D@70849" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(16.2559, 0, 41.9613)
+collide_with_areas = true
+
+[node name="@RayCast3D@70850" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(30.3163, 0, 33.2554)
+collide_with_areas = true
+
+[node name="@RayCast3D@70851" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(40.2823, 0, 20.0582)
+collide_with_areas = true
+
+[node name="@RayCast3D@70852" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(44.808, 0, 4.15208)
+collide_with_areas = true
+
+[node name="@RayCast3D@70853" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(43.2822, 0, -12.3148)
+collide_with_areas = true
+
+[node name="@RayCast3D@70854" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(35.9108, 0, -27.1186)
+collide_with_areas = true
+
+[node name="@RayCast3D@70855" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(23.6894, 0, -38.2598)
+collide_with_areas = true
+
+[node name="@RayCast3D@70856" type="RayCast3D" parent="RayCastSensorWall"]
+target_position = Vector3(8.26873, 0, -44.2338)
+collide_with_areas = true
+
+[node name="RayCastSensorOtherCar" type="Node3D" parent="."]
+script = ExtResource("4_e1dys")
+collision_mask = 0
+boolean_class_mask = 0
+n_rays_width = 17.0
+n_rays_height = 1.0
+ray_length = 45.0
+cone_width = 360.0
+cone_height = 0.0
+collide_with_areas = true
+
+[node name="_RayCast3D_70840" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(-8.26873, 0, -44.2338)
+collide_with_areas = true
+
+[node name="_RayCast3D_70841" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(-23.6894, 0, -38.2598)
+collide_with_areas = true
+
+[node name="_RayCast3D_70842" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(-35.9108, 0, -27.1186)
+collide_with_areas = true
+
+[node name="_RayCast3D_70843" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(-43.2822, 0, -12.3148)
+collide_with_areas = true
+
+[node name="_RayCast3D_70844" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(-44.808, 0, 4.15208)
+collide_with_areas = true
+
+[node name="_RayCast3D_70845" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(-40.2823, 0, 20.0582)
+collide_with_areas = true
+
+[node name="_RayCast3D_70846" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(-30.3163, 0, 33.2554)
+collide_with_areas = true
+
+[node name="_RayCast3D_70847" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(-16.2559, 0, 41.9613)
+collide_with_areas = true
+
+[node name="_RayCast3D_70848" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(0, 0, 45)
+collide_with_areas = true
+
+[node name="_RayCast3D_70849" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(16.2559, 0, 41.9613)
+collide_with_areas = true
+
+[node name="_RayCast3D_70850" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(30.3163, 0, 33.2554)
+collide_with_areas = true
+
+[node name="_RayCast3D_70851" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(40.2823, 0, 20.0582)
+collide_with_areas = true
+
+[node name="_RayCast3D_70852" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(44.808, 0, 4.15208)
+collide_with_areas = true
+
+[node name="_RayCast3D_70853" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(43.2822, 0, -12.3148)
+collide_with_areas = true
+
+[node name="_RayCast3D_70854" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(35.9108, 0, -27.1186)
+collide_with_areas = true
+
+[node name="_RayCast3D_70855" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(23.6894, 0, -38.2598)
+collide_with_areas = true
+
+[node name="_RayCast3D_70856" type="RayCast3D" parent="RayCastSensorOtherCar"]
+target_position = Vector3(8.26873, 0, -44.2338)
+collide_with_areas = true
+
+[node name="CarAIController" type="Node3D" parent="."]
+script = ExtResource("5_e2db2")
+reset_after = 50000
+
+[node name="Thruster1Particles" type="GPUParticles3D" parent="."]
+process_mode = 1
+transform = Transform3D(15.625, 0, 0, 0, 15.625, -6.8299e-07, 0, 6.8299e-07, 15.625, 0.106975, -0.128882, -0.737488)
+amount = 32
+lifetime = 0.23
+local_coords = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_3cba4")
+draw_pass_1 = SubResource("QuadMesh_4n6j1")
+script = ExtResource("6_k7k6o")
+
+[node name="Thruster2Particles" type="GPUParticles3D" parent="."]
+process_mode = 1
+transform = Transform3D(15.625, 0, 0, 0, 15.625, -6.8299e-07, 0, 6.8299e-07, 15.625, -0.106975, -0.128882, -0.737487)
+amount = 32
+lifetime = 0.23
+local_coords = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_3cba4")
+draw_pass_1 = SubResource("QuadMesh_4n6j1")
+script = ExtResource("6_k7k6o")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -1.90707e-08, 8.53174e-08, 0, 0.975917, 0.218143, -8.74228e-08, 0.218143, -0.975917, 0, 0.94, -3.37)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+
+[editable path="car_base"]

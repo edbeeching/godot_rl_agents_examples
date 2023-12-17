@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4uwdcusug3ux"]
+
+[ext_resource type="PackedScene" uid="uid://dqguh82c6ny4c" path="res://scenes/blender/turbo-powerup.blend" id="1_oksqt"]
+[ext_resource type="Script" path="res://scenes/track/powerup.gd" id="1_vgk4v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ka6o"]
+size = Vector3(1.209, 0.632, 2.432)
+
+[node name="TurboPowerup" type="Area3D"]
+collision_layer = 0
+collision_mask = 4294967295
+monitorable = false
+script = ExtResource("1_vgk4v")
+impulse_direction_relative_to_powerup = Vector3(0, 0, -1)
+impulse_to_apply = 18.0
+
+[node name="turbo-powerup" parent="." instance=ExtResource("1_oksqt")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277, 0)
+shape = SubResource("BoxShape3D_4ka6o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
