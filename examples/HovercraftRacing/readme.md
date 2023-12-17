@@ -4,7 +4,7 @@ https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/09cfa8ef-
 
 A 1v1 hovercraft racing environment with:
 
-- `Human VS AI` or `AI vs AI` mode,
+- `Human VS AI` (use `WASD` keys to control the car), or `AI vs AI` mode,
 - Adjustable number of laps (can be set to 0 for infinite race),
 - Basic powerups (push forward or push backward).
 
