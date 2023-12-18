@@ -195,8 +195,8 @@ func get_next_track_points(num_points: int, step_size: float) -> Array:
 
 func _end_episode(final_reward: float = 0.0):
 	ai_controller.reward += final_reward
-	ai_controller.needs_reset = true
 	ai_controller.done = true
+	ai_controller.reset()
 
 	if not infinite_race:
 		reset()
