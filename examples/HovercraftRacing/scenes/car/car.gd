@@ -95,6 +95,10 @@ func get_other_car_position_in_local_reference() -> Array[float]:
 
 
 func _physics_process(_delta):
+	if ai_controller.needs_reset:
+		ai_controller.reset()
+		reset()
+	
 	var acceleration_to_apply := 0.0
 	var steering_to_apply := 0.0
 
