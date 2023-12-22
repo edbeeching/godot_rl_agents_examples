@@ -148,4 +148,4 @@ https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/03b3b316-
 The camera is not optimally adjusted for human control, as the scene is mainly there to test out the behavior of the environment.
 
 ## Known issues:
-There is a rare error caused by an inf value being sent by an observation noticed during training. It hasn't been investigated or resolved.
+There is a rare error caused by an `inf` value being sent by an observation noticed during training.
