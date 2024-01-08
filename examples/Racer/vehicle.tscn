@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1bwg2tirgxwk"]
+[gd_scene load_steps=19 format=3 uid="uid://b1bwg2tirgxwk"]
 
 [ext_resource type="Script" path="res://vehicle.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c7ev21tk2uwfl" path="res://assets/wheelDefault.tscn" id="2_d8d30"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://x4bpkxih2cfc" path="res://assets/hatchbackSports.tscn" id="12_keoic"]
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="14_qlofu"]
 [ext_resource type="PackedScene" uid="uid://bs0osbn6djn0i" path="res://arrow_3d.tscn" id="15_irtpm"]
+[ext_resource type="Script" path="res://AIController3D.gd" id="16_3hqsi"]
 
 [sub_resource type="PhysicsMaterial" id="1"]
 friction = 0.5
@@ -22,7 +23,7 @@ friction = 0.5
 [sub_resource type="BoxShape3D" id="7"]
 size = Vector3(0.954078, 0.576755, 2.32662)
 
-[node name="Vehicle" type="VehicleBody3D" groups=["AGENT"]]
+[node name="Vehicle" type="VehicleBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00169557, 0.222867, -0.0955184)
 collision_layer = 2
 center_of_mass_mode = 1
@@ -37,7 +38,6 @@ use_as_steering = true
 wheel_roll_influence = 0.4
 wheel_radius = 0.25
 wheel_friction_slip = 1.0
-suspension_travel = 0.2
 suspension_stiffness = 40.0
 damping_compression = 0.88
 
@@ -50,7 +50,6 @@ use_as_traction = true
 wheel_roll_influence = 0.4
 wheel_radius = 0.25
 wheel_friction_slip = 1.0
-suspension_travel = 0.2
 suspension_stiffness = 40.0
 damping_compression = 0.88
 
@@ -64,7 +63,6 @@ use_as_steering = true
 wheel_roll_influence = 0.4
 wheel_radius = 0.25
 wheel_friction_slip = 1.0
-suspension_travel = 0.2
 suspension_stiffness = 40.0
 damping_compression = 0.88
 
@@ -76,7 +74,6 @@ use_as_traction = true
 wheel_roll_influence = 0.4
 wheel_radius = 0.25
 wheel_friction_slip = 1.0
-suspension_travel = 0.2
 suspension_stiffness = 40.0
 damping_compression = 0.88
 
@@ -362,3 +359,7 @@ target_position = Vector3(52.2964, 10.4421, 59.6326)
 
 [node name="node_11 5" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(51.4973, 17.3152, 58.7215)
+
+[node name="AIController3D" type="Node3D" parent="."]
+script = ExtResource("16_3hqsi")
+reset_after = 10000

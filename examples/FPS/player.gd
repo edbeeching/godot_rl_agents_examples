@@ -15,7 +15,7 @@ const JUMP_VELOCITY : float = 4.5
 @onready var third_person_camera : Camera3D = $CameraPivot/ThirdPersonCamera3d
 @onready var camera_raycast : RayCast3D = $CameraPivot/FirstPersonCamera3d/RayCast3D
 @onready var Proj = preload("res://projectile.tscn")
-@onready var ai_controller: AIController = $CameraPivot/AIController
+@onready var ai_controller: AIController3D = $CameraPivot/AIController
 @onready var health_system = $HealthSystem
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

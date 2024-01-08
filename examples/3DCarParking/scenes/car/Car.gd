@@ -68,7 +68,6 @@ func reset():
 	goal_marker.global_position = goal_parking_spot.origin + Vector3.UP * 3
 
 	_smallest_distance_to_goal = _get_current_distance_to_goal()
-	pass
 	
 func _physics_process(delta):
 	_reset_if_needed()
@@ -96,7 +95,6 @@ func _physics_process(delta):
 	_reset_on_turned_over()
 	_reset_on_went_away_from_goal()
 	_end_episode_on_goal_reached()
-	pass
 
 func _update_rear_lights():
 	var velocity := get_normalized_velocity_in_player_reference().z

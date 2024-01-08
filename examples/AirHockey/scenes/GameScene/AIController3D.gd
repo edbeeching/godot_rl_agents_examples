@@ -10,6 +10,12 @@ var other_player_raycast_sensor_previous_frame
 const POSITION_NORMALIZATION_FACTOR: float = 6.50
 const VELOCITY_NORMALIZATION_FACTOR: float = 5.8
 
+func _physics_process(delta):
+	n_steps += 1
+	if n_steps > reset_after:
+		needs_reset = true
+		done = true
+
 func get_obs() -> Dictionary:
 	# Positions and velocities are converted to the player's frame of reference
 	# Scaled to be mostly within the -1 to 1 range

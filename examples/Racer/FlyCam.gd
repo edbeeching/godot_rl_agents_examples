@@ -12,7 +12,7 @@ func set_control(value):
 	$Camera3D.current = value
 	
 	
-func _process(delta):
+func _process(_delta):
 	var input_dir = Input.get_vector("turn_left", "turn_right", "accelerate", "reverse")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	direction.y =  Input.get_axis("cam_down", "cam_up")

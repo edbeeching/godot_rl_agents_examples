@@ -47,8 +47,6 @@ func _physics_process(delta):
 	n_steps += 1
 	if n_steps > reset_after:
 		needs_reset = true
-		done = true
-		#reward -= 1
 		
 func get_obs_space():
 	# may need overriding if the obs space is complex
