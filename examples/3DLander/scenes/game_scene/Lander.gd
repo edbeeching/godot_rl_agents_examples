@@ -12,6 +12,10 @@ class_name Lander
 @export var navigation_thruster_max_force: float = 250.0
 
 @onready var ai_controller: LanderAIController = $AIController3D
+
+# In case of error: "Trying to assign value of type 'Node3D'...",
+# try to double click on blender\lander.blend in Godot and click reimport.
+# (if needed, repeat for landing-leg.blend too)
 @onready var _lander: RigidBody3D = $Lander
 var _landing_legs: Array[RigidBody3D]
 var _landing_leg_initial_transforms: Dictionary
