@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://wq350orb0r51"]
 
 [ext_resource type="Script" path="res://scenes/GameScene/pusher.gd" id="1_u0b84"]
-[ext_resource type="Script" path="res://scenes/GameScene/AIController3D.gd" id="2_aweik"]
+[ext_resource type="Script" path="res://scenes/GameScene/AIController3D.gd" id="2_24l2o"]
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="3_nfe7c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oypsc"]
@@ -110,7 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0618925, 0)
 shape = SubResource("CylinderShape3D_22620")
 
 [node name="AIController3D" type="Node3D" parent="."]
-script = ExtResource("2_aweik")
+script = ExtResource("2_24l2o")
 reset_after = 2500
 
 [node name="RayCastSensor3D" type="Node3D" parent="."]
@@ -122,63 +122,63 @@ ray_length = 5.0
 cone_width = 360.0
 cone_height = 1.0
 
-[node name="node_0 0" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27274" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(-1.03956, 0, -4.89074)
 collision_mask = 513
 
-[node name="@RayCast3D@44148" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27275" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(-2.93893, 0, -4.04508)
 collision_mask = 513
 
-[node name="node_2 0" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27276" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(-4.33013, 0, -2.5)
 collision_mask = 513
 
-[node name="@RayCast3D@44149" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27277" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(-4.97261, 0, -0.522642)
 collision_mask = 513
 
-[node name="node_4 0" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27278" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(-4.75528, 0, 1.54508)
 collision_mask = 513
 
-[node name="@RayCast3D@44150" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27279" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(-3.71572, 0, 3.34565)
 collision_mask = 513
 
-[node name="node_6 0" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27280" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(-2.03368, 0, 4.56773)
 collision_mask = 513
 
-[node name="@RayCast3D@44151" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27281" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(0, 0, 5)
 collision_mask = 513
 
-[node name="node_8 0" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27282" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(2.03368, 0, 4.56773)
 collision_mask = 513
 
-[node name="node_9 0" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27283" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(3.71572, 0, 3.34565)
 collision_mask = 513
 
-[node name="node_10 0" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27284" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(4.75528, 0, 1.54508)
 collision_mask = 513
 
-[node name="node_11 0" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27285" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(4.97261, 0, -0.522642)
 collision_mask = 513
 
-[node name="@RayCast3D@44152" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27286" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(4.33013, 0, -2.5)
 collision_mask = 513
 
-[node name="@RayCast3D@44153" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27287" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(2.93893, 0, -4.04508)
 collision_mask = 513
 
-[node name="@RayCast3D@44154" type="RayCast3D" parent="RayCastSensor3D"]
+[node name="@RayCast3D@27288" type="RayCast3D" parent="RayCastSensor3D"]
 target_position = Vector3(1.03956, 0, -4.89074)
 collision_mask = 513
 

@@ -17,3 +17,6 @@ builds/
 # Apple
 .DS_Store
 *.import
+
+# Blender
+*.blend1

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://qkw7dc6ny444"]
+
+[ext_resource type="Script" path="res://scenes/car/car_manager.gd" id="1_4htxb"]
+[ext_resource type="PackedScene" uid="uid://c68mety64bigp" path="res://scenes/car/car.tscn" id="2_crxv0"]
+
+[node name="CarManager" type="Node3D"]
+script = ExtResource("1_4htxb")
+car_scene = ExtResource("2_crxv0")

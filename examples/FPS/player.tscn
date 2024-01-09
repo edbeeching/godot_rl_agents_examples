@@ -45,9 +45,10 @@ current = true
 [node name="RayCast3D" type="RayCast3D" parent="CameraPivot/FirstPersonCamera3d"]
 target_position = Vector3(0, 0, -100)
 
-[node name="AIController" type="Node3D" parent="CameraPivot" groups=["AGENT"]]
+[node name="AIController" type="Node3D" parent="CameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.40586, 0.0894096)
 script = ExtResource("5_mm0y5")
+reset_after = 0
 
 [node name="WideRaycastSensor" type="Node3D" parent="CameraPivot/AIController"]
 transform = Transform3D(-1, 0, -8.74228e-08, -1.77636e-15, 1, 0, 8.74228e-08, 0, -1, 0, 1.54159, -0.124174)

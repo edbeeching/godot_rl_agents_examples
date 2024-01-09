@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://3xxv82w5v8bo"]
+[gd_scene load_steps=5 format=3 uid="uid://3xxv82w5v8bo"]
 
 [ext_resource type="Script" path="res://Plane.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://dydo4wxntjd3p" path="res://cartoon_plane/scene.gltf" id="2_0hy0d"]
+[ext_resource type="PackedScene" uid="uid://bo7tjnr5viqq" path="res://cartoon_plane/scene.gltf" id="2_0hy0d"]
+[ext_resource type="Script" path="res://AIController3D.gd" id="3_y1d1w"]
 
 [sub_resource type="CylinderShape3D" id="27"]
 height = 7.77792
 
-[node name="Plane" type="CharacterBody3D" groups=["AGENT"]]
+[node name="Plane" type="CharacterBody3D"]
 collision_mask = 2
 script = ExtResource("2")
 turn_speed = 2.0
@@ -21,3 +22,7 @@ transform = Transform3D(-0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.4392)
+
+[node name="AIController3D" type="Node3D" parent="." groups=["AGENT"]]
+script = ExtResource("3_y1d1w")
+reset_after = 200000

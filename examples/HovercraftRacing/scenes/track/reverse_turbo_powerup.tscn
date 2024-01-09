@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8wjel5fyyfgg"]
+
+[ext_resource type="Script" path="res://scenes/track/powerup.gd" id="1_brunt"]
+[ext_resource type="PackedScene" uid="uid://ckqcpkmd1jrjj" path="res://scenes/blender/reverse-turbo-powerup.blend" id="2_uedjs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mkppf"]
+size = Vector3(1.209, 0.632, 2.432)
+
+[node name="ReverseTurboPowerup" type="Area3D"]
+collision_layer = 0
+collision_mask = 4294967295
+monitorable = false
+script = ExtResource("1_brunt")
+impulse_to_apply = -18.0
+category_as_array_one_hot_encoded = Array[int]([1, 0])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.277, 0)
+shape = SubResource("BoxShape3D_mkppf")
+
+[node name="reverse-turbo-powerup" parent="." instance=ExtResource("2_uedjs")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1oi504d42b6j"]
+
+[ext_resource type="PackedScene" uid="uid://smkg3gt56rxx" path="res://scenes/blender/windmill.blend" id="1_j8xwd"]
+[ext_resource type="Script" path="res://scenes/track/rotor.gd" id="2_ejtw2"]
+
+[node name="windmill" type="Node3D"]
+
+[node name="windmill" parent="." instance=ExtResource("1_j8xwd")]
+
+[node name="rotor" parent="windmill" index="1"]
+script = ExtResource("2_ejtw2")
+
+[editable path="windmill"]

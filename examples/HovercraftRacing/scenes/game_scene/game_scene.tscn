@@ -1,0 +1,352 @@
+[gd_scene load_steps=39 format=3 uid="uid://dqb4x6b4gfiq3"]
+
+[ext_resource type="Script" path="res://scenes/track/track.gd" id="1_eraeg"]
+[ext_resource type="PackedScene" uid="uid://btq75ag6rkb8w" path="res://scenes/track/checkpoint.tscn" id="2_kplf2"]
+[ext_resource type="PackedScene" uid="uid://nc0c705yeiad" path="res://scenes/blender/rock.blend" id="3_wvqgn"]
+[ext_resource type="PackedScene" uid="uid://illlhd3ii08e" path="res://scenes/blender/rock2.blend" id="4_gkjus"]
+[ext_resource type="PackedScene" uid="uid://fw03ms4srid4" path="res://scenes/blender/tree.blend" id="4_qwgxh"]
+[ext_resource type="PackedScene" uid="uid://cxm7d8jq4kuel" path="res://scenes/blender/tree2.blend" id="5_051ri"]
+[ext_resource type="PackedScene" uid="uid://c1oi504d42b6j" path="res://scenes/track/windmill.tscn" id="6_djis2"]
+[ext_resource type="PackedScene" uid="uid://c78p4qwxklpxv" path="res://scenes/blender/tree3.blend" id="6_w17qq"]
+[ext_resource type="PackedScene" uid="uid://c58ogt6th7xqn" path="res://scenes/blender/tree4.blend" id="7_42mh8"]
+[ext_resource type="PackedScene" uid="uid://c0klg0d436txx" path="res://scenes/blender/tree5.blend" id="8_ftc8r"]
+[ext_resource type="PackedScene" uid="uid://c4uwdcusug3ux" path="res://scenes/track/turbo_powerup.tscn" id="10_g6xuj"]
+[ext_resource type="PackedScene" uid="uid://c8wjel5fyyfgg" path="res://scenes/track/reverse_turbo_powerup.tscn" id="11_rvn62"]
+[ext_resource type="PackedScene" uid="uid://b5fvhpui2jqhv" path="res://scenes/blender/house.blend" id="12_jp4aw"]
+[ext_resource type="PackedScene" uid="uid://1na3logqa0u3" path="res://scenes/blender/house2.blend" id="14_t13kj"]
+[ext_resource type="Script" path="res://scenes/car/sync_allow_human_control_on_inference.gd" id="16_47pia"]
+[ext_resource type="PackedScene" uid="uid://qkw7dc6ny444" path="res://scenes/car/car_manager.tscn" id="16_i65dl"]
+[ext_resource type="Script" path="res://scenes/game_scene/UI.gd" id="17_1xllr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0ylt"]
+transparency = 1
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+
+[sub_resource type="Gradient" id="Gradient_35fhw"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0.0627451, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_exfeh"]
+gradient = SubResource("Gradient_35fhw")
+width = 64
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s06bd"]
+cull_mode = 2
+albedo_texture = SubResource("GradientTexture1D_exfeh")
+roughness = 0.0
+refraction_scale = 0.0
+
+[sub_resource type="Gradient" id="Gradient_dqyuu"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mp6fq"]
+gradient = SubResource("Gradient_dqyuu")
+width = 64
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwfq4"]
+transparency = 1
+albedo_texture = SubResource("GradientTexture1D_mp6fq")
+
+[sub_resource type="Gradient" id="Gradient_6f18m"]
+colors = PackedColorArray(0.2, 0.2, 0.2, 1, 0.06, 0.06, 0.06, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hwiyf"]
+noise_type = 3
+frequency = 0.1563
+fractal_gain = 0.83
+fractal_weighted_strength = 0.33
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dac54"]
+color_ramp = SubResource("Gradient_6f18m")
+noise = SubResource("FastNoiseLite_hwiyf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7elja"]
+albedo_texture = SubResource("NoiseTexture2D_dac54")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+
+[sub_resource type="Curve3D" id="Curve3D_5j3hw"]
+bake_interval = 0.1
+_data = {
+"points": PackedVector3Array(22.7055, 0, 1.89175, -22.7055, 0, -1.89175, 0.764469, 0, 77.9037, 0, 0, 0, 0, 0, 0, -29.8344, -0.00012207, 41.8395, 22.5464, -0.00012207, -18.5012, -22.5464, 0.00012207, 18.5012, -68.5292, 0, 36.6527, -21.6077, 0, 6.40967, 21.6077, 0, -6.40967, -77.9995, 0, 10.4469, 0, 0, 0, 0, 0, 0, -65.6174, 0, -21.6066, 0, 0, 0, 0, 0, 0, -69.1102, 0, -43.1108, 0, 0, 0, 0, 0, 0, -77.6366, 0, -64.7269, -29.0616, 0.00012207, 1.92143, 29.0616, -0.00012207, -1.92143, -52.2977, -0.00012207, -88.2644, 7.27809, -0.00012207, -32.903, -7.27809, 0.00012207, 32.903, 52.1795, -0.00012207, -91.4526, -18.2936, 0, -37.8456, 18.2936, 0, 37.8456, 125.738, 0, -41.3968, 0, 0, 0, 0, 0, 0, 88.594, 0, 6.66104, 0, 0, 0, 0, 0, 0, 65.0917, 0, 16.8612, -12.6871, -0.00012207, -22.5404, 12.6871, 0.00012207, 22.5404, 42.2424, 0, 61.3878, 0, 0, 0, 0, 0, 0, 0.764469, 0, 77.9037),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 14
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_med5r"]
+roughness = 0.5
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x2c37"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_osfbh"]
+sky_material = SubResource("ProceduralSkyMaterial_x2c37")
+
+[sub_resource type="Environment" id="Environment_2xai3"]
+background_mode = 2
+sky = SubResource("Sky_osfbh")
+tonemap_mode = 2
+volumetric_fog_density = 0.01
+
+[sub_resource type="Gradient" id="Gradient_lm1w0"]
+colors = PackedColorArray(0, 0.290196, 0, 1, 0, 0.231373, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o8xj6"]
+noise_type = 3
+seed = 660
+frequency = 0.006
+fractal_octaves = 2
+fractal_lacunarity = 10.845
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2pabx"]
+width = 256
+height = 256
+seamless = true
+seamless_blend_skirt = 0.675
+color_ramp = SubResource("Gradient_lm1w0")
+noise = SubResource("FastNoiseLite_o8xj6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5w71k"]
+diffuse_mode = 3
+specular_mode = 2
+albedo_texture = SubResource("NoiseTexture2D_2pabx")
+metallic_specular = 0.0
+uv1_scale = Vector3(5, 6, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6aq33"]
+size = Vector2(400, 400)
+
+[node name="GameScene" type="Node3D"]
+
+[node name="Track" type="Node3D" parent="." node_paths=PackedStringArray("track_path")]
+script = ExtResource("1_eraeg")
+track_path = NodePath("Path")
+checkpoints = Array[PackedScene]([ExtResource("2_kplf2")])
+checkpoint_frequency_meters = 50
+trees = Array[PackedScene]([ExtResource("4_qwgxh"), ExtResource("5_051ri"), ExtResource("6_w17qq"), ExtResource("7_42mh8"), ExtResource("8_ftc8r")])
+tree_frequency_meters = 6
+rocks = Array[PackedScene]([ExtResource("3_wvqgn"), ExtResource("4_gkjus")])
+rock_frequency_meters = 70
+powerup_scene = Array[PackedScene]([ExtResource("10_g6xuj"), ExtResource("11_rvn62")])
+
+[node name="EdgeLine" type="CSGPolygon3D" parent="Track"]
+polygon = PackedVector2Array(-4, 0.105, -4, 0.11, -3.8, 0.11, -3.8, 0.105)
+mode = 2
+path_node = NodePath("../Path")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 7.9
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 3.0
+path_joined = true
+material = SubResource("StandardMaterial3D_p0ylt")
+
+[node name="EdgeLine2" type="CSGPolygon3D" parent="Track/EdgeLine"]
+polygon = PackedVector2Array(4, 0.105, 4, 0.11, 3.8, 0.11, 3.8, 0.105)
+mode = 2
+path_node = NodePath("../../Path")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 7.9
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 3.0
+path_joined = true
+material = SubResource("StandardMaterial3D_p0ylt")
+
+[node name="Wall" type="CSGPolygon3D" parent="Track"]
+polygon = PackedVector2Array(-5.195, 0, -4.75, 0.6, -4.66, 0.6, -4.5, 0.11, -4.5, 0.105)
+mode = 2
+path_node = NodePath("../Path")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 7.9
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 3.0
+path_joined = true
+material = SubResource("StandardMaterial3D_s06bd")
+
+[node name="Wall2" type="CSGPolygon3D" parent="Track/Wall"]
+polygon = PackedVector2Array(5.195, 0, 4.75, 0.6, 4.66, 0.6, 4.5, 0.11, 4.5, 0.105)
+mode = 2
+path_node = NodePath("../../Path")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 7.9
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 3.0
+path_joined = true
+material = SubResource("StandardMaterial3D_s06bd")
+
+[node name="WallCollision" type="CSGPolygon3D" parent="Track"]
+visible = false
+use_collision = true
+polygon = PackedVector2Array(-5, 0, -5, 3, -4.5, 3, -4.5, 0.11, -4.5, 0.105)
+mode = 2
+path_node = NodePath("../Path")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 7.9
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 3.0
+path_joined = true
+
+[node name="WallCollision2" type="CSGPolygon3D" parent="Track/WallCollision"]
+polygon = PackedVector2Array(5, 0, 5, 3, 4.5, 3, 4.5, 0.11, 4.5, 0.105)
+mode = 2
+path_node = NodePath("../../Path")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 7.9
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 3.0
+path_joined = true
+
+[node name="CenterLine" type="CSGPolygon3D" parent="Track"]
+polygon = PackedVector2Array(-0.1, 0.105, 0, 0.11, 0, 0.11, 0, 0.105)
+mode = 2
+path_node = NodePath("../Path")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 7.9
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 3.0
+path_joined = true
+material = SubResource("StandardMaterial3D_fwfq4")
+
+[node name="TrackGeometry" type="CSGPolygon3D" parent="Track"]
+polygon = PackedVector2Array(-5, 0, -4, 0.1, 4, 0.1, 5, 0)
+mode = 2
+path_node = NodePath("../Path")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 10.0
+path_rotation = 2
+path_local = false
+path_continuous_u = false
+path_u_distance = 1.0
+path_joined = true
+material = SubResource("StandardMaterial3D_7elja")
+
+[node name="Path" type="Path3D" parent="Track"]
+curve = SubResource("Curve3D_5j3hw")
+
+[node name="house" parent="Track" instance=ExtResource("12_jp4aw")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -33.182, 0, -25.8549)
+
+[node name="house3" parent="Track" instance=ExtResource("12_jp4aw")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 43.8925, 0, -45.1047)
+
+[node name="house4" parent="Track" instance=ExtResource("12_jp4aw")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 126.893, 0, -75.1047)
+
+[node name="windmill" parent="Track" instance=ExtResource("6_djis2")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 16.3976, 0, -61.7746)
+
+[node name="house2" parent="Track" instance=ExtResource("14_t13kj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 42.6668, 0, -0.215065)
+
+[node name="house5" parent="Track" instance=ExtResource("14_t13kj")]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, -100.333, 0, -22.2151)
+
+[node name="StartingLine" type="CSGBox3D" parent="Track"]
+material_override = SubResource("StandardMaterial3D_med5r")
+size = Vector3(7.6, 0.22, 0.2)
+
+[node name="Cars" parent="." node_paths=PackedStringArray("track") instance=ExtResource("16_i65dl")]
+track = NodePath("../Track")
+number_of_car_groups_to_spawn = 14
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("16_47pia")
+onnx_model_path = "model.onnx"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 14, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2xai3")
+
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("current_lap", "get_ready", "winner")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_1xllr")
+current_lap = NodePath("CurrentLap")
+get_ready = NodePath("VBoxContainer/GetReady")
+winner = NodePath("VBoxContainer/Winner")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.5
+offset_top = 100.0
+offset_right = 174.5
+offset_bottom = 189.0
+grow_horizontal = 2
+
+[node name="Winner" type="Label" parent="UI/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 25
+text = "The winner is ..."
+horizontal_alignment = 1
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="GetReady" type="Label" parent="UI/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 25
+text = "Get ready! Race starting in ..."
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CurrentLap" type="Label" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 231.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 25
+text = "Lap: 0/0"
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_5w71k")
+mesh = SubResource("PlaneMesh_6aq33")
+
+[editable path="Cars"]

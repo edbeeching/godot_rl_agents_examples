@@ -13,17 +13,8 @@ var player_list = []
 var countdown_scene = preload("res://UICountDown.tscn")
 var fly_cam : Node3D
 
-func _ready():
-	return
-	await get_tree().create_timer(1.0).timeout
-	var callable = Callable(self, "unpause_players")
-	callable.call()
-	return
-	var countdown = countdown_scene.instantiate()
-	add_child(countdown)
-	countdown.run_countdown(callable)
-	
-func _process(delta):
+
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"): 
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE	
 	
