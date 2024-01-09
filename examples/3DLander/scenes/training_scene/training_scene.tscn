@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwwqctrnbhrru"]
+
+[ext_resource type="PackedScene" uid="uid://bkebr724kehsw" path="res://scenes/game_scene/game_scene.tscn" id="1_7pikd"]
+[ext_resource type="Script" path="res://scenes/training_scene/SyncAddControlModeSelection.gd" id="2_st3rd"]
+
+[node name="TrainingScene" type="Node3D"]
+
+[node name="GameScene" parent="." instance=ExtResource("1_7pikd")]
+
+[node name="GameScene2" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3093, 0, 0)
+
+[node name="GameScene3" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3053)
+
+[node name="GameScene4" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3093, 0, -3053)
+
+[node name="GameScene5" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3013)
+
+[node name="GameScene6" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3093, 0, 3013)
+
+[node name="GameScene7" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6033, 0, 0)
+
+[node name="GameScene8" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2940, 0, 0)
+
+[node name="GameScene9" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6033, 0, -3053)
+
+[node name="GameScene10" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2940, 0, -3053)
+
+[node name="GameScene11" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6033, 0, 3013)
+
+[node name="GameScene12" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2940, 0, 3013)
+
+[node name="GameScene13" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12116, 0, -3053)
+
+[node name="GameScene14" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9023, 0, -3053)
+
+[node name="GameScene15" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12116, 0, 3013)
+
+[node name="GameScene16" parent="." instance=ExtResource("1_7pikd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9023, 0, 3013)
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_st3rd")
+speed_up = 10
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+sky_mode = 1

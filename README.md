@@ -13,3 +13,6 @@ https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/647e5549-
 
 #### Hovercraft racing:
 https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/09cfa8ef-4d1a-46d3-a38a-0b7cdf1e1000
+
+#### 3D Lander:
+https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/67e44394-0e9f-4a6f-90f3-5109de49eab1

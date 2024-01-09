@@ -1,0 +1,871 @@
+[gd_scene load_steps=37 format=3 uid="uid://dxflbek2f52ks"]
+
+[ext_resource type="Script" path="res://scenes/game_scene/Lander.gd" id="1_2yq6u"]
+[ext_resource type="PackedScene" uid="uid://c5sv7fju6uiew" path="res://blender/lander.blend" id="2_s4oxe"]
+[ext_resource type="Script" path="res://scenes/game_scene/Thruster.gd" id="3_ylucp"]
+[ext_resource type="PackedScene" uid="uid://drqbjpjw2hiic" path="res://blender/landing-leg.blend" id="4_gp4fc"]
+[ext_resource type="Script" path="res://scenes/game_scene/LanderAIController3D.gd" id="5_w0bd1"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="6_03nxx"]
+
+[sub_resource type="Gradient" id="Gradient_nkj1p"]
+offsets = PackedFloat32Array(0, 0.568075)
+colors = PackedColorArray(0.64, 0.64, 0.64, 0.831373, 0.42, 0.42, 0.42, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0sn4e"]
+gradient = SubResource("Gradient_nkj1p")
+width = 128
+
+[sub_resource type="Curve" id="Curve_id7xf"]
+_data = [Vector2(0.00218819, 0.210526), 0.0, 0.0, 0, 0, Vector2(1, 0.757895), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_867j3"]
+curve = SubResource("Curve_id7xf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rsa34"]
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_867j3")
+color_ramp = SubResource("GradientTexture1D_0sn4e")
+
+[sub_resource type="Gradient" id="Gradient_0sav6"]
+offsets = PackedFloat32Array(0, 0.643541)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vxa0k"]
+gradient = SubResource("Gradient_0sav6")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vp3n7"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.529412)
+albedo_texture = SubResource("GradientTexture2D_vxa0k")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_u5of1"]
+material = SubResource("StandardMaterial3D_vp3n7")
+size = Vector2(0.6, 0.6)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ot7am"]
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_867j3")
+color_ramp = SubResource("GradientTexture1D_0sn4e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3l3es"]
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_867j3")
+color_ramp = SubResource("GradientTexture1D_0sn4e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k81u0"]
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_867j3")
+color_ramp = SubResource("GradientTexture1D_0sn4e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5yx2o"]
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_867j3")
+color_ramp = SubResource("GradientTexture1D_0sn4e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pnaje"]
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_867j3")
+color_ramp = SubResource("GradientTexture1D_0sn4e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_krfta"]
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_867j3")
+color_ramp = SubResource("GradientTexture1D_0sn4e")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tvjil"]
+points = PackedVector3Array(0.892248, 1, 0.692248, 1.2, 0.692248, 0.692248, 0.892248, 1, -0.692443, -0.892483, 1, 0.692248, 0.892248, 0.692248, 1, 1.2, 0.692248, -0.692443, 1.2, -0.692443, 0.692248, 0.892248, 0.692248, -1, -0.892483, 1, -0.692443, -1.2, 0.692248, 0.692248, -0.892483, 0.692248, 1, 0.892248, -0.692443, 1, 1.2, -0.692443, -0.692443, 0.892248, -1, 0.692248, 0.892248, -0.692443, -1, -0.892483, 0.692248, -1, -1.2, 0.692248, -0.692443, -1.2, -0.692443, 0.692248, -0.892483, -0.692443, 1, 0.892248, -1, -0.692443, -0.892483, -1, 0.692248, -0.892483, -0.692443, -1, -1.2, -0.692443, -0.692443, -0.892483, -1, -0.692443)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oxrum"]
+points = PackedVector3Array(-7.45058e-09, -1.14764, 0.0999804, 0.0866025, -1.14764, 0.0499804, -7.45058e-09, -0.947639, 0.0499804, -0.0866025, -1.14764, 0.0499804, 0.0866025, -1.14764, -0.0500196, 0.0433013, -0.947639, 0.0249804, -0.0433013, -0.947639, 0.0249804, -0.0866025, -1.14764, -0.0500196, -7.45058e-09, -1.14764, -0.1, -7.45058e-09, -0.947639, -0.0500196, 0.0433013, -0.947639, -0.0250196, -0.0433013, -0.947639, -0.0250196)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hn0x3"]
+points = PackedVector3Array(-0.2, 0.961511, -0.138489, -0.2, 0.961511, 0.138449, -0.2, 1.23845, -0.138489, -0.138489, 0.961511, -0.2, -0.138489, 0.9, -0.138489, -0.138489, 0.9, 0.138449, -0.138489, 0.961511, 0.199961, -0.2, 1.23845, 0.138449, -0.138489, 1.3, -0.138489, -0.138489, 1.23845, -0.2, 0.138449, 0.961511, -0.2, 0.138449, 0.9, -0.138489, 0.138449, 0.9, 0.138449, 0.138449, 0.961511, 0.199961, -0.138489, 1.23845, 0.199961, -0.138489, 1.3, 0.138449, 0.138449, 1.3, -0.138489, 0.138449, 1.23845, -0.2, 0.199961, 0.961511, -0.138489, 0.199961, 0.961511, 0.138449, 0.138449, 1.23845, 0.199961, 0.138449, 1.3, 0.138449, 0.199961, 1.23845, -0.138489, 0.199961, 1.23845, 0.138449)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ye88r"]
+points = PackedVector3Array(0.356386, 1.13939, -0.08, 0.35637, 1.07013, -0.04, 0.196386, 1.10475, -0.02, 0.196386, 1.13939, -0.04, 0.356386, 1.20868, -0.04, 0.356386, 1.13939, 0.08, 0.35637, 1.07013, 0.04, 0.196386, 1.10475, 0.02, 0.196386, 1.17404, -0.02, 0.356386, 1.20868, 0.04, 0.196386, 1.13939, 0.04, 0.196386, 1.17404, 0.02)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7x03l"]
+points = PackedVector3Array(-0.356386, 1.13939, -0.08, -0.356386, 1.07013, -0.04, -0.356386, 1.20868, -0.04, -0.196386, 1.13939, -0.04, -0.196386, 1.10475, -0.02, -0.356386, 1.07013, 0.04, -0.356386, 1.20868, 0.04, -0.196386, 1.17404, -0.02, -0.196386, 1.10475, 0.02, -0.356386, 1.13939, 0.08, -0.196386, 1.17404, 0.02, -0.196386, 1.13939, 0.04)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sq7ka"]
+points = PackedVector3Array(0.08, 1.13939, -0.356386, 0.04, 1.20868, -0.356386, 0.04, 1.13939, -0.196386, 0.02, 1.10475, -0.196386, 0.04, 1.07013, -0.356386, -0.04, 1.20868, -0.356386, 0.02, 1.17404, -0.196386, -0.02, 1.10475, -0.196386, -0.04, 1.07013, -0.356386, -0.08, 1.13939, -0.356386, -0.0400157, 1.13939, -0.196386, -0.02, 1.17404, -0.196386)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qs1wt"]
+points = PackedVector3Array(0.08, 1.13939, 0.356386, 0.04, 1.20868, 0.356386, 0.04, 1.07013, 0.356386, 0.02, 1.10475, 0.196386, 0.04, 1.13939, 0.196386, 0.02, 1.17404, 0.196386, -0.04, 1.20868, 0.356386, -0.04, 1.07013, 0.356386, -0.02, 1.10475, 0.196386, -0.02, 1.17404, 0.196386, -0.0400157, 1.13939, 0.196386, -0.08, 1.13939, 0.356386)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_clf7x"]
+points = PackedVector3Array(0.689131, -0.327066, 1.10126, 0.72, -0.357841, 1.10126, 0.689131, -0.327066, 0.962799, -0.689272, -0.327066, 1.10126, 0.689131, -0.357841, 1.13204, 0.72, -0.357841, 0.962799, 0.72, -0.496311, 1.10126, -0.689272, -0.327066, 0.962799, -0.72, -0.357841, 1.10126, -0.689272, -0.357841, 1.13204, 0.689131, -0.496311, 1.13204, 0.72, -0.496311, 0.962799, 0.689131, -0.527066, 1.10126, -0.72, -0.357841, 0.962799, -0.72, -0.496311, 1.10126, -0.689272, -0.496311, 1.13204, 0.689131, -0.527066, 0.962799, -0.689272, -0.527066, 1.10126, -0.72, -0.496311, 0.962799, -0.689272, -0.527066, 0.962799)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jgccj"]
+points = PackedVector3Array(-1.35457, -0.282196, -0.480807, -1.35457, -0.251478, -0.511552, -1.14268, -0.282196, -0.480807, -1.35457, -0.282196, -0.119275, -1.38532, -0.251478, -0.480807, -1.14268, -0.251478, -0.511552, -1.35457, 0.558711, -0.511552, -1.0818, -0.282196, 0.119175, -1.38532, -0.251478, -0.119275, -1.29369, -0.282196, 0.480707, -1.38532, 0.558711, -0.480807, -1.14268, 0.558711, -0.511552, -1.0818, -0.251478, 0.08843, -1.35457, 0.589429, -0.480807, -1.0818, -0.282196, 0.480707, -1.38532, 0.558711, -0.119275, -1.32444, -0.251478, 0.480707, -1.29369, -0.251478, 0.511552, -1.14268, 0.589429, -0.480807, -1.0818, 0.589514, 0.119175, -1.0818, 0.558711, 0.08843, -1.35457, 0.589429, -0.119275, -1.0818, -0.251478, 0.511552, -1.32444, 0.558711, 0.480707, -1.29369, 0.558711, 0.511552, -1.0818, 0.589514, 0.480707, -1.29369, 0.589429, 0.480707, -1.0818, 0.558711, 0.511552)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_20jou"]
+points = PackedVector3Array(0.689131, -0.205966, -0.915119, 0.72, -0.236737, -0.915119, 0.689131, -0.205966, -1.05359, -0.689272, -0.205966, -0.915136, -0.72, -0.236737, -0.915136, 0.689131, -0.527066, -0.915119, 0.72, -0.236737, -1.05359, 0.72, -0.496326, -0.915119, 0.689131, -0.236737, -1.08436, -0.689272, -0.205966, -1.05359, -0.72, -0.236737, -1.05359, -0.72, -0.496326, -0.915136, 0.689131, -0.527066, -1.05359, -0.689272, -0.527066, -0.915136, 0.72, -0.496326, -1.05359, 0.689131, -0.496326, -1.08436, -0.689272, -0.236737, -1.08436, -0.72, -0.496326, -1.05359, -0.689272, -0.527066, -1.05359, -0.689272, -0.496326, -1.08436)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_y41en"]
+points = PackedVector3Array(-4.35855, -4.80807, -1.43498, -4.05137, -5.11552, -1.43498, -4.35855, -4.80807, 0.683862, -4.35855, 1.19175, -2.0438, -4.05137, -5.11552, 0.683862, -4.05137, 0.8843, -2.0438, 4.05051, -5.11552, -1.43498, -4.05137, -4.80807, 0.991393, -4.35855, -1.19275, 0.683862, -4.35855, 4.80707, -2.0438, 4.05051, -5.11552, 0.683862, 4.05051, 0.8843, -2.0438, 4.35855, -4.80807, -1.43498, 4.05051, -4.80807, 0.991393, -4.05137, -1.19275, 0.991393, -4.35855, 4.80707, 0.0750408, -4.05137, 5.11552, -2.0438, 4.35855, -4.80807, 0.683862, 4.35855, 1.19175, -2.0438, 4.05051, -1.19275, 0.991393, -4.05137, 4.80707, 0.382571, -4.05137, 5.11552, 0.0750408, 4.05051, 5.11552, -2.0438, 4.35855, -1.19275, 0.683862, 4.35855, 4.80707, -2.0438, 4.05051, 4.80707, 0.382571, 4.05051, 5.11552, 0.0750408, 4.35855, 4.80707, 0.0750408)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_23ttv"]
+points = PackedVector3Array(-1.35526e-05, -0.0711111, 0.08, 0.0692685, -0.0711111, 0.04, -1.35526e-05, 0.0888889, 0.04, -0.0346546, 0.0888889, 0.02, -0.069282, -0.0711111, 0.04, 0.0692685, -0.0711111, -0.04, 0.0346275, 0.0888889, 0.02, -0.0346546, 0.0888889, -0.02, -0.069282, -0.0711111, -0.04, -1.35526e-05, -0.0711111, -0.08, 0.0346275, 0.0888889, -0.02, -1.35526e-05, 0.0888889, -0.04)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tgx77"]
+points = PackedVector3Array(-1.35526e-05, -0.0711111, 0.08, 0.0692685, -0.0711111, 0.04, -1.35526e-05, 0.0888889, 0.04, -0.0346546, 0.0888889, 0.02, -0.069282, -0.0711111, 0.04, 0.0692685, -0.0711111, -0.04, 0.0346275, 0.0888889, 0.02, -0.0346546, 0.0888889, -0.02, -0.069282, -0.0711111, -0.04, -1.35526e-05, -0.0711111, -0.08, 0.0346275, 0.0888889, -0.02, -1.35526e-05, 0.0888889, -0.04)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bigji"]
+points = PackedVector3Array(0.0523691, 0.0288044, 0.0994882, -0.0438545, -0.0191863, -0.175418, -0.0470589, -0.0235413, -0.141209, -0.176861, 0.0193378, -0.0165505, -0.105209, -0.0193862, 0.144003, 0.17542, -0.0191866, 0.0438551, 0.120067, 0.0191047, -0.136486, 0.0165505, 0.0193378, 0.176861, -0.0604779, 0.0192462, -0.17051, -0.170485, -0.0192497, -0.0604691, 0.170509, 0.019246, 0.0604775, 0.0604687, -0.0192496, 0.170484, 0.112025, -0.029344, -0.0373304, 0.136466, -0.0191083, -0.120049, -0.136486, 0.0191047, 0.120067, -0.112025, -0.029344, 0.0373304, -0.068293, 0.0288917, -0.094557, 0.112041, 0.029342, -0.0373358, -0.112041, 0.029342, 0.0373358, -0.144003, -0.0193862, 0.105209, 0.0682828, -0.0288938, 0.0945429, 0.176861, 0.0193378, 0.0165505, 0.0373304, -0.029344, -0.112025, -0.161776, 0.0195188, -0.072518, 0.072518, 0.0195188, 0.161776, 0.0373358, 0.029342, -0.112041, -0.0373304, -0.029344, 0.112025, -0.0373358, 0.029342, 0.112041, -0.0945432, -0.0288939, -0.068283, -0.0165485, -0.0193419, -0.176841, -0.0165505, 0.0193378, -0.176861, 0.105209, -0.0193862, -0.144003)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_teqnf"]
+points = PackedVector3Array(-0.199839, -0.531613, -0.02, -0.199839, -0.531613, 0.02, 0.161889, 0.544293, -0.02, -0.161929, -0.544293, -0.02, -0.161929, -0.544293, 0.02, 0.161889, 0.544293, 0.0199961, 0.199838, 0.531506, -0.02, 0.199838, 0.531506, 0.0199961)
+
+[node name="Lander" type="Node3D" node_paths=PackedStringArray("raycast_sensor", "up_thruster", "left_thruster", "right_thruster", "forward_thruster", "back_thruster", "turn_left_thruster", "turn_right_thruster")]
+script = ExtResource("1_2yq6u")
+show_successful_landing_debug_text = true
+up_thruster_max_force = 250.0
+navigation_thruster_max_force = 25.0
+raycast_sensor = NodePath("Lander/RayCastSensor3D")
+up_thruster = NodePath("Lander/UpThruster")
+left_thruster = NodePath("Lander/LeftThruster")
+right_thruster = NodePath("Lander/RightThruster")
+forward_thruster = NodePath("Lander/ForwardThruster")
+back_thruster = NodePath("Lander/BackThruster")
+turn_left_thruster = NodePath("Lander/TurnLeftThruster")
+turn_right_thruster = NodePath("Lander/TurnRightThruster")
+
+[node name="Lander" parent="." instance=ExtResource("2_s4oxe")]
+collision_layer = 2
+mass = 100.0
+gravity_scale = 0.17
+center_of_mass_mode = 1
+continuous_cd = true
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="UpThruster" parent="Lander" index="1"]
+script = ExtResource("3_ylucp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Lander/UpThruster" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0847096, 0)
+amount = 32
+lifetime = 3.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_rsa34")
+draw_pass_1 = SubResource("QuadMesh_u5of1")
+
+[node name="LeftThruster" parent="Lander" index="3"]
+script = ExtResource("3_ylucp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Lander/LeftThruster" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0847096, 0)
+amount = 32
+lifetime = 3.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ot7am")
+draw_pass_1 = SubResource("QuadMesh_u5of1")
+
+[node name="RightThruster" parent="Lander" index="4"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.285275, 1.13941, 0)
+script = ExtResource("3_ylucp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Lander/RightThruster" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0847096, 0)
+amount = 32
+lifetime = 3.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_3l3es")
+draw_pass_1 = SubResource("QuadMesh_u5of1")
+
+[node name="BackThruster" parent="Lander" index="5"]
+script = ExtResource("3_ylucp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Lander/BackThruster" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0847096, 0)
+amount = 32
+lifetime = 3.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_k81u0")
+draw_pass_1 = SubResource("QuadMesh_u5of1")
+
+[node name="ForwardThruster" parent="Lander" index="6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.13941, 0.285275)
+script = ExtResource("3_ylucp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Lander/ForwardThruster" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0847096, 0)
+amount = 32
+lifetime = 3.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_5yx2o")
+draw_pass_1 = SubResource("QuadMesh_u5of1")
+
+[node name="TurnLeftThruster" parent="Lander" index="11"]
+script = ExtResource("3_ylucp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Lander/TurnLeftThruster" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0847096, 0)
+amount = 16
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_pnaje")
+draw_pass_1 = SubResource("QuadMesh_u5of1")
+
+[node name="TurnRightThruster" parent="Lander" index="12"]
+script = ExtResource("3_ylucp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Lander/TurnRightThruster" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0847096, 0)
+amount = 16
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_krfta")
+draw_pass_1 = SubResource("QuadMesh_u5of1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lander"]
+shape = SubResource("ConvexPolygonShape3D_tvjil")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Lander"]
+shape = SubResource("ConvexPolygonShape3D_oxrum")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Lander"]
+shape = SubResource("ConvexPolygonShape3D_hn0x3")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Lander"]
+shape = SubResource("ConvexPolygonShape3D_ye88r")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Lander"]
+shape = SubResource("ConvexPolygonShape3D_7x03l")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Lander"]
+shape = SubResource("ConvexPolygonShape3D_sq7ka")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Lander"]
+shape = SubResource("ConvexPolygonShape3D_qs1wt")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Lander"]
+shape = SubResource("ConvexPolygonShape3D_clf7x")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Lander"]
+shape = SubResource("ConvexPolygonShape3D_jgccj")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Lander"]
+shape = SubResource("ConvexPolygonShape3D_20jou")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Lander"]
+transform = Transform3D(0, 0, 0.1, 0.1, 0, 0, 0, 0.1, 0, 1.28615, 0.153659, 0)
+shape = SubResource("ConvexPolygonShape3D_y41en")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Lander"]
+transform = Transform3D(5.96046e-08, -0.707107, -0.707107, 1, 0, 2.98023e-08, -2.98023e-08, -0.707107, 0.707107, 1.13648, 0, -0.876737)
+shape = SubResource("ConvexPolygonShape3D_23ttv")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Lander"]
+transform = Transform3D(5.96046e-08, -0.707107, -0.707107, 1, 0, 2.98023e-08, -2.98023e-08, -0.707107, 0.707107, -1.13648, 0, 0.876737)
+shape = SubResource("ConvexPolygonShape3D_tgx77")
+
+[node name="RayCastSensor3D" type="Node3D" parent="Lander"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("6_03nxx")
+n_rays_width = 12.0
+n_rays_height = 12.0
+ray_length = 250.0
+cone_width = 360.0
+cone_height = 360.0
+
+[node name="node_0 0" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, -64.7048, 233.253)
+
+[node name="node_0 1" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, -176.777, 170.753)
+
+[node name="node_0 2" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(16.7468, -241.481, 62.5)
+
+[node name="node_0 3" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-16.7468, -241.481, -62.5)
+
+[node name="node_0 4" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, -176.777, -170.753)
+
+[node name="node_0 5" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, -64.7048, -233.253)
+
+[node name="node_0 6" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, 64.7048, -233.253)
+
+[node name="@RayCast3D@31274" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, 176.777, -170.753)
+
+[node name="@RayCast3D@31275" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-16.7468, 241.481, -62.5)
+
+[node name="@RayCast3D@31276" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(16.7468, 241.481, 62.5)
+
+[node name="@RayCast3D@31277" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, 176.777, 170.753)
+
+[node name="@RayCast3D@31278" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, 64.7048, 233.253)
+
+[node name="node_1 0" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, -64.7048, 170.753)
+
+[node name="node_1 1" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(125, -176.777, 125)
+
+[node name="node_1 2" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, -241.481, 45.7532)
+
+[node name="node_1 3" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, -241.481, -45.7532)
+
+[node name="node_1 4" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-125, -176.777, -125)
+
+[node name="node_1 5" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, -64.7048, -170.753)
+
+[node name="node_1 6" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, 64.7048, -170.753)
+
+[node name="@RayCast3D@31279" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-125, 176.777, -125)
+
+[node name="@RayCast3D@31280" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, 241.481, -45.7532)
+
+[node name="@RayCast3D@31281" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, 241.481, 45.7532)
+
+[node name="@RayCast3D@31282" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(125, 176.777, 125)
+
+[node name="@RayCast3D@31283" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, 64.7048, 170.753)
+
+[node name="node_2 0" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(233.253, -64.7048, 62.5)
+
+[node name="node_2 1" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, -176.777, 45.7532)
+
+[node name="node_2 2" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, -241.481, 16.7468)
+
+[node name="node_2 3" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, -241.481, -16.7468)
+
+[node name="node_2 4" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, -176.777, -45.7532)
+
+[node name="node_2 5" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-233.253, -64.7048, -62.5)
+
+[node name="node_2 6" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-233.253, 64.7048, -62.5)
+
+[node name="@RayCast3D@31284" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, 176.777, -45.7532)
+
+[node name="@RayCast3D@31285" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, 241.481, -16.7468)
+
+[node name="@RayCast3D@31286" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, 241.481, 16.7468)
+
+[node name="@RayCast3D@31287" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, 176.777, 45.7532)
+
+[node name="@RayCast3D@31288" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(233.253, 64.7048, 62.5)
+
+[node name="node_3 0" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(233.253, -64.7048, -62.5)
+
+[node name="node_3 1" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, -176.777, -45.7532)
+
+[node name="node_3 2" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, -241.481, -16.7468)
+
+[node name="node_3 3" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, -241.481, 16.7468)
+
+[node name="node_3 4" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, -176.777, 45.7532)
+
+[node name="node_3 5" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-233.253, -64.7048, 62.5)
+
+[node name="node_3 6" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-233.253, 64.7048, 62.5)
+
+[node name="@RayCast3D@31289" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, 176.777, 45.7532)
+
+[node name="@RayCast3D@31290" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, 241.481, 16.7468)
+
+[node name="@RayCast3D@31291" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, 241.481, -16.7468)
+
+[node name="@RayCast3D@31292" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, 176.777, -45.7532)
+
+[node name="@RayCast3D@31293" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(233.253, 64.7048, -62.5)
+
+[node name="node_4 0" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, -64.7048, -170.753)
+
+[node name="node_4 1" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(125, -176.777, -125)
+
+[node name="node_4 2" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, -241.481, -45.7532)
+
+[node name="node_4 3" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, -241.481, 45.7532)
+
+[node name="node_4 4" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-125, -176.777, 125)
+
+[node name="node_4 5" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, -64.7048, 170.753)
+
+[node name="node_4 6" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, 64.7048, 170.753)
+
+[node name="@RayCast3D@31294" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-125, 176.777, 125)
+
+[node name="@RayCast3D@31295" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, 241.481, 45.7532)
+
+[node name="@RayCast3D@31296" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, 241.481, -45.7532)
+
+[node name="@RayCast3D@31297" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(125, 176.777, -125)
+
+[node name="@RayCast3D@31298" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, 64.7048, -170.753)
+
+[node name="node_5 0" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, -64.7048, -233.253)
+
+[node name="node_5 1" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, -176.777, -170.753)
+
+[node name="node_5 2" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(16.7468, -241.481, -62.5)
+
+[node name="node_5 3" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-16.7468, -241.481, 62.5)
+
+[node name="node_5 4" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, -176.777, 170.753)
+
+[node name="node_5 5" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, -64.7048, 233.253)
+
+[node name="node_5 6" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, 64.7048, 233.253)
+
+[node name="@RayCast3D@31299" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, 176.777, 170.753)
+
+[node name="@RayCast3D@31300" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-16.7468, 241.481, 62.5)
+
+[node name="@RayCast3D@31301" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(16.7468, 241.481, -62.5)
+
+[node name="@RayCast3D@31302" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, 176.777, -170.753)
+
+[node name="@RayCast3D@31303" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, 64.7048, -233.253)
+
+[node name="@RayCast3D@31304" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, -64.7048, -233.253)
+
+[node name="@RayCast3D@31305" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, -176.777, -170.753)
+
+[node name="@RayCast3D@31306" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-16.7468, -241.481, -62.5)
+
+[node name="@RayCast3D@31307" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(16.7468, -241.481, 62.5)
+
+[node name="@RayCast3D@31308" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, -176.777, 170.753)
+
+[node name="@RayCast3D@31309" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, -64.7048, 233.253)
+
+[node name="node_6 6" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, 64.7048, 233.253)
+
+[node name="@RayCast3D@31310" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, 176.777, 170.753)
+
+[node name="@RayCast3D@31311" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(16.7468, 241.481, 62.5)
+
+[node name="@RayCast3D@31312" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-16.7468, 241.481, -62.5)
+
+[node name="@RayCast3D@31313" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, 176.777, -170.753)
+
+[node name="@RayCast3D@31314" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, 64.7048, -233.253)
+
+[node name="@RayCast3D@31315" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, -64.7048, -170.753)
+
+[node name="@RayCast3D@31316" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-125, -176.777, -125)
+
+[node name="@RayCast3D@31317" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, -241.481, -45.7532)
+
+[node name="@RayCast3D@31318" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, -241.481, 45.7532)
+
+[node name="@RayCast3D@31319" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(125, -176.777, 125)
+
+[node name="@RayCast3D@31320" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, -64.7048, 170.753)
+
+[node name="@RayCast3D@31321" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, 64.7048, 170.753)
+
+[node name="@RayCast3D@31322" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(125, 176.777, 125)
+
+[node name="@RayCast3D@31323" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, 241.481, 45.7532)
+
+[node name="@RayCast3D@31324" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, 241.481, -45.7532)
+
+[node name="@RayCast3D@31325" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-125, 176.777, -125)
+
+[node name="@RayCast3D@31326" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, 64.7048, -170.753)
+
+[node name="node_8 0" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-233.253, -64.7048, -62.5)
+
+[node name="node_8 1" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, -176.777, -45.7532)
+
+[node name="node_8 2" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, -241.481, -16.7468)
+
+[node name="node_8 3" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, -241.481, 16.7468)
+
+[node name="node_8 4" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, -176.777, 45.7532)
+
+[node name="node_8 5" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(233.253, -64.7048, 62.5)
+
+[node name="node_8 6" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(233.253, 64.7048, 62.5)
+
+[node name="@RayCast3D@31327" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, 176.777, 45.7532)
+
+[node name="@RayCast3D@31328" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, 241.481, 16.7468)
+
+[node name="@RayCast3D@31329" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, 241.481, -16.7468)
+
+[node name="@RayCast3D@31330" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, 176.777, -45.7532)
+
+[node name="@RayCast3D@31331" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-233.253, 64.7048, -62.5)
+
+[node name="@RayCast3D@31332" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-233.253, -64.7048, 62.5)
+
+[node name="@RayCast3D@31333" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, -176.777, 45.7532)
+
+[node name="@RayCast3D@31334" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, -241.481, 16.7468)
+
+[node name="@RayCast3D@31335" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, -241.481, -16.7468)
+
+[node name="@RayCast3D@31336" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, -176.777, -45.7532)
+
+[node name="@RayCast3D@31337" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(233.253, -64.7048, -62.5)
+
+[node name="@RayCast3D@31338" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(233.253, 64.7048, -62.5)
+
+[node name="@RayCast3D@31339" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, 176.777, -45.7532)
+
+[node name="@RayCast3D@31340" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, 241.481, -16.7468)
+
+[node name="@RayCast3D@31341" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, 241.481, 16.7468)
+
+[node name="@RayCast3D@31342" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, 176.777, 45.7532)
+
+[node name="@RayCast3D@31343" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-233.253, 64.7048, 62.5)
+
+[node name="node_10 0" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, -64.7048, 170.753)
+
+[node name="node_10 1" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-125, -176.777, 125)
+
+[node name="node_10 2" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, -241.481, 45.7532)
+
+[node name="node_10 3" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, -241.481, -45.7532)
+
+[node name="node_10 4" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(125, -176.777, -125)
+
+[node name="node_10 5" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, -64.7048, -170.753)
+
+[node name="node_10 6" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(170.753, 64.7048, -170.753)
+
+[node name="node_10 7" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(125, 176.777, -125)
+
+[node name="node_10 8" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, 241.481, -45.7532)
+
+[node name="node_10 9" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, 241.481, 45.7532)
+
+[node name="@RayCast3D@31344" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-125, 176.777, 125)
+
+[node name="@RayCast3D@31345" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-170.753, 64.7048, 170.753)
+
+[node name="node_11 0" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, -64.7048, 233.253)
+
+[node name="node_11 1" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, -176.777, 170.753)
+
+[node name="node_11 2" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-16.7468, -241.481, 62.5)
+
+[node name="node_11 3" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(16.7468, -241.481, -62.5)
+
+[node name="node_11 4" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, -176.777, -170.753)
+
+[node name="node_11 5" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, -64.7048, -233.253)
+
+[node name="node_11 6" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(62.5, 64.7048, -233.253)
+
+[node name="node_11 7" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(45.7532, 176.777, -170.753)
+
+[node name="node_11 8" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(16.7468, 241.481, -62.5)
+
+[node name="node_11 9" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-16.7468, 241.481, 62.5)
+
+[node name="@RayCast3D@31346" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-45.7532, 176.777, 170.753)
+
+[node name="@RayCast3D@31347" type="RayCast3D" parent="Lander/RayCastSensor3D"]
+target_position = Vector3(-62.5, 64.7048, 233.253)
+
+[node name="LandingLeg" parent="." instance=ExtResource("4_gp4fc")]
+collision_layer = 2
+gravity_scale = 0.17
+center_of_mass_mode = 1
+center_of_mass = Vector3(-1.17917, -1.72518, 1.02244)
+continuous_cd = true
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LandingLeg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17917, -1.72518, 1.02244)
+shape = SubResource("ConvexPolygonShape3D_bigji")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LandingLeg"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.05984, -1.20306, 0.903108)
+shape = SubResource("ConvexPolygonShape3D_teqnf")
+
+[node name="LandingLeg2" parent="." instance=ExtResource("4_gp4fc")]
+collision_layer = 2
+gravity_scale = 0.17
+center_of_mass_mode = 1
+center_of_mass = Vector3(-1.179, -1.725, -1.022)
+continuous_cd = true
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="Leg" parent="LandingLeg2" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.179, -1.725, -1.022)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LandingLeg2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.179, -1.725, -1.022)
+shape = SubResource("ConvexPolygonShape3D_bigji")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LandingLeg2"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -1.05967, -1.20288, -0.902668)
+shape = SubResource("ConvexPolygonShape3D_teqnf")
+
+[node name="LandingLeg3" parent="." instance=ExtResource("4_gp4fc")]
+collision_layer = 2
+gravity_scale = 0.17
+center_of_mass_mode = 1
+center_of_mass = Vector3(1.179, -1.725, 1.022)
+continuous_cd = true
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="Leg" parent="LandingLeg3" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.179, -1.725, 1.022)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LandingLeg3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.179, -1.725, 1.022)
+shape = SubResource("ConvexPolygonShape3D_bigji")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LandingLeg3"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 1.05967, -1.20288, 0.902668)
+shape = SubResource("ConvexPolygonShape3D_teqnf")
+
+[node name="LandingLeg4" parent="." instance=ExtResource("4_gp4fc")]
+collision_layer = 2
+gravity_scale = 0.17
+center_of_mass_mode = 1
+center_of_mass = Vector3(1.179, -1.725, -1.022)
+continuous_cd = true
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="Leg" parent="LandingLeg4" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.179, -1.725, -1.022)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LandingLeg4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.179, -1.725, -1.022)
+shape = SubResource("ConvexPolygonShape3D_bigji")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LandingLeg4"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 1.05967, -1.20288, -0.902671)
+shape = SubResource("ConvexPolygonShape3D_teqnf")
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17917, -1.72518, 1.02244)
+node_a = NodePath("../Lander")
+node_b = NodePath("../LandingLeg")
+linear_limit_y/softness = 0.3
+linear_limit_y/restitution = 0.01
+linear_limit_y/damping = 0.06
+
+[node name="Generic6DOFJoint3D2" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.179, -1.725, -1.022)
+node_a = NodePath("../Lander")
+node_b = NodePath("../LandingLeg2")
+linear_limit_y/softness = 0.3
+linear_limit_y/restitution = 0.01
+linear_limit_y/damping = 0.06
+
+[node name="Generic6DOFJoint3D3" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.179, -1.725, 1.022)
+node_a = NodePath("../Lander")
+node_b = NodePath("../LandingLeg3")
+linear_limit_y/softness = 0.3
+linear_limit_y/restitution = 0.01
+linear_limit_y/damping = 0.06
+
+[node name="Generic6DOFJoint3D4" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.179, -1.725, -1.022)
+node_a = NodePath("../Lander")
+node_b = NodePath("../LandingLeg4")
+linear_limit_y/softness = 0.3
+linear_limit_y/restitution = 0.01
+linear_limit_y/damping = 0.06
+
+[node name="AIController3D" type="Node3D" parent="."]
+script = ExtResource("5_w0bd1")
+reset_after = 6000
+
+[connection signal="body_entered" from="Lander" to="." method="_on_lander_body_entered"]
+[connection signal="body_entered" from="LandingLeg" to="." method="_on_landing_leg_body_entered"]
+[connection signal="body_exited" from="LandingLeg" to="." method="_on_landing_leg_body_exited"]
+[connection signal="body_entered" from="LandingLeg2" to="." method="_on_landing_leg_body_entered"]
+[connection signal="body_exited" from="LandingLeg2" to="." method="_on_landing_leg_body_exited"]
+[connection signal="body_entered" from="LandingLeg3" to="." method="_on_landing_leg_body_entered"]
+[connection signal="body_exited" from="LandingLeg3" to="." method="_on_landing_leg_body_exited"]
+[connection signal="body_entered" from="LandingLeg4" to="." method="_on_landing_leg_body_entered"]
+[connection signal="body_exited" from="LandingLeg4" to="." method="_on_landing_leg_body_exited"]
+
+[editable path="Lander"]
+[editable path="LandingLeg"]
+[editable path="LandingLeg2"]
+[editable path="LandingLeg3"]
+[editable path="LandingLeg4"]
