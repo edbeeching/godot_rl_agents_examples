@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsp37y3hehf5y"]
+[gd_scene load_steps=4 format=3 uid="uid://bsp37y3hehf5y"]
 
 [ext_resource type="PackedScene" uid="uid://bxcp6s8r0wtrv" path="res://scenes/level/level_manager.tscn" id="1_abkah"]
-[ext_resource type="PackedScene" uid="uid://80hnrx1b7044" path="res://scenes/level/level_goal.tscn" id="2_5pq2k"]
 [ext_resource type="PackedScene" uid="uid://3gt386v3b1ej" path="res://scenes/robot/robot.tscn" id="2_au3n6"]
 [ext_resource type="Script" path="res://scenes/game_scene/camera3d.gd" id="3_mlkq4"]
 
@@ -9,7 +8,6 @@
 
 [node name="LevelManager" parent="." node_paths=PackedStringArray("robot") instance=ExtResource("1_abkah")]
 robot = NodePath("../Node3D/Robot")
-level_goal_scene = ExtResource("2_5pq2k")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.222733, -100.474)

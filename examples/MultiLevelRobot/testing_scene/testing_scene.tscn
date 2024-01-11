@@ -7,12 +7,12 @@
 sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
 sky_horizon_color = Color(0.6, 0.616667, 0.640196, 1)
 
-[sub_resource type="Sky" id="Sky_smiub"]
+[sub_resource type="Sky" id="Sky_t7h1l"]
 sky_material = SubResource("ProceduralSkyMaterial_ox2c0")
 
 [sub_resource type="Environment" id="Environment_ep2c2"]
 background_mode = 2
-sky = SubResource("Sky_smiub")
+sky = SubResource("Sky_t7h1l")
 tonemap_mode = 2
 sdfgi_enabled = true
 glow_enabled = true
@@ -28,12 +28,12 @@ environment = SubResource("Environment_ep2c2")
 transform = Transform3D(0.707107, -0.642927, 0.294355, 0, 0.416281, 0.909236, -0.707107, -0.642927, 0.294355, 0, 0, 0)
 shadow_enabled = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="FallDownDetector" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.437, -143.42)
 collision_layer = 512
 collision_mask = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FallDownDetector"]
 shape = SubResource("WorldBoundaryShape3D_cs0bj")
 
 [node name="GameScene" parent="." instance=ExtResource("1_iyad5")]
