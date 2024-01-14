@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1n2hpk3re3ba"]
+
+[ext_resource type="PackedScene" uid="uid://2x5filmso32a" path="res://scenes/game_scene/game_scene.tscn" id="1_n3jub"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_tbt55"]
+[ext_resource type="Shader" uid="uid://cqqclvnx22nd1" path="res://shaders/sky_shader.tres" id="3_h2ned"]
+[ext_resource type="Texture2D" uid="uid://sub808a7bcjm" path="res://textures/sky.exr" id="4_u3spc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nx0o6"]
+shader = ExtResource("3_h2ned")
+shader_parameter/cloud_rotation_speed = 0.001
+shader_parameter/source_panorama = ExtResource("4_u3spc")
+
+[sub_resource type="Sky" id="Sky_46w4l"]
+sky_material = SubResource("ShaderMaterial_nx0o6")
+
+[sub_resource type="Environment" id="Environment_4ynkf"]
+background_mode = 2
+sky = SubResource("Sky_46w4l")
+ambient_light_color = Color(0.266667, 0.266667, 0.266667, 1)
+ambient_light_sky_contribution = 0.9
+ambient_light_energy = 6.14
+tonemap_mode = 2
+tonemap_white = 0.8
+
+[node name="TrainingScene" type="Node3D"]
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_tbt55")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.927184, 0.374607, 0, -0.374607, 0.927184, 0, 3.1, 4.948)
+fov = 53.3
+size = 6.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.681373, 0.731937, 0, -0.731937, 0.681373, 0, 0, 0)
+
+[node name="GameScene" parent="." instance=ExtResource("1_n3jub")]
+
+[node name="GameScene2" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="GameScene3" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+
+[node name="GameScene4" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
+
+[node name="GameScene5" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)
+
+[node name="GameScene6" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+
+[node name="GameScene7" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -120)
+
+[node name="GameScene8" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -140)
+
+[node name="GameScene9" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -160)
+
+[node name="GameScene10" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -180)
+
+[node name="GameScene11" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)
+
+[node name="GameScene12" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -220)
+
+[node name="GameScene13" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -240)
+
+[node name="GameScene14" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -260)
+
+[node name="GameScene15" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -280)
+
+[node name="GameScene16" parent="." instance=ExtResource("1_n3jub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4ynkf")

@@ -1,0 +1,15 @@
+[gd_resource type="Shader" format=3 uid="uid://cqqclvnx22nd1"]
+
+[resource]
+code = "
+// NOTE: Shader automatically converted from Godot Engine 4.2.1.stable.mono's PanoramaSkyMaterial.
+
+shader_type sky;
+
+uniform sampler2D source_panorama : filter_linear, source_color, hint_default_black;
+uniform float cloud_rotation_speed : hint_range(-1,1) = 0.001;
+
+void sky() {
+	COLOR = texture(source_panorama, SKY_COORDS + vec2(TIME * cloud_rotation_speed, 0.0)).rgb;
+}
+"

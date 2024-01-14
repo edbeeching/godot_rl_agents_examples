@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://3gt386v3b1ej"]
+
+[ext_resource type="Script" path="res://scenes/robot/robot.gd" id="1_jpfj0"]
+[ext_resource type="PackedScene" uid="uid://bp76uev4ua5uy" path="res://blender/robot.blend" id="1_kysqn"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="3_k05bk"]
+[ext_resource type="Script" path="res://scenes/robot/RobotAIController.gd" id="4_f5vwx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3x7cx"]
+friction = 0.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jp65j"]
+radius = 0.339085
+height = 0.744042
+
+[sub_resource type="Gradient" id="Gradient_4bcu7"]
+offsets = PackedFloat32Array(0, 0.998211)
+colors = PackedColorArray(0.6, 0.388235, 0, 1, 0.6, 0.278431, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qcbs8"]
+gradient = SubResource("Gradient_4bcu7")
+
+[sub_resource type="Curve" id="Curve_qrfli"]
+_data = [Vector2(0.00851789, 0.59552), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_w84kp"]
+curve = SubResource("Curve_qrfli")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_imhhe"]
+emission_shape = 3
+emission_box_extents = Vector3(0.2, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_w84kp")
+color_ramp = SubResource("GradientTexture1D_qcbs8")
+
+[sub_resource type="Gradient" id="Gradient_beaai"]
+offsets = PackedFloat32Array(0, 0.552398)
+colors = PackedColorArray(1, 1, 1, 0.65098, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u8cd4"]
+gradient = SubResource("Gradient_beaai")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrh46"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_u8cd4")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_aiaq2"]
+material = SubResource("StandardMaterial3D_jrh46")
+size = Vector2(0.5, 0.5)
+
+[node name="Robot" type="RigidBody3D" node_paths=PackedStringArray("wheels")]
+collision_layer = 2
+collision_mask = 5
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_3x7cx")
+gravity_scale = 0.0
+continuous_cd = true
+linear_damp_mode = 1
+linear_damp = 20.0
+script = ExtResource("1_jpfj0")
+wheels = [NodePath("robot/Robot/Wheels")]
+
+[node name="robot" parent="." instance=ExtResource("1_kysqn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 3.89414e-07, 0, -3.89414e-07, -1, 0, 0, 0, 1, 0, 0.212432, 0)
+shape = SubResource("CapsuleShape3D_jp65j")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-0.0218088, -0.607985, 0.793649, 0, 0.793838, 0.608129, -0.999762, 0.0132626, -0.0173126, 13.2659, 11.8416, -0.404609)
+
+[node name="Sensors" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, 0, 0)
+
+[node name="WallSensor" type="Node3D" parent="Sensors"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+script = ExtResource("3_k05bk")
+boolean_class_mask = 0
+n_rays_width = 1.0
+n_rays_height = 2.0
+ray_length = 5.0
+cone_width = 0.0
+cone_height = 360.0
+
+[node name="@RayCast3D@60222" type="RayCast3D" parent="Sensors/WallSensor"]
+target_position = Vector3(0, -5, 3.06152e-16)
+
+[node name="@RayCast3D@60223" type="RayCast3D" parent="Sensors/WallSensor"]
+target_position = Vector3(0, 5, 3.06152e-16)
+
+[node name="FloorSensor" type="Node3D" parent="Sensors"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+script = ExtResource("3_k05bk")
+boolean_class_mask = 0
+n_rays_width = 1.0
+n_rays_height = 2.0
+ray_length = 2.0
+cone_width = 0.0
+cone_height = 182.56
+
+[node name="@RayCast3D@60442" type="RayCast3D" parent="Sensors/FloorSensor"]
+target_position = Vector3(0, -1.42992, 1.39833)
+
+[node name="@RayCast3D@60443" type="RayCast3D" parent="Sensors/FloorSensor"]
+target_position = Vector3(0, 1.42992, 1.39833)
+
+[node name="AIController3D" type="Node3D" parent="."]
+script = ExtResource("4_f5vwx")
+
+[node name="JumpSensor" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.34, 0)
+hit_back_faces = false
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0624974, 0)
+amount = 128
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_imhhe")
+draw_pass_1 = SubResource("QuadMesh_aiaq2")

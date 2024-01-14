@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://gouk55fdvkhe"]
+
+[ext_resource type="PackedScene" uid="uid://dacey0tgdvp5k" path="res://scenes/ui/ui.tscn" id="1_f286a"]
+[ext_resource type="PackedScene" uid="uid://2x5filmso32a" path="res://scenes/game_scene/game_scene.tscn" id="1_qjmmd"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_bbtpr"]
+[ext_resource type="Texture2D" uid="uid://sub808a7bcjm" path="res://textures/sky.exr" id="4_bdeqy"]
+[ext_resource type="Shader" uid="uid://cqqclvnx22nd1" path="res://shaders/sky_shader.tres" id="4_jrt8d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpn2t"]
+shader = ExtResource("4_jrt8d")
+shader_parameter/cloud_rotation_speed = 0.001
+shader_parameter/source_panorama = ExtResource("4_bdeqy")
+
+[sub_resource type="Sky" id="Sky_a1n77"]
+sky_material = SubResource("ShaderMaterial_kpn2t")
+
+[sub_resource type="Environment" id="Environment_38ijg"]
+background_mode = 2
+sky = SubResource("Sky_a1n77")
+ambient_light_color = Color(0.266667, 0.266667, 0.266667, 1)
+ambient_light_sky_contribution = 0.9
+ambient_light_energy = 6.14
+tonemap_mode = 2
+tonemap_white = 0.8
+glow_enabled = true
+
+[node name="AiVsAIInference" type="Node3D"]
+
+[node name="UI" parent="." node_paths=PackedStringArray("left_score_robot", "right_score_robot") instance=ExtResource("1_f286a")]
+left_score_robot = NodePath("../GameScene/Robot")
+right_score_robot = NodePath("../GameScene/Robot2")
+
+[node name="GameScene" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("1_qjmmd")]
+training_mode = false
+infinite_game = false
+victory_at_score = 3
+ui = NodePath("../UI")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_bbtpr")
+control_mode = 2
+onnx_model_path = "onnx/volleyball.onnx"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.979926, 0.199368, 0, -0.199368, 0.979926, 0, 2.83, 4.948)
+fov = 53.3
+size = 6.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.469472, 0.882948, 0, -0.882948, 0.469472, 0, 0, 0)
+shadow_enabled = true
+shadow_blur = 3.446
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_38ijg")
