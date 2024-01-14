@@ -34,8 +34,30 @@ and the scores will be restarted, after a certain amount of points is reached.
 
 ### Running inference:
 #### AI vs AI
+Open the scene `res://scenes/testing_scenes/ai_vs_ai.tscn` in Godot Editor, and press `F6` or click on `Run Current Scene`.
 
-#### AI vs Player
+#### Human vs AI
+To play VS the AI, open the scene `res://scenes/testing_scenes/human_vs_ai.tscn` in Godot Editor, and press `F6` or click on `Run Current Scene`.
+
+Controls (you can adjust them in Project Settings in Godot Editor):
+
+![Volleyball Controls](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/bdce56e4-fb3b-437b-a211-3261b59dc489)
 
 ### Training:
 The default scene `res://scenes/training_scene/training_scene.tscn` can be used for training.
+
+These were the parameters used to train the included onnx file (they can be applied by modifying stable_baselines3_example.py):
+```python
+    policy_kwargs = dict(log_std_init=log(1.0))
+    model: PPO = PPO("MultiInputPolicy", env, verbose=1, n_epochs=10, learning_rate=0.0003, clip_range=0.2, ent_coef=0.0085, n_steps=128, batch_size=160, policy_kwargs=policy_kwargs, tensorboard_log=args.experiment_dir)
+```
+
+The arguments provided to the example for training were (feel free to adjust these):
+```bash
+--timesteps=6_500_000
+--n_parallel=5
+--speedup=15
+--env_path=[write the path to exported exe file here or remove this and n_parallel above for in-editor training]
+--onnx_export_path=volleyball.onnx
+```
+
