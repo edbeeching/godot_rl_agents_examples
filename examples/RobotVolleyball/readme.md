@@ -41,7 +41,7 @@ To play VS the AI, open the scene `res://scenes/testing_scenes/human_vs_ai.tscn`
 
 Controls (you can adjust them in Project Settings in Godot Editor):
 
-![Volleyball Controls](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/537c0e7a-e1d2-44ad-9553-d59420e875f1)
+![Volleyball Controls](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/26809560-815d-4d8e-b3ea-2f539a9e1fa3)
 
 ### Training:
 The default scene `res://scenes/training_scene/training_scene.tscn` can be used for training.
