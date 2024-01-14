@@ -46,7 +46,7 @@ Controls (you can adjust them in Project Settings in Godot Editor):
 ### Training:
 The default scene `res://scenes/training_scene/training_scene.tscn` can be used for training.
 
-These were the parameters used to train the included onnx file (they can be applied by modifying stable_baselines3_example.py):
+These were the parameters used to train the included onnx file (they can be applied by modifying [stable_baselines3_example.py](https://github.com/edbeeching/godot_rl_agents/blob/main/examples/stable_baselines3_example.py)):
 ```python
     policy_kwargs = dict(log_std_init=log(1.0))
     model: PPO = PPO("MultiInputPolicy", env, verbose=1, n_epochs=10, learning_rate=0.0003, clip_range=0.2, ent_coef=0.0085, n_steps=128, batch_size=160, policy_kwargs=policy_kwargs, tensorboard_log=args.experiment_dir)
