@@ -13,16 +13,17 @@ func _physics_process(_delta):
 
 func get_obs():
 	var goal_distance = 0.0
-	var goal_vector = Vector3.ZERO
+	var goal_position = Vector3.ZERO
 	if _player.next == 0:
 		goal_distance = _player.position.distance_to(_player.first_jump_pad.position)
-		goal_vector = (_player.first_jump_pad.position - _player.position).normalized()
+		goal_position = _player.first_jump_pad.global_position
 
 	if _player.next == 1:
 		goal_distance = _player.position.distance_to(_player.second_jump_pad.position)
-		goal_vector = (_player.second_jump_pad.position - _player.position).normalized()
+		goal_position = _player.second_jump_pad.global_position
 
-	goal_vector = goal_vector.rotated(Vector3.UP, -rotation.y)
+
+	var goal_vector = _player.to_local(goal_position).normalized()
 
 	goal_distance = clamp(goal_distance, 0.0, 20.0)
 	var obs = []
