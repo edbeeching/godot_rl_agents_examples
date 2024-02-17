@@ -166,7 +166,7 @@ func calculate_raycasts() -> Array:
 
 		result.append(distance)
 		if class_sensor:
-			var hit_class: float = 0 
+			var hit_class: float = 0
 			if ray.get_collider():
 				var hit_collision_layer = ray.get_collider().collision_layer
 				hit_collision_layer = hit_collision_layer & collision_mask

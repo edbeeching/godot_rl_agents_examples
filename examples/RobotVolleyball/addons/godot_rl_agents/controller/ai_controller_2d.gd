@@ -1,10 +1,20 @@
 extends Node2D
 class_name AIController2D
 
-enum ControlModes { INHERIT_FROM_SYNC, HUMAN, TRAINING, ONNX_INFERENCE }
+enum ControlModes { INHERIT_FROM_SYNC, HUMAN, TRAINING, ONNX_INFERENCE, RECORD_EXPERT_DEMOS }
 @export var control_mode: ControlModes = ControlModes.INHERIT_FROM_SYNC
 @export var onnx_model_path := ""
 @export var reset_after := 1000
+
+@export_group("Record expert demos mode options")
+## Path where the demos will be saved. The file can later be used for imitation learning.
+@export var expert_demo_save_path: String
+## The action that erases the last recorded episode from the currently recorded data.
+@export var remove_last_episode_key: InputEvent
+## Action will be repeated for n frames. Will introduce control lag if larger than 1.
+## Can be used to ensure that action_repeat on inference and training matches
+## the recorded demonstrations.
+@export var action_repeat: int = 1
 
 var onnx_model: ONNXModel
 
@@ -51,8 +61,16 @@ func set_action(action) -> void:
 	assert(false, "the get set_action method is not implemented when extending from ai_controller")
 
 
-# -----------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------#
 
+
+#-- Methods that sometimes need implementing using the "extend script" option in Godot --#
+# Only needed if you are recording expert demos with this AIController
+func get_action() -> Array:
+	assert(false, "the get set_action method is not implemented in extended AIController but demo_recorder is used")
+	return []
+
+# -----------------------------------------------------------------------------#
 
 func _physics_process(delta):
 	n_steps += 1

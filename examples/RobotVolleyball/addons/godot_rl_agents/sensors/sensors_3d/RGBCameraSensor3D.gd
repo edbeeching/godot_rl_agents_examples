@@ -6,7 +6,6 @@ var camera_pixels = null
 @onready var sub_viewport := $SubViewport as SubViewport
 
 
-
 func get_camera_pixel_encoding():
 	return camera_texture.get_texture().get_image().get_data().hex_encode()
 

@@ -5,7 +5,7 @@ extends Node
 enum ControlModes { HUMAN, TRAINING, ONNX_INFERENCE }
 @export var control_mode: ControlModes = ControlModes.TRAINING
 @export_range(1, 10, 1, "or_greater") var action_repeat := 8
-@export_range(1, 10, 1, "or_greater") var speed_up = 1
+@export_range(0, 10, 0.1, "or_greater") var speed_up := 1.0
 @export var onnx_model_path := ""
 
 # Onnx model stored for each requested path
@@ -26,6 +26,13 @@ var all_agents: Array
 var agents_training: Array
 var agents_inference: Array
 var agents_heuristic: Array
+
+## For recording expert demos
+var agent_demo_record: Node
+## Stores recorded trajectories
+var demo_trajectories: Array
+## A trajectory includes obs: Array, acts: Array, terminal (set in Python env instead)
+var current_demo_trajectory: Array
 
 var need_to_send_obs = false
 var args = null
@@ -65,6 +72,7 @@ func _initialize():
 
 	_initialize_training_agents()
 	_initialize_inference_agents()
+	_initialize_demo_recording()
 
 	_set_seed()
 	_set_action_repeat()
@@ -133,9 +141,23 @@ func _initialize_inference_agents():
 		_set_heuristic("model", agents_inference)
 
 
+func _initialize_demo_recording():
+	if agent_demo_record:
+		InputMap.add_action("RemoveLastDemoEpisode")
+		InputMap.action_add_event(
+			"RemoveLastDemoEpisode", agent_demo_record.remove_last_episode_key
+		)
+		current_demo_trajectory.resize(2)
+		current_demo_trajectory[0] = []
+		current_demo_trajectory[1] = []
+		agent_demo_record.heuristic = "demo_record"
+
+
 func _physics_process(_delta):
 	# two modes, human control, agent control
 	# pause tree, send obs, get actions, set actions, unpause tree
+
+	_demo_record_process()
 
 	if n_action_steps % action_repeat != 0:
 		n_action_steps += 1
@@ -196,6 +218,46 @@ func _inference_process():
 		get_tree().set_pause(false)
 
 
+func _demo_record_process():
+	if not agent_demo_record:
+		return
+
+	if Input.is_action_just_pressed("RemoveLastDemoEpisode"):
+		print("[Sync script][Demo recorder] Removing last recorded episode.")
+		demo_trajectories.remove_at(demo_trajectories.size() - 1)
+		print("Remaining episode count: %d" % demo_trajectories.size())
+
+	if n_action_steps % agent_demo_record.action_repeat != 0:
+		return
+
+	var obs_dict: Dictionary = agent_demo_record.get_obs()
+
+	# Get the current obs from the agent
+	assert(
+		obs_dict.has("obs"),
+		"Demo recorder needs an 'obs' key in get_obs() returned dictionary to record obs from."
+	)
+	current_demo_trajectory[0].append(obs_dict.obs)
+
+	# Get the action applied for the current obs from the agent
+	agent_demo_record.set_action()
+	var acts = agent_demo_record.get_action()
+
+	var terminal = agent_demo_record.get_done()
+	# Record actions only for non-terminal states
+	if terminal:
+		agent_demo_record.set_done_false()
+	else:
+		current_demo_trajectory[1].append(acts)
+
+	if terminal:
+		#current_demo_trajectory[2].append(true)
+		demo_trajectories.append(current_demo_trajectory.duplicate(true))
+		print("[Sync script][Demo recorder] Recorded episode count: %d" % demo_trajectories.size())
+		current_demo_trajectory[0].clear()
+		current_demo_trajectory[1].clear()
+
+
 func _heuristic_process():
 	for agent in agents_heuristic:
 		_reset_agents_if_done(agents_heuristic)
@@ -240,6 +302,12 @@ func _get_agents():
 			agents_inference.append(agent)
 		elif agent.control_mode == agent.ControlModes.HUMAN:
 			agents_heuristic.append(agent)
+		elif agent.control_mode == agent.ControlModes.RECORD_EXPERT_DEMOS:
+			assert(
+				not agent_demo_record,
+				"Currently only a single AIController can be used for recording expert demos."
+			)
+			agent_demo_record = agent
 
 
 func _set_heuristic(heuristic, agents: Array):
@@ -333,7 +401,7 @@ func _get_args():
 
 func _get_speedup():
 	print(args)
-	return args.get("speedup", str(speed_up)).to_int()
+	return args.get("speedup", str(speed_up)).to_float()
 
 
 func _get_port():
@@ -452,3 +520,21 @@ func clamp_array(arr: Array, min: float, max: float):
 	for a in arr:
 		output.append(clamp(a, min, max))
 	return output
+
+
+## Save recorded export demos on window exit (Close window instead of "Stop" button in Godot Editor)
+func _notification(what):
+	if not agent_demo_record:
+		return
+
+	if what == NOTIFICATION_PREDELETE:
+		var json_string = JSON.stringify(demo_trajectories, "", false)
+		var file = FileAccess.open(agent_demo_record.expert_demo_save_path, FileAccess.WRITE)
+
+		if not file:
+			var error: Error = FileAccess.get_open_error()
+			assert(not error, "There was an error opening the file: %d" % error)
+
+		file.store_line(json_string)
+		var error = file.get_error()
+		assert(not error, "There was an error after trying to write to the file: %d" % error)
