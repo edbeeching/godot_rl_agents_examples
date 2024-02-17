@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b7nimq03tkttf"]
+
+[resource]
+resource_name = "PrototypePete"
+albedo_color = Color(0.827451, 0.215686, 1, 1)
+roughness = 0.5
