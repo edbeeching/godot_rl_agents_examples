@@ -16,5 +16,5 @@ func play_anim(anim):
 
 func _ready():
 	var mesh = $"KayKit Animated Character/Skeleton3D/PrototypePete".mesh
-	var material = materials[randi() % materials.size()]
+	var material = materials.pick_random()
 	mesh.surface_set_material(0, material)

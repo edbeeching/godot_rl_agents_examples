@@ -8,5 +8,5 @@ func get_spawn_point() -> Vector3:
 		randf_range(-half_extents.z, half_extents.z)
 	)
 	#print(position, random_point)
-	return random_point + position + get_parent().position # perhaps use global_transform.origin instead of position
+	return random_point + global_position
 	

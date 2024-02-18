@@ -24,7 +24,7 @@ func reset_player(player: Player, end=false):
 	var goal = current_level.get_node("EndGate")
 
 	var spawn_point = spawn_box.get_spawn_point()
-	player.position = spawn_point
+	player.global_position = spawn_point
 	player.goal = goal
 
 func _input(event):
