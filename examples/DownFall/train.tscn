@@ -5,7 +5,7 @@
 
 [node name="Train" type="Node3D"]
 
-[node name="TestAssets" parent="." instance=ExtResource("1_w3tjc")]
+[node name="DownFall" parent="." instance=ExtResource("1_w3tjc")]
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_n2iwn")
