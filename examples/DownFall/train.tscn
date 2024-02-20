@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://daf485ukneg24"]
+
+[ext_resource type="PackedScene" uid="uid://bevb5n7t5c7wb" path="res://down_fall.tscn" id="1_w3tjc"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_n2iwn"]
+
+[node name="Train" type="Node3D"]
+
+[node name="DownFall" parent="." instance=ExtResource("1_w3tjc")]
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_n2iwn")

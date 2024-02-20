@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckw0mq1b4yh6u"]
+
+[ext_resource type="Script" path="res://scripts/spawn_box.gd" id="1_cqqo7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_divav"]
+size = Vector3(5.05853, 0.834045, 11.3458)
+
+[node name="SpawnBox" type="CollisionShape3D"]
+shape = SubResource("BoxShape3D_divav")
+disabled = true
+script = ExtResource("1_cqqo7")
