@@ -12,7 +12,7 @@ config_version=5
 
 config/name="ItemSortingCartExample"
 config/description="A RL example of a cart that sorts items by category."
-run/main_scene="res://scenes/batch_scene.tscn"
+run/main_scene="res://scenes/training_scene.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
