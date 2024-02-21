@@ -12,8 +12,8 @@ config_version=5
 
 config/name="3DCarParkingExample"
 config/description="An example of a simple 3d car parking RL environment. "
-run/main_scene="res://scenes/TestingScene.tscn"
-config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+run/main_scene="res://scenes/TrainingScene.tscn"
+config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
