@@ -1,0 +1,149 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4f2hcn0g5vjg"]
+
+[ext_resource type="PackedScene" uid="uid://ca6csk8y5nvuu" path="res://scenes/playing_area.tscn" id="1_jusby"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_a6ui1"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hfpel"]
+auto_exposure_enabled = true
+dof_blur_far_distance = 21.3
+dof_blur_amount = 0.3
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g5l5s"]
+
+[sub_resource type="Sky" id="Sky_a413c"]
+sky_material = SubResource("ProceduralSkyMaterial_g5l5s")
+
+[sub_resource type="Environment" id="Environment_xy0xn"]
+background_mode = 2
+background_energy_multiplier = 1.2
+sky = SubResource("Sky_a413c")
+ssil_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+
+[node name="training_scene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.857167, 0.364187, -0.364187, 0, 0.707107, 0.707107, 0.515038, -0.606109, 0.606109, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.532876, -0.846193, 0, 0.846193, 0.532876, 1, 2.32928e-08, -3.69883e-08, -5.495, 4.285, 0)
+attributes = SubResource("CameraAttributesPractical_hfpel")
+fov = 93.0
+size = 65.0
+
+[node name="playing_area" parent="." instance=ExtResource("1_jusby")]
+
+[node name="playing_area2" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+
+[node name="playing_area3" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+
+[node name="playing_area4" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30)
+
+[node name="playing_area5" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+
+[node name="playing_area6" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 30)
+
+[node name="playing_area7" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="playing_area8" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 30)
+
+[node name="playing_area9" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+
+[node name="playing_area10" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 30)
+
+[node name="playing_area11" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 0)
+
+[node name="playing_area12" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 30)
+
+[node name="playing_area13" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
+
+[node name="playing_area14" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90)
+
+[node name="playing_area15" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 60)
+
+[node name="playing_area16" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 90)
+
+[node name="playing_area17" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 60)
+
+[node name="playing_area18" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 90)
+
+[node name="playing_area19" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 60)
+
+[node name="playing_area20" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 90)
+
+[node name="playing_area21" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 60)
+
+[node name="playing_area22" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 90)
+
+[node name="playing_area23" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 60)
+
+[node name="playing_area24" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 90)
+
+[node name="playing_area25" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
+
+[node name="playing_area26" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30)
+
+[node name="playing_area27" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -60)
+
+[node name="playing_area28" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -30)
+
+[node name="playing_area29" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -60)
+
+[node name="playing_area30" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -30)
+
+[node name="playing_area31" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -60)
+
+[node name="playing_area32" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -30)
+
+[node name="playing_area33" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -60)
+
+[node name="playing_area34" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -30)
+
+[node name="playing_area35" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, -60)
+
+[node name="playing_area36" parent="." instance=ExtResource("1_jusby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, -30)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xy0xn")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_a6ui1")
+action_repeat = 15
+speed_up = 4
