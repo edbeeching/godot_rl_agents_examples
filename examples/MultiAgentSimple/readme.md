@@ -1,6 +1,6 @@
 # MultiAgent Simple Environment
 
-[Add video]
+https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/0ce8e667-124d-4c99-8136-e139b4a5aaca
 
 ## Goal:
 
@@ -22,7 +22,8 @@ Episodes have a fixed length and end at the same time for all agents.
 
 ### Robot:
 
-[Add image]
+![robot](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/a046de7d-3714-4593-9fc4-9d9dd8e3054e)
+
 
 Policy name: `player`
 
@@ -43,7 +44,7 @@ Robot has a Raycast sensor for observations, and has additional observations inc
 
 ### Platform:
 
-[Add image]
+![Platform](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/238aacd4-dcec-4c27-9f0c-f8f409289704)
 
 Policy name: `platform`
 
@@ -74,4 +75,4 @@ Training this scene is currently only supported using the [Rllib example](https:
 
 Here are some stats from the session that was used to get the trained onnx model (for testing a single worker / env instance was used and the training time was likely longer than required). Steps are env steps, since there are multiple agents using each policy in the env, there are many more total agent steps than env steps:
 
-[Add image]
+![Training stats](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/6b7005aa-ddc4-4f7e-bc7e-4a0d0d1b4c28)
