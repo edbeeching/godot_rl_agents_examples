@@ -8,7 +8,7 @@ The robot agent needs to reach the goal (marked by a transparent green square) a
 
 ### Rewards:
 
-All agents receive the same rewards, including:
+All agents (AIController pairs for each batch) receive the same rewards, including:
 
 - A negative reward for the robot falling,
 - A positive reward for reaching the goal position,
