@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://btjelqxpc6evr"]
+[gd_scene load_steps=8 format=3 uid="uid://btjelqxpc6evr"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1"]
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="3"]
@@ -6,8 +6,6 @@
 [ext_resource type="Script" path="res://AIController3D.gd" id="4_grup7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5nui"]
-
-[sub_resource type="CapsuleMesh" id="2"]
 
 [sub_resource type="Sky" id="4"]
 
@@ -27,11 +25,6 @@ script = ExtResource("1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_k5nui")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-visible = false
-mesh = SubResource("2")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -1.54268e-08, 5.75736e-08, -1.54268e-08, 0.866025, 0.5, -5.75736e-08, -0.5, 0.866025, 0, 10, 13)
