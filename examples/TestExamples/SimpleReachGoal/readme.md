@@ -1,11 +1,13 @@
 # SimpleReachGoal
 A simple reach the goal environment that is designed to be easy to train for running quick tests. 
 
+https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/cf1f4f71-d92e-4036-916d-322d6986d121
 
 # Goal:
 
 The agent needs to enter the green goal area while avoiding the red obstacle area, and without falling outside of the game area. The goal and obstacle areas are randomly set to one of the possible positions at the beginning of each episode. All possible positions are shown in the screenshot below.
 
+![Area spawn positions](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/e0b44c9d-6a23-4db9-82a5-5c40f7272f8d)
 
 # Observations:
 
@@ -15,6 +17,7 @@ The agent uses 3 Raycast sensors, each configured to detect different object typ
 - ObstacleRaycastSensor (detects the red obstacle area using 32 rays)
 - GroundRaycastSensor (detects the ground below the player using 16 rays)
 
+![Raycast sensors](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/e1f28658-e5b1-4ea0-b7a8-69dc42efc610)
 
 In addition to the sensors, the agent also has relative positions to the goal and obstacle added to its observations.
 
@@ -33,7 +36,7 @@ In each of those cases, the episode resets after the event. The episode also res
 
 
 # Training results:
-
+![Training rewards](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/9c19928c-ed47-4ff7-9eb7-160b4a61ef88)
 These are the training stats from the training session used to train the included onnx file. The reward are from training directly, not using deterministic evaluation.
 
 SB3 example script was used for training, with the following changes:
