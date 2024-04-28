@@ -1,26 +1,24 @@
 using Godot;
-using System;
-using System.Threading;
 
 public partial class GameSceneManager : Node3D
 {
-	[Export]
+    [Export]
     public AreaPositionRandomizer GoalManager { get; set; }
     [Export]
-	public AreaPositionRandomizer ObstacleManager { get; set; }
-	[Export]
-	public Player Player { get; set; }
+    public AreaPositionRandomizer ObstacleManager { get; set; }
+    [Export]
+    public Player Player { get; set; }
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		Reset();
-	}
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        Reset();
+    }
 
     public void Reset()
     {
-		GoalManager.Reset();
-		ObstacleManager.Reset();
-		Player.Reset();
+        GoalManager.Reset();
+        ObstacleManager.Reset();
+        Player.Reset();
     }
 }
