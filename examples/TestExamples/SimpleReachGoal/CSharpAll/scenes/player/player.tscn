@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://fhnd4o88w5p4"]
 
 [ext_resource type="Script" path="res://scenes/player/Player.cs" id="1_73fx5"]
-[ext_resource type="Script" path="res://scenes/player/player_ai_controller.gd" id="2_suigr"]
+[ext_resource type="Script" path="res://scenes/player/PlayerAIController.cs" id="2_c1qwq"]
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="3_qsyok"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owc64"]
@@ -27,10 +27,10 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_2gph3")
 
-[node name="AIController3D" type="Node3D" parent="." node_paths=PackedStringArray("player", "raycast_sensors")]
-script = ExtResource("2_suigr")
-player = NodePath("..")
-raycast_sensors = [NodePath("GoalRaycastSensor"), NodePath("ObstacleRaycastSensor"), NodePath("GroundRaycastSensor")]
+[node name="AIController3D" type="Node3D" parent="." node_paths=PackedStringArray("Player", "RayCastSensors")]
+script = ExtResource("2_c1qwq")
+Player = NodePath("..")
+RayCastSensors = [NodePath("GoalRaycastSensor"), NodePath("ObstacleRaycastSensor"), NodePath("GroundRaycastSensor")]
 
 [node name="GoalRaycastSensor" type="Node3D" parent="AIController3D"]
 script = ExtResource("3_qsyok")
