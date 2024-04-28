@@ -39,9 +39,9 @@ The environment has sparse rewards:
 In each of those cases, the episode resets after the event. The episode also resets on timeout.
 
 
-# Training results:
+# Training results (GDScript version):
 ![Training rewards](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/9c19928c-ed47-4ff7-9eb7-160b4a61ef88)
-These are the training stats from the training session used to train the included onnx file. The reward are from training directly, not using deterministic evaluation.
+These are the training stats from the training session used to train the onnx file included in the GDScript env. The reward are from training directly, not using deterministic evaluation.
 
 SB3 example script was used for training, with the following changes:
 
