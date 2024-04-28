@@ -3,6 +3,7 @@ extends Node
 # --fixed-fps 2000 --disable-render-loop
 
 enum ControlModes { HUMAN, TRAINING, ONNX_INFERENCE }
+enum AgentControlModes { INHERIT_FROM_SYNC, HUMAN, TRAINING, ONNX_INFERENCE, RECORD_EXPERT_DEMOS }
 @export var control_mode: ControlModes = ControlModes.TRAINING
 @export_range(1, 10, 1, "or_greater") var action_repeat := 8
 @export_range(0, 10, 0.1, "or_greater") var speed_up := 1.0
@@ -287,16 +288,16 @@ func _extract_action_dict(action_array: Array, action_space: Dictionary):
 
 ## For AIControllers that inherit mode from sync, sets the correct mode.
 func _set_agent_mode(agent: Node):
-	var agent_inherits_mode: bool = agent.control_mode == agent.ControlModes.INHERIT_FROM_SYNC
+	var agent_inherits_mode: bool = agent.control_mode == AgentControlModes.INHERIT_FROM_SYNC
 
 	if agent_inherits_mode:
 		match control_mode:
 			ControlModes.HUMAN:
-				agent.control_mode = agent.ControlModes.HUMAN
+				agent.control_mode = AgentControlModes.HUMAN
 			ControlModes.TRAINING:
-				agent.control_mode = agent.ControlModes.TRAINING
+				agent.control_mode = AgentControlModes.TRAINING
 			ControlModes.ONNX_INFERENCE:
-				agent.control_mode = agent.ControlModes.ONNX_INFERENCE
+				agent.control_mode = AgentControlModes.ONNX_INFERENCE
 
 
 func _get_agents():
@@ -304,13 +305,13 @@ func _get_agents():
 	for agent in all_agents:
 		_set_agent_mode(agent)
 
-		if agent.control_mode == agent.ControlModes.TRAINING:
+		if agent.control_mode == AgentControlModes.TRAINING:
 			agents_training.append(agent)
-		elif agent.control_mode == agent.ControlModes.ONNX_INFERENCE:
+		elif agent.control_mode == AgentControlModes.ONNX_INFERENCE:
 			agents_inference.append(agent)
-		elif agent.control_mode == agent.ControlModes.HUMAN:
+		elif agent.control_mode == AgentControlModes.HUMAN:
 			agents_heuristic.append(agent)
-		elif agent.control_mode == agent.ControlModes.RECORD_EXPERT_DEMOS:
+		elif agent.control_mode == AgentControlModes.RECORD_EXPERT_DEMOS:
 			assert(
 				not agent_demo_record,
 				"Currently only a single AIController can be used for recording expert demos."
