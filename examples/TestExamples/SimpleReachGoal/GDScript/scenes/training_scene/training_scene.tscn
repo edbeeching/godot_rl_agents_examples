@@ -79,4 +79,4 @@ fov = 51.7
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_7kqnq")
 speed_up = 16.0
-onnx_model_path = "simplereachgoal.onnx"
+onnx_model_path = "SimpleReachGoal.onnx"

@@ -3,6 +3,10 @@ A simple reach the goal environment that is designed to be easy to train for run
 
 https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/cf1f4f71-d92e-4036-916d-322d6986d121
 
+The env comes in two variants. GDScript which uses GDScript for everything except onnx inference (where C# and ONNXRuntime is used),
+and a CSharp variant that uses everything except the AIController script written in C#. This shows one possible way to work with
+Godot RL Agents in C# projects by only writing the extended AIController in GDScript.
+
 # Goal:
 
 The agent needs to enter the green goal area while avoiding the red obstacle area, and without falling outside of the game area. The goal and obstacle areas are randomly set to one of the possible positions at the beginning of each episode. All possible positions are shown in the screenshot below.
@@ -35,9 +39,9 @@ The environment has sparse rewards:
 In each of those cases, the episode resets after the event. The episode also resets on timeout.
 
 
-# Training results:
+# Training results (GDScript version):
 ![Training rewards](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/9c19928c-ed47-4ff7-9eb7-160b4a61ef88)
-These are the training stats from the training session used to train the included onnx file. The reward are from training directly, not using deterministic evaluation.
+These are the training stats from the training session used to train the onnx file included in the GDScript env. The reward are from training directly, not using deterministic evaluation.
 
 SB3 example script was used for training, with the following changes:
 
