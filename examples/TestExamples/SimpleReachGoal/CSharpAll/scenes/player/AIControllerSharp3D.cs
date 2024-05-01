@@ -24,7 +24,7 @@ public abstract partial class AIControllerSharp3D : Node3D {
     [Export] protected bool DebugOn;
 
     // ONNXModel GDScript object
-    public Node onnx_model;
+    public Resource onnx_model;
     public string heuristic  = "human";
     public bool done;
     public float reward;
