@@ -186,11 +186,5 @@ goal = NodePath("../GoalManager/Goal")
 obstacle = NodePath("../ObstacleManager/Obstacle")
 ai_controller = NodePath("AIController3D")
 
-[node name="AIController3D" parent="Player" index="2" node_paths=PackedStringArray("player", "raycast_sensors")]
-player = NodePath("..")
-raycast_sensors = [NodePath("GoalRaycastSensor"), NodePath("ObstacleRaycastSensor"), NodePath("GroundRaycastSensor")]
-
 [connection signal="body_entered" from="GoalManager/Goal" to="Player" method="_on_goal_body_entered"]
 [connection signal="body_entered" from="ObstacleManager/Obstacle" to="Player" method="_on_obstacle_body_entered"]
-
-[editable path="Player"]
