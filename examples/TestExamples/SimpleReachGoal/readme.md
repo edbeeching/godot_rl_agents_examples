@@ -3,9 +3,12 @@ A simple reach the goal environment that is designed to be easy to train for run
 
 https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/cf1f4f71-d92e-4036-916d-322d6986d121
 
-The env comes in two variants. GDScript which uses GDScript for everything except onnx inference (where C# and ONNXRuntime is used),
-and a CSharp variant that uses everything except the AIController script written in C#. This shows one possible way to work with
-Godot RL Agents in C# projects by only writing the extended AIController in GDScript.
+The env comes in three variants (each has its own project folder):
+- `GDScript` standard implementation using gdscript for everything except ONNX inference,
+- `CSharp` implements most of the game code except the extended AIController using C#,
+- `CSharpAll` implements a wrapper for AIController written in C# as well.
+
+Check the [working with CSharp](https://github.com/edbeeching/godot_rl_agents/blob/main/docs/WORKING_WITH_CSHARP.md) guide for more information about the CSharp variants.
 
 # Goal:
 
@@ -70,4 +73,5 @@ SB3 example script cmd arguments:
 
 Training was launched from Godot editor, and took about 3 minutes to complete to get the results from the video at the top of this page.
 
-This environment was made by [Ivan267.](https://github.com/Ivan-267)
+- The base (gdscript) environment and CSharp variant was made by [Ivan267](https://github.com/Ivan-267)
+- The CSharpAll variant was made by [LorinczAdrien](https://github.com/LorinczAdrien)
