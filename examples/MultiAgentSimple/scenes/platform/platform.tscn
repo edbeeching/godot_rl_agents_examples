@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://u16gxctwsq88"]
+
+[ext_resource type="Script" path="res://scenes/platform/platform_ai_controller.gd" id="1_u84vt"]
+[ext_resource type="Script" path="res://scenes/platform/platform.gd" id="2_6qscy"]
+[ext_resource type="PackedScene" uid="uid://b8k5wlite2uag" path="res://assets/flying_platform.glb" id="3_pn8gp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xu28c"]
+size = Vector3(3.8, 0.5, 3)
+
+[node name="PlatformAIController" type="Node3D"]
+script = ExtResource("1_u84vt")
+policy_name = "platform"
+
+[node name="Platform" type="CharacterBody3D" parent="."]
+collision_mask = 3
+axis_lock_linear_y = true
+motion_mode = 1
+wall_min_slide_angle = 0.0523599
+script = ExtResource("2_6qscy")
+
+[node name="flying_platform" parent="Platform" instance=ExtResource("3_pn8gp")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110486, 0)
+shape = SubResource("BoxShape3D_xu28c")

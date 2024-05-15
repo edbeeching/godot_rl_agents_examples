@@ -26,3 +26,6 @@ https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/fbbba179-
 #### DownFall: (Trained with sb3 default params, 2M steps with 4 parallel envs
 https://github.com/edbeeching/godot_rl_agents_examples/assets/7275864/a4e4f51f-6fca-465d-8359-f7bf18d2f1c7
 
+#### MultiAgent Simple: (Trained with Rllib, check env's readme for more info)
+https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/9b0632e5-1970-483b-98ae-e6e6432b759b
+

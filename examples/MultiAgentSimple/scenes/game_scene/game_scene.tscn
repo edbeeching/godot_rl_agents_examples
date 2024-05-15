@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://tpt7yljsu6ei"]
+
+[ext_resource type="Script" path="res://scenes/game_scene/game_scene_manager.gd" id="1_7f2j4"]
+[ext_resource type="PackedScene" uid="uid://byg2il8fbav13" path="res://assets/platform.glb" id="2_1mict"]
+[ext_resource type="PackedScene" uid="uid://bpgscnt6a3c2" path="res://scenes/player/player.tscn" id="3_hmuow"]
+[ext_resource type="PackedScene" uid="uid://u16gxctwsq88" path="res://scenes/platform/platform.tscn" id="4_imy8y"]
+[ext_resource type="PackedScene" uid="uid://duqqne2b1we3x" path="res://scenes/goal/goal.tscn" id="5_j8srg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ajlrv"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3o3mb"]
+size = Vector3(4, 1, 4)
+
+[node name="GameScene" type="Node3D" node_paths=PackedStringArray("AIControllers", "player_goal_spawn_positions")]
+script = ExtResource("1_7f2j4")
+AIControllers = [NodePath("PlayerAIController"), NodePath("PlatformAIController")]
+player_goal_spawn_positions = [NodePath("platform"), NodePath("platform2")]
+
+[node name="platform" type="StaticBody3D" parent="."]
+
+[node name="platform" parent="platform" instance=ExtResource("2_1mict")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform"]
+shape = SubResource("BoxShape3D_ajlrv")
+
+[node name="platform2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+
+[node name="platform" parent="platform2" instance=ExtResource("2_1mict")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform2"]
+shape = SubResource("BoxShape3D_3o3mb")
+
+[node name="Goal" parent="." node_paths=PackedStringArray("game_manager", "player_ai_controller") instance=ExtResource("5_j8srg")]
+collision_mask = 2
+monitorable = false
+game_manager = NodePath("..")
+player_ai_controller = NodePath("../PlayerAIController")
+
+[node name="PlayerAIController" parent="." node_paths=PackedStringArray("game_manager", "platform_ai_controller", "goal") instance=ExtResource("3_hmuow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+game_manager = NodePath("..")
+platform_ai_controller = NodePath("../PlatformAIController")
+goal = NodePath("../Goal")
+onnx_model_path = ""
+
+[node name="PlatformAIController" parent="." node_paths=PackedStringArray("game_manager", "goal", "player_ai_controller") instance=ExtResource("4_imy8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 0.362, 0)
+game_manager = NodePath("..")
+goal = NodePath("../Goal")
+player_ai_controller = NodePath("../PlayerAIController")
+onnx_model_path = ""
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999701, -0.00611733, 0.023654, 0, 0.968148, 0.25038, -0.0244322, -0.250305, 0.967859, 9.475, 6.297, 10.476)
+fov = 64.9
+
+[connection signal="body_entered" from="Goal" to="PlayerAIController" method="_on_goal_body_entered"]

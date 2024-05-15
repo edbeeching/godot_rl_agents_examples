@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://xomproo2eyut"]
+
+[ext_resource type="PackedScene" uid="uid://tpt7yljsu6ei" path="res://scenes/game_scene/game_scene.tscn" id="1_eys64"]
+
+[node name="GameScene" node_paths=PackedStringArray("AIControllers", "player_goal_spawn_positions") instance=ExtResource("1_eys64")]
+AIControllers = [NodePath("PlayerAIController"), NodePath("PlatformAIController")]
+player_goal_spawn_positions = [NodePath("platform"), NodePath("platform2")]
+
+[node name="Goal" parent="." index="2" node_paths=PackedStringArray("game_manager", "player_ai_controller")]
+game_manager = NodePath("..")
+player_ai_controller = NodePath("../PlayerAIController")
+
+[node name="PlayerAIController" parent="." index="3" node_paths=PackedStringArray("game_manager", "platform_ai_controller", "goal")]
+game_manager = NodePath("..")
+platform_ai_controller = NodePath("../PlatformAIController")
+goal = NodePath("../Goal")
+control_mode = 3
+onnx_model_path = "onnx\\player_onnx\\model.onnx"
+
+[node name="PlatformAIController" parent="." index="4" node_paths=PackedStringArray("game_manager", "goal", "player_ai_controller")]
+game_manager = NodePath("..")
+goal = NodePath("../Goal")
+player_ai_controller = NodePath("../PlayerAIController")
+control_mode = 3
+onnx_model_path = "onnx\\platform_onnx\\model.onnx"
