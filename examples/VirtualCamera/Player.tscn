@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Player.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://b4hphc8dab5h" path="res://Robot.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://b30vsuwotx0u2" path="res://VirtualCamera.tscn" id="3_tv0v5"]
 [ext_resource type="Script" path="res://AIController3D.gd" id="4_rq7t7"]
+[ext_resource type="PackedScene" uid="uid://baaywi3arsl2m" path="res://addons/godot_rl_agents/sensors/sensors_3d/RGBCameraSensor3D.tscn" id="4_ybcln"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 1.6
@@ -27,8 +27,11 @@ mesh = SubResource("2")
 [node name="Robot" parent="." instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.43952, 0.0576344)
 
-[node name="RGBCameraSensor3D" parent="." instance=ExtResource("3_tv0v5")]
-
 [node name="AIController3D" type="Node3D" parent="."]
 script = ExtResource("4_rq7t7")
 reset_after = 10000
+
+[node name="RGBCameraSensor3D" parent="." instance=ExtResource("4_ybcln")]
+training_mode = true
+render_image_resolution = Vector2(10, 10)
+displayed_image_scale_factor = Vector2(20, 20)

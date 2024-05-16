@@ -113,7 +113,8 @@ func reset():
 
 
 func update_reward():
-	ai_controller.reward -= 0.01  # step penalty
+	#ai_controller.reward -= 0.01  # step penalty
+	pass
 
 
 func calculate_translation(other_pad_translation: Vector3) -> Vector3:
