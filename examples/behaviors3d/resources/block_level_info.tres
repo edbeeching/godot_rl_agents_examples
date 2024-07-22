@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelInfo" load_steps=6 format=3 uid="uid://cv7t8rg8v4lto"]
+
+[ext_resource type="PackedScene" uid="uid://07p8ln22c34j" path="res://scenes/objects/box_large_green.tscn" id="1_wakpj"]
+[ext_resource type="PackedScene" uid="uid://d3dsn8vjxsrlc" path="res://scenes/objects/box_medium_orange.tscn" id="2_r5whe"]
+[ext_resource type="PackedScene" uid="uid://d0on3yhrqo283" path="res://scenes/objects/box_small_green.tscn" id="3_y3vg4"]
+[ext_resource type="PackedScene" uid="uid://u238wy8x314u" path="res://scenes/objects/box_small_red.tscn" id="4_hnpys"]
+[ext_resource type="Script" path="res://resources/level_info.gd" id="5_6sme2"]
+
+[resource]
+script = ExtResource("5_6sme2")
+object_pool = Array[PackedScene]([ExtResource("1_wakpj"), ExtResource("2_r5whe"), ExtResource("3_y3vg4"), ExtResource("4_hnpys")])
+generate_func = Callable()

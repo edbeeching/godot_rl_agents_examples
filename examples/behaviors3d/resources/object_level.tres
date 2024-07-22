@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ObjectLevelGen" load_steps=6 format=3 uid="uid://dhhyfijixkoon"]
+
+[ext_resource type="PackedScene" uid="uid://07p8ln22c34j" path="res://scenes/objects/box_large_green.tscn" id="1_roab1"]
+[ext_resource type="Script" path="res://resources/object_level_gen.gd" id="1_wxuxg"]
+[ext_resource type="PackedScene" uid="uid://d3dsn8vjxsrlc" path="res://scenes/objects/box_medium_orange.tscn" id="2_ah4ry"]
+[ext_resource type="PackedScene" uid="uid://d0on3yhrqo283" path="res://scenes/objects/box_small_green.tscn" id="3_jgwxp"]
+[ext_resource type="PackedScene" uid="uid://u238wy8x314u" path="res://scenes/objects/box_small_red.tscn" id="4_mscpf"]
+
+[resource]
+script = ExtResource("1_wxuxg")
+object_pool = Array[PackedScene]([ExtResource("1_roab1"), ExtResource("2_ah4ry"), ExtResource("3_jgwxp"), ExtResource("4_mscpf")])

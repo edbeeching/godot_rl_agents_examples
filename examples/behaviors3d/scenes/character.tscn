@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://s48tadqoyhgh"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_uvdlf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ajpj0"]
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_egmbr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2v4bj"]
+radius = 0.72588
+
+[node name="Character" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0)
+script = ExtResource("1_uvdlf")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("CapsuleMesh_ajpj0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3.71085, 4.08081)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_egmbr")
+
+[node name="Collector" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collector"]
+shape = SubResource("SphereShape3D_2v4bj")
+
+[connection signal="area_entered" from="Collector" to="." method="_on_collector_area_entered"]

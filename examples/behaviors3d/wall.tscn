@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://belcokio5knhr"]
+
+[ext_resource type="Texture2D" uid="uid://d05syloiot2uq" path="res://addons/kenney_prototype_textures/dark/texture_07.png" id="1_yig8d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1etky"]
+albedo_texture = ExtResource("1_yig8d")
+uv1_triplanar = true
+
+[node name="Wall" type="CSGBox3D"]
+use_collision = true
+material = SubResource("StandardMaterial3D_1etky")

@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://osp2me1d4tfr"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_hpaeu"]
+[ext_resource type="Resource" uid="uid://dhhyfijixkoon" path="res://resources/object_level.tres" id="2_lpdtn"]
+[ext_resource type="PackedScene" uid="uid://d0bk857hjyns8" path="res://scenes/ground.tscn" id="3_nv4ft"]
+[ext_resource type="PackedScene" uid="uid://s48tadqoyhgh" path="res://scenes/character.tscn" id="7_eyd0j"]
+[ext_resource type="PackedScene" uid="uid://58lpi1c3ykny" path="res://scenes/target.tscn" id="8_waw7a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8t4ax"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+uv1_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oxknl"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_f0gia"]
+sky_material = SubResource("ProceduralSkyMaterial_oxknl")
+
+[sub_resource type="Environment" id="Environment_0uvs1"]
+background_mode = 2
+sky = SubResource("Sky_f0gia")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_hpaeu")
+level_generator = ExtResource("2_lpdtn")
+
+[node name="Ground" parent="." instance=ExtResource("3_nv4ft")]
+
+[node name="Character" parent="." instance=ExtResource("7_eyd0j")]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Forward" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_8t4ax")
+
+[node name="Backward" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 10)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_8t4ax")
+
+[node name="Left" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 10, 0)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_8t4ax")
+
+[node name="Right" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 10, 0)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_8t4ax")
+
+[node name="Target" parent="." instance=ExtResource("8_waw7a")]
+
+[node name="Env" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env"]
+environment = SubResource("Environment_0uvs1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[connection signal="area_entered" from="Target" to="." method="_on_target_area_entered"]

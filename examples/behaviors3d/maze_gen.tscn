@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvv72syq5vnwd"]
+
+[ext_resource type="Script" path="res://maze_gen.gd" id="1_bl47q"]
+[ext_resource type="Script" path="res://fly_cam.gd" id="2_ikyml"]
+[ext_resource type="Texture2D" uid="uid://cig08jjmpgg48" path="res://addons/kenney_prototype_textures/light/texture_01.png" id="3_mfh4u"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3brqs"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_3qb77"]
+sky_material = SubResource("ProceduralSkyMaterial_3brqs")
+
+[sub_resource type="Environment" id="Environment_8134p"]
+background_mode = 2
+sky = SubResource("Sky_3qb77")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmg30"]
+albedo_texture = ExtResource("3_mfh4u")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fm6ef"]
+material = SubResource("StandardMaterial3D_cmg30")
+size = Vector2(20, 20)
+
+[node name="MazeGen" type="Node3D"]
+script = ExtResource("1_bl47q")
+width = 5
+height = 5
+
+[node name="FlyCam" type="Camera3D" parent="."]
+transform = Transform3D(0.959324, -0.156422, 0.235008, 0, 0.832459, 0.554087, -0.282306, -0.531549, 0.798598, 1.7384, 4.09869, 5.90739)
+script = ExtResource("2_ikyml")
+
+[node name="Env" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env"]
+environment = SubResource("Environment_8134p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+mesh = SubResource("PlaneMesh_fm6ef")
