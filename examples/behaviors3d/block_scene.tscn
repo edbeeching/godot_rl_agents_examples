@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bj8c4w58s61kg"]
+
+[ext_resource type="Script" path="res://block_scene.gd" id="1_xgygf"]
+[ext_resource type="PackedScene" uid="uid://07p8ln22c34j" path="res://scenes/objects/box_large_green.tscn" id="2_5wm32"]
+[ext_resource type="PackedScene" uid="uid://d0bk857hjyns8" path="res://scenes/ground.tscn" id="2_r6iqf"]
+[ext_resource type="PackedScene" uid="uid://d3dsn8vjxsrlc" path="res://scenes/objects/box_medium_orange.tscn" id="3_moofo"]
+[ext_resource type="PackedScene" uid="uid://d0on3yhrqo283" path="res://scenes/objects/box_small_green.tscn" id="4_u45jt"]
+[ext_resource type="PackedScene" uid="uid://u238wy8x314u" path="res://scenes/objects/box_small_red.tscn" id="5_qlly2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbcyy"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+uv1_triplanar = true
+
+[node name="BlockScene" type="Node3D"]
+script = ExtResource("1_xgygf")
+object_pool = Array[PackedScene]([ExtResource("2_5wm32"), ExtResource("3_moofo"), ExtResource("4_u45jt"), ExtResource("5_qlly2")])
+
+[node name="Ground" parent="." instance=ExtResource("2_r6iqf")]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Forward" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_pbcyy")
+
+[node name="Backward" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 10)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_pbcyy")
+
+[node name="Left" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 10, 0)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_pbcyy")
+
+[node name="Right" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 10, 0)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_pbcyy")

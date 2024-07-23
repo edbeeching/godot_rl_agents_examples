@@ -4,7 +4,7 @@ extends Node3D
 @onready var ground = $Ground
 # @export var object_pool : Array[PackedScene]
 @export var level_generator : BaseLevelGen
-
+@onready var level_scene = preload("res://level_builder.tscn")
 
 func _ready() -> void:
 	level_generator.generate_level(self)
