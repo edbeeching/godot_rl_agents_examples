@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvv72syq5vnwd"]
+[gd_scene load_steps=8 format=3 uid="uid://cvv72syq5vnwd"]
 
 [ext_resource type="Script" path="res://maze_gen.gd" id="1_bl47q"]
 [ext_resource type="Script" path="res://fly_cam.gd" id="2_ikyml"]
-[ext_resource type="Texture2D" uid="uid://cig08jjmpgg48" path="res://addons/kenney_prototype_textures/light/texture_01.png" id="3_mfh4u"]
+[ext_resource type="PackedScene" uid="uid://d0bk857hjyns8" path="res://scenes/ground.tscn" id="3_13to1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3brqs"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,12 +17,10 @@ sky = SubResource("Sky_3qb77")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmg30"]
-albedo_texture = ExtResource("3_mfh4u")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_fm6ef"]
-material = SubResource("StandardMaterial3D_cmg30")
-size = Vector2(20, 20)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qskrd"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+uv1_triplanar = true
 
 [node name="MazeGen" type="Node3D"]
 script = ExtResource("1_bl47q")
@@ -42,6 +40,30 @@ environment = SubResource("Environment_8134p")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
-mesh = SubResource("PlaneMesh_fm6ef")
+[node name="Ground" parent="." instance=ExtResource("3_13to1")]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Forward" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_qskrd")
+
+[node name="Backward" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 10)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_qskrd")
+
+[node name="Left" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 10, 0)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_qskrd")
+
+[node name="Right" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 10, 0)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_qskrd")
