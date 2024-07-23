@@ -2,6 +2,8 @@ extends Node3D
 
 class_name MazeGenerator3D
 
+
+@export var maze_scale = 2.0
 @export var width: int = 10
 @export var height: int = 10
 @onready var ground = $Ground   
@@ -23,8 +25,8 @@ class MazeCell:
 
 func get_unvisited_neighbors(grid: Array, cell: MazeCell) -> Array[MazeCell]:
     var neighbors : Array[MazeCell]= []
-    var x = cell.position.x
-    var y = cell.position.y
+    var x = cell.position.x 
+    var y = cell.position.y 
 
     if x > 0 and not grid[y][x - 1].VISITED:
         neighbors.append(grid[y][x - 1])
@@ -84,21 +86,21 @@ func generate_level():
             var cell = grid[y][x]
             if cell.NORTH:
                 var wall_instance = wall.instantiate()
-                wall_instance.translate(Vector3(x, 0, y-0.5))
+                wall_instance.translate(Vector3(x*maze_scale, 0, y*maze_scale-maze_scale/2))
                 add_child(wall_instance)
             if cell.EAST:
                 var wall_instance = wall.instantiate()
-                wall_instance.translate(Vector3(x + 0.5, 0, y))
+                wall_instance.translate(Vector3(x*maze_scale + maze_scale/2, 0, y*maze_scale))
                 wall_instance.rotate(Vector3(0, 1, 0), PI / 2)
                 add_child(wall_instance)
             if cell.SOUTH:
                 var wall_instance = wall.instantiate()
                 # wall_instance.rotate(Vector3(0, 1, 0), PI)
-                wall_instance.translate(Vector3(x, 0, y+ 0.5))
+                wall_instance.translate(Vector3(x*maze_scale, 0, y*maze_scale+ maze_scale/2))
                 add_child(wall_instance)
             if cell.WEST:
                 var wall_instance = wall.instantiate()
-                wall_instance.translate(Vector3(x-0.5, 0, y))
+                wall_instance.translate(Vector3(x*maze_scale-maze_scale/2, 0, y*maze_scale))
                 wall_instance.rotate(Vector3(0, 1, 0), PI / 2)
                 add_child(wall_instance)
 
@@ -115,5 +117,3 @@ func get_target_location() -> Vector3:
         1,
         randf_range(-ground.size.z/2, ground.size.z/2)
     )
-
-
