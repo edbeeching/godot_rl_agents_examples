@@ -1,0 +1,145 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpgscnt6a3c2"]
+
+[ext_resource type="Script" path="res://scenes/player/player_ai_controller.gd" id="1_chk3m"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="2_fh5nj"]
+[ext_resource type="PackedScene" uid="uid://doqudr33pr7we" path="res://assets/robot.glb" id="3_lvsyl"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="4_bgl3b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uiics"]
+radius = 0.67
+height = 1.981
+
+[node name="PlayerAIController" type="Node3D"]
+script = ExtResource("1_chk3m")
+policy_name = "player"
+
+[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("wheels")]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("2_fh5nj")
+speed = 5.0
+visual_rotation_update_speed = 5.0
+wheels = [NodePath("robot/Wheel_001"), NodePath("robot/Wheel")]
+
+[node name="robot" parent="Player" instance=ExtResource("3_lvsyl")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.608908, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_uiics")
+
+[node name="RayCastSensor3D" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+script = ExtResource("4_bgl3b")
+ray_length = 8.0
+cone_width = 160.0
+cone_height = 160.0
+
+[node name="@RayCast3D@69341" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-2.90949, -7.34573, 1.25503)
+
+[node name="@RayCast3D@69342" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-5.62715, -5.1423, 2.42732)
+
+[node name="@RayCast3D@69343" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-7.14772, -1.84493, 3.08323)
+
+[node name="@RayCast3D@69344" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-7.14772, 1.84493, 3.08323)
+
+[node name="@RayCast3D@69345" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-5.62715, 5.1423, 2.42732)
+
+[node name="@RayCast3D@69346" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-2.90949, 7.34573, 1.25503)
+
+[node name="@RayCast3D@69347" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-2.03676, -7.34573, 2.42732)
+
+[node name="@RayCast3D@69348" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-3.93923, -5.1423, 4.69459)
+
+[node name="@RayCast3D@69349" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-5.00369, -1.84493, 5.96316)
+
+[node name="@RayCast3D@69350" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-5.00369, 1.84493, 5.96316)
+
+[node name="@RayCast3D@69351" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-3.93923, 5.1423, 4.69459)
+
+[node name="@RayCast3D@69352" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-2.03676, 7.34573, 2.42732)
+
+[node name="@RayCast3D@69353" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-0.730738, -7.34573, 3.08323)
+
+[node name="@RayCast3D@69354" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-1.4133, -5.1423, 5.96316)
+
+[node name="@RayCast3D@69355" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-1.7952, -1.84493, 7.57453)
+
+[node name="@RayCast3D@69356" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-1.7952, 1.84493, 7.57453)
+
+[node name="@RayCast3D@69357" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-1.4133, 5.1423, 5.96316)
+
+[node name="@RayCast3D@69358" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(-0.730738, 7.34573, 3.08323)
+
+[node name="node_3 0" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(0.730738, -7.34573, 3.08323)
+
+[node name="node_3 1" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(1.4133, -5.1423, 5.96316)
+
+[node name="node_3 2" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(1.7952, -1.84493, 7.57453)
+
+[node name="@RayCast3D@69359" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(1.7952, 1.84493, 7.57453)
+
+[node name="@RayCast3D@69360" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(1.4133, 5.1423, 5.96316)
+
+[node name="@RayCast3D@69361" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(0.730738, 7.34573, 3.08323)
+
+[node name="node_4 0" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(2.03676, -7.34573, 2.42732)
+
+[node name="node_4 1" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(3.93923, -5.1423, 4.69459)
+
+[node name="node_4 2" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(5.00369, -1.84493, 5.96316)
+
+[node name="@RayCast3D@69362" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(5.00369, 1.84493, 5.96316)
+
+[node name="@RayCast3D@69363" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(3.93923, 5.1423, 4.69459)
+
+[node name="@RayCast3D@69364" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(2.03676, 7.34573, 2.42732)
+
+[node name="node_5 0" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(2.90949, -7.34573, 1.25503)
+
+[node name="node_5 1" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(5.62715, -5.1423, 2.42732)
+
+[node name="node_5 2" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(7.14772, -1.84493, 3.08323)
+
+[node name="@RayCast3D@69365" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(7.14772, 1.84493, 3.08323)
+
+[node name="@RayCast3D@69366" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(5.62715, 5.1423, 2.42732)
+
+[node name="@RayCast3D@69367" type="RayCast3D" parent="Player/RayCastSensor3D"]
+target_position = Vector3(2.90949, 7.34573, 1.25503)
+
+[editable path="Player/robot"]

@@ -1,0 +1,497 @@
+[gd_scene load_steps=7 format=3 uid="uid://fhnd4o88w5p4"]
+
+[ext_resource type="Script" path="res://scenes/player/Player.cs" id="1_73fx5"]
+[ext_resource type="Script" path="res://scenes/player/player_ai_controller.gd" id="2_suigr"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="3_qsyok"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owc64"]
+albedo_color = Color(0.929563, 0.63943, 7.70092e-07, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jc5om"]
+material = SubResource("StandardMaterial3D_owc64")
+radius = 0.25
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2gph3"]
+radius = 0.25
+height = 1.0
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_73fx5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_jc5om")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_2gph3")
+
+[node name="AIController3D" type="Node3D" parent="." node_paths=PackedStringArray("player", "raycast_sensors")]
+script = ExtResource("2_suigr")
+player = NodePath("..")
+raycast_sensors = [NodePath("GoalRaycastSensor"), NodePath("ObstacleRaycastSensor"), NodePath("GroundRaycastSensor")]
+
+[node name="GoalRaycastSensor" type="Node3D" parent="AIController3D"]
+script = ExtResource("3_qsyok")
+collision_mask = 2
+boolean_class_mask = 0
+n_rays_width = 32.0
+n_rays_height = 1.0
+cone_width = 360.0
+cone_height = 0.0
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_0 0" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-0.980171, 0, -9.95185)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_1 0" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-2.90285, 0, -9.5694)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_2 0" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-4.71397, 0, -8.81921)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_3 0" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-6.34393, 0, -7.7301)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_4 0" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-7.7301, 0, -6.34393)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_5 0" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-8.81921, 0, -4.71397)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57424" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-9.5694, 0, -2.90285)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57425" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-9.95185, 0, -0.980171)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57426" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-9.95185, 0, 0.980171)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57427" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-9.5694, 0, 2.90285)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57428" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-8.81921, 0, 4.71397)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57429" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-7.7301, 0, 6.34393)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_12 0" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-6.34393, 0, 7.7301)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_13 0" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-4.71397, 0, 8.81921)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_14 0" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-2.90285, 0, 9.5694)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_15 0" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(-0.980171, 0, 9.95185)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57430" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(0.980171, 0, 9.95185)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57431" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(2.90285, 0, 9.5694)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57432" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(4.71397, 0, 8.81921)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57433" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(6.34393, 0, 7.7301)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57434" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(7.7301, 0, 6.34393)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57435" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(8.81921, 0, 4.71397)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57436" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(9.5694, 0, 2.90285)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57437" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(9.95185, 0, 0.980171)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57438" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(9.95185, 0, -0.980171)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57439" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(9.5694, 0, -2.90285)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57440" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(8.81921, 0, -4.71397)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57441" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(7.7301, 0, -6.34393)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57442" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(6.34393, 0, -7.7301)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57443" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(4.71397, 0, -8.81921)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57444" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(2.90285, 0, -9.5694)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@57445" type="RayCast3D" parent="AIController3D/GoalRaycastSensor"]
+target_position = Vector3(0.980171, 0, -9.95185)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ObstacleRaycastSensor" type="Node3D" parent="AIController3D"]
+script = ExtResource("3_qsyok")
+collision_mask = 4
+boolean_class_mask = 0
+n_rays_width = 32.0
+n_rays_height = 1.0
+cone_width = 360.0
+cone_height = 0.0
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_0 0" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-0.980171, 0, -9.95185)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_1 0" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-2.90285, 0, -9.5694)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_2 0" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-4.71397, 0, -8.81921)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_3 0" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-6.34393, 0, -7.7301)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_4 0" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-7.7301, 0, -6.34393)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_5 0" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-8.81921, 0, -4.71397)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56972" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-9.5694, 0, -2.90285)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56973" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-9.95185, 0, -0.980171)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56974" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-9.95185, 0, 0.980171)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56975" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-9.5694, 0, 2.90285)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56976" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-8.81921, 0, 4.71397)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56977" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-7.7301, 0, 6.34393)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_12 0" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-6.34393, 0, 7.7301)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_13 0" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-4.71397, 0, 8.81921)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_14 0" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-2.90285, 0, 9.5694)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="node_15 0" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(-0.980171, 0, 9.95185)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56978" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(0.980171, 0, 9.95185)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56979" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(2.90285, 0, 9.5694)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56980" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(4.71397, 0, 8.81921)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56981" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(6.34393, 0, 7.7301)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56982" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(7.7301, 0, 6.34393)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56983" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(8.81921, 0, 4.71397)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56984" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(9.5694, 0, 2.90285)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56985" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(9.95185, 0, 0.980171)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56986" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(9.95185, 0, -0.980171)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56987" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(9.5694, 0, -2.90285)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56988" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(8.81921, 0, -4.71397)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56989" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(7.7301, 0, -6.34393)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56990" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(6.34393, 0, -7.7301)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56991" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(4.71397, 0, -8.81921)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56992" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(2.90285, 0, -9.5694)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="@RayCast3D@56993" type="RayCast3D" parent="AIController3D/ObstacleRaycastSensor"]
+target_position = Vector3(0.980171, 0, -9.95185)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="GroundRaycastSensor" type="Node3D" parent="AIController3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("3_qsyok")
+boolean_class_mask = 0
+n_rays_width = 4.0
+n_rays_height = 4.0
+ray_length = 2.0
+cone_width = 90.0
+cone_height = 90.0
+
+[node name="node_0 0" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(-0.92388, -1.11114, 1.38268)
+
+[node name="@RayCast3D@24718" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(-1.08979, -0.390181, 1.63099)
+
+[node name="@RayCast3D@24719" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(-1.08979, 0.390181, 1.63099)
+
+[node name="@RayCast3D@24720" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(-0.92388, 1.11114, 1.38268)
+
+[node name="node_1 0" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(-0.324423, -1.11114, 1.63099)
+
+[node name="@RayCast3D@24721" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(-0.382683, -0.390181, 1.92388)
+
+[node name="@RayCast3D@24722" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(-0.382683, 0.390181, 1.92388)
+
+[node name="@RayCast3D@24723" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(-0.324423, 1.11114, 1.63099)
+
+[node name="@RayCast3D@24724" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(0.324423, -1.11114, 1.63099)
+
+[node name="@RayCast3D@24725" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(0.382683, -0.390181, 1.92388)
+
+[node name="@RayCast3D@24726" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(0.382683, 0.390181, 1.92388)
+
+[node name="@RayCast3D@24727" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(0.324423, 1.11114, 1.63099)
+
+[node name="@RayCast3D@24728" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(0.92388, -1.11114, 1.38268)
+
+[node name="@RayCast3D@24729" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(1.08979, -0.390181, 1.63099)
+
+[node name="@RayCast3D@24730" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(1.08979, 0.390181, 1.63099)
+
+[node name="@RayCast3D@24731" type="RayCast3D" parent="AIController3D/GroundRaycastSensor"]
+target_position = Vector3(0.92388, 1.11114, 1.38268)

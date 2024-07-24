@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://b12majbajmkqq"]
+
+[ext_resource type="PackedScene" uid="uid://qofctg4fc0c2" path="res://scenes/game_scene/game_scene.tscn" id="1_pdcwe"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_7kqnq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kbbm2"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lpkw7"]
+sky_material = SubResource("ProceduralSkyMaterial_kbbm2")
+
+[sub_resource type="Environment" id="Environment_3ytk2"]
+background_mode = 2
+sky = SubResource("Sky_lpkw7")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TrainingScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3ytk2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GameScene" parent="." node_paths=PackedStringArray("goal_manager", "obstacle_manager", "player") instance=ExtResource("1_pdcwe")]
+goal_manager = NodePath("GoalManager")
+obstacle_manager = NodePath("ObstacleManager")
+player = NodePath("Player")
+
+[node name="GameScene2" parent="." node_paths=PackedStringArray("goal_manager", "obstacle_manager", "player") instance=ExtResource("1_pdcwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+goal_manager = NodePath("GoalManager")
+obstacle_manager = NodePath("ObstacleManager")
+player = NodePath("Player")
+
+[node name="GameScene3" parent="." node_paths=PackedStringArray("goal_manager", "obstacle_manager", "player") instance=ExtResource("1_pdcwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+goal_manager = NodePath("GoalManager")
+obstacle_manager = NodePath("ObstacleManager")
+player = NodePath("Player")
+
+[node name="GameScene4" parent="." node_paths=PackedStringArray("goal_manager", "obstacle_manager", "player") instance=ExtResource("1_pdcwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 0)
+goal_manager = NodePath("GoalManager")
+obstacle_manager = NodePath("ObstacleManager")
+player = NodePath("Player")
+
+[node name="GameScene5" parent="." node_paths=PackedStringArray("goal_manager", "obstacle_manager", "player") instance=ExtResource("1_pdcwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+goal_manager = NodePath("GoalManager")
+obstacle_manager = NodePath("ObstacleManager")
+player = NodePath("Player")
+
+[node name="GameScene6" parent="." node_paths=PackedStringArray("goal_manager", "obstacle_manager", "player") instance=ExtResource("1_pdcwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 100)
+goal_manager = NodePath("GoalManager")
+obstacle_manager = NodePath("ObstacleManager")
+player = NodePath("Player")
+
+[node name="GameScene7" parent="." node_paths=PackedStringArray("goal_manager", "obstacle_manager", "player") instance=ExtResource("1_pdcwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 100)
+goal_manager = NodePath("GoalManager")
+obstacle_manager = NodePath("ObstacleManager")
+player = NodePath("Player")
+
+[node name="GameScene8" parent="." node_paths=PackedStringArray("goal_manager", "obstacle_manager", "player") instance=ExtResource("1_pdcwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 0, 100)
+goal_manager = NodePath("GoalManager")
+obstacle_manager = NodePath("ObstacleManager")
+player = NodePath("Player")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.803856, 0.594823, 0, -0.594823, 0.803856, 0, 9.562, 11.843)
+fov = 51.7
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_7kqnq")
+speed_up = 16.0
+onnx_model_path = "SimpleReachGoal.onnx"

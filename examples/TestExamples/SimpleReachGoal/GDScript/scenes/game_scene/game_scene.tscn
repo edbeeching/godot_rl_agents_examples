@@ -1,0 +1,190 @@
+[gd_scene load_steps=13 format=3 uid="uid://qofctg4fc0c2"]
+
+[ext_resource type="Script" path="res://scenes/game_scene/area_position_randomizer.gd" id="1_btskf"]
+[ext_resource type="Script" path="res://scenes/game_scene/game_scene_manager.gd" id="1_ihj32"]
+[ext_resource type="PackedScene" uid="uid://fhnd4o88w5p4" path="res://scenes/player/player.tscn" id="3_j13wo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g301e"]
+transparency = 1
+albedo_color = Color(0, 1, 0.166667, 0.756863)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wnjao"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mblpq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_irk0a"]
+transparency = 1
+albedo_color = Color(0, 1, 0.166667, 0.313726)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0cxi"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.756863)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu1jy"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.313726)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ahva"]
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eh8qq"]
+material = SubResource("StandardMaterial3D_1ahva")
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wmgsa"]
+size = Vector3(10, 1, 10)
+
+[node name="GameScene" type="Node3D" node_paths=PackedStringArray("goal_manager", "obstacle_manager", "player")]
+script = ExtResource("1_ihj32")
+goal_manager = NodePath("GoalManager")
+obstacle_manager = NodePath("ObstacleManager")
+player = NodePath("Player")
+
+[node name="GoalManager" type="Node3D" parent="."]
+script = ExtResource("1_btskf")
+
+[node name="Goal" type="Area3D" parent="GoalManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -4)
+collision_layer = 2
+monitorable = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GoalManager/Goal"]
+material_override = SubResource("StandardMaterial3D_g301e")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GoalManager/Goal"]
+shape = SubResource("BoxShape3D_mblpq")
+
+[node name="SpawnPosition" type="MeshInstance3D" parent="GoalManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 4)
+material_override = SubResource("StandardMaterial3D_irk0a")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition2" type="MeshInstance3D" parent="GoalManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 4)
+material_override = SubResource("StandardMaterial3D_irk0a")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition3" type="MeshInstance3D" parent="GoalManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, -4)
+material_override = SubResource("StandardMaterial3D_irk0a")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition4" type="MeshInstance3D" parent="GoalManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -4)
+material_override = SubResource("StandardMaterial3D_irk0a")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="ObstacleManager" type="Node3D" parent="."]
+script = ExtResource("1_btskf")
+
+[node name="Obstacle" type="Area3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -2)
+collision_layer = 4
+monitorable = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ObstacleManager/Obstacle"]
+material_override = SubResource("StandardMaterial3D_t0cxi")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleManager/Obstacle"]
+shape = SubResource("BoxShape3D_mblpq")
+
+[node name="SpawnPosition" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition2" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition3" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition4" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition5" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -1)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition6" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -2)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition7" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, -2)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition8" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -2)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition9" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -2)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition10" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -1)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition11" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 1)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition12" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 2)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition13" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 2)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition14" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 2)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition15" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 2)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="SpawnPosition16" type="MeshInstance3D" parent="ObstacleManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 1)
+material_override = SubResource("StandardMaterial3D_qu1jy")
+mesh = SubResource("BoxMesh_wnjao")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_eh8qq")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
+shape = SubResource("BoxShape3D_wmgsa")
+
+[node name="Player" parent="." node_paths=PackedStringArray("game_scene_manager", "goal", "obstacle", "ai_controller") instance=ExtResource("3_j13wo")]
+game_scene_manager = NodePath("..")
+goal = NodePath("../GoalManager/Goal")
+obstacle = NodePath("../ObstacleManager/Obstacle")
+ai_controller = NodePath("AIController3D")
+
+[connection signal="body_entered" from="GoalManager/Goal" to="Player" method="_on_goal_body_entered"]
+[connection signal="body_entered" from="ObstacleManager/Obstacle" to="Player" method="_on_obstacle_body_entered"]

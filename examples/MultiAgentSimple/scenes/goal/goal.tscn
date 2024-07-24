@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://duqqne2b1we3x"]
+
+[ext_resource type="Script" path="res://scenes/goal/goal.gd" id="1_k3tuu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n45yr"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hko7p"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.282353)
+
+[sub_resource type="BoxMesh" id="BoxMesh_myqp0"]
+material = SubResource("StandardMaterial3D_hko7p")
+size = Vector3(1, 2, 1)
+
+[node name="Goal" type="Area3D" node_paths=PackedStringArray("game_manager", "player") groups=["resetable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1.5, 0)
+collision_layer = 0
+script = ExtResource("1_k3tuu")
+game_manager = NodePath("")
+player = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_n45yr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_myqp0")
+skeleton = NodePath("../..")
