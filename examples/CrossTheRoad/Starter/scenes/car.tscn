@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhk60xl5s8pmm"]
+
+[ext_resource type="Script" path="res://scripts/car.gd" id="1_psb6d"]
+[ext_resource type="PackedScene" uid="uid://b2n1vy10th4qo" path="res://assets/car.glb" id="2_fqh82"]
+
+[node name="Car" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.75, 0)
+script = ExtResource("1_psb6d")
+
+[node name="car" parent="." instance=ExtResource("2_fqh82")]
