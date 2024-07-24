@@ -72,7 +72,7 @@ You will find there are commented method names in the script that need to be imp
 
 **Replace `_ready()`, `_physics_process(delta)`, `_process_movement(_delta)` and `reward_approaching_goal()` with the following implementation:**
 
-```python
+```gdscript
 func _ready():
 	reset()
 
@@ -141,7 +141,7 @@ A brief overview of the methods:
 
 **Replace `get_grid_position()`, `game_over()`, `reset()`, and `print_game_status()` with the following implementation:**
 
-```python
+```gdscript
 func get_grid_position() -> Vector3i:
 	return map.get_grid_position(global_position)
 
@@ -182,7 +182,7 @@ That’s it for the Player node. Press `CTRL + S` to save the changes, and let�
 
 **Replace `get_obs()` with the following implementation:**
 
-```python
+```gdscript
 func get_obs() -> Dictionary:
 	var observations := Array()
 	var player_pos = player.get_grid_position()
@@ -249,7 +249,7 @@ For each cell, we provide a `tile id` (e.g. 0, 1, 2, 3) so that the agent can di
 
 **Replace `get_reward()`, `_process()`, `_physics_process()`, and `get_action_space()` with the following implementation:**
 
-```python
+```gdscript
 func get_reward() -> float:
 	return reward
 
@@ -280,7 +280,7 @@ func get_action_space() -> Dictionary:
 
 **Replace `set_action()`, and `get_user_input()` with the following implementation:**
 
-```python
+```gdscript
 ## Applies AI control actions to the robot
 func set_action(action = null) -> void:
 	# We have specified discrete action type with size 5,
@@ -328,7 +328,7 @@ You can export the game from Godot using `Project > Export`.
 
 ### **Run training using the arguments below:**
 
-```python
+```gdscript
 stable_baselines3_example.py --timesteps=250_000 --onnx_export_path=model.onnx --env_path="PathToExportedExecutable" --n_parallel=4 --speedup=32
 ```
 
@@ -376,7 +376,7 @@ If you’d like to change the layout of the map, open the `scripts/grid_map.gd` 
 
 You will find the relevant code section in the `set_cells()` method:
 
-```python
+```gdscript
 ## You can set the layout by adjusting each row with set_row_cells()
 ## Note: Changing size after initial start is not supported
 ## you can change the order or rows or how many of the second tiles to add
@@ -406,7 +406,7 @@ In the code above, each `add_row()` method call adds another row to the map. The
 
 For instance, a call to:
 
-```python
+```gdscript
 add_row(Tile.TileNames.orange, Tile.TileNames.tree, 2)
 ```
 
@@ -414,7 +414,7 @@ will add a grid row with mostly orange (walkable) tiles, and 2 randomly position
 
 Note that for any road segment that you add using:
 
-```python
+```gdscript
 add_row(Tile.TileNames.road)
 ```
 
@@ -422,7 +422,7 @@ a car will also be added automatically that will move along the road. When using
 
 Here’s a more complex layout example you can try:
 
-```python
+```gdscript
 ## You can set the layout by adjusting each row with set_row_cells()
 ## Note: Changing size after initial start is not supported
 ## you can change the order or rows or how many of the second tiles to add
@@ -453,7 +453,7 @@ That would generate maps that looks similar to below:
 
 If you’d like to shuffle the rows to create a more randomized map layout, you can try something similar to below:
 
-```python
+```gdscript
 ## You can set the layout by adjusting each row with set_row_cells()
 ## Note: Changing size after initial start is not supported
 ## you can change the order or rows or how many of the second tiles to add
