@@ -370,7 +370,7 @@ If there are issues with the performance of the agent, you could try retraining 
 
 If there are some errors when trying to run the onnx file, check if there is an error message. You could also try importing and running the `Completed` Godot project to see if it works well, then compare for any differences.
 
-## Customizing the map layout:
+# Customizing the map layout:
 
 If you’d like to change the layout of the map, open the `scripts/grid_map.gd` script (you can find it in the FileSystem). 
 
@@ -493,7 +493,7 @@ Some notes:
 
 ![reset_after](https://github.com/user-attachments/assets/bf09bb10-c4b0-4942-a04c-c2ea59c3632c)
 
-## Conclusion:
+# Conclusion:
 
 Congrats! You’ve learned how to train a RL agent to successfully complete a grid-like env using Godot, Godot RL Agents, and Stable Baselines 3.
 
