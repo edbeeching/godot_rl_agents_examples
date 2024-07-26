@@ -29,3 +29,6 @@ https://github.com/edbeeching/godot_rl_agents_examples/assets/7275864/a4e4f51f-6
 #### MultiAgent Simple: (Trained with Rllib, check env's readme for more info)
 https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/9b0632e5-1970-483b-98ae-e6e6432b759b
 
+#### Cross The Road: 
+https://github.com/user-attachments/assets/287f066c-261f-4f5f-9420-5922ee12a23d
+

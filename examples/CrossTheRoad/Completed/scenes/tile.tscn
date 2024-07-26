@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://crui8soua8lj2"]
+
+[ext_resource type="Script" path="res://scripts/tile.gd" id="1_xode2"]
+[ext_resource type="PackedScene" uid="uid://bfb0o41scdp70" path="res://assets/road_tile.glb" id="2_c5l1q"]
+[ext_resource type="PackedScene" uid="uid://bn7tu2v2dgfuc" path="res://assets/orange_tile.glb" id="3_rlmbm"]
+[ext_resource type="PackedScene" uid="uid://dtq61doicjsbq" path="res://assets/tree_tile.glb" id="4_p4mpm"]
+[ext_resource type="PackedScene" uid="uid://6wdk5i0xsijn" path="res://assets/goal_tile.glb" id="5_p4gbw"]
+
+[node name="Tile" type="Node3D"]
+script = ExtResource("1_xode2")
+
+[node name="orange_tile" parent="." instance=ExtResource("3_rlmbm")]
+
+[node name="road_tile" parent="." instance=ExtResource("2_c5l1q")]
+
+[node name="tree_tile" parent="." instance=ExtResource("4_p4mpm")]
+
+[node name="goal_tile" parent="." instance=ExtResource("5_p4gbw")]

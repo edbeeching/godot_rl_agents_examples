@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn2auvcty4aoe"]
+
+[ext_resource type="PackedScene" uid="uid://bsuw6dqwq2e3v" path="res://scenes/robot.tscn" id="1_2k47m"]
+[ext_resource type="PackedScene" uid="uid://crui8soua8lj2" path="res://scenes/tile.tscn" id="2_ltmsi"]
+[ext_resource type="Script" path="res://scripts/car_manager.gd" id="4_jfcfq"]
+[ext_resource type="Script" path="res://scripts/grid_map.gd" id="4_lrlqi"]
+[ext_resource type="PackedScene" uid="uid://bhk60xl5s8pmm" path="res://scenes/car.tscn" id="4_nsbp8"]
+
+[node name="GameScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.615661, 0.788011, 0, -0.788011, 0.615661, 5, 10, 15.95)
+size = 12.748
+
+[node name="Map" type="Node3D" parent="."]
+script = ExtResource("4_lrlqi")
+tile = ExtResource("2_ltmsi")
+
+[node name="Tiles" type="Node3D" parent="Map"]
+
+[node name="Cars" type="Node3D" parent="." node_paths=PackedStringArray("map")]
+script = ExtResource("4_jfcfq")
+map = NodePath("../Map")
+car_scene = ExtResource("4_nsbp8")
+
+[node name="Robot" parent="." node_paths=PackedStringArray("map", "car_manager") instance=ExtResource("1_2k47m")]
+map = NodePath("../Map")
+car_manager = NodePath("../Cars")

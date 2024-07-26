@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl152s178wgm5"]
+
+[ext_resource type="PackedScene" uid="uid://dn2auvcty4aoe" path="res://scenes/game_scene.tscn" id="1_ft0b8"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_sk0r2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bdk3k"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_uw47m"]
+sky_material = SubResource("ProceduralSkyMaterial_bdk3k")
+
+[sub_resource type="Environment" id="Environment_iamhl"]
+background_mode = 2
+sky = SubResource("Sky_uw47m")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TrainingScene" type="Node3D"]
+
+[node name="GameScene" parent="." instance=ExtResource("1_ft0b8")]
+
+[node name="GameScene2" parent="." instance=ExtResource("1_ft0b8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+
+[node name="GameScene3" parent="." instance=ExtResource("1_ft0b8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="GameScene4" parent="." instance=ExtResource("1_ft0b8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -400)
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_sk0r2")
+action_repeat = 1
+speed_up = 8.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_iamhl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
