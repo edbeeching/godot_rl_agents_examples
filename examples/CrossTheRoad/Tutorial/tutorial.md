@@ -481,7 +481,7 @@ func set_cells():
 	tiles_instantiated = true
 ```
 
-Note that these layouts can take longer to train. For example, I tried training the “shuffle” variant above with `n_steps=32,batch_size=256` set in the Python training script, `n_parallel=6` set as CL argument, and I’ve trained for a couple of hours on my PC (I stopped manually, it’s possible the behavior was learned earlier). It resulted in a high success rate during onnx inference.
+Note that these layouts can take longer to train. For example, I tried training the “shuffle” variant above with `n_steps=32,batch_size=256` set in the Python training script, `n_parallel=6` set as CL argument, and I've also increased the observation settings so that the agent can see more rows in front of the player, and one row behind. I’ve trained it for a couple of hours on my PC (I stopped manually, it’s possible the behavior was learned earlier). It resulted in a high success rate during onnx inference.
 
 Some notes:
 
