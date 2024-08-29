@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsujj2charlnu"]
+
+[ext_resource type="Script" path="res://scenes/goal/goal.gd" id="1_2meav"]
+[ext_resource type="PackedScene" uid="uid://br8oux3ppivpn" path="res://scenes/goal/goal_visual.tscn" id="2_if6ad"]
+
+[sub_resource type="Shader" id="Shader_eprhu"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable.mono's StandardMaterial3D.
+// Adds sway to the goal category flags
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy;
+	float offset = VERTEX.x * sin(VERTEX.x * 20.0 + 5.0 * TIME);
+	VERTEX.z += 0.2 * offset;
+	VERTEX.y += 0.05 * offset;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xnr6a"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_eprhu")
+shader_parameter/albedo = Color(0, 1, 0, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d674o"]
+points = PackedVector3Array(-1.3, 0.935, 0.9, 1.3, 0.935, 0.9, -1.825, -1, -0.4, 1.825, -1, -0.4, -1.3, 0.935, 1, 1.3, 0.935, 1, -1.825, -1, 1, 1.825, -1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_frrwl"]
+data = PackedVector3Array(-1.9897, 0, -1, -1.266, 1.8117, -1.0001, -1.3927, 1.9898, -1, -1.9897, 0, -1, -1.7547, 0, -1.0001, -1.266, 1.8117, -1.0001, -1.3927, 1.9898, -1, 1.266, 1.8115, -0.9999, 1.3927, 1.9898, -1, -1.3927, 1.9898, -1, -1.266, 1.8117, -1.0001, 1.266, 1.8115, -0.9999, 1.7137, 0, 0.6995, -1.2716, 1.8012, -0.458, -1.7138, 0, 0.6995, 1.7137, 0, 0.6995, 1.2734, 1.8013, -0.458, -1.2716, 1.8012, -0.458, 1.3927, 1.9898, -1, 1.7549, 0, -0.9999, 1.9897, 0, -1, 1.3927, 1.9898, -1, 1.266, 1.8115, -0.9999, 1.7549, 0, -0.9999, 1.2589, 1.8012, -0.9899, -1.2716, 1.8012, -0.458, 1.2734, 1.8013, -0.458, 1.2589, 1.8012, -0.9899, -1.2588, 1.8013, -0.9901, -1.2716, 1.8012, -0.458, 1.7445, 0, -0.9899, 1.2734, 1.8013, -0.458, 1.7137, 0, 0.6995, 1.7445, 0, -0.9899, 1.2589, 1.8012, -0.9899, 1.2734, 1.8013, -0.458, -1.7138, 0, 0.6995, -1.2588, 1.8013, -0.9901, -1.7444, 0, -0.9901, -1.7138, 0, 0.6995, -1.2716, 1.8012, -0.458, -1.2588, 1.8013, -0.9901, -1.2588, 1.8013, -0.9901, -1.7547, 0, -1.0001, -1.7444, 0, -0.9901, -1.2588, 1.8013, -0.9901, -1.266, 1.8117, -1.0001, -1.7547, 0, -1.0001, -1.266, 1.8117, -1.0001, 1.2589, 1.8012, -0.9899, 1.266, 1.8115, -0.9999, -1.266, 1.8117, -1.0001, -1.2588, 1.8013, -0.9901, 1.2589, 1.8012, -0.9899, 1.266, 1.8115, -0.9999, 1.7445, 0, -0.9899, 1.7549, 0, -0.9999, 1.266, 1.8115, -0.9999, 1.2589, 1.8012, -0.9899, 1.7445, 0, -0.9899, -1.3927, 1.9898, -1, -2, 0, -0.99, -1.9897, 0, -1, -1.3927, 1.9898, -1, -1.4, 2, -0.99, -2, 0, -0.99, -1.4, 2, -0.99, 1.3927, 1.9898, -1, 1.4, 2, -0.99, -1.4, 2, -0.99, -1.3927, 1.9898, -1, 1.3927, 1.9898, -1, 1.4, 2, -0.99, 1.9897, 0, -1, 2, 0, -0.99, 1.4, 2, -0.99, 1.3927, 1.9898, -1, 1.9897, 0, -1, 2, 0, 1, -1.399, 2, -0.3653, 1.401, 2, -0.3653, 2, 0, 1, -2, 0, 1, -1.399, 2, -0.3653, 1.4, 2, -0.99, -1.399, 2, -0.3653, -1.4, 2, -0.99, 1.4, 2, -0.99, 1.401, 2, -0.3653, -1.399, 2, -0.3653, 2, 0, -0.99, 1.401, 2, -0.3653, 1.4, 2, -0.99, 2, 0, -0.99, 2, 0, 1, 1.401, 2, -0.3653, -2, 0, 1, -1.4, 2, -0.99, -1.399, 2, -0.3653, -2, 0, 1, -2, 0, -0.99, -1.4, 2, -0.99, -2, 0, 1, -1.9897, 0, -1, -2, 0, -0.99, -1.9897, 0, -1, -1.7444, 0, -0.9901, -1.7548, 0, -1.0001, -1.9897, 0, -1, -1.7138, 0, 0.6995, -1.7444, 0, -0.9901, 1.9896, 0, -1, 2, 0, 1, 2, 0, -0.99, 1.7445, 0, -0.9899, 1.9896, 0, -1, 1.7549, 0, -0.9999, 1.7137, 0, 0.6995, 1.9896, 0, -1, 1.7445, 0, -0.9899, -2, 0, 1, -1.7138, 0, 0.6995, -1.9897, 0, -1, 1.7137, 0, 0.6995, 2, 0, 1, 1.9896, 0, -1, -2, 0, 1, 1.7137, 0, 0.6995, -1.7138, 0, 0.6995, -2, 0, 1, 2, 0, 1, 1.7137, 0, 0.6995)
+
+[node name="Goal" type="StaticBody3D"]
+script = ExtResource("1_2meav")
+
+[node name="goal" parent="." instance=ExtResource("2_if6ad")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Cube_001" parent="goal" index="2"]
+material_override = SubResource("ShaderMaterial_xnr6a")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907776, -0.509382)
+shape = SubResource("ConvexPolygonShape3D_d674o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_frrwl")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="goal"]

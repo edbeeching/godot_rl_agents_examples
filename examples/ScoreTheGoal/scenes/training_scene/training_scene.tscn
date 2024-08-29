@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0uxnb5f6avih"]
+
+[ext_resource type="PackedScene" uid="uid://7rc10s44c2v" path="res://scenes/playing_area/playing_area.tscn" id="2_6guts"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_8lo5l"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dfpdn"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_i3bom"]
+sky_material = SubResource("ProceduralSkyMaterial_dfpdn")
+
+[sub_resource type="Environment" id="Environment_mmgmg"]
+background_mode = 2
+sky = SubResource("Sky_i3bom")
+tonemap_mode = 2
+ssao_detail = 0.65
+glow_enabled = true
+
+[node name="training_scene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mmgmg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="playing_area" parent="." instance=ExtResource("2_6guts")]
+
+[node name="playing_area2" parent="." instance=ExtResource("2_6guts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
+
+[node name="playing_area3" parent="." instance=ExtResource("2_6guts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+
+[node name="playing_area4" parent="." instance=ExtResource("2_6guts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -24)
+
+[node name="playing_area5" parent="." instance=ExtResource("2_6guts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 0)
+
+[node name="playing_area6" parent="." instance=ExtResource("2_6guts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0)
+
+[node name="playing_area7" parent="." instance=ExtResource("2_6guts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, -24)
+
+[node name="playing_area8" parent="." instance=ExtResource("2_6guts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, -24)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 4.9391e-08, -7.21337e-08, 0, 0.825114, 0.564967, 8.74228e-08, 0.564967, -0.825113, 0, 9.668, -39.385)
+fov = 64.7
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_8lo5l")
+onnx_model_path = "model.onnx"
