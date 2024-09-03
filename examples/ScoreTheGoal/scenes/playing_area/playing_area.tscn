@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://7rc10s44c2v"]
+
+[ext_resource type="PackedScene" uid="uid://dnbjyfak5tnxx" path="res://scenes/playing_area/map.tscn" id="1_y8ivg"]
+[ext_resource type="PackedScene" uid="uid://dsujj2charlnu" path="res://scenes/goal/goal.tscn" id="2_3qsoh"]
+[ext_resource type="PackedScene" uid="uid://cih6afjthxjso" path="res://scenes/ball/ball.tscn" id="2_ytls0"]
+[ext_resource type="PackedScene" uid="uid://bpb5ld8ygwbin" path="res://scenes/robot/robot.tscn" id="3_82lnl"]
+
+[node name="playing_area" type="Node3D"]
+
+[node name="map" parent="." instance=ExtResource("1_y8ivg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+
+[node name="Goal" parent="." instance=ExtResource("2_3qsoh")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 7)
+
+[node name="Goal2" parent="." instance=ExtResource("2_3qsoh")]
+transform = Transform3D(-0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, -0.906308, 4.5, 0, 6)
+
+[node name="Goal3" parent="." instance=ExtResource("2_3qsoh")]
+transform = Transform3D(-0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, -0.906308, -4.5, 0, 6)
+
+[node name="Ball" parent="." instance=ExtResource("2_ytls0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.344, -2.09863)
+collision_mask = 13
+axis_lock_linear_y = true
+mass = 0.5
+gravity_scale = 0.0
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 3
+
+[node name="Robot" parent="." node_paths=PackedStringArray("ball", "goals") instance=ExtResource("3_82lnl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.313375, -5.28)
+collision_mask = 15
+contact_monitor = true
+max_contacts_reported = 1
+ball = NodePath("../Ball")
+goals = [NodePath("../Goal"), NodePath("../Goal2"), NodePath("../Goal3")]
+category_count = 3
+
+[connection signal="ball_entered_goal" from="Goal" to="Robot" method="_on_ball_entered_goal"]
+[connection signal="robot_entered_goal" from="Goal" to="Robot" method="_on_robot_entered_goal"]
+[connection signal="ball_entered_goal" from="Goal2" to="Robot" method="_on_ball_entered_goal"]
+[connection signal="robot_entered_goal" from="Goal2" to="Robot" method="_on_robot_entered_goal"]
+[connection signal="ball_entered_goal" from="Goal3" to="Robot" method="_on_ball_entered_goal"]
+[connection signal="robot_entered_goal" from="Goal3" to="Robot" method="_on_robot_entered_goal"]
+[connection signal="body_entered" from="Ball" to="Robot" method="_on_ball_body_entered"]
+[connection signal="body_entered" from="Robot" to="Robot" method="_on_body_entered"]

@@ -1,0 +1,241 @@
+[gd_scene load_steps=11 format=3 uid="uid://bpb5ld8ygwbin"]
+
+[ext_resource type="Script" path="res://scenes/robot/robot.gd" id="1_yxci0"]
+[ext_resource type="Script" path="res://scenes/robot/robot_ai_controller.gd" id="2_j3f46"]
+[ext_resource type="PackedScene" uid="uid://8en54a6bd0v3" path="res://assets/robot.glb" id="3_5ag0g"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="3_64dgq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cp7ux"]
+
+[sub_resource type="Animation" id="Animation_2kfmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Robot/Arm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Robot/Arm_001:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Robot/Torso:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Robot/Head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Robot/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ly00x"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Robot/Arm:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.349066, 0, 0.0610865)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Robot/Arm_001:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.349066, 0, -0.148353)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Robot/Head:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.162316, 0.0488692), Vector3(0, 0, 0), Vector3(0.139626, -0.178024, 0.0226893)]
+}
+
+[sub_resource type="Animation" id="Animation_6jb0l"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Robot/Arm:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.174533, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Robot/Arm_001:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.174533, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Robot/Torso:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.01, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Robot/Head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.02, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Robot/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0349066, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7kmm"]
+_data = {
+"RESET": SubResource("Animation_2kfmf"),
+"idle": SubResource("Animation_ly00x"),
+"walking": SubResource("Animation_6jb0l")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y5hda"]
+height = 1.29947
+
+[node name="Robot" type="RigidBody3D"]
+collision_mask = 7
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_cp7ux")
+continuous_cd = true
+linear_damp = 10.0
+angular_damp = 10.0
+script = ExtResource("1_yxci0")
+
+[node name="AIController3D" type="Node3D" parent="." groups=["AGENT"]]
+script = ExtResource("2_j3f46")
+playing_area_x_size = 20.0
+playing_area_z_size = 20.0
+reset_after = 350
+
+[node name="WallRaycastSensor" type="Node3D" parent="AIController3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.250552, 0)
+script = ExtResource("3_64dgq")
+collision_mask = 8
+n_rays_width = 4.0
+n_rays_height = 1.0
+cone_width = 360.0
+cone_height = 0.0
+
+[node name="@RayCast3D@90672" type="RayCast3D" parent="AIController3D/WallRaycastSensor"]
+target_position = Vector3(-7.07107, 0, -7.07107)
+collision_mask = 8
+
+[node name="@RayCast3D@90673" type="RayCast3D" parent="AIController3D/WallRaycastSensor"]
+target_position = Vector3(-7.07107, 0, 7.07107)
+collision_mask = 8
+
+[node name="@RayCast3D@90674" type="RayCast3D" parent="AIController3D/WallRaycastSensor"]
+target_position = Vector3(7.07107, 0, 7.07107)
+collision_mask = 8
+
+[node name="@RayCast3D@90675" type="RayCast3D" parent="AIController3D/WallRaycastSensor"]
+target_position = Vector3(7.07107, 0, -7.07107)
+collision_mask = 8
+
+[node name="robot" parent="." instance=ExtResource("3_5ag0g")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="robot"]
+libraries = {
+"": SubResource("AnimationLibrary_g7kmm")
+}
+autoplay = "idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("CapsuleShape3D_y5hda")

@@ -32,3 +32,6 @@ https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/9b0632e5-
 #### Cross The Road: 
 https://github.com/user-attachments/assets/287f066c-261f-4f5f-9420-5922ee12a23d
 
+#### Score The Goal:
+https://github.com/user-attachments/assets/80c8b16b-df09-4607-bcc6-2b0e760f03c5
+
