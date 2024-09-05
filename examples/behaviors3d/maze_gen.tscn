@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvv72syq5vnwd"]
+[gd_scene load_steps=9 format=3 uid="uid://cvv72syq5vnwd"]
 
 [ext_resource type="Script" path="res://maze_gen.gd" id="1_bl47q"]
 [ext_resource type="Script" path="res://fly_cam.gd" id="2_ikyml"]
@@ -22,10 +22,13 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 uv1_triplanar = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_honhc"]
+size = Vector3(100, 1, 100)
+
 [node name="MazeGen" type="Node3D"]
 script = ExtResource("1_bl47q")
-width = 5
-height = 5
+width = 4
+height = 4
 
 [node name="FlyCam" type="Camera3D" parent="."]
 transform = Transform3D(0.959324, -0.156422, 0.235008, 0, 0.832459, 0.554087, -0.282306, -0.531549, 0.798598, 1.7384, 4.09869, 5.90739)
@@ -67,3 +70,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 1
 use_collision = true
 size = Vector3(200, 20, 0.2)
 material = SubResource("StandardMaterial3D_qskrd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_honhc")

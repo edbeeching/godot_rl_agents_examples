@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwkloyhow871b"]
+
+[ext_resource type="Script" path="res://uneven_terrain.gd" id="1_cs5kp"]
+[ext_resource type="Script" path="res://fly_cam.gd" id="2_4rhmj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s1tpk"]
+frequency = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywgan"]
+albedo_color = Color(0.039, 0.39, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rh26a"]
+material = SubResource("StandardMaterial3D_ywgan")
+size = Vector2(50, 50)
+subdivide_width = 50
+subdivide_depth = 50
+
+[node name="UnevenTerrain" type="Node3D"]
+script = ExtResource("1_cs5kp")
+noise = SubResource("FastNoiseLite_s1tpk")
+seed_mesh = SubResource("PlaneMesh_rh26a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ywgan")
+
+[node name="FlyCam" type="Camera3D" parent="."]
+transform = Transform3D(0.866915, -0.36983, 0.334192, 0, 0.670454, 0.741951, -0.498456, -0.643209, 0.581227, 0.724599, 1.60871, 1.26022)
+script = ExtResource("2_4rhmj")

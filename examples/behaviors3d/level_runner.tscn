@@ -2,28 +2,29 @@
 
 [ext_resource type="Script" path="res://level_runner.gd" id="1_m4df2"]
 [ext_resource type="PackedScene" uid="uid://s48tadqoyhgh" path="res://scenes/character.tscn" id="2_h1jx5"]
-[ext_resource type="PackedScene" uid="uid://cvv72syq5vnwd" path="res://maze_gen.tscn" id="2_hiemt"]
+[ext_resource type="PackedScene" uid="uid://cvv72syq5vnwd" path="res://maze_gen.tscn" id="2_j84cn"]
 [ext_resource type="PackedScene" uid="uid://58lpi1c3ykny" path="res://scenes/target.tscn" id="3_f64vj"]
-[ext_resource type="PackedScene" uid="uid://d0bk857hjyns8" path="res://scenes/ground.tscn" id="5_eomxv"]
+[ext_resource type="PackedScene" uid="uid://cfgrwq4lnxr6e" path="res://xyx.tscn" id="5_wchcn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c4jp7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_f0gia"]
+[sub_resource type="Sky" id="Sky_y07xo"]
 sky_material = SubResource("ProceduralSkyMaterial_c4jp7")
 
 [sub_resource type="Environment" id="Environment_3ggt4"]
 background_mode = 2
-sky = SubResource("Sky_f0gia")
+sky = SubResource("Sky_y07xo")
 tonemap_mode = 2
 glow_enabled = true
 
 [node name="LevelRunner" type="Node3D"]
 script = ExtResource("1_m4df2")
-LevelScene = ExtResource("2_hiemt")
+LevelScene = ExtResource("2_j84cn")
 
 [node name="Character" parent="." instance=ExtResource("2_h1jx5")]
+collision_layer = 0
 
 [node name="Target" parent="." instance=ExtResource("3_f64vj")]
 
@@ -36,6 +37,9 @@ environment = SubResource("Environment_3ggt4")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Ground" parent="." instance=ExtResource("5_eomxv")]
+[node name="XYX" parent="." instance=ExtResource("5_wchcn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 0, -7)
 
-[connection signal="area_entered" from="Target" to="." method="_on_target_area_entered"]
+[connection signal="area_entered" from="Target/Area3D" to="." method="_on_area_3d_area_entered"]
+
+[editable path="Target"]

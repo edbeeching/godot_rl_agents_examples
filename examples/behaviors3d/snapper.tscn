@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnc8v7gerrc4e"]
+
+[ext_resource type="Script" path="res://scenes/objects/snapper.gd" id="1_diwqo"]
+
+[node name="Snapper" type="RayCast3D"]
+target_position = Vector3(0, -100, 0)
+script = ExtResource("1_diwqo")

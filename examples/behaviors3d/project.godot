@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Behaviors3D"
-run/main_scene="res://level_builder.tscn"
+run/main_scene="res://level_runner.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -54,5 +54,6 @@ turn_right={
 
 [layer_names]
 
+3d_physics/layer_1="World"
 3d_physics/layer_2="Collectable"
 3d_physics/layer_3="Collectors"

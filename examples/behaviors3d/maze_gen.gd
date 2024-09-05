@@ -7,6 +7,7 @@ class_name MazeGenerator3D
 @export var width: int = 10
 @export var height: int = 10
 @onready var ground = $Ground   
+
 @onready var wall = preload("res://Wall2.tscn")
 
 class MazeCell:
@@ -58,6 +59,7 @@ func remove_wall(current: MazeCell, next: MazeCell) -> void:
 
 
 func generate_level():
+    _adjust_ground()
     var grid = []
     for y in range(height):
         var row: Array[MazeCell] = []
@@ -81,28 +83,39 @@ func generate_level():
         else:
             current = stack.pop_back()
 
+    var shift = Vector3(-width*maze_scale/2 + maze_scale/2, 0, -height*maze_scale/2 + maze_scale/2)
+
     for y in range(height):
         for x in range(width):
             var cell = grid[y][x]
             if cell.NORTH:
                 var wall_instance = wall.instantiate()
-                wall_instance.translate(Vector3(x*maze_scale, 0, y*maze_scale-maze_scale/2))
+                wall_instance.translate(Vector3(x*maze_scale, 0, y*maze_scale-maze_scale/2) + shift)
                 add_child(wall_instance)
             if cell.EAST:
                 var wall_instance = wall.instantiate()
-                wall_instance.translate(Vector3(x*maze_scale + maze_scale/2, 0, y*maze_scale))
+                wall_instance.translate(Vector3(x*maze_scale + maze_scale/2, 0, y*maze_scale) + shift)
                 wall_instance.rotate(Vector3(0, 1, 0), PI / 2)
                 add_child(wall_instance)
             if cell.SOUTH:
                 var wall_instance = wall.instantiate()
                 # wall_instance.rotate(Vector3(0, 1, 0), PI)
-                wall_instance.translate(Vector3(x*maze_scale, 0, y*maze_scale+ maze_scale/2))
+                wall_instance.translate(Vector3(x*maze_scale, 0, y*maze_scale+ maze_scale/2) + shift)
                 add_child(wall_instance)
             if cell.WEST:
                 var wall_instance = wall.instantiate()
-                wall_instance.translate(Vector3(x*maze_scale-maze_scale/2, 0, y*maze_scale))
+                wall_instance.translate(Vector3(x*maze_scale-maze_scale/2, 0, y*maze_scale) + shift)
                 wall_instance.rotate(Vector3(0, 1, 0), PI / 2)
                 add_child(wall_instance)
+    
+
+func _adjust_ground() -> void:
+    ground.size = Vector3(width*maze_scale, 1, height*maze_scale)
+
+    get_node("Walls/Left").position = Vector3(-ground.size.x/2, 0, 0)
+    get_node("Walls/Right").position = Vector3(ground.size.x/2, 0, 0)
+    get_node("Walls/Forward").position = Vector3(0, 0, -ground.size.z/2)
+    get_node("Walls/Backward").position = Vector3(0, 0, ground.size.z/2)
 
 func get_spawn_location() -> Vector3:
     return Vector3(
@@ -112,8 +125,11 @@ func get_spawn_location() -> Vector3:
     )
 
 func get_target_location() -> Vector3:
-    return Vector3(
-        randf_range(-ground.size.x/2, ground.size.x/2), 
-        1,
-        randf_range(-ground.size.z/2, ground.size.z/2)
+    var target= Vector3(
+        floor(randf_range(-ground.size.x/4, ground.size.x/4))*2 +1, 
+        5,
+        floor(randf_range(-ground.size.z/4, ground.size.z/4))*2 +1
     )
+    print(target)
+    return target
+
