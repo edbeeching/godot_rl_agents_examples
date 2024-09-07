@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://fks7cwi1i7vh"]
+
+[ext_resource type="Script" path="res://train.gd" id="1_ej5gh"]
+[ext_resource type="PackedScene" uid="uid://duqvthtokxi3l" path="res://level_runner.tscn" id="1_rxrum"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="3_molsl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2rniv"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_y07xo"]
+sky_material = SubResource("ProceduralSkyMaterial_2rniv")
+
+[sub_resource type="Environment" id="Environment_8w8u4"]
+background_mode = 2
+sky = SubResource("Sky_y07xo")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Train" type="Node3D"]
+script = ExtResource("1_ej5gh")
+
+[node name="LevelRunner" parent="." instance=ExtResource("1_rxrum")]
+
+[node name="LevelRunner2" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+
+[node name="LevelRunner3" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
+
+[node name="LevelRunner4" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 60)
+
+[node name="Env" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Env"]
+environment = SubResource("Environment_8w8u4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Env"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("3_molsl")

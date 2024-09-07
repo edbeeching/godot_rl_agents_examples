@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Behaviors3D"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_rl_agents/plugin.cfg")
+
 [input]
 
 forward={

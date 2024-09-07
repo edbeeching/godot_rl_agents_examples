@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwkloyhow871b"]
+[gd_scene load_steps=7 format=3 uid="uid://bwkloyhow871b"]
 
 [ext_resource type="Script" path="res://uneven_terrain.gd" id="1_cs5kp"]
 [ext_resource type="Script" path="res://fly_cam.gd" id="2_4rhmj"]
@@ -15,10 +15,16 @@ size = Vector2(50, 50)
 subdivide_width = 50
 subdivide_depth = 50
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1yko"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+uv1_triplanar = true
+
 [node name="UnevenTerrain" type="Node3D"]
 script = ExtResource("1_cs5kp")
 noise = SubResource("FastNoiseLite_s1tpk")
 seed_mesh = SubResource("PlaneMesh_rh26a")
+n_trees = 40
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_ywgan")
@@ -26,3 +32,29 @@ material_override = SubResource("StandardMaterial3D_ywgan")
 [node name="FlyCam" type="Camera3D" parent="."]
 transform = Transform3D(0.866915, -0.36983, 0.334192, 0, 0.670454, 0.741951, -0.498456, -0.643209, 0.581227, 0.724599, 1.60871, 1.26022)
 script = ExtResource("2_4rhmj")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Forward" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -10)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_u1yko")
+
+[node name="Backward" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 10)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_u1yko")
+
+[node name="Left" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 10, 0)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_u1yko")
+
+[node name="Right" type="CSGBox3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 10, 0)
+use_collision = true
+size = Vector3(200, 20, 0.2)
+material = SubResource("StandardMaterial3D_u1yko")

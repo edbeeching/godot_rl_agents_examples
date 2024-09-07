@@ -8,6 +8,7 @@ func _ready():
 	add_child(level_scene)
 	level_scene.generate_level()
 	reset_target()
+	$Character.reset()
 
 func _process(_delta):
 	if Input.is_action_pressed("ui_cancel"):
@@ -28,3 +29,4 @@ func reset_target() -> void:
 func _on_area_3d_area_entered(area:Area3D) -> void:
 	print("target picked up")
 	reset_target()
+
