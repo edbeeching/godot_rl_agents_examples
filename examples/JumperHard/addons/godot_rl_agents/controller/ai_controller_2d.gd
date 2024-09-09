@@ -16,6 +16,12 @@ enum ControlModes { INHERIT_FROM_SYNC, HUMAN, TRAINING, ONNX_INFERENCE, RECORD_E
 ## the recorded demonstrations.
 @export var action_repeat: int = 1
 
+@export_group("Multi-policy mode options")
+## Allows you to set certain agents to use different policies.
+## Changing has no effect with default SB3 training. Works with Rllib example.
+## Tutorial: https://github.com/edbeeching/godot_rl_agents/blob/main/docs/TRAINING_MULTIPLE_POLICIES.md
+@export var policy_name: String = "shared_policy"
+
 var onnx_model: ONNXModel
 
 var heuristic := "human"
@@ -58,7 +64,7 @@ func get_action_space() -> Dictionary:
 
 
 func set_action(action) -> void:
-	assert(false, "the get set_action method is not implemented when extending from ai_controller")
+	assert(false, "the set_action method is not implemented when extending from ai_controller")
 
 
 #-----------------------------------------------------------------------------#
@@ -67,7 +73,7 @@ func set_action(action) -> void:
 #-- Methods that sometimes need implementing using the "extend script" option in Godot --#
 # Only needed if you are recording expert demos with this AIController
 func get_action() -> Array:
-	assert(false, "the get set_action method is not implemented in extended AIController but demo_recorder is used")
+	assert(false, "the get_action method is not implemented in extended AIController but demo_recorder is used")
 	return []
 
 # -----------------------------------------------------------------------------#
