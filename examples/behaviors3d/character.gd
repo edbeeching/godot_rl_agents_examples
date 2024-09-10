@@ -24,7 +24,9 @@ func _physics_process(delta: float) -> void:
         drag = 0.8
 
     # Handle jump.
-    if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+      
+
+    if get_jump_action() and is_on_floor():
         velocity.y = JUMP_VELOCITY
 
     # Get the input direction and handle the movement/deceleration.
@@ -45,11 +47,18 @@ func _physics_process(delta: float) -> void:
 
     move_and_slide()
 
+func get_jump():
+    if ai_controller.heuristic == "model":
+        return jump_action
+    else:
+        return Input.is_action_just_pressed("ui_accept")
+
+
 func get_input_dir() -> Vector3:
     if ai_controller.heuristic == "model":
         return (transform.basis * Vector3(straf_left_right_action, 0, forward_backward_action)).normalized()
     
-    var input_dir := Input.get_vector("left", "right", "forward", "backward")
+    var input_dir := Input.get_vector("right", "left",  "backward", "forward")
     return (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 func get_turn_dir() -> float:

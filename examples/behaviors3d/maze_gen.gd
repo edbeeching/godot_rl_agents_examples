@@ -1,7 +1,4 @@
-extends Node3D
-
-class_name MazeGenerator3D
-
+extends Level
 
 @export var maze_scale = 2.0
 @export var width: int = 10

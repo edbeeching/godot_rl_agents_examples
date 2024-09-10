@@ -31,6 +31,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
 [node name="LevelRunner4" parent="." instance=ExtResource("1_rxrum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 60)
 
+[node name="LevelRunner5" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127, 0, 0)
+
+[node name="LevelRunner6" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 0, 0)
+
+[node name="LevelRunner7" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127, 0, 60)
+
+[node name="LevelRunner8" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 0, 60)
+
+[node name="LevelRunner9" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 143)
+
+[node name="LevelRunner10" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 143)
+
+[node name="LevelRunner11" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 203)
+
+[node name="LevelRunner12" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 203)
+
+[node name="LevelRunner13" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127, 0, 143)
+
+[node name="LevelRunner14" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 0, 143)
+
+[node name="LevelRunner15" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127, 0, 203)
+
+[node name="LevelRunner16" parent="." instance=ExtResource("1_rxrum")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 0, 203)
+
 [node name="Env" type="Node" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Env"]
@@ -42,3 +78,4 @@ shadow_enabled = true
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("3_molsl")
+speed_up = 4.0

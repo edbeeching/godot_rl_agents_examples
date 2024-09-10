@@ -1,4 +1,4 @@
-extends Node3D
+extends Level
 
 
 var max_height: float = 20.0
