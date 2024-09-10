@@ -78,4 +78,3 @@ shadow_enabled = true
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("3_molsl")
-speed_up = 4.0

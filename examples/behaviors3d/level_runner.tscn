@@ -1,14 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://duqvthtokxi3l"]
 
 [ext_resource type="Script" path="res://level_runner.gd" id="1_m4df2"]
+[ext_resource type="PackedScene" uid="uid://cvv72syq5vnwd" path="res://maze_gen.tscn" id="2_cqlbx"]
 [ext_resource type="PackedScene" uid="uid://s48tadqoyhgh" path="res://scenes/character.tscn" id="2_h1jx5"]
-[ext_resource type="PackedScene" uid="uid://bwkloyhow871b" path="res://uneven_terrain.tscn" id="2_xx570"]
 [ext_resource type="PackedScene" uid="uid://58lpi1c3ykny" path="res://scenes/target.tscn" id="3_f64vj"]
 [ext_resource type="PackedScene" uid="uid://cfgrwq4lnxr6e" path="res://xyx.tscn" id="5_wchcn"]
 
 [node name="LevelRunner" type="Node3D"]
 script = ExtResource("1_m4df2")
-LevelScene = ExtResource("2_xx570")
+LevelScene = ExtResource("2_cqlbx")
 
 [node name="Character" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_h1jx5")]
 collision_layer = 0

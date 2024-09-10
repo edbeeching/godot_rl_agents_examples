@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
     # Handle jump.
       
 
-    if get_jump_action() and is_on_floor():
+    if get_jump() and is_on_floor():
         velocity.y = JUMP_VELOCITY
 
     # Get the input direction and handle the movement/deceleration.
@@ -67,15 +67,6 @@ func get_turn_dir() -> float:
 
     return Input.get_action_strength("turn_left") - Input.get_action_strength("turn_right")
 
-func get_jump_action() -> bool:
-    if ai_controller.done:
-        jump_action = false
-        return jump_action
-
-    if ai_controller.heuristic == "model":
-        return jump_action
-
-    return Input.is_action_just_pressed("jump")
 
 
 func _on_collector_area_entered(_area: Area3D) -> void:
@@ -83,8 +74,8 @@ func _on_collector_area_entered(_area: Area3D) -> void:
     print("Player found collectable")
 
 func reset():
+    print("resetting")
     velocity = Vector3()
     rotation = Vector3()
-    ai_controller.reset()
     target.scale = Vector3(1, 1, 1)
     target.rotation_degrees = Vector3(0, 0, 0)

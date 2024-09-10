@@ -33,7 +33,10 @@ func get_action_space():
     }
 
 func _physics_process(_delta: float) -> void:
+    super._physics_process(_delta)
     update_reward()
+    if self.needs_reset:
+        reset()
 
 func update_reward() -> void:
     reward -= 0.01
@@ -45,7 +48,7 @@ func update_reward() -> void:
 func reset():
     super.reset()
     reset_best_goal_distance()
-    reward = 0.0
+    _player.reset()
 
 func reset_best_goal_distance():
     # wait for target to be snapped to ground
