@@ -35,108 +35,107 @@ shape = SubResource("SphereShape3D_2v4bj")
 script = ExtResource("2_hmqh5")
 
 [node name="RayCastSensor3D" type="Node3D" parent="AIController3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25244, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24756, 0)
 script = ExtResource("3_1pjwk")
 n_rays_width = 32.0
 n_rays_height = 1.0
-ray_length = 40.0
 cone_width = 120.0
 cone_height = 20.0
 
-[node name="node_0 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-33.9681, 0, 21.1227)
+[node name="@RayCast3D@18372" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-8.49202, 0, 5.28068)
 
-[node name="node_1 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-32.5139, 0, 23.2991)
+[node name="@RayCast3D@18373" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-8.12847, 0, 5.82478)
 
-[node name="node_2 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-30.9204, 0, 25.3757)
+[node name="@RayCast3D@18374" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-7.7301, 0, 6.34393)
 
-[node name="node_3 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-29.1946, 0, 27.3437)
+[node name="@RayCast3D@18375" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-7.29864, 0, 6.83592)
 
-[node name="node_4 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-27.3437, 0, 29.1946)
+[node name="@RayCast3D@18376" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-6.83592, 0, 7.29864)
 
-[node name="node_5 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-25.3757, 0, 30.9204)
+[node name="@RayCast3D@18377" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-6.34393, 0, 7.7301)
 
-[node name="@RayCast3D@27201" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-23.2991, 0, 32.5139)
+[node name="node_6 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-5.82478, 0, 8.12847)
 
-[node name="@RayCast3D@27202" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-21.1227, 0, 33.9681)
+[node name="node_7 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-5.28068, 0, 8.49202)
 
-[node name="@RayCast3D@27203" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-18.8559, 0, 35.2769)
+[node name="node_8 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-4.71397, 0, 8.81921)
 
-[node name="@RayCast3D@27204" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-16.5083, 0, 36.4346)
+[node name="node_9 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-4.12707, 0, 9.10864)
 
-[node name="@RayCast3D@27205" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-14.09, 0, 37.4362)
+[node name="node_10 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-3.5225, 0, 9.35906)
 
-[node name="@RayCast3D@27206" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-11.6114, 0, 38.2776)
+[node name="node_11 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-2.90285, 0, 9.5694)
 
-[node name="@RayCast3D@27207" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-9.08305, 0, 38.9551)
+[node name="node_12 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-2.27076, 0, 9.73877)
 
-[node name="@RayCast3D@27208" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-6.51582, 0, 39.4657)
+[node name="node_13 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-1.62895, 0, 9.86643)
 
-[node name="@RayCast3D@27209" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-3.92069, 0, 39.8074)
+[node name="node_14 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-0.980171, 0, 9.95185)
 
-[node name="@RayCast3D@27210" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(-1.30876, 0, 39.9786)
+[node name="node_15 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(-0.327191, 0, 9.99465)
 
-[node name="node_16 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(1.30876, 0, 39.9786)
+[node name="@RayCast3D@18378" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(0.327191, 0, 9.99465)
 
-[node name="node_17 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(3.92069, 0, 39.8074)
+[node name="@RayCast3D@18379" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(0.980171, 0, 9.95185)
 
-[node name="node_18 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(6.51582, 0, 39.4657)
+[node name="@RayCast3D@18380" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(1.62895, 0, 9.86643)
 
-[node name="node_19 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(9.08305, 0, 38.9551)
+[node name="@RayCast3D@18381" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(2.27076, 0, 9.73877)
 
-[node name="node_20 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(11.6114, 0, 38.2776)
+[node name="@RayCast3D@18382" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(2.90285, 0, 9.5694)
 
-[node name="node_21 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(14.09, 0, 37.4362)
+[node name="@RayCast3D@18383" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(3.5225, 0, 9.35906)
 
-[node name="node_22 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(16.5083, 0, 36.4346)
+[node name="@RayCast3D@18384" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(4.12707, 0, 9.10864)
 
-[node name="node_23 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(18.8559, 0, 35.2769)
+[node name="@RayCast3D@18385" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(4.71397, 0, 8.81921)
 
-[node name="node_24 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(21.1227, 0, 33.9681)
+[node name="@RayCast3D@18386" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(5.28068, 0, 8.49202)
 
-[node name="node_25 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(23.2991, 0, 32.5139)
+[node name="@RayCast3D@18387" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(5.82478, 0, 8.12847)
 
-[node name="node_26 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(25.3757, 0, 30.9204)
+[node name="@RayCast3D@18388" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(6.34393, 0, 7.7301)
 
-[node name="node_27 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(27.3437, 0, 29.1946)
+[node name="@RayCast3D@18389" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(6.83592, 0, 7.29864)
 
-[node name="node_28 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(29.1946, 0, 27.3437)
+[node name="@RayCast3D@18390" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(7.29864, 0, 6.83592)
 
-[node name="node_29 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(30.9204, 0, 25.3757)
+[node name="@RayCast3D@18391" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(7.7301, 0, 6.34393)
 
-[node name="node_30 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(32.5139, 0, 23.2991)
+[node name="@RayCast3D@18392" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(8.12847, 0, 5.82478)
 
-[node name="node_31 0" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
-target_position = Vector3(33.9681, 0, 21.1227)
+[node name="@RayCast3D@18393" type="RayCast3D" parent="AIController3D/RayCastSensor3D"]
+target_position = Vector3(8.49202, 0, 5.28068)
 
 [connection signal="area_entered" from="Collector" to="." method="_on_collector_area_entered"]

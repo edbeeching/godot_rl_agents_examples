@@ -55,11 +55,17 @@ func get_jump():
 
 
 func get_input_dir() -> Vector3:
+    var input_dir = Vector2()
     if ai_controller.heuristic == "model":
-        return (transform.basis * Vector3(straf_left_right_action, 0, forward_backward_action)).normalized()
-    
-    var input_dir := Input.get_vector("right", "left",  "backward", "forward")
-    return (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+        input_dir =  Vector2(straf_left_right_action, forward_backward_action)
+    else:
+        input_dir = Input.get_vector("right", "left",  "backward", "forward")
+
+
+
+    var dir = Vector3(input_dir.x, 0, input_dir.y).normalized()
+    dir.z = clamp(dir.z, -0.5, 1.0)
+    return transform.basis * dir
 
 func get_turn_dir() -> float:
     if ai_controller.heuristic == "model":
@@ -70,12 +76,12 @@ func get_turn_dir() -> float:
 
 
 func _on_collector_area_entered(_area: Area3D) -> void:
+    ai_controller.reward += 10.0
     ai_controller.reset_best_goal_distance()
-    print("Player found collectable")
 
 func reset():
-    print("resetting")
+    position = Vector3(0, 1, 0)
     velocity = Vector3()
     rotation = Vector3()
-    target.scale = Vector3(1, 1, 1)
-    target.rotation_degrees = Vector3(0, 0, 0)
+    get_parent().reset_target() 
+    ai_controller.reset_best_goal_distance()

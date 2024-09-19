@@ -86,20 +86,28 @@ func generate_level():
         for x in range(width):
             var cell = grid[y][x]
             if cell.NORTH:
+                if randf() < 0.5:
+                    continue
                 var wall_instance = wall.instantiate()
                 wall_instance.translate(Vector3(x*maze_scale, 0, y*maze_scale-maze_scale/2) + shift)
                 add_child(wall_instance)
             if cell.EAST:
+                if randf() < 0.5:
+                    continue
                 var wall_instance = wall.instantiate()
                 wall_instance.translate(Vector3(x*maze_scale + maze_scale/2, 0, y*maze_scale) + shift)
                 wall_instance.rotate(Vector3(0, 1, 0), PI / 2)
                 add_child(wall_instance)
             if cell.SOUTH:
+                if randf() < 0.5:
+                    continue
                 var wall_instance = wall.instantiate()
                 # wall_instance.rotate(Vector3(0, 1, 0), PI)
                 wall_instance.translate(Vector3(x*maze_scale, 0, y*maze_scale+ maze_scale/2) + shift)
                 add_child(wall_instance)
             if cell.WEST:
+                if randf() < 0.5:
+                    continue
                 var wall_instance = wall.instantiate()
                 wall_instance.translate(Vector3(x*maze_scale-maze_scale/2, 0, y*maze_scale) + shift)
                 wall_instance.rotate(Vector3(0, 1, 0), PI / 2)
@@ -127,6 +135,5 @@ func get_target_location() -> Vector3:
         5,
         floor(randf_range(-ground.size.z/4, ground.size.z/4))*2 +1
     )
-    print(target)
     return target
 

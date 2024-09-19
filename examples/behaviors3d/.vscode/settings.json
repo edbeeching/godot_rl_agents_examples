@@ -1,3 +1,4 @@
 {
-    "godotTools.editorPath.godot4": "/home/edward/play/godot/Godot_v4.3-beta3_mono_linux_x86_64/Godot_v4.3-beta3_mono_linux.x86_64"
+    "godotTools.editorPath.godot4": "/home/edward/play/godot/Godot_v4.3-beta3_mono_linux_x86_64/Godot_v4.3-beta3_mono_linux.x86_64",
+    "editor.detectIndentation": false
 }

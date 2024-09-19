@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Behaviors3D"
-run/main_scene="res://level_runner.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://train.tscn"
+config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]

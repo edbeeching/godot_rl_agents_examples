@@ -16,7 +16,6 @@ func _process(_delta):
 
 
 func _on_target_area_entered(_area:Area3D) -> void:
-    print("target picked up")
     reset_target()
 
 
@@ -27,5 +26,4 @@ func reset_target() -> void:
 
 
 func _on_area_3d_area_entered(_area:Area3D) -> void:
-    print("target picked up")
     reset_target()
