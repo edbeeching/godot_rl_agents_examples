@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://brs4hvgymfbns"]
+
+[ext_resource type="PackedScene" uid="uid://cswj8sv0e25w8" path="res://scenes/playing_area/playing_area.tscn" id="1_4yg18"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_ts53t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gef0h"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_uxkup"]
+sky_material = SubResource("ProceduralSkyMaterial_gef0h")
+
+[sub_resource type="Environment" id="Environment_ej0s4"]
+background_mode = 2
+sky = SubResource("Sky_uxkup")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TestingScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ej0s4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="PlayingArea" parent="." instance=ExtResource("1_4yg18")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 32.682, 17.244)
+fov = 40.4
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_ts53t")
+control_mode = 2
+action_repeat = 4
+onnx_model_path = "model.onnx"

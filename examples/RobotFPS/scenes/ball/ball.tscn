@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7py2g5dnw0dl"]
+
+[ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_7t776"]
+[ext_resource type="PackedScene" uid="uid://ckhb27o2g2l7a" path="res://scenes/ball_impact_effect/ball_impact_effect.tscn" id="2_735vx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bughu"]
+radius = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_df1tt"]
+cull_mode = 1
+shading_mode = 0
+grow = true
+grow_amount = 0.045
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ry7p8"]
+resource_local_to_scene = true
+next_pass = SubResource("StandardMaterial3D_df1tt")
+shading_mode = 0
+albedo_color = Color(1, 0.964706, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_y8lly"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ry7p8")
+radius = 0.15
+height = 0.3
+radial_segments = 32
+rings = 16
+
+[node name="Ball" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 3
+axis_lock_linear_y = true
+gravity_scale = 0.0
+lock_rotation = true
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_7t776")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_bughu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_y8lly")
+
+[node name="BallImpactEffect" parent="." instance=ExtResource("2_735vx")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
