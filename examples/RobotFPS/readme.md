@@ -33,7 +33,7 @@ func get_action_space() -> Dictionary:
 
 `+1` For hitting another Robot (unless the Robot is in the protection period after respawning).
 
-Robots have `2` HP each and the episode for a robot ends if HP reaches `0` , at which point the robot gets re-spawned to a random free position on the map.
+Robots have `2` HP each and the episode for a robot ends if HP reaches `0` (after taking 2 shots), at which point the robot gets re-spawned to a random free position on the map.
 
 # Running inference/testing the environment:
 
