@@ -35,4 +35,4 @@ fov = 40.4
 script = ExtResource("2_ts53t")
 control_mode = 2
 action_repeat = 4
-onnx_model_path = "C:\\Users\\Computer\\PycharmProjects\\godot_rl_agents\\examples\\model.onnx"
+onnx_model_path = "model.onnx"
