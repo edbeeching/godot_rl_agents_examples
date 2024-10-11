@@ -118,9 +118,13 @@ func _adjust_ground() -> void:
     ground.size = Vector3(width*maze_scale, 1, height*maze_scale)
 
     get_node("Walls/Left").position = Vector3(-ground.size.x/2, 0, 0)
+    get_node("Walls/Left").size.x = ground.size.z
     get_node("Walls/Right").position = Vector3(ground.size.x/2, 0, 0)
+    get_node("Walls/Right").size.x = ground.size.z
     get_node("Walls/Forward").position = Vector3(0, 0, -ground.size.z/2)
+    get_node("Walls/Forward").size.x = ground.size.x
     get_node("Walls/Backward").position = Vector3(0, 0, ground.size.z/2)
+    get_node("Walls/Backward").size.x = ground.size.x
 
 func get_spawn_location() -> Vector3:
     return Vector3(

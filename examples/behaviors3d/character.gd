@@ -14,6 +14,7 @@ var jump_action: bool = false
 
 func _ready() -> void:
     ai_controller.init(self)
+    CameraManager.register_player(self)
 
 
 func _physics_process(delta: float) -> void:
@@ -85,3 +86,9 @@ func reset():
     rotation = Vector3()
     get_parent().reset_target() 
     ai_controller.reset_best_goal_distance()
+
+func toggle_camera(on: bool):
+    if on:
+        $Camera3D.make_current()
+    else:
+        $Camera3D.clear_current()

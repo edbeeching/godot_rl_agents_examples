@@ -71,3 +71,9 @@ func _adjust_ground() -> void:
     get_node("Walls/Right").position = Vector3(seed_mesh.size.x/2, 0, 0)
     get_node("Walls/Forward").position = Vector3(0, 0, -seed_mesh.size.y/2)
     get_node("Walls/Backward").position = Vector3(0, 0, seed_mesh.size.y/2)
+
+
+    get_node("Walls/Left").size.x = seed_mesh.size.y
+    get_node("Walls/Right").size.x = seed_mesh.size.y
+    get_node("Walls/Forward").size.x = seed_mesh.size.x
+    get_node("Walls/Backward").size.x = seed_mesh.size.x

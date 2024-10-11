@@ -4,9 +4,9 @@ extends CSGBox3D
 
 var placed = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not placed and raycast.is_colliding():
 		# Set position to hit position
-		position = raycast.get_collision_point() + Vector3(0, 0.5*size.y, 0)
+		global_position.y = raycast.get_collision_point().y + 0.5*size.y
 		placed = true
 		raycast.queue_free()

@@ -1,10 +1,10 @@
 extends Node3D
 
-@export var LevelScene : PackedScene
+@export var LevelScenes : Array[PackedScene]
 var level_scene
 
 func _ready():
-    level_scene = LevelScene.instantiate()
+    level_scene = LevelScenes.pick_random().instantiate()
     add_child(level_scene)
     level_scene.generate_level()
     reset_target()
