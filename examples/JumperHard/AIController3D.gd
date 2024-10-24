@@ -48,7 +48,6 @@ func set_action(action):
 	_player.turn_action = action["turn"][0]
 	_player.jump_action = action["jump"][0] > 0
 
-
 func get_action_space():
 	return {
 		"jump": {"size": 1, "action_type": "continuous"},
