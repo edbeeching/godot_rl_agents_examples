@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bajg1lus3f8lq"]
+
+[ext_resource type="Script" path="res://scenes/player/player_ai_controller.gd" id="1_1n5a2"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_fhxel"]
+[ext_resource type="PackedScene" uid="uid://bav1cl8uwc45c" path="res://addons/godot_rl_agents/sensors/sensors_2d/RGBCameraSensor2D.tscn" id="3_5q446"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhatr"]
+size = Vector2(36, 36)
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_fhxel")
+
+[node name="AIController2D" type="Node2D" parent="."]
+script = ExtResource("1_1n5a2")
+
+[node name="RGBCameraSensor2D" parent="AIController2D" instance=ExtResource("3_5q446")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hhatr")

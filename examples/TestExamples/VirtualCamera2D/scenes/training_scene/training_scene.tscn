@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmiruga6tyklv"]
+
+[ext_resource type="PackedScene" uid="uid://cgsng3apg326d" path="res://scenes/game_scene/game_scene.tscn" id="1_5aabc"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_4rl0a"]
+
+[node name="TrainingScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(178, 178)
+
+[node name="GameScene" parent="." instance=ExtResource("1_5aabc")]
+
+[node name="GameScene2" parent="." instance=ExtResource("1_5aabc")]
+position = Vector2(1000, 0)
+
+[node name="GameScene3" parent="." instance=ExtResource("1_5aabc")]
+position = Vector2(0, 1000)
+
+[node name="GameScene4" parent="." instance=ExtResource("1_5aabc")]
+position = Vector2(1000, 1000)
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_4rl0a")
+speed_up = 36.0

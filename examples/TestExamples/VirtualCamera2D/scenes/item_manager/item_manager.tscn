@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://2ome402ky5h5"]
+
+[ext_resource type="PackedScene" uid="uid://mncv6mcoupgd" path="res://scenes/item/item.tscn" id="1_wnnyh"]
+
+[node name="ItemManager" type="Node2D"]
+position = Vector2(178, 178)
+
+[node name="Item" parent="." instance=ExtResource("1_wnnyh")]
+position = Vector2(0, 0)
+
+[node name="Item2" parent="." instance=ExtResource("1_wnnyh")]
+position = Vector2(0, 0)
+rotation = 1.0472
+
+[node name="Item3" parent="." instance=ExtResource("1_wnnyh")]
+position = Vector2(0, 0)
+rotation = 2.0944
+
+[node name="Item4" parent="." instance=ExtResource("1_wnnyh")]
+position = Vector2(0, 0)
+rotation = 3.14159
+
+[node name="Item5" parent="." instance=ExtResource("1_wnnyh")]
+position = Vector2(0, 0)
+rotation = 4.18879
+
+[node name="Item6" parent="." instance=ExtResource("1_wnnyh")]
+position = Vector2(0, 0)
+rotation = 5.23599
