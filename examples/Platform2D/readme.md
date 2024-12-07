@@ -1,4 +1,5 @@
 # Platform2D environment
+https://github.com/user-attachments/assets/c2ca1ee6-5e67-4288-9a02-df133173dbcf
 
 ## Goal:
 The player must pick up all of the coins and reach the goal, while avoiding traps and falling outside of the map.
