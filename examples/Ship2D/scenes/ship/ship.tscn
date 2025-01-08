@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://giklicruf2u"]
+
+[ext_resource type="Texture2D" uid="uid://c8oedbtmvqww" path="res://assets/Ship.png" id="1_dm7gt"]
+[ext_resource type="Script" path="res://scenes/ship/ship.gd" id="1_hjjh5"]
+[ext_resource type="PackedScene" uid="uid://dl6nxothvtqua" path="res://scenes/ball/ball.tscn" id="2_18p7p"]
+[ext_resource type="Script" path="res://scenes/ship/ship_ai_controller.gd" id="3_ijd3m"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd" id="5_xq2sa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_450bq"]
+radius = 41.72
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fpp2b"]
+radius = 30.2
+height = 181.6
+
+[node name="Ship" type="CharacterBody2D" node_paths=PackedStringArray("ai_controller")]
+collision_layer = 512
+script = ExtResource("1_hjjh5")
+ball_scene = ExtResource("2_18p7p")
+ai_controller = NodePath("AIController2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dm7gt")
+
+[node name="AIController2D" type="Node2D" parent="." node_paths=PackedStringArray("player", "raycast_sensors")]
+script = ExtResource("3_ijd3m")
+player = NodePath("..")
+raycast_sensors = [NodePath("RaycastSensorWall"), NodePath("RaycastSensorAsteroid")]
+reset_after = 512
+
+[node name="RaycastSensorWall" type="Node2D" parent="AIController2D"]
+rotation = 1.5708
+script = ExtResource("5_xq2sa")
+n_rays = 2.0
+ray_length = 2000
+
+[node name="RaycastSensorAsteroid" type="Node2D" parent="AIController2D"]
+rotation = -1.5708
+script = ExtResource("5_xq2sa")
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+ray_length = 2000
+cone_width = 185.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_450bq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.285)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fpp2b")

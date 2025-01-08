@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://da7uefbrja8u0"]
+
+[ext_resource type="Script" path="res://scenes/asteroid/asteroid.gd" id="1_i2wen"]
+[ext_resource type="Texture2D" uid="uid://c3uv7bhj0icto" path="res://assets/asteroid.png" id="2_uoiax"]
+[ext_resource type="Texture2D" uid="uid://cjber4yoanul1" path="res://assets/asteroid2.png" id="3_danrt"]
+[ext_resource type="Texture2D" uid="uid://drmjmr725556o" path="res://assets/asteroid3.png" id="4_ab212"]
+[ext_resource type="Texture2D" uid="uid://b020rbym6vtor" path="res://assets/asteroid4.png" id="5_7s632"]
+[ext_resource type="Texture2D" uid="uid://b5jhhj8ch1o3i" path="res://assets/asteroid5.png" id="6_du6mb"]
+[ext_resource type="Texture2D" uid="uid://b05hpaculnwb5" path="res://assets/asteroid6.png" id="7_61yp0"]
+
+[sub_resource type="Curve" id="Curve_g1nht"]
+bake_resolution = 10
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_k1m6u"]
+curve = SubResource("Curve_g1nht")
+
+[sub_resource type="Curve" id="Curve_s457i"]
+max_value = 10.0
+bake_resolution = 10
+_data = [Vector2(0, 3.23649), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r5po8"]
+curve = SubResource("Curve_s457i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2m1fr"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+radial_velocity_min = 113.77
+radial_velocity_max = 113.77
+radial_velocity_curve = SubResource("CurveTexture_r5po8")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.1
+color = Color(1, 1, 1, 0.737255)
+alpha_curve = SubResource("CurveTexture_k1m6u")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kuteu"]
+radius = 53.6
+
+[node name="Asteroid" type="Area2D"]
+collision_layer = 2
+collision_mask = 514
+script = ExtResource("1_i2wen")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_mode = 1
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_2m1fr")
+texture = ExtResource("3_danrt")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+visible = false
+texture = ExtResource("2_uoiax")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprites"]
+visible = false
+texture = ExtResource("3_danrt")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprites"]
+visible = false
+texture = ExtResource("4_ab212")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprites"]
+visible = false
+texture = ExtResource("5_7s632")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprites"]
+visible = false
+texture = ExtResource("6_du6mb")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Sprites"]
+visible = false
+texture = ExtResource("7_61yp0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kuteu")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
