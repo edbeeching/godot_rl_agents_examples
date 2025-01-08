@@ -83,3 +83,4 @@ CL arguments used (also onnx export and model saving was used, enable as needed,
 Stats from the training session:
 ![training session rewards](https://github.com/user-attachments/assets/986fac4f-fcf9-470b-8809-c6018228ce43)
 
+This environment was made by [Ivan-267](https://github.com/Ivan-267).
