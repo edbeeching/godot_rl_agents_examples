@@ -78,3 +78,6 @@ shadow_enabled = true
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("3_molsl")
+control_mode = 0
+speed_up = 2.0
+onnx_model_path = "C:\\Users\\Computer\\PycharmProjects\\godot_rl_agents2\\examples\\model.onnx"

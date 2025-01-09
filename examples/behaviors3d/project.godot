@@ -70,3 +70,8 @@ switch_camera={
 3d_physics/layer_1="World"
 3d_physics/layer_2="Collectable"
 3d_physics/layer_3="Collectors"
+
+[physics]
+
+common/max_physics_steps_per_frame=36
+3d/solver/solver_iterations=8

@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://bwkloyhow871b" path="res://uneven_terrain.tscn" id="4_j1d5f"]
 [ext_resource type="PackedScene" uid="uid://cfgrwq4lnxr6e" path="res://xyx.tscn" id="5_wchcn"]
 
-[node name="LevelRunner" type="Node3D"]
+[node name="LevelRunner" type="Node3D" node_paths=PackedStringArray("character")]
 script = ExtResource("1_m4df2")
 LevelScenes = Array[PackedScene]([ExtResource("2_fxh8o"), ExtResource("3_7hy0m"), ExtResource("4_j1d5f")])
+character = NodePath("Character")
 
 [node name="Character" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_h1jx5")]
 collision_layer = 0

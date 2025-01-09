@@ -20,3 +20,5 @@ builds/
 
 # Blender
 *.blend1
+examples/behaviors3d/export/
+examples/behaviors3d/addons/
