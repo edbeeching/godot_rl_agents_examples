@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://58lpi1c3ykny"]
+[gd_scene load_steps=6 format=3 uid="uid://58lpi1c3ykny"]
 
 [ext_resource type="PackedScene" uid="uid://cnc8v7gerrc4e" path="res://snapper.tscn" id="1_44dji"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_5sbl6"]
+[ext_resource type="Script" path="res://scenes/target.gd" id="1_j34o5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgxn0"]
 albedo_color = Color(0.2, 0.639216, 0.141176, 1)
@@ -10,7 +9,11 @@ albedo_color = Color(0.2, 0.639216, 0.141176, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_r34oj"]
 material = SubResource("StandardMaterial3D_mgxn0")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_5sbl6"]
+
 [node name="Target" type="Node3D"]
+script = ExtResource("1_j34o5")
+aabb_mesh = SubResource("SphereMesh_r34oj")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)

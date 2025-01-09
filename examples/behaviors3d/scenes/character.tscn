@@ -14,6 +14,7 @@ radius = 0.72588
 
 [node name="Character" type="CharacterBody3D"]
 script = ExtResource("1_uvdlf")
+aabb_mesh = SubResource("CapsuleMesh_ajpj0")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
 mesh = SubResource("CapsuleMesh_ajpj0")
