@@ -3,14 +3,16 @@
 [ext_resource type="Script" path="res://level_runner.gd" id="1_m4df2"]
 [ext_resource type="PackedScene" uid="uid://bj8c4w58s61kg" path="res://block_scene.tscn" id="2_fxh8o"]
 [ext_resource type="PackedScene" uid="uid://s48tadqoyhgh" path="res://scenes/character.tscn" id="2_h1jx5"]
-[ext_resource type="PackedScene" uid="uid://cvv72syq5vnwd" path="res://maze_gen.tscn" id="3_7hy0m"]
+[ext_resource type="PackedScene" uid="uid://cvv72syq5vnwd" path="res://maze_gen.tscn" id="2_m6o1s"]
+[ext_resource type="PackedScene" uid="uid://bwkloyhow871b" path="res://uneven_terrain.tscn" id="2_vsarq"]
 [ext_resource type="PackedScene" uid="uid://58lpi1c3ykny" path="res://scenes/target.tscn" id="3_f64vj"]
-[ext_resource type="PackedScene" uid="uid://bwkloyhow871b" path="res://uneven_terrain.tscn" id="4_j1d5f"]
 [ext_resource type="PackedScene" uid="uid://cfgrwq4lnxr6e" path="res://xyx.tscn" id="5_wchcn"]
 
-[node name="LevelRunner" type="Node3D"]
+[node name="LevelRunner" type="Node3D" node_paths=PackedStringArray("character", "target")]
 script = ExtResource("1_m4df2")
-LevelScenes = Array[PackedScene]([ExtResource("2_fxh8o"), ExtResource("3_7hy0m"), ExtResource("4_j1d5f")])
+character = NodePath("Character")
+target = NodePath("Target")
+LevelScenes = Array[PackedScene]([ExtResource("2_fxh8o"), ExtResource("2_m6o1s"), ExtResource("2_vsarq")])
 
 [node name="Character" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_h1jx5")]
 collision_layer = 0

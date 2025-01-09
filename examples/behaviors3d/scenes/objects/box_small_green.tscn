@@ -1,16 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0on3yhrqo283"]
+[gd_scene load_steps=6 format=3 uid="uid://d0on3yhrqo283"]
 
-[ext_resource type="Texture2D" uid="uid://c07qdir8ij1wc" path="res://addons/kenney_prototype_textures/green/texture_01.png" id="1_otqva"]
+[ext_resource type="Texture2D" uid="uid://bym2towutb4ww" path="res://addons/kenney_prototype_textures/green/texture_01.png" id="1_otqva"]
 [ext_resource type="Script" path="res://scenes/objects/box.gd" id="2_xx6dv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cq0ee"]
 albedo_texture = ExtResource("1_otqva")
 uv1_triplanar = true
 
-[node name="BoxSmallGreen" type="CSGBox3D"]
-use_collision = true
+[sub_resource type="BoxMesh" id="BoxMesh_xg7le"]
 material = SubResource("StandardMaterial3D_cq0ee")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ktinf"]
+
+[node name="BoxSmallGreen" type="StaticBody3D"]
 script = ExtResource("2_xx6dv")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+enabled = false
 target_position = Vector3(0, -100, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xg7le")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ktinf")

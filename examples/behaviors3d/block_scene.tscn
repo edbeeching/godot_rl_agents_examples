@@ -17,6 +17,7 @@ script = ExtResource("1_xgygf")
 object_pool = Array[PackedScene]([ExtResource("2_5wm32"), ExtResource("3_moofo"), ExtResource("4_u45jt"), ExtResource("5_qlly2")])
 
 [node name="Ground" parent="." instance=ExtResource("2_r6iqf")]
+collision_layer = 3
 
 [node name="Walls" type="Node3D" parent="."]
 
