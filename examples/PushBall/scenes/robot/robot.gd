@@ -69,8 +69,6 @@ func _process_distance_rewards():
 	if current_ball_dist < closest_ball_dist:
 		_ai_controller.reward += (closest_ball_dist - current_ball_dist)
 		closest_ball_dist = current_ball_dist
-
-
 #endregion
 
 
