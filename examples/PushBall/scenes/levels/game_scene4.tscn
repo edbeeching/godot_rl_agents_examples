@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://d32ntbmtrnc2q"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_manager.gd" id="1_flvlp"]
+[ext_resource type="PackedScene" uid="uid://dj6uaupgnjtgm" path="res://scenes/robot/robot.tscn" id="2_h11iq"]
+[ext_resource type="MeshLibrary" uid="uid://dd25bvxh87k52" path="res://scenes/tiles/mesh_library.tres" id="3_dhg3i"]
+[ext_resource type="PackedScene" uid="uid://i2xan4njr6b3" path="res://scenes/ball/ball.tscn" id="4_pwn6m"]
+[ext_resource type="PackedScene" uid="uid://b44vhh42y4dsq" path="res://scenes/goal/goal.tscn" id="5_bvys5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mlj80"]
+size = Vector3(2, 2, 22)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4nr14"]
+size = Vector3(2, 2, 18)
+
+[node name="GameScene4" type="Node3D" node_paths=PackedStringArray("nodes_to_reset")]
+script = ExtResource("1_flvlp")
+nodes_to_reset = [NodePath("Ball"), NodePath("Goal")]
+
+[node name="Robot" parent="." instance=ExtResource("2_h11iq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, 1)
+level_id = [0, 0, 1, 0]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="GridMap" type="GridMap" parent="Map"]
+mesh_library = ExtResource("3_dhg3i")
+data = {
+"cells": PackedInt32Array(65530, 65531, 655360, 65530, 65532, 655360, 65530, 65533, 655360, 65530, 65534, 655360, 65530, 0, 655360, 65530, 1, 655360, 65530, 2, 655360, 65531, 65531, 655361, 65531, 65532, 655361, 65531, 65533, 655361, 65531, 65534, 655361, 65531, 65535, 655361, 65531, 0, 655361, 65531, 1, 655361, 65531, 2, 655361, 65531, 3, 655361, 65532, 65535, 655361, 65533, 65535, 655361, 65534, 65535, 655361, 65535, 65531, 655361, 65535, 65532, 655361, 65535, 65533, 655361, 65535, 65534, 655361, 65535, 65535, 655361, 65535, 0, 655361, 65535, 1, 655361, 65535, 2, 655361, 65535, 3, 655361, 0, 65535, 655361, 1, 65535, 655361, 2, 65535, 655361, 3, 65531, 1, 3, 65532, 655361, 3, 65533, 655361, 3, 65534, 655361, 3, 65535, 655361, 3, 0, 655361, 3, 1, 655361, 3, 2, 655361, 3, 3, 655361, 4, 65531, 655360, 4, 65532, 655360, 4, 65533, 655360, 4, 65534, 655360, 4, 0, 655360, 4, 1, 655360, 4, 2, 655360, 4, 3, 655360, 131066, 3, 1441796, 131066, 2, 1441796, 131066, 1, 1441796, 131066, 0, 1441796, 131066, 65535, 1441796, 131066, 65534, 1441796, 131066, 65533, 1441796, 131066, 65531, 1441796, 131066, 65532, 1441796, 65540, 65531, 1048580, 65540, 65532, 1048580, 65540, 65533, 1048580, 65540, 65534, 1048580, 65540, 65535, 1048580, 65540, 0, 1048580, 65540, 1, 1048580, 65540, 2, 1048580, 65540, 3, 1048580, 0, 3, 1, 1, 3, 1, 2, 3, 1, 65534, 3, 1, 65533, 3, 1, 65532, 3, 1, 65532, 65531, 1, 65533, 65531, 1, 65534, 65531, 1, 0, 65531, 1, 1, 65531, 1, 2, 65531, 1, 4, 4, 655363, 3, 4, 0, 2, 4, 655360, 1, 4, 0, 0, 4, 0, 65535, 4, 655363, 65534, 4, 655360, 65533, 4, 655360, 65532, 4, 655360, 65531, 4, 0, 65530, 65530, 655363, 65531, 65530, 0, 65532, 65530, 655360, 65533, 65530, 655360, 65534, 65530, 655360, 65535, 65530, 655363, 0, 65530, 655360, 1, 65530, 655360, 2, 65530, 655360, 3, 65530, 0, 4, 65530, 655363, 131067, 4, 4, 131068, 4, 4, 131069, 4, 4, 131070, 4, 4, 131071, 4, 4, 65536, 4, 4, 65537, 4, 4, 65538, 4, 4, 65539, 4, 4, 65539, 65530, 655364, 65538, 65530, 655364, 65537, 65530, 655364, 65536, 65530, 655364, 131069, 65530, 655364, 131068, 65530, 655364, 131067, 65530, 655364, 131070, 65530, 655364, 131071, 65530, 655364, 65530, 4, 655363, 65530, 3, 655360, 65530, 65535, 655363, 4, 65535, 655363)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="FloorCollider" type="StaticBody3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/FloorCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -2)
+shape = SubResource("BoxShape3D_mlj80")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Map/FloorCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+shape = SubResource("BoxShape3D_mlj80")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Map/FloorCollider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -2)
+shape = SubResource("BoxShape3D_mlj80")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Map/FloorCollider"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -10)
+shape = SubResource("BoxShape3D_4nr14")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Map/FloorCollider"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -2)
+shape = SubResource("BoxShape3D_4nr14")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Map/FloorCollider"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 6)
+shape = SubResource("BoxShape3D_4nr14")
+
+[node name="Ball" parent="." instance=ExtResource("4_pwn6m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.5, -9)
+
+[node name="Node3D" type="Node3D" parent="Ball/SpawnPositions" index="0"]
+
+[node name="Node3D2" type="Node3D" parent="Ball/SpawnPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="Node3D3" type="Node3D" parent="Ball/SpawnPositions" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="Node3D4" type="Node3D" parent="Ball/SpawnPositions" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
+
+[node name="Node3D5" type="Node3D" parent="Ball/SpawnPositions" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 16)
+
+[node name="Node3D6" type="Node3D" parent="Ball/SpawnPositions" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16)
+
+[node name="Node3D7" type="Node3D" parent="Ball/SpawnPositions" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+
+[node name="Goal" parent="." instance=ExtResource("5_bvys5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -1)
+
+[node name="Node3D" type="Node3D" parent="Goal/SpawnPositions" index="0"]
+
+[editable path="Ball"]
+[editable path="Goal"]
+[editable path="Goal/SpawnPositions"]

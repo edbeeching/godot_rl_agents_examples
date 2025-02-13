@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmc018ke831mi"]
+
+[ext_resource type="Script" path="res://scenes/spawn_position_manager/spawn_positions.gd" id="1_3q5jt"]
+
+[node name="SpawnPositions" type="Node3D"]
+script = ExtResource("1_3q5jt")

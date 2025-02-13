@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs4v3usqu455o"]
+
+[ext_resource type="Script" path="res://scenes/robot/RayGridSensor.gd" id="1_e1dtn"]
+
+[node name="GroundSensor" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, -3.2)
+script = ExtResource("1_e1dtn")
+n_rays_height = 4.0
+ray_length = 2.025
+grid_width = 3.0
+grid_height = 5.0
+
+[node name="node_0 0" type="RayCast3D" parent="."]
+target_position = Vector3(0, -2.025, 0)
+
+[node name="_RayCast3D_22425" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.25)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_0 2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_0 3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.75)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_1 0" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="_RayCast3D_22426" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1.25)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_1 2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 2.5)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_1 3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 3.75)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="_RayCast3D_22427" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="_RayCast3D_22428" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.25)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_2 2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.5)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_2 3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3.75)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_3 0" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_3 1" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.25)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_3 2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 2.5)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_3 3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 3.75)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_4 0" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_4 1" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1.25)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_4 2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2.5)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_4 3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3.75)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_5 0" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_5 1" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 1.25)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_5 2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 2.5)
+target_position = Vector3(0, -2.025, 0)
+
+[node name="node_5 3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 3.75)
+target_position = Vector3(0, -2.025, 0)

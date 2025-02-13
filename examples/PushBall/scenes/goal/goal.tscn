@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://b44vhh42y4dsq"]
+
+[ext_resource type="Script" path="res://scenes/goal/goal.gd" id="1_3bxxn"]
+[ext_resource type="PackedScene" uid="uid://8cvhxosmcq6" path="res://assets/goal.glb" id="2_dhf6t"]
+[ext_resource type="PackedScene" uid="uid://bmc018ke831mi" path="res://scenes/spawn_position_manager/spawn_positions.tscn" id="2_mxo1m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fw6v3"]
+transparency = 1
+albedo_color = Color(1, 1, 0, 0.670588)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kg8u1"]
+material = SubResource("StandardMaterial3D_fw6v3")
+size = Vector3(2, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ntota"]
+size = Vector3(2, 1, 2)
+
+[node name="Goal" type="Area3D" node_paths=PackedStringArray("spawn_position_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -4.814)
+collision_layer = 129
+collision_mask = 8388609
+script = ExtResource("1_3bxxn")
+spawn_position_manager = NodePath("SpawnPositions")
+
+[node name="goal" parent="." instance=ExtResource("2_dhf6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_kg8u1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ntota")
+
+[node name="SpawnPositions" parent="." instance=ExtResource("2_mxo1m")]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://c53ucq8gavhuw"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_manager.gd" id="1_rqk3a"]
+[ext_resource type="PackedScene" uid="uid://dj6uaupgnjtgm" path="res://scenes/robot/robot.tscn" id="2_he2qg"]
+[ext_resource type="MeshLibrary" uid="uid://dd25bvxh87k52" path="res://scenes/tiles/mesh_library.tres" id="3_3vxpv"]
+[ext_resource type="PackedScene" uid="uid://i2xan4njr6b3" path="res://scenes/ball/ball.tscn" id="4_2f4cs"]
+[ext_resource type="PackedScene" uid="uid://b44vhh42y4dsq" path="res://scenes/goal/goal.tscn" id="5_3guq0"]
+[ext_resource type="PackedScene" uid="uid://ddlyhy8ad7r6h" path="res://scenes/levels/platform.tscn" id="5_qgr7p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eqybw"]
+size = Vector3(6, 2, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ok4dv"]
+size = Vector3(6, 2, 8)
+
+[node name="GameScene3" type="Node3D" node_paths=PackedStringArray("nodes_to_reset")]
+script = ExtResource("1_rqk3a")
+nodes_to_reset = [NodePath("Ball"), NodePath("Goal"), NodePath("Platform")]
+
+[node name="Robot" parent="." instance=ExtResource("2_he2qg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 9.5)
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="GridMap" type="GridMap" parent="Map"]
+mesh_library = ExtResource("3_3vxpv")
+data = {
+"cells": PackedInt32Array(65534, 3, 1048579, 65534, 4, 1048576, 65534, 5, 1048579, 65535, 3, 1048577, 65535, 4, 1048577, 65535, 5, 1048576, 0, 3, 1048577, 0, 4, 1048577, 0, 5, 1048576, 1, 3, 1048579, 1, 4, 1048576, 1, 5, 1048579, 65536, 5, 4, 131071, 5, 4, 131070, 4, 1441796, 131070, 3, 1441796, 65537, 3, 1048580, 65537, 4, 1048580, 65534, 65533, 655363, 65534, 65534, 0, 65534, 65535, 655363, 65535, 65533, 0, 65535, 65534, 1, 65535, 65535, 1, 0, 65533, 0, 0, 65534, 1, 0, 65535, 1, 1, 65533, 655363, 1, 65534, 0, 1, 65535, 655363, 131070, 65534, 1441796, 131070, 65535, 1441796, 131071, 65533, 655364, 65536, 65533, 655364, 65537, 65534, 1048580, 65537, 65535, 1048580)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="FloorCollider" type="StaticBody3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Map/FloorCollider"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.6292e-07, 0, 8)
+shape = SubResource("BoxShape3D_eqybw")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Map/FloorCollider"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.06632e-07, 0, -4)
+shape = SubResource("BoxShape3D_ok4dv")
+
+[node name="Ball" parent="." instance=ExtResource("4_2f4cs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 7)
+
+[node name="SpawnPositions" parent="Ball" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Node3D" type="Node3D" parent="Ball/SpawnPositions" index="0"]
+
+[node name="Goal" parent="." instance=ExtResource("5_3guq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -3)
+
+[node name="Node3D" type="Node3D" parent="Goal/SpawnPositions" index="0"]
+
+[node name="Node3D2" type="Node3D" parent="Goal/SpawnPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Platform" parent="." instance=ExtResource("5_qgr7p")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -1, 0, 3)
+
+[node name="Node3D" type="Node3D" parent="Platform/SpawnPositions" index="0"]
+
+[node name="Node3D2" type="Node3D" parent="Platform/SpawnPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4.76837e-07)
+
+[editable path="Ball"]
+[editable path="Goal"]
+[editable path="Platform"]
