@@ -1,6 +1,8 @@
 # Push Ball
 A ball-pushing robot environment.
 
+https://github.com/user-attachments/assets/71cf8787-db48-4c9f-a6da-dbbbbaa52211
+
 # Goal:
 The robot needs to push the ball into the goal.
 
@@ -125,3 +127,7 @@ Notes:
 - `--env_path` also needs to be set to the exported executable.
 
 This environment was made by [Ivan267.](https://github.com/Ivan-267)
+
+
+# Testing the trained onnx:
+A trained onnx file is included. To test it, open the environment, then open the `res://scenes/onnx_test_scene.tscn` scene, then press `F6`.
