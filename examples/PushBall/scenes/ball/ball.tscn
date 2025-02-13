@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://i2xan4njr6b3"]
+
+[ext_resource type="Script" path="res://scenes/ball/ball.gd" id="1_ctddt"]
+[ext_resource type="PackedScene" uid="uid://bmc018ke831mi" path="res://scenes/spawn_position_manager/spawn_positions.tscn" id="2_r851m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o5xow"]
+friction = 0.5
+bounce = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7ksrn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bwtfo"]
+noise_type = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1w6s6"]
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_bwtfo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qk56"]
+render_priority = -1
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
+grow = true
+grow_amount = 0.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25ryc"]
+next_pass = SubResource("StandardMaterial3D_4qk56")
+albedo_color = Color(0.2494, 0.86, 0.82947, 1)
+albedo_texture = SubResource("NoiseTexture2D_1w6s6")
+metallic_specular = 1.0
+roughness = 0.0
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_tah8n"]
+material = SubResource("StandardMaterial3D_25ryc")
+radial_segments = 32
+rings = 16
+
+[node name="Ball" type="RigidBody3D" node_paths=PackedStringArray("spawn_position_manager")]
+collision_layer = 8388608
+collision_mask = 513
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_o5xow")
+gravity_scale = 4.0
+continuous_cd = true
+linear_damp_mode = 1
+linear_damp = 4.0
+angular_damp_mode = 1
+angular_damp = 10.0
+script = ExtResource("1_ctddt")
+spawn_position_manager = NodePath("SpawnPositions")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7ksrn")
+
+[node name="SpawnPositions" parent="." instance=ExtResource("2_r851m")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_tah8n")

@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhcgcxco45ugn"]
+
+[ext_resource type="Script" path="res://scenes/levels/level_manager.gd" id="1_7koww"]
+[ext_resource type="PackedScene" uid="uid://dj6uaupgnjtgm" path="res://scenes/robot/robot.tscn" id="2_5xkem"]
+[ext_resource type="PackedScene" uid="uid://i2xan4njr6b3" path="res://scenes/ball/ball.tscn" id="4_0fucp"]
+[ext_resource type="MeshLibrary" uid="uid://dd25bvxh87k52" path="res://scenes/tiles/mesh_library.tres" id="4_f0s4p"]
+[ext_resource type="PackedScene" uid="uid://b44vhh42y4dsq" path="res://scenes/goal/goal.tscn" id="5_wf7cw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e2xuh"]
+size = Vector3(8, 2, 18)
+
+[node name="GameScene" type="Node3D" node_paths=PackedStringArray("nodes_to_reset")]
+script = ExtResource("1_7koww")
+nodes_to_reset = [NodePath("Ball"), NodePath("Goal")]
+
+[node name="Robot" parent="." instance=ExtResource("2_5xkem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="GridMap" type="GridMap" parent="Map"]
+mesh_library = ExtResource("4_f0s4p")
+data = {
+"cells": PackedInt32Array(5, 65535, 5, 5, 0, 5, 0, 2, 1, 65535, 2, 1, 65534, 2, 1, 1, 2, 1, 1, 1, 1, 1, 0, 1, 1, 65535, 1, 1, 65534, 1, 1, 65533, 1, 65534, 65533, 1, 65534, 65534, 1, 65534, 65535, 1, 65534, 1, 1, 65534, 0, 1, 65535, 1, 1, 0, 1, 1, 0, 0, 1, 0, 65535, 1, 0, 65534, 1, 0, 65533, 1, 65535, 65533, 1, 65535, 65534, 1, 65535, 65535, 1, 65535, 0, 1, 65534, 3, 1, 65535, 3, 1, 0, 3, 1, 1, 3, 1, 1, 65532, 1, 65535, 65532, 1, 65534, 65532, 1, 65537, 65532, 1441796, 65538, 65532, 1048580, 65538, 65533, 1048580, 65538, 65534, 1048580, 65538, 65535, 1048580, 65538, 0, 1048580, 65538, 1, 1048580, 65538, 3, 1048580, 131069, 65532, 1441796, 131069, 65533, 1441796, 131069, 65534, 1441796, 131069, 65535, 1441796, 131069, 0, 1441796, 131069, 1, 1441796, 131069, 2, 1441796, 131069, 3, 1441796, 131070, 4, 4, 131071, 4, 4, 65536, 4, 4, 65537, 4, 4, 65538, 2, 1048580, 1, 65531, 0, 0, 65531, 0, 65533, 65531, 3, 65534, 65531, 0, 65535, 65531, 0, 1, 4, 0, 0, 4, 0, 65535, 4, 0, 65534, 4, 0, 65533, 4, 3, 65533, 3, 0, 65533, 2, 0, 65533, 1, 3, 65533, 0, 0, 65533, 65535, 0, 65533, 65534, 3, 65533, 65533, 0, 65533, 65532, 0, 2, 65532, 0, 2, 0, 0, 2, 65535, 0, 2, 3, 0, 2, 4, 3, 2, 1, 3, 2, 2, 0, 2, 65534, 3, 2, 65533, 0, 2, 65531, 3, 0, 65532, 1, 65537, 65531, 655364, 65536, 65531, 655364, 131071, 65531, 655364, 131070, 65531, 655364)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="FloorCollider" type="StaticBody3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/FloorCollider"]
+shape = SubResource("BoxShape3D_e2xuh")
+
+[node name="Ball" parent="." instance=ExtResource("4_0fucp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="Node3D" type="Node3D" parent="Ball/SpawnPositions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="Node3D2" type="Node3D" parent="Ball/SpawnPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="Node3D3" type="Node3D" parent="Ball/SpawnPositions" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="Node3D4" type="Node3D" parent="Ball/SpawnPositions" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+
+[node name="Goal" parent="." instance=ExtResource("5_wf7cw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -7)
+
+[node name="Node3D" type="Node3D" parent="Goal/SpawnPositions" index="0"]
+
+[node name="Node3D2" type="Node3D" parent="Goal/SpawnPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="Node3D3" type="Node3D" parent="Goal/SpawnPositions" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+
+[node name="Node3D4" type="Node3D" parent="Goal/SpawnPositions" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 14)
+
+[editable path="Ball"]
+[editable path="Goal"]
+[editable path="Goal/SpawnPositions"]

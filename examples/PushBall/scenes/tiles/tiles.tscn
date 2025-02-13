@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://48qkk328vkwu"]
+
+[ext_resource type="PackedScene" uid="uid://8kbips6v0udq" path="res://assets/tiles/grass.glb" id="1_mnvew"]
+[ext_resource type="PackedScene" uid="uid://bujd1vfmbe5ba" path="res://assets/tiles/gray.glb" id="2_ttdf0"]
+[ext_resource type="PackedScene" uid="uid://42ejkug73b60" path="res://assets/tiles/green.glb" id="3_ktywo"]
+[ext_resource type="PackedScene" uid="uid://dtbi6bkhvj2vn" path="res://assets/tiles/tree.glb" id="4_80i4m"]
+[ext_resource type="PackedScene" uid="uid://dj56ae4k54bna" path="res://assets/tiles/wooden_fence.glb" id="5_d1kmr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_snubt"]
+size = Vector3(2, 5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fe72"]
+size = Vector3(2, 4, 0.265)
+
+[node name="Tiles" type="Node3D"]
+
+[node name="grass" parent="." instance=ExtResource("1_mnvew")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="grass/Grass" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="grass/Grass/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_snubt")
+
+[node name="gray" parent="." instance=ExtResource("2_ttdf0")]
+visible = false
+
+[node name="green" parent="." instance=ExtResource("3_ktywo")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="green/Green" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="green/Green/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_snubt")
+
+[node name="tree" parent="." instance=ExtResource("4_80i4m")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tree/Tree" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tree/Tree/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_snubt")
+
+[node name="wooden_fence" parent="." instance=ExtResource("5_d1kmr")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wooden_fence/WoodFence" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wooden_fence/WoodFence/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.872101, -1)
+shape = SubResource("BoxShape3D_0fe72")
+
+[editable path="grass"]
+[editable path="green"]
+[editable path="tree"]
+[editable path="wooden_fence"]
