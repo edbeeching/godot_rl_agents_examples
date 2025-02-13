@@ -26,9 +26,6 @@ func get_obs() -> Dictionary:
 	player_velocity = player.global_basis.inverse() * player_velocity
 	player_velocity = player_velocity.limit_length(4) / 4
 
-	var player_angular_velocity = player.angular_velocity.y
-	player_angular_velocity = clampf(player_angular_velocity / 4.0, 0.0, 1.0)
-
 	var ball_velocity = player.ball.linear_velocity
 	ball_velocity = player.global_basis.inverse() * ball_velocity
 	ball_velocity = ball_velocity.limit_length(4) / 4
