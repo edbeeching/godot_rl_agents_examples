@@ -25,7 +25,7 @@ project/assembly_name="2DTerrainChallenge"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_rl_agents/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
