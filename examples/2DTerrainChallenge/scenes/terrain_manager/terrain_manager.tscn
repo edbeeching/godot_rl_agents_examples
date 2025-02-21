@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmbj3jo7rdhj3"]
+
+[ext_resource type="Script" path="res://scenes/terrain_manager/terrain_manager.gd" id="1_tb7f1"]
+
+[sub_resource type="Gradient" id="Gradient_ii32c"]
+offsets = PackedFloat32Array(0, 0.317136, 1)
+colors = PackedColorArray(0.320313, 0.165997, 0.0702561, 1, 0.492188, 0.315034, 0.107524, 1, 0.578125, 0.425366, 0.125901, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cgubt"]
+noise_type = 3
+seed = 420
+frequency = 0.0022
+fractal_octaves = 6
+fractal_gain = 1.185
+fractal_weighted_strength = 0.4
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b6hcp"]
+width = 1024
+height = 1024
+seamless = true
+seamless_blend_skirt = 0.475
+color_ramp = SubResource("Gradient_ii32c")
+noise = SubResource("FastNoiseLite_cgubt")
+
+[node name="Terrain" type="StaticBody2D"]
+script = ExtResource("1_tb7f1")
+x_point_count = 300.0
+x_offset_between_points = 200
+y_offset_multiplier = 1400.0
+octaves = 3
+frequency = 0.05
+terrain_start_lunacrity = 1.0
+terrain_end_lunacrity = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture_repeat = 2
+texture = SubResource("NoiseTexture2D_b6hcp")
+polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)

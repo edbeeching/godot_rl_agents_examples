@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca6csk8y5nvuu"]
+
+[ext_resource type="PackedScene" uid="uid://dmbj3jo7rdhj3" path="res://scenes/terrain_manager/terrain_manager.tscn" id="2_tyk7f"]
+[ext_resource type="PackedScene" uid="uid://d1uxkcttm306m" path="res://scenes/car/car.tscn" id="3_g3hiu"]
+[ext_resource type="PackedScene" uid="uid://bf3rfk5tvqlio" path="res://scenes/goal_area/goal_area.tscn" id="4_pgvws"]
+[ext_resource type="Texture2D" uid="uid://c4200ixpcvf0x" path="res://assets/sky.png" id="5_apd32"]
+
+[node name="playing_area" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_apd32")
+stretch_mode = 5
+
+[node name="Terrain" parent="." instance=ExtResource("2_tyk7f")]
+
+[node name="GoalArea" parent="." instance=ExtResource("4_pgvws")]
+position = Vector2(16423, 0)
+
+[node name="CarAIController2D" parent="." node_paths=PackedStringArray("terrain_manager", "goal_area") instance=ExtResource("3_g3hiu")]
+terrain_manager = NodePath("../Terrain")
+goal_area = NodePath("../GoalArea")
+
+[connection signal="body_entered" from="GoalArea" to="CarAIController2D" method="_on_goal_area_body_entered"]
