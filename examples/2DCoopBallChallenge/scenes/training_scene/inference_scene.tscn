@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2baxuisewykf"]
+
+[ext_resource type="PackedScene" uid="uid://dl1ldlvoh3s4n" path="res://scenes/game_scene/all_game_scenes.tscn" id="1_h4anc"]
+[ext_resource type="Script" uid="uid://bqt62hhqmt7bv" path="res://scenes/training_scene/camera_2d.gd" id="3_h4anc"]
+[ext_resource type="Script" uid="uid://dkxvjlyxwlu3t" path="res://addons/godot_rl_agents/sync.gd" id="3_m4b8y"]
+
+[sub_resource type="Animation" id="Animation_m4b8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, -10722)]
+}
+
+[sub_resource type="Animation" id="Animation_h4anc"]
+resource_name = "new_animation"
+length = 30.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6, 10, 16, 20),
+"transitions": PackedFloat32Array(1, 0.5, -2, 0.5, -2),
+"update": 0,
+"values": [Vector2(200, -10722), Vector2(206.521, -10722), Vector2(207, -299), Vector2(207, -299), Vector2(207, 13167)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8edvk"]
+_data = {
+&"RESET": SubResource("Animation_m4b8y"),
+&"new_animation": SubResource("Animation_h4anc")
+}
+
+[node name="InferenceScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(200, -10722)
+zoom = Vector2(0.257, 0.257)
+script = ExtResource("3_h4anc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_8edvk")
+}
+autoplay = "new_animation"
+speed_scale = 0.5
+
+[node name="AllGameScenes" parent="." instance=ExtResource("1_h4anc")]
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("3_m4b8y")
+control_mode = 2
+action_repeat = 2
+onnx_model_path = "onnx/model.onnx"

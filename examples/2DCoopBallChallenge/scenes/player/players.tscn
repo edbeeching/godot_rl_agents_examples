@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2qsl7semlkyv"]
+
+[ext_resource type="PackedScene" uid="uid://dyobkmccrdtji" path="res://scenes/player/player.tscn" id="1_cr4op"]
+[ext_resource type="Script" uid="uid://c5bbhwxv1im5u" path="res://scenes/player/players.gd" id="1_kutnq"]
+[ext_resource type="Script" uid="uid://bu0wvfxl80g6b" path="res://scenes/player/VelocitySensor2D.gd" id="3_6l7rq"]
+[ext_resource type="Script" uid="uid://dlkdrp0sajie" path="res://scenes/player/player_ai_controller.gd" id="11_eplxt"]
+
+[node name="Players" type="Node2D" node_paths=PackedStringArray("players", "ai_controller")]
+script = ExtResource("1_kutnq")
+players = [NodePath("Player"), NodePath("Player2")]
+ai_controller = NodePath("AIController2D")
+
+[node name="Player" parent="." node_paths=PackedStringArray("ai_controller") instance=ExtResource("1_cr4op")]
+ai_controller = NodePath("../AIController2D")
+
+[node name="Player2" parent="." node_paths=PackedStringArray("ai_controller") instance=ExtResource("1_cr4op")]
+position = Vector2(300, 0)
+ai_controller = NodePath("../AIController2D")
+
+[node name="VelocitySensor2D" type="Node2D" parent="." node_paths=PackedStringArray("objects_to_observe")]
+script = ExtResource("3_6l7rq")
+objects_to_observe = [NodePath("../Player"), NodePath("../Player2"), null]
+
+[node name="AIController2D" type="Node2D" parent="." node_paths=PackedStringArray("players", "sensors")]
+script = ExtResource("11_eplxt")
+players = NodePath("..")
+sensors = [NodePath("../Player/RaycastSensorPlatform"), NodePath("../Player/RaycastSensorGround"), NodePath("../Player/PositionSensor2D"), NodePath("../Player2/RaycastSensorPlatform"), NodePath("../Player2/RaycastSensorGround"), NodePath("../Player2/PositionSensor2D"), NodePath("../VelocitySensor2D")]
+reset_after = 5000
+
+[editable path="Player"]
+[editable path="Player2"]

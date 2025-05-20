@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://wdjkbtjihjoq"]
+
+[ext_resource type="Script" uid="uid://8xjlwdi087jf" path="res://scenes/training_scene/ball.gd" id="1_nv6q1"]
+[ext_resource type="Script" uid="uid://b8bbgclt0ufcp" path="res://addons/godot_rl_agents/rewards/ApproachNodeReward2D.gd" id="2_stoaj"]
+[ext_resource type="Script" uid="uid://cyrvpwvwcjebl" path="res://addons/godot_rl_agents/sensors/sensors_2d/PositionSensor2D.gd" id="3_stoaj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dgtlv"]
+radius = 50.0
+height = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jl3mj"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3kmt7"]
+radius = 100.0
+
+[node name="Ball" type="CharacterBody2D" node_paths=PackedStringArray("approach_goal_reward")]
+collision_layer = 4
+collision_mask = 9
+motion_mode = 1
+wall_min_slide_angle = 0.0
+platform_on_leave = 2
+script = ExtResource("1_nv6q1")
+approach_goal_reward = NodePath("ApproachGoalReward")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("SphereMesh_dgtlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jl3mj")
+
+[node name="Area2D" type="Area2D" parent="."]
+process_mode = 1
+collision_layer = 0
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3kmt7")
+
+[node name="ApproachGoalReward" type="Node2D" parent="."]
+script = ExtResource("2_stoaj")
+reward_scale = 0.1
+metadata/_custom_type_script = "uid://b8bbgclt0ufcp"
+
+[node name="PositionSensor2D" type="Node2D" parent="."]
+script = ExtResource("3_stoaj")
+debug_lines = false
+metadata/_custom_type_script = "uid://cyrvpwvwcjebl"
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
