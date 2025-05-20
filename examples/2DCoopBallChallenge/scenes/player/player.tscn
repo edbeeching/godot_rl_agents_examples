@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://dyobkmccrdtji"]
+
+[ext_resource type="Script" uid="uid://b60kdidvpybwh" path="res://scenes/player/player.gd" id="1_uuo8p"]
+[ext_resource type="Texture2D" uid="uid://bapc1vq7fr0av" path="res://assets/player/jump/Player1Jump1.png" id="2_6wykd"]
+[ext_resource type="Texture2D" uid="uid://bmraxeklbi6h0" path="res://assets/player/move/Player-1.png" id="2_t2oqs"]
+[ext_resource type="Texture2D" uid="uid://33reagv1bqpr" path="res://assets/player/jump/Player1Jump2.png" id="3_0ssda"]
+[ext_resource type="Texture2D" uid="uid://wxq1h605mn72" path="res://assets/player/move/Player-2.png" id="3_y4ujj"]
+[ext_resource type="Texture2D" uid="uid://c7wxqpsnaqfpb" path="res://assets/player/move/Player-3.png" id="4_iy4ba"]
+[ext_resource type="Texture2D" uid="uid://dqwycbviv5ag2" path="res://assets/player/jump/Player1Jump3.png" id="4_ngojv"]
+[ext_resource type="Script" uid="uid://dar4d1peo5076" path="res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd" id="6_ybkrn"]
+[ext_resource type="Script" uid="uid://cyrvpwvwcjebl" path="res://addons/godot_rl_agents/sensors/sensors_2d/PositionSensor2D.gd" id="9_fm80t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tff7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6wykd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0ssda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ngojv")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t2oqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y4ujj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iy4ba")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jl23j"]
+radius = 70.7
+height = 183.6
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 11
+script = ExtResource("1_uuo8p")
+speed = 1400.0
+jump_velocity = -3900.0
+
+[node name="CanHitBallIndicator" type="Label" parent="."]
+offset_left = -37.0
+offset_top = -430.0
+offset_right = 36.0
+offset_bottom = -81.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 256
+text = "."
+horizontal_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_5tff7")
+animation = &"move"
+autoplay = "move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jl23j")
+
+[node name="RaycastSensorPlatform" type="Node2D" parent="."]
+rotation = 1.5708
+script = ExtResource("6_ybkrn")
+n_rays = 8.0
+ray_length = 4000
+
+[node name="RaycastSensorGround" type="Node2D" parent="."]
+rotation = 1.5708
+script = ExtResource("6_ybkrn")
+collision_mask = 8
+n_rays = 8.0
+ray_length = 4000
+
+[node name="PositionSensor2D" type="Node2D" parent="."]
+visible = false
+script = ExtResource("9_fm80t")
+debug_lines = false

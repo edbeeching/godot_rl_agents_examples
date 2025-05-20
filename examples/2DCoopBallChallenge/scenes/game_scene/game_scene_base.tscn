@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=4 uid="uid://ds7ud4f3aglol"]
+
+[ext_resource type="Script" uid="uid://4u78ls38rhtw" path="res://scenes/game_scene/game_manager.gd" id="1_8bc8d"]
+[ext_resource type="TileSet" uid="uid://sdmrwh4xd6qj" path="res://scenes/tileset/tileset.tres" id="2_qcps1"]
+[ext_resource type="Script" uid="uid://375ynh2lk7vl" path="res://scenes/tilemap/tile_map_layer.gd" id="3_he3s8"]
+[ext_resource type="PackedScene" uid="uid://wdjkbtjihjoq" path="res://scenes/ball/ball.tscn" id="4_hv6x3"]
+[ext_resource type="PackedScene" uid="uid://ddxv6uu5j055x" path="res://scenes/goal/goal.tscn" id="6_08cpv"]
+[ext_resource type="PackedScene" uid="uid://d2qsl7semlkyv" path="res://scenes/player/players.tscn" id="9_m56ji"]
+
+[node name="GameSceneBase" type="Node2D" node_paths=PackedStringArray("players", "ball", "goal")]
+script = ExtResource("1_8bc8d")
+players = NodePath("Players")
+ball = NodePath("Ball")
+goal = NodePath("Goal")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAA8AAAABAAEAAAABAA8AAAABAAEAAAACAA8AAAABAAEAAAADAA8AAAABAAEAAAAEAA8AAAABAAEAAAAFAA8AAAABAAEAAAAGAA8AAAABAAEAAAAHAA8AAAABAAEAAAAIAA8AAAABAAEAAAAJAA8AAAABAAEAAAAKAA8AAAABAAEAAAALAA8AAAABAAEAAAAMAA8AAAABAAEAAAAcAP//AAABAAEAAAAbAP//AAABAAEAAAAaAP//AAABAAEAAAAZAP//AAABAAEAAAAYAP//AAABAAEAAAAXAP//AAABAAEAAAAWAP//AAABAAEAAAAVAP//AAABAAEAAAAUAP//AAABAAEAAAATAP//AAABAAEAAAASAP//AAABAAEAAAARAP//AAABAAEAAAAQAP//AAABAAEAAAAPAP//AAABAAEAAAAOAP//AAABAAEAAAANAP//AAABAAEAAAAMAP//AAABAAEAAAALAP//AAABAAEAAAAKAP//AAABAAEAAAAJAP//AAABAAEAAAAIAP//AAABAAEAAAAHAP//AAABAAEAAAAGAP//AAABAAEAAAAFAP//AAABAAEAAAAEAP//AAABAAEAAAADAP//AAABAAEAAAACAP//AAABAAEAAAABAP//AAABAAEAAAAAAP//AAABAAEAAAD/////AAABAAEAAAD//wAAAAABAAEAAAD//wEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABAAEAAAD//wQAAAABAAEAAAD//wUAAAABAAEAAAD//wYAAAABAAEAAAD//wcAAAABAAEAAAD//wgAAAABAAEAAAD//wkAAAABAAEAAAD//woAAAABAAEAAAD//wsAAAABAAEAAAD//wwAAAABAAEAAAD//w0AAAABAAEAAAD//w4AAAABAAEAAAD//w8AAAABAAEAAAANAA8AAAABAAEAAAAOAA8AAAABAAEAAAAPAA8AAAABAAEAAAAQAA8AAAABAAEAAAARAA8AAAABAAEAAAASAA8AAAABAAEAAAATAA8AAAABAAEAAAAUAA8AAAABAAEAAAAVAA8AAAABAAEAAAAWAA8AAAABAAEAAAAXAA8AAAABAAEAAAAYAA8AAAABAAEAAAAZAA8AAAABAAEAAAAaAA8AAAABAAEAAAAbAA8AAAABAAEAAAAcAA8AAAABAAEAAAAdAA8AAAABAAEAAAAeAA8AAAABAAEAAAAfAA8AAAABAAEAAAAgAA8AAAABAAEAAAAhAA8AAAABAAEAAAAiAA8AAAABAAEAAAAjAA8AAAABAAEAAAAkAA8AAAABAAEAAAAlAA8AAAABAAEAAAAmAA8AAAABAAEAAAAnAA8AAAABAAEAAAAoAA8AAAABAAEAAAApAA8AAAABAAEAAAAqAA8AAAABAAEAAAArAA8AAAABAAEAAAAsAA8AAAABAAEAAAAtAA8AAAABAAEAAAAuAA8AAAABAAEAAAAvAA8AAAABAAEAAAAwAA8AAAABAAEAAAAxAA8AAAABAAEAAAAdAP//AAABAAEAAAAeAP//AAABAAEAAAAfAP//AAABAAEAAAAgAP//AAABAAEAAAAhAP//AAABAAEAAAAiAP//AAABAAEAAAAjAP//AAABAAEAAAAkAP//AAABAAEAAAAlAP//AAABAAEAAAAmAP//AAABAAEAAAAnAP//AAABAAEAAAAoAP//AAABAAEAAAApAP//AAABAAEAAAAqAP//AAABAAEAAAArAP//AAABAAEAAAAsAP//AAABAAEAAAAtAP//AAABAAEAAAAuAP//AAABAAEAAAAvAP//AAABAAEAAAAwAP//AAABAAEAAAAxAP//AAABAAEAAAAyAA8AAAABAAEAAAAyAA4AAAABAAEAAAAyAA0AAAABAAEAAAAyAAwAAAABAAEAAAAyAAsAAAABAAEAAAAyAAoAAAABAAEAAAAyAAkAAAABAAEAAAAyAAgAAAABAAEAAAAyAAcAAAABAAEAAAAyAAYAAAABAAEAAAAyAAUAAAABAAEAAAAyAAQAAAABAAEAAAAyAAMAAAABAAEAAAAyAAIAAAABAAEAAAAyAAEAAAABAAEAAAAyAAAAAAABAAEAAAAyAP//AAABAAEAAAA=")
+tile_set = ExtResource("2_qcps1")
+navigation_enabled = false
+script = ExtResource("3_he3s8")
+
+[node name="Ball" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("4_hv6x3")]
+position = Vector2(3909, 126)
+game_manager = NodePath("..")
+
+[node name="ApproachGoalReward" parent="Ball" index="3" node_paths=PackedStringArray("target_node")]
+target_node = NodePath("../../Goal")
+reward_scale = 0.0
+
+[node name="PositionSensor2D" parent="Ball" index="4" node_paths=PackedStringArray("objects_to_observe")]
+objects_to_observe = [NodePath("../../Goal")]
+max_distance = 1000.0
+use_separate_direction = true
+
+[node name="Goal" parent="." instance=ExtResource("6_08cpv")]
+position = Vector2(2390, 1917)
+
+[node name="Players" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("9_m56ji")]
+position = Vector2(3845, 1699)
+game_manager = NodePath("..")
+
+[node name="PositionSensor2D" parent="Players/Player" index="5" node_paths=PackedStringArray("objects_to_observe")]
+objects_to_observe = [NodePath("../../../Ball"), NodePath("../../../Goal"), NodePath("../../Player2")]
+max_distance = 2500.0
+use_separate_direction = true
+
+[node name="PositionSensor2D" parent="Players/Player2" index="5" node_paths=PackedStringArray("objects_to_observe")]
+objects_to_observe = [NodePath("../../../Ball"), NodePath("../../../Goal"), NodePath("../../Player")]
+max_distance = 2500.0
+use_separate_direction = true
+
+[node name="VelocitySensor2D" parent="Players" index="2" node_paths=PackedStringArray("objects_to_observe")]
+objects_to_observe = [NodePath("../Player"), NodePath("../Player2"), NodePath("../../Ball")]
+max_velocity = 500
+
+[node name="AIController2D" parent="Players" index="3" node_paths=PackedStringArray("sensors")]
+sensors = [NodePath("../Player/RaycastSensorPlatform"), NodePath("../Player/RaycastSensorGround"), NodePath("../Player/PositionSensor2D"), NodePath("../Player2/RaycastSensorPlatform"), NodePath("../Player2/RaycastSensorGround"), NodePath("../Player2/PositionSensor2D"), NodePath("../VelocitySensor2D"), NodePath("../../Ball/PositionSensor2D")]
+reset_after = 1500
+
+[connection signal="body_entered" from="Goal" to="Ball" method="_on_goal_body_entered"]
+
+[editable path="Ball"]
+[editable path="Players"]
+[editable path="Players/Player"]
+[editable path="Players/Player2"]

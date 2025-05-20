@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://lc8300re8fgd"]
+
+[ext_resource type="Script" uid="uid://1dbj4cknn23h" path="res://scenes/game_scene/goal_position_manager.gd" id="1_halm4"]
+[ext_resource type="Texture2D" uid="uid://bbpqyprxxe2fk" path="res://assets/goal.png" id="2_y5yss"]
+
+[node name="GoalPositions" type="Node2D"]
+script = ExtResource("1_halm4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+position = Vector2(407, 303)
+scale = Vector2(2, 2)
+texture = ExtResource("2_y5yss")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+position = Vector2(3584, 313)
+scale = Vector2(2, 2)
+texture = ExtResource("2_y5yss")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+position = Vector2(-244, 317)
+scale = Vector2(2, 2)
+texture = ExtResource("2_y5yss")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+position = Vector2(4223, 313)
+scale = Vector2(2, 2)
+texture = ExtResource("2_y5yss")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+position = Vector2(-873, 327)
+scale = Vector2(2, 2)
+texture = ExtResource("2_y5yss")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+position = Vector2(4878, 322)
+scale = Vector2(2, 2)
+texture = ExtResource("2_y5yss")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+position = Vector2(-1666, -307)
+scale = Vector2(2, 2)
+texture = ExtResource("2_y5yss")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+position = Vector2(5675, -324)
+scale = Vector2(2, 2)
+texture = ExtResource("2_y5yss")

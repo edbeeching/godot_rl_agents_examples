@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl1ldlvoh3s4n"]
+
+[ext_resource type="PackedScene" uid="uid://e3y017d7w6rb" path="res://scenes/game_scene/game_scene_3.tscn" id="2_b1s8e"]
+[ext_resource type="PackedScene" uid="uid://p8ny2i03ct7i" path="res://scenes/game_scene/game_scene_1.tscn" id="2_uymmq"]
+[ext_resource type="PackedScene" uid="uid://d1ax4bj7gdem6" path="res://scenes/game_scene/game_scene_2.tscn" id="3_ik6hd"]
+
+[node name="AllGameScenes" type="Node2D"]
+
+[node name="GameScene1" parent="." instance=ExtResource("2_uymmq")]
+position = Vector2(-2908, -12000)
+
+[node name="GameScene2" parent="." instance=ExtResource("3_ik6hd")]
+position = Vector2(-2908, -1468)
+
+[node name="GameScene3" parent="." instance=ExtResource("2_b1s8e")]
+position = Vector2(-2908, 12000)
