@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://cn2van3bgkmch"]
 
-[ext_resource type="Script" path="res://scenes/cart/cart.gd" id="1_6w181"]
+[ext_resource type="Script" uid="uid://kllnxvl821l2" path="res://scenes/cart/cart.gd" id="1_6w181"]
 [ext_resource type="PackedScene" uid="uid://d3saly1xwj5s" path="res://scenes/cart/wheel.tscn" id="1_ey6do"]
-[ext_resource type="Script" path="res://scenes/cart/cart_ai_controller.gd" id="3_o8jpg"]
+[ext_resource type="Script" uid="uid://bwpi6qykpflee" path="res://scenes/cart/cart_ai_controller.gd" id="3_o8jpg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p6a1o"]
 size = Vector3(1.5, 0.2, 1)

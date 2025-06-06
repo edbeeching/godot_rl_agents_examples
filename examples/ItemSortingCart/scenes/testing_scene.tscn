@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7uiab12qu14e"]
 
 [ext_resource type="PackedScene" uid="uid://ca6csk8y5nvuu" path="res://scenes/playing_area.tscn" id="1_4hh40"]
-[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_kgrhh"]
+[ext_resource type="Script" uid="uid://cdob76xnetbtr" path="res://addons/godot_rl_agents/sync.gd" id="2_kgrhh"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hfpel"]
 auto_exposure_enabled = true

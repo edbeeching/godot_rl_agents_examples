@@ -3,16 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://cn2van3bgkmch" path="res://scenes/cart/cart.tscn" id="1_5vpyy"]
 [ext_resource type="Material" uid="uid://bbj7kkw608aly" path="res://scenes/materials/category2.tres" id="1_fjj1a"]
 [ext_resource type="Material" uid="uid://bs65q68vluuqx" path="res://scenes/materials/category.tres" id="1_y8o8n"]
-[ext_resource type="Script" path="res://scenes/Item.gd" id="4_tsx37"]
-[ext_resource type="PackedScene" uid="uid://cfw2e6n32ytu6" path="res://scenes/static_decorations/static_decorations.blend" id="5_8mptk"]
+[ext_resource type="Script" uid="uid://bwcbub8g8so5s" path="res://scenes/Item.gd" id="4_tsx37"]
+[ext_resource type="PackedScene" uid="uid://d2rep0i4ayss8" path="res://scenes/static_decorations/static_decorations.blend" id="5_8mptk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4l0bm"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_sngf0"]
-size = Vector2(20, 20)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omkpg"]
 albedo_color = Color(0.14902, 0.678431, 0.176471, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sngf0"]
+size = Vector2(20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x3ht2"]
 size = Vector3(22, 1, 22)
@@ -59,9 +59,10 @@ size = Vector3(0.5, 0.5, 0.5)
 collision_layer = 5
 physics_material_override = SubResource("PhysicsMaterial_4l0bm")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="Map"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map"]
+material_override = SubResource("StandardMaterial3D_omkpg")
 mesh = SubResource("PlaneMesh_sngf0")
-material = SubResource("StandardMaterial3D_omkpg")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -112,8 +113,8 @@ collision_layer = 2
 collision_mask = 7
 gravity_scale = 0.04
 can_sleep = false
-max_contacts_reported = 1
 contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("4_tsx37")
 category_material = ExtResource("1_y8o8n")
 category2_material = ExtResource("1_fjj1a")
