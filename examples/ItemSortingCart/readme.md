@@ -1,8 +1,7 @@
 ## Item Sorting Cart Environment
 
 The agent controls the cart (left/right movement only) and needs to catch the falling items.
-The items can have two categories, and the cart needs to bring
-the item to the correct destination.
+Falling items are randomly assigned one of two categories, each item must be brought to the correct destination.
 
 ### Observations:
 ```gdscript
