@@ -83,3 +83,8 @@ Add the following command line arguments when running the script (you can adjust
 (also add `--env_path` with the exported env path - which needs to be exported from the Godot Editor first).
 
 Note: For the attached onnx file, training was manually stopped after `~17.7 million steps` when the `ep_mean_reward` reached around `291`.
+
+Training stats:
+![training_stats](https://github.com/user-attachments/assets/6fc3ab48-701b-4fa8-b1dd-35e3e23b3b9d)
+
+
