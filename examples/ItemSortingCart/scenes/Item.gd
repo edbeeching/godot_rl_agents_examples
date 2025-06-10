@@ -8,6 +8,10 @@ var item_category: int = 0
 @export var category2_material: StandardMaterial3D
 
 func set_category(category: int):
+	# Prevents errors if trying to set category before the material is set
+	if not is_node_ready():
+		await ready
+
 	item_category = category
 	var color: Color
 	
@@ -18,3 +22,14 @@ func set_category(category: int):
 		
 	color.a = 1
 	material.albedo_color = color
+
+
+func reset():
+	var item_position : Vector3 = Vector3(0, 20, randf_range(-5.0, 5.0))
+	position = item_position
+	rotation = Vector3.ZERO
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	force_update_transform()
+	sleeping = false
+	set_category(randi_range(0, 1))

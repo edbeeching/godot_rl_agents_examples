@@ -42,6 +42,7 @@ size = Vector3(0.5, 0.355, 1)
 
 [node name="Cart" type="VehicleBody3D"]
 mass = 1000.0
+linear_damp = 5.0
 script = ExtResource("1_6w181")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -136,7 +137,7 @@ transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -
 
 [node name="AIController3D" type="Node3D" parent="."]
 script = ExtResource("3_o8jpg")
-reset_after = 25000
+reset_after = 5000
 
 [node name="ItemArea" type="Area3D" parent="."]
 collision_layer = 2

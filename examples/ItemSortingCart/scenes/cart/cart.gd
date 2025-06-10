@@ -1,8 +1,9 @@
 extends VehicleBody3D
 class_name Cart
 
-var acceleration : float = 350
-@onready var max_velocity = acceleration / mass * 40
+var acceleration : float = 15_000
+# Used for normalizing velocity for observations, not the exact max velocity
+@onready var max_velocity = 12.0
 
 @onready var ai_controller: AIController3D = $AIController3D
 @export var destination: Node3D
@@ -11,100 +12,82 @@ var acceleration : float = 350
 @export var item: Item
 
 var requested_acceleration: float
-var initial_position: Vector3
 var times_restarted: int
 var item_collected: int
+## Current goal, can be destination or destination2
+var goal: Node3D
 
 func get_normalized_velocity():
-	return linear_velocity.normalized() * (linear_velocity.length() / max_velocity)
+	return linear_velocity / max_velocity
 
 func _ready():
-	initial_position = position
 	ai_controller.init(self)
+	reset()
 
 func reset():
 	item_collected = 0
 	times_restarted += 1
 
-	position = Vector3(0, 0, randf_range(-8, 8))
-	rotation = Vector3.ZERO
+	position.z = randf_range(-5, 5)
 
 	reset_item()
 
-	linear_velocity = Vector3.ZERO
-	angular_velocity = Vector3.ZERO
-	pass
+	var state := PhysicsServer3D.body_get_direct_state(get_rid())
+	state.linear_velocity = Vector3.ZERO
+	state.angular_velocity = Vector3.ZERO
+	requested_acceleration = 0
+	
 
 func reset_item():
-	var item_position : Vector3 = Vector3(0, 20, randf_range(-0.0, 0.0))
-	item.position = item_position
-	item.rotation = Vector3.ZERO
-	item.linear_velocity = Vector3.ZERO
-	item.angular_velocity = Vector3.ZERO
-	item.apply_central_force(Vector3(0.0, 0.0, randf_range(-70.0, 70.0)))
-	item.force_update_transform()
-	item.sleeping = false
-	item.set_category(randi_range(0, 1))
+	item.reset()
+	goal = destination if item.item_category == 0 else destination2
+
 
 func _physics_process(delta):
 	reset_if_needed()
-	update_reward()
 
 	if (ai_controller.heuristic != "human"):
 		engine_force = (requested_acceleration) * acceleration
 	else:
 		engine_force = (int(Input.is_key_pressed(KEY_UP)) - int(Input.is_key_pressed(KEY_DOWN))) * acceleration
 
-	restart_if_outside_boundaries()
-	pass
+	reset_if_outside_boundaries()
+	if check_item_in_goal():
+		ai_controller.reward += 10.0
+		reset_item()
 
-func restart_if_outside_boundaries():
+
+func reset_if_outside_boundaries():
 	if (position.y < -2 or abs(position.z) > 10):
 		ai_controller.reward -= 1.0
-		ai_controller.needs_reset = true
-		ai_controller.done = true
+		reset()
 
 func reset_if_needed():
 	if ai_controller.needs_reset:
 		reset()
 		ai_controller.reset()
 
-## The reward function uses a simple form of curriculum learning, where initially
-## a shaped reward tells the agent to move toward the item horizontally until it collects it,
-## and after some episodes, only the sparse reward for collecting and delivering the item rewards.
-func update_reward():
-	if times_restarted < 50:
-		if not item_collected:
-			ai_controller.reward -= 0.00001 * (item.position.z - position.z)
-		else:
-			if item.item_category == 0:
-				ai_controller.reward -= 0.00001 * (destination.position.z - position.z)
-			else:
-				ai_controller.reward -= 0.00001 * (destination2.position.z - position.z)
 
-	if item_collected:
-		if (position.distance_to(destination.position) < destination.scale.z):
-			if item.item_category == 0:
-				ai_controller.reward += 1.0
-			else:
-				ai_controller.reward -= 1.0
-			reset_item()
-		elif (position.distance_to(destination2.position) < destination2.scale.z):
-			if item.item_category == 1:
-				ai_controller.reward += 1.0
-			else:
-				ai_controller.reward -= 1.0
-			reset_item()
+func check_item_in_goal():
+	if (
+		item_collected and 
+		(item.global_position.distance_to(goal.global_position) < goal.scale.z)
+	):
+		return true
+	return false
+
 
 func _on_item_area_body_entered(body):
 	ai_controller.reward += 1.0
 	item_collected = 1
 
+
 func _on_item_area_body_exited(body):
 	item_collected = 0
+
 
 ## If the item falls to the ground, gives a negative reward and resets the item
 func _on_item_body_entered(body: PhysicsBody3D):
 	if body.get_collision_layer_value(3):
-		ai_controller.reward -= 0.05
+		ai_controller.reward -= 1.0
 		reset_item()

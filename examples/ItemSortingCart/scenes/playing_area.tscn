@@ -73,24 +73,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0382012, 0)
 mesh = SubResource("BoxMesh_cdf32")
 
 [node name="Line" type="MeshInstance3D" parent="Map/Road"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.942, 0.06, 0)
+transform = Transform3D(1, 0, 0, 0, -5.00495e-08, 1, 0, -1.145, -4.37114e-08, 0.942, 0.06, 0)
 mesh = SubResource("QuadMesh_v1ff1")
 skeleton = NodePath("../..")
 
 [node name="Line2" type="MeshInstance3D" parent="Map/Road"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.942, 0.06, 0)
+transform = Transform3D(1, 0, 0, 0, -5.00495e-08, 1, 0, -1.145, -4.37114e-08, -0.942, 0.06, 0)
 mesh = SubResource("QuadMesh_v1ff1")
 skeleton = NodePath("../..")
 
 [node name="Destination" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0117988, 9.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0.012, 9)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Destination"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_o6ona")
 
 [node name="Destination2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0117988, -9.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0.012, -9)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Destination2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -111,7 +111,7 @@ item = NodePath("../Item")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.07822, 0)
 collision_layer = 2
 collision_mask = 7
-gravity_scale = 0.04
+gravity_scale = 0.8
 can_sleep = false
 contact_monitor = true
 max_contacts_reported = 1

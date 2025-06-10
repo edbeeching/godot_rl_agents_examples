@@ -28,7 +28,7 @@ transform = Transform3D(0.857167, 0.364187, -0.364187, 0, 0.707107, 0.707107, 0.
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0.532876, -0.846193, 0, 0.846193, 0.532876, 1, 2.32928e-08, -3.69883e-08, -5.495, 4.285, 0)
+transform = Transform3D(-4.37114e-08, 0.532876, -0.846193, 0, 0.846193, 0.532876, 1, 2.32928e-08, -3.69883e-08, -65.495, 4.285, 0)
 attributes = SubResource("CameraAttributesPractical_hfpel")
 fov = 93.0
 size = 65.0
@@ -44,29 +44,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
 [node name="playing_area4" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 30)
 
-[node name="playing_area5" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
-
-[node name="playing_area6" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 30)
-
-[node name="playing_area7" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
-
-[node name="playing_area8" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 30)
-
 [node name="playing_area9" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
 
 [node name="playing_area10" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 30)
-
-[node name="playing_area11" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 0)
-
-[node name="playing_area12" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 30)
 
 [node name="playing_area13" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
@@ -80,29 +62,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 60)
 [node name="playing_area16" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 90)
 
-[node name="playing_area17" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 60)
-
-[node name="playing_area18" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 90)
-
-[node name="playing_area19" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 60)
-
-[node name="playing_area20" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 90)
-
 [node name="playing_area21" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 60)
 
 [node name="playing_area22" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 90)
-
-[node name="playing_area23" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 60)
-
-[node name="playing_area24" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, 90)
 
 [node name="playing_area25" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60)
@@ -116,29 +80,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -60)
 [node name="playing_area28" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -30)
 
-[node name="playing_area29" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -60)
-
-[node name="playing_area30" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, -30)
-
-[node name="playing_area31" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -60)
-
-[node name="playing_area32" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -30)
-
 [node name="playing_area33" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -60)
 
 [node name="playing_area34" parent="." instance=ExtResource("1_4hh40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -30)
-
-[node name="playing_area35" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, -60)
-
-[node name="playing_area36" parent="." instance=ExtResource("1_4hh40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, -30)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xy0xn")
@@ -146,6 +92,4 @@ environment = SubResource("Environment_xy0xn")
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_kgrhh")
 control_mode = 2
-action_repeat = 15
-speed_up = 4
-onnx_model_path = "onnx/model.onnx"
+onnx_model_path = "res://onnx/model.onnx"

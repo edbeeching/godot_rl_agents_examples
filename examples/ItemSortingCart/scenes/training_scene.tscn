@@ -145,5 +145,4 @@ environment = SubResource("Environment_xy0xn")
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_a6ui1")
-action_repeat = 15
-speed_up = 4
+speed_up = 36.0
