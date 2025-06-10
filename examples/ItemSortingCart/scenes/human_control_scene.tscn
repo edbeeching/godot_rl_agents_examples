@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkqup3vhy1byg"]
+
+[ext_resource type="PackedScene" uid="uid://ca6csk8y5nvuu" path="res://scenes/playing_area.tscn" id="1_x6vwk"]
+[ext_resource type="Script" uid="uid://cdob76xnetbtr" path="res://addons/godot_rl_agents/sync.gd" id="2_spuag"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_hfpel"]
+auto_exposure_enabled = true
+dof_blur_far_distance = 21.3
+dof_blur_amount = 0.3
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g5l5s"]
+
+[sub_resource type="Sky" id="Sky_a413c"]
+sky_material = SubResource("ProceduralSkyMaterial_g5l5s")
+
+[sub_resource type="Environment" id="Environment_xy0xn"]
+background_mode = 2
+background_energy_multiplier = 1.2
+sky = SubResource("Sky_a413c")
+ssil_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+
+[node name="training_scene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.857167, 0.364187, -0.364187, 0, 0.707107, 0.707107, 0.515038, -0.606109, 0.606109, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.532876, -0.846193, 0, 0.846193, 0.532876, 1, 2.32928e-08, -3.69883e-08, -5.495, 4.285, 0)
+attributes = SubResource("CameraAttributesPractical_hfpel")
+fov = 93.0
+size = 65.0
+
+[node name="playing_area" parent="." instance=ExtResource("1_x6vwk")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xy0xn")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_spuag")
+control_mode = 0
