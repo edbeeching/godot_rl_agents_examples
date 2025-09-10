@@ -1,7 +1,10 @@
-extends Node3D
-class_name RGBCameraSensor3D
+extends Node2D
+class_name RGBCameraSensor2D
 var camera_pixels = null
 
+@export var camera_zoom_factor := Vector2(0.1, 0.1)
+@onready var camera := $SubViewport/Camera
+@onready var preview_window := $Control
 @onready var camera_texture := $Control/CameraTexture as Sprite2D
 @onready var processed_texture := $Control/ProcessedTexture as Sprite2D
 @onready var sub_viewport := $SubViewport as SubViewport
@@ -23,14 +26,25 @@ var camera_pixels = null
 
 
 func _ready():
+	DisplayServer.register_additional_output(self)
+
+	camera.zoom = camera_zoom_factor
+
+	var preview_size: Vector2
+
+	sub_viewport.world_2d = get_tree().get_root().get_world_2d()
 	sub_viewport.size = render_image_resolution
 	camera_texture.scale = displayed_image_scale_factor
 
 	if downscale_image and display_downscaled_image:
 		camera_texture.visible = false
 		processed_texture.scale = displayed_image_scale_factor
+		preview_size = displayed_image_scale_factor * resized_image_resolution
 	else:
 		processed_texture.visible = false
+		preview_size = displayed_image_scale_factor * render_image_resolution
+
+	preview_window.size = preview_size
 
 
 func get_camera_pixel_encoding():

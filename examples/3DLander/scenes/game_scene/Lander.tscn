@@ -1,11 +1,11 @@
 [gd_scene load_steps=37 format=3 uid="uid://dxflbek2f52ks"]
 
-[ext_resource type="Script" path="res://scenes/game_scene/Lander.gd" id="1_2yq6u"]
+[ext_resource type="Script" uid="uid://do5hufbtrw3gh" path="res://scenes/game_scene/Lander.gd" id="1_2yq6u"]
 [ext_resource type="PackedScene" uid="uid://c5sv7fju6uiew" path="res://blender/lander.blend" id="2_s4oxe"]
-[ext_resource type="Script" path="res://scenes/game_scene/Thruster.gd" id="3_ylucp"]
+[ext_resource type="Script" uid="uid://cgsj1kapy4alc" path="res://scenes/game_scene/Thruster.gd" id="3_ylucp"]
 [ext_resource type="PackedScene" uid="uid://drqbjpjw2hiic" path="res://blender/landing-leg.blend" id="4_gp4fc"]
-[ext_resource type="Script" path="res://scenes/game_scene/LanderAIController3D.gd" id="5_w0bd1"]
-[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="6_03nxx"]
+[ext_resource type="Script" uid="uid://ck8b2yeb0w1o1" path="res://scenes/game_scene/LanderAIController3D.gd" id="5_w0bd1"]
+[ext_resource type="Script" uid="uid://yksgx1ntuxb3" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="6_03nxx"]
 
 [sub_resource type="Gradient" id="Gradient_nkj1p"]
 offsets = PackedFloat32Array(0, 0.568075)

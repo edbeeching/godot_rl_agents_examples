@@ -171,12 +171,13 @@ func _end_episode_on_goal_reached():
 			10.0
 			- _get_normalized_distance_to_goal() * 6.0
 		)
-		_end_episode(successfully_landed_reward)
+		_end_episode(successfully_landed_reward, true)
 
-func _end_episode(final_reward: float = 0.0):
+func _end_episode(final_reward: float = 0.0, success := false):
 	ai_controller.reward += final_reward
 	ai_controller.needs_reset = true
 	ai_controller.done = true
+	ai_controller.is_success = success
 
 func _reset_if_needed():
 	if ai_controller.needs_reset:
@@ -275,7 +276,7 @@ func get_terrain_center_position_in_player_reference() -> Vector3:
 
 func get_velocity_in_player_reference() -> Vector3:
 	return (
-		_lander.global_transform.basis.inverse() *
+		_lander.global_transform.basis.orthonormalized().inverse() *
 		_lander.linear_velocity
 		)
 
@@ -286,7 +287,7 @@ func _get_normalized_current_total_thruster_strength() -> float:
 	return thruster_strength_total
 
 func get_angular_velocity_in_player_reference() -> Vector3:
-	return _lander.global_transform.basis.inverse() * _lander.angular_velocity
+	return _lander.global_transform.basis.orthonormalized().inverse() * _lander.angular_velocity
 
 func get_playing_area_size() -> Vector3:
 	return Vector3(

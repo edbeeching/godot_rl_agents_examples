@@ -4,6 +4,9 @@ class_name LanderAIController
 ## AIController for the Lander. Handles the action definitions, actions, observations, 
 ## passes the rewards and resets the episode on timeout.
 
+## Whether the episode was successful, used for stat logging in SB3
+var is_success: bool
+
 func get_obs() -> Dictionary:
 	_player = _player as Lander
 
@@ -40,10 +43,23 @@ func get_obs() -> Dictionary:
 			]
 		)
 	observations.append_array(_player.raycast_sensor.get_observation())
+	
+	## Ensure all obs are within -1 to 1 range
+	for obs_idx in observations.size():
+		observations[obs_idx] = clampf(observations[obs_idx], -1.0, 1.0)
+
 	return {"obs": observations}
+
+
+func get_info() -> Dictionary:
+	if done:
+		return {"is_success": is_success}
+	return {}
+
 
 func get_reward() -> float:
 	return reward
+
 
 func get_action_space() -> Dictionary:
 	return {
@@ -77,12 +93,15 @@ func get_action_space() -> Dictionary:
 		},
 	}
 
+
 func _physics_process(delta):
 	n_steps += 1
 	if n_steps > reset_after:
 		needs_reset = true
 		done = true
+		is_success = false
 		reward = _player.episode_ended_unsuccessfully_reward / 10.0
+
 
 func set_action(action) -> void:
 	_player.up_thruster.thruster_strength = (
