@@ -1,6 +1,6 @@
 ## 3D Lander Environment
 
-![lander_scr_1](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/66bca4d4-17cb-4618-b4be-ac5a04144927)
+https://github.com/user-attachments/assets/e2e917cb-285a-4586-9c7e-9125242fd9f8
 
 This environment was inspired by the gymnasium Lunar Lander env. 
 
@@ -112,20 +112,33 @@ You can adjust how far away from the center it can be by using the `Landing Surf
 ## Training:
 The included onnx file was trained with SB3.
 
-Because this is the first environment to use only discrete actions which are not fully supported with Godot-RL with SB3 at this moment, this  environment was trained using relevant files [from the discrete actions branch](https://github.com/edbeeching/godot_rl_agents/tree/discrete_actions_experimental) of Godot-RL.
-
-You may be able to train the environment with the main branch and run inference from Python, but exporting to onnx will need require this branch and is recommended for training as well.
-
 The parameters used during training were (you can set them by modifying [sb3_example](https://github.com/edbeeching/godot_rl_agents/blob/main/examples/stable_baselines3_example.py)):
 ```
-model = PPO("MultiInputPolicy", env, ent_coef=0.02, n_steps=768, verbose=2, tensorboard_log=args.experiment_dir,
-                learning_rate=learning_rate, n_epochs=4)
+    model: PPO = PPO(
+        "MultiInputPolicy",
+        env,
+        ent_coef=0.02,
+        verbose=2,
+        n_steps=768,
+        batch_size=768 * env.num_envs,
+        target_kl=0.02,
+        n_epochs=60,
+        tensorboard_log=args.experiment_dir,
+        learning_rate=learning_rate,
+    )
 ```
 
-And also, `n_parallel=4` argument was used when for training.
+CL Arguments:
+```shell
+--speedup=100
+--timesteps=50_000_000
+--onnx_export_path=model.onnx
+```
+
+You will also need to set `--env_path` after exporting the env from Godot for your system (tested on Windows).
 
 Training stats screenshot from Tensorboard:
-![lander3d_training_stats](https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/6e6e432f-6e99-4451-93d2-66c9936ebf8d)
+<img width="2877" height="764" alt="training stats" src="https://github.com/user-attachments/assets/0ac3b900-02c2-43d3-8e16-08082f9bb4d0" />
 
 ## Running inference:
 To start inference using the pretrained onnx, open the `testing_scene` in Godot Editor, then press `F6` or click on the scene starting icon:
@@ -147,5 +160,10 @@ https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/03b3b316-
 
 The camera is not optimally adjusted for human control, as the scene is mainly there to test out the behavior of the environment.
 
-## Known issues:
-There is a rare error caused by an `inf` value being sent by an observation noticed during training.
+## Update 1 changes:
+- An error caused by an `inf` value ocassionally during training should be fixed (tests to confirm the fix are limited).
+- Updated to new plugin branch.
+- Updated Godot version used to 4.4.1
+- Added success rate logging for SB3
+- Added a downward camera in the onnx inference scene
+- Re-trained the policy for more steps
