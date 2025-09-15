@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Ice Hockey"
 
-[editor]
-
-movie_writer/movie_file="C:/Users/Computer/Downloads/examples-yt/godot_rl_agents_examples-main/examples/AirHockey/movie/movie.avi"
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_rl_agents/plugin.cfg")
