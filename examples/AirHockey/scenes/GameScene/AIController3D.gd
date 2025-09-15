@@ -4,9 +4,6 @@ extends AIController3D
 @export var other_player_raycast_sensor: Node3D
 @export var puck: RigidBody3D
 
-var raycast_sensor_previous_frame
-var other_player_raycast_sensor_previous_frame
-
 const POSITION_NORMALIZATION_FACTOR: float = 6.50
 const VELOCITY_NORMALIZATION_FACTOR: float = 5.8
 
@@ -84,8 +81,6 @@ func get_obs() -> Dictionary:
 
 
 func reset():
-	raycast_sensor_previous_frame = null
-	other_player_raycast_sensor_previous_frame = null
 	n_steps = 0
 	needs_reset = false
 
