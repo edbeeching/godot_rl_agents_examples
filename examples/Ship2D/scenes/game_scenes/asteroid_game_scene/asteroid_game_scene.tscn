@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://bswnfo2l0387l"]
+
+[ext_resource type="Script" uid="uid://bteax4826v3aj" path="res://scenes/game_scenes/asteroid_game_scene/asteroid_game_scene.gd" id="1_jgp3q"]
+[ext_resource type="Texture2D" uid="uid://btmg1n0pa2h0d" path="res://assets/Background.png" id="1_yv3j2"]
+[ext_resource type="PackedScene" uid="uid://giklicruf2u" path="res://scenes/ship/ship.tscn" id="2_vqieq"]
+[ext_resource type="Script" uid="uid://bp4cqv2mxebik" path="res://scenes/game_scenes/spawned_objects.gd" id="4_o3sdh"]
+[ext_resource type="PackedScene" uid="uid://bwx014jyttag4" path="res://scenes/asteroid/asteroid_spawner.tscn" id="5_8kb5v"]
+[ext_resource type="Script" uid="uid://cmd1i3qvcx5r3" path="res://scenes/game_scenes/asteroid_game_scene/boundaries_asteroid_sensor.gd" id="6_0c2m8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m5vw"]
+size = Vector2(3920, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rtxq"]
+size = Vector2(1000, 2000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rsqge"]
+size = Vector2(3920, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjlw4"]
+size = Vector2(1000, 2000)
+
+[node name="AsteroidGameScene" type="Node2D" node_paths=PackedStringArray("ship")]
+script = ExtResource("1_jgp3q")
+ship = NodePath("Ship")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_yv3j2")
+
+[node name="Ship" parent="." node_paths=PackedStringArray("spawned_objects") instance=ExtResource("2_vqieq")]
+position = Vector2(969, 999)
+spawned_objects = NodePath("../SpawnedObjects")
+
+[node name="BoundariesAsteroidSensor" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("6_0c2m8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundariesAsteroidSensor"]
+position = Vector2(960, -500)
+shape = SubResource("RectangleShape2D_1m5vw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BoundariesAsteroidSensor"]
+position = Vector2(-500, 540)
+shape = SubResource("RectangleShape2D_4rtxq")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BoundariesAsteroidSensor"]
+position = Vector2(2420, 540)
+shape = SubResource("RectangleShape2D_4rtxq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BoundariesAsteroidSensor"]
+position = Vector2(960, 1580)
+shape = SubResource("RectangleShape2D_1m5vw")
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(960, -500)
+shape = SubResource("RectangleShape2D_rsqge")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-500, 540)
+shape = SubResource("RectangleShape2D_cjlw4")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(2420, 540)
+shape = SubResource("RectangleShape2D_cjlw4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(960, 1580)
+shape = SubResource("RectangleShape2D_rsqge")
+
+[node name="SpawnedObjects" type="Node2D" parent="."]
+script = ExtResource("4_o3sdh")
+
+[node name="AsteroidSpawner" parent="." node_paths=PackedStringArray("spawned_objects") instance=ExtResource("5_8kb5v")]
+spawned_objects = NodePath("../SpawnedObjects")

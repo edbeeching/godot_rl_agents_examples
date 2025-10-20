@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://giklicruf2u"]
+[gd_scene load_steps=9 format=3 uid="uid://giklicruf2u"]
 
-[ext_resource type="Texture2D" uid="uid://c8oedbtmvqww" path="res://assets/Ship.png" id="1_dm7gt"]
-[ext_resource type="Script" path="res://scenes/ship/ship.gd" id="1_hjjh5"]
-[ext_resource type="PackedScene" uid="uid://dl6nxothvtqua" path="res://scenes/ball/ball.tscn" id="2_18p7p"]
-[ext_resource type="Script" path="res://scenes/ship/ship_ai_controller.gd" id="3_ijd3m"]
-[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd" id="5_xq2sa"]
+[ext_resource type="Texture2D" uid="uid://bihmrnhpofem3" path="res://assets/Ship.png" id="1_dm7gt"]
+[ext_resource type="Script" uid="uid://8ytlelvwj7m2" path="res://scenes/ship/ship.gd" id="1_hjjh5"]
+[ext_resource type="Script" uid="uid://ckmria3yip4c" path="res://scenes/ship/ship_ai_controller.gd" id="3_ijd3m"]
+[ext_resource type="Script" uid="uid://dbdksstuow56x" path="res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd" id="5_xq2sa"]
+[ext_resource type="Script" uid="uid://bn2wd3ur67von" path="res://scenes/ship/ball_sensor.gd" id="6_dh1m8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7nsyl"]
+radius = 1000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_450bq"]
 radius = 41.72
@@ -16,7 +19,6 @@ height = 181.6
 [node name="Ship" type="CharacterBody2D" node_paths=PackedStringArray("ai_controller")]
 collision_layer = 512
 script = ExtResource("1_hjjh5")
-ball_scene = ExtResource("2_18p7p")
 ai_controller = NodePath("AIController2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,7 +27,7 @@ texture = ExtResource("1_dm7gt")
 [node name="AIController2D" type="Node2D" parent="." node_paths=PackedStringArray("player", "raycast_sensors")]
 script = ExtResource("3_ijd3m")
 player = NodePath("..")
-raycast_sensors = [NodePath("RaycastSensorWall"), NodePath("RaycastSensorAsteroid")]
+raycast_sensors = [NodePath("RaycastSensorWall"), NodePath("RaycastSensorAsteroid"), NodePath("RaycastSensorEnemyShip"), NodePath("EnemyProjectileSensor")]
 reset_after = 512
 
 [node name="RaycastSensorWall" type="Node2D" parent="AIController2D"]
@@ -42,6 +44,24 @@ collide_with_areas = true
 collide_with_bodies = false
 ray_length = 2000
 cone_width = 185.0
+
+[node name="RaycastSensorEnemyShip" type="Node2D" parent="AIController2D"]
+rotation = -1.5708
+script = ExtResource("5_xq2sa")
+collision_mask = 1024
+collide_with_areas = true
+collide_with_bodies = false
+ray_length = 2000
+cone_width = 185.0
+
+[node name="EnemyProjectileSensor" type="ShapeCast2D" parent="AIController2D"]
+visible = false
+shape = SubResource("CircleShape2D_7nsyl")
+max_results = 5
+collision_mask = 32
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("6_dh1m8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_450bq")

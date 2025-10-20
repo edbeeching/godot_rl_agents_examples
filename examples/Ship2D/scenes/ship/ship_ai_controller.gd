@@ -40,12 +40,14 @@ func get_obs() -> Dictionary:
 	obs.append_array(raycast_obs)
 
 	var velocity_x = clampf(player.get_real_velocity().x / 3000, -1.0, 1.0)
-	
-	obs.append_array([
-		float(player.can_shoot),
-		clampf(player.time_since_ball_spawned / player.ball_fire_interval_seconds, 0, 1.0),
-		velocity_x
-	])
+
+	obs.append_array(
+		[
+			float(player.can_shoot),
+			clampf(player.time_since_ball_spawned / player.ball_fire_interval_seconds, 0, 1.0),
+			velocity_x
+		]
+	)
 
 	return {"obs": obs}
 

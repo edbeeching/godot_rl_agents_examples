@@ -1,6 +1,6 @@
 extends Node
 
-@export var ship: Ship
+#@export var ship: Ship
 @export var asteroid_scene: PackedScene
 
 ## Used for grouping all spawned instances for easy removal when needed

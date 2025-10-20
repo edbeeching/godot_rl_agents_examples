@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwobnl1dd05uq"]
+
+[ext_resource type="PackedScene" uid="uid://cav0l7p55yibs" path="res://scenes/game_scenes/boss_game_scene/boss_game_scene.tscn" id="1_8q6pp"]
+[ext_resource type="Script" uid="uid://dwyruq0ulo56c" path="res://addons/godot_rl_agents/sync.gd" id="2_ccsrb"]
+[ext_resource type="PackedScene" uid="uid://bswnfo2l0387l" path="res://scenes/game_scenes/asteroid_game_scene/asteroid_game_scene.tscn" id="3_ccsrb"]
+
+[node name="TrainingSceneMixed" type="Node2D"]
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_ccsrb")
+action_repeat = 4
+speed_up = 16.0
+
+[node name="BossGameScene" parent="." instance=ExtResource("1_8q6pp")]
+
+[node name="AsteroidScenes" type="Node" parent="."]
+
+[node name="SubViewport" type="SubViewport" parent="AsteroidScenes"]
+
+[node name="BaseGameScene" parent="AsteroidScenes/SubViewport" instance=ExtResource("3_ccsrb")]
+
+[node name="SubViewport2" type="SubViewport" parent="AsteroidScenes"]
+
+[node name="BaseGameScene" parent="AsteroidScenes/SubViewport2" instance=ExtResource("3_ccsrb")]
+override_can_shoot_always_enabled = true
+
+[node name="SubViewport3" type="SubViewport" parent="AsteroidScenes"]
+
+[node name="BaseGameScene" parent="AsteroidScenes/SubViewport3" instance=ExtResource("3_ccsrb")]
+
+[node name="SubViewport4" type="SubViewport" parent="AsteroidScenes"]
+
+[node name="BaseGameScene" parent="AsteroidScenes/SubViewport4" instance=ExtResource("3_ccsrb")]
+override_can_shoot_always_enabled = true
+
+[node name="BossScenes" type="Node" parent="."]
+
+[node name="SubViewport" type="SubViewport" parent="BossScenes"]
+canvas_cull_mask = 4294967294
+
+[node name="BossGameScene" parent="BossScenes/SubViewport" instance=ExtResource("1_8q6pp")]
+override_can_shoot_always_enabled = false
+
+[node name="SubViewport2" type="SubViewport" parent="BossScenes"]
+canvas_cull_mask = 4294967294
+
+[node name="BossGameScene" parent="BossScenes/SubViewport2" instance=ExtResource("1_8q6pp")]
+
+[node name="SubViewport3" type="SubViewport" parent="BossScenes"]
+canvas_cull_mask = 4294967294
+
+[node name="BossGameScene" parent="BossScenes/SubViewport3" instance=ExtResource("1_8q6pp")]
+override_can_shoot_always_enabled = false
