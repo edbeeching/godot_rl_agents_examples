@@ -54,14 +54,8 @@ func handle_shoot():
 
 func game_over(final_reward := 0.0) -> void:
 	_time_survived = 0
-
-	# Uncomment if you want to remove all spawned objects on reset
-	# currently we keep all objects around
 	spawned_objects.remove_all_spawned_items()
-
 	ai_controller.end_episode(final_reward)
-
-	# Uncomment if you want to reposition the player on reset
 	reposition_player()
 	velocity = Vector2.ZERO
 
@@ -75,10 +69,9 @@ func reposition_player():
 ## Called by an asteroid instance that hits the ship
 func hit_by_asteroid() -> void:
 	# Check that the ship has survived for longer than n seconds
-	# this adds a "protection period" after getting hit by an asteroid
+	# this adds a "protection period" after getting hit
 	if _time_survived > 1.0:
-		game_over(-1.0)
-		_time_survived = 0
+		game_over(-5.0)
 
 
 ## Called by a projectile instance that has hit an asteroid
@@ -86,7 +79,22 @@ func hit_an_asteroid():
 	ai_controller.reward += 0.1
 
 
+## Called by enemy boss ship that was hit
+func hit_enemy_boss_ship():
+	ai_controller.reward += 0.1
+
+
+func defeated_boss_ship():
+	game_over(0.0)
+
+
 ## Called by a projectile instance that hit the ship
+## (currently that means the enemy boss ship has hit the player ship)
 func hit():
-	#print("Player hit by boss")
-	game_over(-10.0)
+	# Check that the ship has survived for longer than n seconds
+	# this adds a "protection period" after getting hit
+	if _time_survived > 1.0:
+		game_over(-50.0)
+		print("hit_by_boss")
+	else:
+		print("hit before 1sec")

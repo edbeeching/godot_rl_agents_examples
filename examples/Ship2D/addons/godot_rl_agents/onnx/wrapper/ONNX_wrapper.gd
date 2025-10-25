@@ -15,17 +15,15 @@ var action_means_only: bool
 ## Whether action_means_value has been set already for this model
 var action_means_only_set: bool
 
-
 # Must provide the path to the model and the batch size
 func _init(model_path, batch_size):
 	inferencer = inferencer_script.new()
 	action_output_size = inferencer.Initialize(model_path, batch_size)
 
-
 # This function is the one that will be called from the game,
-# requires the observation as an array and the state_ins as an int
-# returns an Array containing the action the model takes.
-func run_inference(obs: Array, state_ins: int) -> Dictionary:
+# requires the observations as an Dictionary and the state_ins as an int
+# returns a Dictionary containing the action the model takes.
+func run_inference(obs: Dictionary, state_ins: int) -> Dictionary:
 	if inferencer == null:
 		printerr("Inferencer not initialized")
 		return {}
@@ -36,7 +34,6 @@ func _notification(what):
 	if what == NOTIFICATION_PREDELETE:
 		inferencer.FreeDisposables()
 		inferencer.free()
-
 
 # Check whether agent uses a continuous actions model with only action means or not
 func set_action_means_only(agent_action_space):

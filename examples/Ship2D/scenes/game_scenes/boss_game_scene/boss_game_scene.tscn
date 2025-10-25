@@ -17,7 +17,6 @@ size = Vector2(1000, 2000)
 [node name="BossGameScene" type="Node2D" node_paths=PackedStringArray("ship")]
 script = ExtResource("1_qiwy6")
 ship = NodePath("Ship")
-override_can_shoot_always_enabled = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1920.0
@@ -77,4 +76,4 @@ spawned_objects = NodePath("../SpawnedObjects")
 [node name="EnemyShipBoss" parent="." node_paths=PackedStringArray("player_ship", "spawned_objects") instance=ExtResource("6_al25m")]
 player_ship = NodePath("../Ship")
 spawned_objects = NodePath("../SpawnedObjects")
-ball_scene = ExtResource("6_cjdmt")
+projectile_scene = ExtResource("6_cjdmt")

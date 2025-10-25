@@ -73,7 +73,8 @@ func hit():
 	_hp -= damage_taken_per_hit
 	if _hp < 0.1:
 		reset()
-	player_ship.ai_controller.reward += 0.1
+		player_ship.defeated_boss_ship()
+	player_ship.hit_enemy_boss_ship()
 
 
 func set_hp(value):

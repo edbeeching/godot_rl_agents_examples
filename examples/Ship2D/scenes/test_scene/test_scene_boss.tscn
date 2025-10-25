@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmumxjvt7qg0s"]
+
+[ext_resource type="PackedScene" uid="uid://cav0l7p55yibs" path="res://scenes/game_scenes/boss_game_scene/boss_game_scene.tscn" id="1_3prfu"]
+[ext_resource type="Script" uid="uid://dsq7jynbrdcgu" path="res://addons/godot_rl_agents/sync.gd" id="2_qmijl"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="BossGameScene" parent="." instance=ExtResource("1_3prfu")]
+override_can_shoot_always_enabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_qmijl")
+control_mode = 2
+action_repeat = 4
+speed_up = 100.0
+onnx_model_path = "model.onnx"
+deterministic_inference = false

@@ -1,53 +1,61 @@
 [gd_scene load_steps=3 format=3 uid="uid://2uwyckkppxmy"]
 
 [ext_resource type="PackedScene" uid="uid://cav0l7p55yibs" path="res://scenes/game_scenes/boss_game_scene/boss_game_scene.tscn" id="1_bi1es"]
-[ext_resource type="Script" uid="uid://dwyruq0ulo56c" path="res://addons/godot_rl_agents/sync.gd" id="2_xghqd"]
+[ext_resource type="Script" uid="uid://dsq7jynbrdcgu" path="res://addons/godot_rl_agents/sync.gd" id="2_xghqd"]
 
 [node name="TrainingSceneBoss" type="Node2D"]
 
 [node name="BossGameScene" parent="." instance=ExtResource("1_bi1es")]
-override_can_shoot_always_enabled = false
+override_can_shoot_always_enabled = true
 
 [node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
 canvas_cull_mask = 4294967294
 
 [node name="BossGameScene" parent="SubViewport" instance=ExtResource("1_bi1es")]
-override_can_shoot_always_enabled = false
 
 [node name="SubViewport2" type="SubViewport" parent="."]
+disable_3d = true
 canvas_cull_mask = 4294967294
 
 [node name="BossGameScene" parent="SubViewport2" instance=ExtResource("1_bi1es")]
 
 [node name="SubViewport3" type="SubViewport" parent="."]
+disable_3d = true
 canvas_cull_mask = 4294967294
 
 [node name="BossGameScene" parent="SubViewport3" instance=ExtResource("1_bi1es")]
-override_can_shoot_always_enabled = false
 
 [node name="SubViewport4" type="SubViewport" parent="."]
+disable_3d = true
 canvas_cull_mask = 4294967294
 
 [node name="BossGameScene" parent="SubViewport4" instance=ExtResource("1_bi1es")]
 
 [node name="SubViewport5" type="SubViewport" parent="."]
+disable_3d = true
 canvas_cull_mask = 4294967294
 
 [node name="BossGameScene" parent="SubViewport5" instance=ExtResource("1_bi1es")]
-override_can_shoot_always_enabled = false
 
 [node name="SubViewport6" type="SubViewport" parent="."]
+disable_3d = true
 canvas_cull_mask = 4294967294
 
 [node name="BossGameScene" parent="SubViewport6" instance=ExtResource("1_bi1es")]
 
 [node name="SubViewport7" type="SubViewport" parent="."]
+disable_3d = true
 canvas_cull_mask = 4294967294
 
 [node name="BossGameScene" parent="SubViewport7" instance=ExtResource("1_bi1es")]
-override_can_shoot_always_enabled = false
+
+[node name="SubViewport8" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="BossGameScene" parent="SubViewport8" instance=ExtResource("1_bi1es")]
 
 [node name="Sync" type="Node" parent="."]
 script = ExtResource("2_xghqd")
 action_repeat = 4
-speed_up = 16.0

@@ -12,12 +12,6 @@ var _asteroid_spawn_interval: float
 var _asteroid_spawn_timer: float
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	return
-	reset_spawn_timer()
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	_asteroid_spawn_timer += delta
