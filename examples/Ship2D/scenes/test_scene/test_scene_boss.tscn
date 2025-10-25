@@ -15,6 +15,5 @@ position = Vector2(960, 540)
 script = ExtResource("2_qmijl")
 control_mode = 2
 action_repeat = 4
-speed_up = 100.0
 onnx_model_path = "model.onnx"
 deterministic_inference = false

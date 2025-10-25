@@ -95,6 +95,3 @@ func hit():
 	# this adds a "protection period" after getting hit
 	if _time_survived > 1.0:
 		game_over(-50.0)
-		print("hit_by_boss")
-	else:
-		print("hit before 1sec")
