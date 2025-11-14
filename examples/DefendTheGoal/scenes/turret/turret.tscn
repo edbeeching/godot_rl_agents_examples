@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5krrnjj5hspi"]
+
+[ext_resource type="PackedScene" uid="uid://cyd84fplg3ab5" path="res://assets/turret.glb" id="1_i6dxt"]
+[ext_resource type="Script" uid="uid://l33kg65kej7w" path="res://scenes/turret/turret.gd" id="1_rmqmx"]
+[ext_resource type="PackedScene" uid="uid://cih6afjthxjso" path="res://scenes/ball/ball.tscn" id="3_xfx51"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmqmx"]
+size = Vector3(2, 0.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xfx51"]
+size = Vector3(1.01, 1, 0.7)
+
+[node name="Turret" type="Node3D"]
+script = ExtResource("1_rmqmx")
+
+[node name="turret" parent="." instance=ExtResource("1_i6dxt")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_rmqmx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.35000002)
+shape = SubResource("BoxShape3D_xfx51")
+
+[node name="Ball" parent="." instance=ExtResource("3_xfx51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8700458, 0.5605321)
+collision_mask = 13
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 3
+
+[editable path="turret"]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://br8oux3ppivpn"]
+
+[ext_resource type="PackedScene" uid="uid://cbc5pmd86l6n" path="res://assets/goal.glb" id="1_m6qkg"]
+
+[node name="goal" instance=ExtResource("1_m6qkg")]
