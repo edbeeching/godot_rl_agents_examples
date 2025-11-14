@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bav1cl8uwc45c"]
 
-[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_2d/RGBCameraSensor2D.gd" id="1_txpo2"]
+[ext_resource type="Script" uid="uid://su8p61cq2yjy" path="res://addons/godot_rl_agents/sensors/sensors_2d/RGBCameraSensor2D.gd" id="1_txpo2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jks1s"]
 viewport_path = NodePath("SubViewport")
 
 [node name="RGBCameraSensor2D" type="Node2D"]
 script = ExtResource("1_txpo2")
-displayed_image_scale_factor = Vector2(3, 3)
 
 [node name="RemoteTransform" type="RemoteTransform2D" parent="."]
 remote_path = NodePath("../SubViewport/Camera")
@@ -22,6 +21,7 @@ position_smoothing_speed = 2.0
 
 [node name="Control" type="Window" parent="."]
 canvas_item_default_texture_filter = 0
+oversampling_override = 1.0
 title = "CameraSensor"
 position = Vector2i(20, 40)
 size = Vector2i(64, 64)

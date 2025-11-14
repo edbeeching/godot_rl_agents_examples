@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bpb5ld8ygwbin"]
 
-[ext_resource type="Script" uid="uid://b3btxpbyykclx" path="res://scenes/robot/robot.gd" id="1_yxci0"]
-[ext_resource type="Script" uid="uid://ro82uudpaety" path="res://scenes/robot/robot_ai_controller.gd" id="2_j3f46"]
+[ext_resource type="Script" uid="uid://cxwjtm5kk53c7" path="res://scenes/robot/robot.gd" id="1_yxci0"]
+[ext_resource type="Script" uid="uid://cvjqwm5sb20oe" path="res://scenes/robot/robot_ai_controller.gd" id="2_j3f46"]
 [ext_resource type="PackedScene" uid="uid://c6wbjsqdf461l" path="res://assets/robot.glb" id="3_5ag0g"]
-[ext_resource type="Script" uid="uid://gx8chwmxgae1" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="3_64dgq"]
-[ext_resource type="Script" uid="uid://cb2llfwma50h0" path="res://addons/godot_rl_agents/sensors/sensors_3d/PositionSensor3D.gd" id="4_3st38"]
-[ext_resource type="Script" uid="uid://ep5uogm3istr" path="res://scenes/robot/velocity_sensor.gd" id="5_gnvke"]
+[ext_resource type="Script" uid="uid://bpuljbby14mdo" path="res://addons/godot_rl_agents/sensors/sensors_3d/RaycastSensor3D.gd" id="3_64dgq"]
+[ext_resource type="Script" uid="uid://dg6dogtyp4ih3" path="res://addons/godot_rl_agents/sensors/sensors_3d/PositionSensor3D.gd" id="4_3st38"]
+[ext_resource type="Script" uid="uid://eo8qxewvo8s7" path="res://scenes/robot/velocity_sensor.gd" id="5_gnvke"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cp7ux"]
 
@@ -240,7 +240,6 @@ collide_with_areas = true
 [node name="PositionSensor3D" type="Node3D" parent="AIController3D"]
 script = ExtResource("4_3st38")
 debug_lines = false
-metadata/_custom_type_script = "uid://cb2llfwma50h0"
 
 [node name="VelocitySensor" type="Node3D" parent="AIController3D" node_paths=PackedStringArray("objects_to_observe")]
 script = ExtResource("5_gnvke")

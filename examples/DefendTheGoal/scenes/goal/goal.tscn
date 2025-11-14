@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsujj2charlnu"]
 
-[ext_resource type="Script" uid="uid://d7eaqngx074i" path="res://scenes/goal/goal.gd" id="1_2meav"]
+[ext_resource type="Script" uid="uid://4vu5qvdablko" path="res://scenes/goal/goal.gd" id="1_2meav"]
 [ext_resource type="PackedScene" uid="uid://cbc5pmd86l6n" path="res://assets/goal.glb" id="2_r84s2"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_r84s2"]

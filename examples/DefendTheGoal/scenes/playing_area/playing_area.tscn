@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dsujj2charlnu" path="res://scenes/goal/goal.tscn" id="2_3qsoh"]
 [ext_resource type="PackedScene" uid="uid://bpb5ld8ygwbin" path="res://scenes/robot/robot.tscn" id="3_82lnl"]
 [ext_resource type="PackedScene" uid="uid://c5krrnjj5hspi" path="res://scenes/turret/turret.tscn" id="6_mou72"]
-[ext_resource type="Script" uid="uid://bl8oxinqkcuon" path="res://scenes/playing_area/robot_boundaries.gd" id="7_autnx"]
+[ext_resource type="Script" uid="uid://b81oanmto81r5" path="res://scenes/playing_area/robot_boundaries.gd" id="7_autnx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mou72"]
 size = Vector3(20, 15, 1)

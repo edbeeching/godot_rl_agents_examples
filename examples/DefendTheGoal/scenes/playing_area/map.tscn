@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b18tdruu76vg7" path="res://assets/map.glb" id="1_o8st6"]
 [ext_resource type="Texture2D" uid="uid://bof54sqs8khu0" path="res://assets/map_grass.png" id="2_16q2n"]
-[ext_resource type="Script" uid="uid://n3gves6y3t03" path="res://scenes/playing_area/wall.gd" id="3_yaxie"]
+[ext_resource type="Script" uid="uid://csytr2f01b2uo" path="res://scenes/playing_area/wall.gd" id="3_yaxie"]
 
 [sub_resource type="Gradient" id="Gradient_bprsk"]
 colors = PackedColorArray(0.79, 0.79, 0.79, 1, 1, 1, 1, 1)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5krrnjj5hspi"]
 
 [ext_resource type="PackedScene" uid="uid://cyd84fplg3ab5" path="res://assets/turret.glb" id="1_i6dxt"]
-[ext_resource type="Script" uid="uid://l33kg65kej7w" path="res://scenes/turret/turret.gd" id="1_rmqmx"]
+[ext_resource type="Script" uid="uid://bcrd17jeocb11" path="res://scenes/turret/turret.gd" id="1_rmqmx"]
 [ext_resource type="PackedScene" uid="uid://cih6afjthxjso" path="res://scenes/ball/ball.tscn" id="3_xfx51"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rmqmx"]
