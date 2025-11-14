@@ -19,12 +19,6 @@ config/icon="res://icon.svg"
 
 project/assembly_name="CartExamples"
 
-[editor]
-
-movie_writer/video_quality=0.85
-movie_writer/movie_file="C:/Users/Computer/Downloads/examples-yt/godot_rl_agents_examples-main/examples/DefendTheGoalWorks/ScoreTheGoal/movie/movie.avi"
-movie_writer/fps=120
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_rl_agents/plugin.cfg")
