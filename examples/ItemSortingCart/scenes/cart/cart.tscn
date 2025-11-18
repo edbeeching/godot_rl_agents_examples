@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://cn2van3bgkmch"]
 
-[ext_resource type="Script" path="res://scenes/cart/cart.gd" id="1_6w181"]
+[ext_resource type="Script" uid="uid://kllnxvl821l2" path="res://scenes/cart/cart.gd" id="1_6w181"]
 [ext_resource type="PackedScene" uid="uid://d3saly1xwj5s" path="res://scenes/cart/wheel.tscn" id="1_ey6do"]
-[ext_resource type="Script" path="res://scenes/cart/cart_ai_controller.gd" id="3_o8jpg"]
+[ext_resource type="Script" uid="uid://bwpi6qykpflee" path="res://scenes/cart/cart_ai_controller.gd" id="3_o8jpg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p6a1o"]
 size = Vector3(1.5, 0.2, 1)
@@ -42,6 +42,7 @@ size = Vector3(0.5, 0.355, 1)
 
 [node name="Cart" type="VehicleBody3D"]
 mass = 1000.0
+linear_damp = 5.0
 script = ExtResource("1_6w181")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -136,7 +137,7 @@ transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -
 
 [node name="AIController3D" type="Node3D" parent="."]
 script = ExtResource("3_o8jpg")
-reset_after = 25000
+reset_after = 5000
 
 [node name="ItemArea" type="Area3D" parent="."]
 collision_layer = 2

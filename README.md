@@ -9,7 +9,7 @@ Running these examples requires [Godot](https://godotengine.org/) with .NET/mono
 https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/3a71a48b-47df-4036-9c61-26b0ec0aeb3c
 
 #### Item Sorting Cart:
-https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/647e5549-fde4-404b-96fa-f8931f110439
+[ItemSortingCart.webm](https://github.com/user-attachments/assets/57fbdbe3-906b-4064-b54b-45bf2a142f6c)
 
 #### Hovercraft racing:
 https://github.com/edbeeching/godot_rl_agents_examples/assets/61947090/09cfa8ef-4d1a-46d3-a38a-0b7cdf1e1000
