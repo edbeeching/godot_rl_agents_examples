@@ -7,11 +7,11 @@ var camera_pixels = null
 @onready var sub_viewport := $SubViewport as SubViewport
 @onready var displayed_image: ImageTexture
 
-@export var render_image_resolution := Vector2(36, 36)
+@export var render_image_resolution := Vector2i(36, 36)
 ## Display size does not affect rendered or sent image resolution.
 ## Scale is relative to either render image or downscale image resolution
 ## depending on which mode is set.
-@export var displayed_image_scale_factor := Vector2(8, 8)
+@export var displayed_image_scale_factor := Vector2i(8, 8)
 
 @export_group("Downscale image options")
 ## Enable to downscale the rendered image before sending the obs.
@@ -19,7 +19,7 @@ var camera_pixels = null
 ## If downscale_image is true, will display the downscaled image instead of rendered image.
 @export var display_downscaled_image: bool = true
 ## This is the resolution of the image that will be sent after downscaling
-@export var resized_image_resolution := Vector2(36, 36)
+@export var resized_image_resolution := Vector2i(36, 36)
 
 
 func _ready():

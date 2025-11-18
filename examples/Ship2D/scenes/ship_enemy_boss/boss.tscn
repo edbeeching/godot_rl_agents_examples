@@ -1,0 +1,146 @@
+[gd_scene load_steps=10 format=3 uid="uid://df1c2tmkk6e5i"]
+
+[ext_resource type="Script" uid="uid://dgq6ji1e4ow70" path="res://scenes/ship_enemy_boss/boss.gd" id="1_74po8"]
+[ext_resource type="Texture2D" uid="uid://x0fs4oaimipy" path="res://assets/ShipEnemy.png" id="2_fbos3"]
+[ext_resource type="Script" uid="uid://bjn1r547iu6tq" path="res://scenes/ship_enemy_boss/health_bar.gd" id="3_fbos3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_450bq"]
+radius = 67.57
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fpp2b"]
+radius = 74.71498
+height = 371.99994
+
+[sub_resource type="Animation" id="Animation_cjdmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(960, 241)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_al25m"]
+resource_name = "animation"
+length = 5.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(960, 187.73), Vector2(-240, 237.73), Vector2(960, 187.73), Vector2(960, 187.73), Vector2(2160, 237.73), Vector2(960, 187.73)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.17453292519943295, 0.17453292519943295, -0.17453292519943295, 0.17453292519943295, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_i3xlu"]
+resource_name = "animation2"
+length = 10.0
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(960, 187.73), Vector2(960, -199.415), Vector2(460, -199.415), Vector2(460, 187.73), Vector2(460, 187.73), Vector2(1460, 187.73), Vector2(1460, 187.73), Vector2(1460, -199.415), Vector2(960, -199.415), Vector2(960, 187.73), Vector2(960, 187.73)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.17453292519943295, 0.17453292519943295, -0.17453292519943295, 0.17453292519943295, -0.17453292519943295, 0.17453292519943295, -0.17453292519943295, 0.17453292519943295, -0.17453292519943295, 0.17453292519943295]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjdmt"]
+_data = {
+&"RESET": SubResource("Animation_cjdmt"),
+&"animation": SubResource("Animation_al25m"),
+&"animation2": SubResource("Animation_i3xlu")
+}
+
+[node name="EnemyShipBoss" type="Area2D" node_paths=PackedStringArray("health_bar", "animation")]
+position = Vector2(960, 241)
+collision_layer = 1024
+script = ExtResource("1_74po8")
+health_bar = NodePath("HealthBar")
+animation = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_fbos3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26.455)
+shape = SubResource("CircleShape2D_450bq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.285)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fpp2b")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -138.5
+offset_right = 150.0
+offset_bottom = -111.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_fbos3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cjdmt")
+}
+speed_scale = 0.5
+next/animation = &"animation2"
+next/animation2 = &"animation"

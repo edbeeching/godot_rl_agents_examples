@@ -1,0 +1,2 @@
+extends BaseGameScene
+class_name BossGameScene

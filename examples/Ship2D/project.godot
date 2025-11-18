@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Ships2D"
-run/main_scene="res://scenes/train_scene/training_scene.tscn"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+run/main_scene="uid://cwobnl1dd05uq"
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
@@ -55,10 +55,12 @@ move_right={
 
 2d_physics/layer_1="Wall"
 2d_physics/layer_2="Asteroid"
-2d_physics/layer_3="EnemyShip"
+2d_physics/layer_5="ProjectilePlayer"
+2d_physics/layer_6="ProjectileEnemy"
 2d_physics/layer_10="Ship"
+2d_physics/layer_11="EnemyShipBoss"
 
 [physics]
 
-common/max_physics_steps_per_frame=16
+common/max_physics_steps_per_frame=100
 2d/default_gravity=0.0

@@ -3,7 +3,11 @@ class_name Sync
 
 # --fixed-fps 2000 --disable-render-loop
 
-enum ControlModes { HUMAN, TRAINING, ONNX_INFERENCE }  ## Test the environment manually  ## Train a model  ## Load a pretrained model using an .onnx file
+enum ControlModes {
+	HUMAN, ## Test the environment manually
+	TRAINING, ## Train a model
+	ONNX_INFERENCE ## Load a pretrained model using an .onnx file
+}
 @export var control_mode: ControlModes = ControlModes.TRAINING
 ## Action will be repeated for n frames (Godot physics steps).
 @export_range(1, 10, 1, "or_greater") var action_repeat := 8
@@ -11,6 +15,8 @@ enum ControlModes { HUMAN, TRAINING, ONNX_INFERENCE }  ## Test the environment m
 @export_range(0, 10, 0.1, "or_greater") var speed_up := 1.0
 ## The path to a trained .onnx model file to use for inference (only needed for the 'Onnx Inference' control mode).
 @export var onnx_model_path := ""
+## Whether the inference will be deterministic (NOTE: Only applies to discrete actions in onnx inference mode)
+@export var deterministic_inference := true
 
 # Onnx model stored for each requested path
 var onnx_models: Dictionary
@@ -226,7 +232,7 @@ func _inference_process():
 
 		for agent_id in range(0, agents_inference.size()):
 			var model: ONNXModel = agents_inference[agent_id].onnx_model
-			var action = model.run_inference(obs[agent_id]["obs"], 1.0)
+			var action = model.run_inference(obs[agent_id], 1.0)
 			var action_dict = _extract_action_dict(
 				action["output"], _action_space_inference[agent_id], model.action_means_only
 			)
@@ -288,15 +294,36 @@ func _extract_action_dict(action_array: Array, action_space: Dictionary, action_
 	for key in action_space.keys():
 		var size = action_space[key]["size"]
 		var action_type = action_space[key]["action_type"]
+
 		if action_type == "discrete":
-			var largest_logit: float  # Value of the largest logit for this action in the actions array
+			var largest_logit: float = -INF  # Value of the largest logit for this action in the actions array
 			var largest_logit_idx: int  # Index of the largest logit for this action in the actions array
 			for logit_idx in range(0, size):
 				var logit_value = action_array[index + logit_idx]
 				if logit_value > largest_logit:
 					largest_logit = logit_value
 					largest_logit_idx = logit_idx
-			result[key] = largest_logit_idx  # Index of the largest logit is the discrete action value
+			if deterministic_inference:
+				result[key] = largest_logit_idx  # Index of the largest logit is the discrete action value
+			else:
+				var exp_logit_sum: float  # Sum of exp of each logit
+				var exp_logits: Array[float]
+
+				for logit_idx in range(0, size):
+					# Normalize using the max logit to add stability in case a logit would be huge after exp
+					exp_logits.append(exp(action_array[index + logit_idx] - largest_logit))
+					exp_logit_sum += exp_logits[logit_idx]
+
+				# Choose a random number, will be used to select an action
+				var random_value = randf_range(0, exp_logit_sum)
+
+				# Select the first index at which the sum is larger than the random number
+				var sum: float
+				for exp_logit_idx in exp_logits.size():
+					sum += exp_logits[exp_logit_idx]
+					if sum > random_value:
+						result[key] = exp_logit_idx
+						break
 			index += size
 		elif action_type == "continuous":
 			# For continous actions, we only take the action mean values

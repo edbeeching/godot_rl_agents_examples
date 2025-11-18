@@ -52,10 +52,18 @@ func randomize_speed():
 	_sideways_speed = randf_range(-0.1, 0.1) * _downward_speed
 
 
+## Called when an asteroid is hit
+func hit():
+	destroy()
+
+
 ## Destroys the asteroid, leaving a particle effect
 var destroying: bool
+
+
 func destroy():
-	if destroying: return
+	if destroying:
+		return
 	particles.emitting = true
 	_active_sprite.visible = false
 	set_deferred("process_mode", PROCESS_MODE_DISABLED)
@@ -77,4 +85,5 @@ func _on_body_entered(body: PhysicsBody2D) -> void:
 
 ## Handles collisions with other areas (for now, specifically other asteroids)
 func _on_area_entered(area: Area2D) -> void:
-	destroy()
+	if area is Asteroid:
+		destroy()

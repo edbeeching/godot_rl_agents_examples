@@ -1,6 +1,6 @@
 extends Node
 
-@export var ship: Ship
+#@export var ship: Ship
 @export var asteroid_scene: PackedScene
 
 ## Used for grouping all spawned instances for easy removal when needed
@@ -10,12 +10,6 @@ extends Node
 @export var asteroid_spawn_interval_max := 0.5
 var _asteroid_spawn_interval: float
 var _asteroid_spawn_timer: float
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	return
-	reset_spawn_timer()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

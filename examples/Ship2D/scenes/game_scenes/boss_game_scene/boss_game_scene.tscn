@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://cav0l7p55yibs"]
+
+[ext_resource type="Script" uid="uid://bplsqbdweadcr" path="res://scenes/game_scenes/boss_game_scene/boss_game_scene.gd" id="1_qiwy6"]
+[ext_resource type="Texture2D" uid="uid://btmg1n0pa2h0d" path="res://assets/Background.png" id="2_gnyax"]
+[ext_resource type="Script" uid="uid://b3g1xqywe8fr" path="res://scenes/game_scenes/boss_game_scene/boundaries_enemy_ship_sensor.gd" id="3_cjdmt"]
+[ext_resource type="Script" uid="uid://bp4cqv2mxebik" path="res://scenes/game_scenes/spawned_objects.gd" id="4_kaqct"]
+[ext_resource type="PackedScene" uid="uid://df1c2tmkk6e5i" path="res://scenes/ship_enemy_boss/boss.tscn" id="6_al25m"]
+[ext_resource type="PackedScene" uid="uid://dd8ua86so56af" path="res://scenes/projectiles/projectile_enemy.tscn" id="6_cjdmt"]
+[ext_resource type="PackedScene" uid="uid://giklicruf2u" path="res://scenes/ship/ship.tscn" id="6_gnyax"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rsqge"]
+size = Vector2(3920, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjlw4"]
+size = Vector2(1000, 2000)
+
+[node name="BossGameScene" type="Node2D" node_paths=PackedStringArray("ship")]
+script = ExtResource("1_qiwy6")
+ship = NodePath("Ship")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_gnyax")
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(960, -500)
+shape = SubResource("RectangleShape2D_rsqge")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-500, 540)
+shape = SubResource("RectangleShape2D_cjlw4")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(2420, 540)
+shape = SubResource("RectangleShape2D_cjlw4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(960, 1580)
+shape = SubResource("RectangleShape2D_rsqge")
+
+[node name="BoundariesEnemyShipSensor" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("3_cjdmt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundariesEnemyShipSensor"]
+position = Vector2(960, -500)
+shape = SubResource("RectangleShape2D_rsqge")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BoundariesEnemyShipSensor"]
+position = Vector2(-500, 540)
+shape = SubResource("RectangleShape2D_cjlw4")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BoundariesEnemyShipSensor"]
+position = Vector2(2420, 540)
+shape = SubResource("RectangleShape2D_cjlw4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BoundariesEnemyShipSensor"]
+position = Vector2(960, 1580)
+shape = SubResource("RectangleShape2D_rsqge")
+
+[node name="SpawnedObjects" type="Node2D" parent="."]
+script = ExtResource("4_kaqct")
+
+[node name="Ship" parent="." node_paths=PackedStringArray("boss_ship", "spawned_objects") instance=ExtResource("6_gnyax")]
+position = Vector2(960, 956)
+boss_ship = NodePath("../EnemyShipBoss")
+spawned_objects = NodePath("../SpawnedObjects")
+
+[node name="EnemyShipBoss" parent="." node_paths=PackedStringArray("player_ship", "spawned_objects") instance=ExtResource("6_al25m")]
+player_ship = NodePath("../Ship")
+spawned_objects = NodePath("../SpawnedObjects")
+projectile_scene = ExtResource("6_cjdmt")

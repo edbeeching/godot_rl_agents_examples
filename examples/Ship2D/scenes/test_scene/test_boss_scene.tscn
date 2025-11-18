@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmumxjvt7qg0s"]
+
+[ext_resource type="PackedScene" uid="uid://cav0l7p55yibs" path="res://scenes/game_scenes/boss_game_scene/boss_game_scene.tscn" id="1_37srg"]
+[ext_resource type="Script" uid="uid://dwyruq0ulo56c" path="res://addons/godot_rl_agents/sync.gd" id="2_lgab8"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="BossGameScene" parent="." instance=ExtResource("1_37srg")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_lgab8")
+control_mode = 0
+action_repeat = 4
+onnx_model_path = "model.onnx"

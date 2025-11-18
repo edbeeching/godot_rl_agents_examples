@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d35htadfm3qip"]
 
-[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_0dvr4"]
-[ext_resource type="PackedScene" uid="uid://bswnfo2l0387l" path="res://scenes/game_scenes/base_game_scene.tscn" id="3_3wx3y"]
+[ext_resource type="Script" uid="uid://dwyruq0ulo56c" path="res://addons/godot_rl_agents/sync.gd" id="2_0dvr4"]
+[ext_resource type="PackedScene" uid="uid://bswnfo2l0387l" path="res://scenes/game_scenes/asteroid_game_scene/asteroid_game_scene.tscn" id="3_3wx3y"]
 
 [node name="TestScene" type="Node2D"]
 

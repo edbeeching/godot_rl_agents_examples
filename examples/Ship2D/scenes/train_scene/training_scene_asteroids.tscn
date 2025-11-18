@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://ji4spgoalcj6"]
+
+[ext_resource type="PackedScene" uid="uid://bswnfo2l0387l" path="res://scenes/game_scenes/asteroid_game_scene/asteroid_game_scene.tscn" id="1_qvwyi"]
+[ext_resource type="Script" uid="uid://dsq7jynbrdcgu" path="res://addons/godot_rl_agents/sync.gd" id="2_rgi60"]
+
+[node name="TrainingScene" type="Node2D"]
+
+[node name="BaseGameScene" parent="." instance=ExtResource("1_qvwyi")]
+override_can_shoot_always_enabled = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="BaseGameScene" parent="SubViewport" instance=ExtResource("1_qvwyi")]
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="BaseGameScene" parent="SubViewport2" instance=ExtResource("1_qvwyi")]
+override_can_shoot_always_enabled = true
+
+[node name="SubViewport3" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="BaseGameScene" parent="SubViewport3" instance=ExtResource("1_qvwyi")]
+
+[node name="SubViewport4" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="BaseGameScene" parent="SubViewport4" instance=ExtResource("1_qvwyi")]
+override_can_shoot_always_enabled = true
+
+[node name="SubViewport5" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="BaseGameScene" parent="SubViewport5" instance=ExtResource("1_qvwyi")]
+
+[node name="SubViewport6" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="BaseGameScene" parent="SubViewport6" instance=ExtResource("1_qvwyi")]
+override_can_shoot_always_enabled = true
+
+[node name="SubViewport7" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="BaseGameScene" parent="SubViewport7" instance=ExtResource("1_qvwyi")]
+
+[node name="SubViewport8" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="BaseGameScene" parent="SubViewport8" instance=ExtResource("1_qvwyi")]
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_rgi60")
+action_repeat = 4
+speed_up = 16.0
