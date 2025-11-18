@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0uxnb5f6avih"]
+
+[ext_resource type="PackedScene" uid="uid://7rc10s44c2v" path="res://scenes/playing_area/playing_area.tscn" id="2_6guts"]
+[ext_resource type="Script" uid="uid://bgcmpeku18v1m" path="res://addons/godot_rl_agents/sync.gd" id="2_8lo5l"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dfpdn"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_i3bom"]
+sky_material = SubResource("ProceduralSkyMaterial_dfpdn")
+
+[sub_resource type="Environment" id="Environment_mmgmg"]
+background_mode = 2
+sky = SubResource("Sky_i3bom")
+tonemap_mode = 2
+ssao_detail = 0.65
+glow_enabled = true
+
+[node name="training_scene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mmgmg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="playing_area" parent="." instance=ExtResource("2_6guts")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+own_world_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport" instance=ExtResource("2_6guts")]
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+disable_3d = true
+own_world_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport2" instance=ExtResource("2_6guts")]
+
+[node name="SubViewport3" type="SubViewport" parent="."]
+disable_3d = true
+own_world_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport3" instance=ExtResource("2_6guts")]
+
+[node name="SubViewport4" type="SubViewport" parent="."]
+disable_3d = true
+own_world_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport4" instance=ExtResource("2_6guts")]
+
+[node name="SubViewport5" type="SubViewport" parent="."]
+disable_3d = true
+own_world_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport5" instance=ExtResource("2_6guts")]
+
+[node name="SubViewport6" type="SubViewport" parent="."]
+disable_3d = true
+own_world_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport6" instance=ExtResource("2_6guts")]
+
+[node name="SubViewport7" type="SubViewport" parent="."]
+disable_3d = true
+own_world_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport7" instance=ExtResource("2_6guts")]
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_8lo5l")
+speed_up = 100.0
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(-1, -5.9061968e-08, 6.445483e-08, 0, 0.7372773, 0.67559016, -8.742278e-08, 0.67559016, -0.7372773, 0, 6.815, -8.879)
+current = true
+fov = 66.2

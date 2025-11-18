@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://cih6afjthxjso"]
+
+[ext_resource type="Script" uid="uid://bja117wwm6yel" path="res://scenes/ball/ball.gd" id="1_0lp3q"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0ednm"]
+friction = 0.25
+bounce = 0.48
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bwtfo"]
+noise_type = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1w6s6"]
+noise = SubResource("FastNoiseLite_bwtfo")
+seamless = true
+in_3d_space = true
+seamless_blend_skirt = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qk56"]
+render_priority = -1
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
+grow = true
+grow_amount = 0.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25ryc"]
+next_pass = SubResource("StandardMaterial3D_4qk56")
+albedo_color = Color(0.2494, 0.86, 0.82947, 1)
+albedo_texture = SubResource("NoiseTexture2D_1w6s6")
+metallic_specular = 1.0
+roughness = 0.0
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_oqv3d"]
+material = SubResource("StandardMaterial3D_25ryc")
+radius = 0.33
+height = 0.66
+radial_segments = 32
+rings = 16
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ppi6w"]
+radius = 0.338
+
+[node name="Ball" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_0ednm")
+gravity_scale = 4.0
+lock_rotation = true
+script = ExtResource("1_0lp3q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_oqv3d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ppi6w")

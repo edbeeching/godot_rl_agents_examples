@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://7rc10s44c2v"]
+
+[ext_resource type="PackedScene" uid="uid://dnbjyfak5tnxx" path="res://scenes/playing_area/map.tscn" id="1_y8ivg"]
+[ext_resource type="PackedScene" uid="uid://dsujj2charlnu" path="res://scenes/goal/goal.tscn" id="2_3qsoh"]
+[ext_resource type="PackedScene" uid="uid://bpb5ld8ygwbin" path="res://scenes/robot/robot.tscn" id="3_82lnl"]
+[ext_resource type="PackedScene" uid="uid://c5krrnjj5hspi" path="res://scenes/turret/turret.tscn" id="6_mou72"]
+[ext_resource type="Script" uid="uid://b81oanmto81r5" path="res://scenes/playing_area/robot_boundaries.gd" id="7_autnx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mou72"]
+size = Vector3(20, 15, 1)
+
+[node name="playing_area" type="Node3D"]
+
+[node name="map" parent="." instance=ExtResource("1_y8ivg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+
+[node name="Goal" parent="map" instance=ExtResource("2_3qsoh")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.8, 7)
+
+[node name="Robot" parent="." node_paths=PackedStringArray("turret") instance=ExtResource("3_82lnl")]
+transform = Transform3D(1, 0, 2.1316282e-14, 0, 1, 0, -2.1316282e-14, 0, 1, 0, 0.313375, 4.72)
+contact_monitor = true
+max_contacts_reported = 1
+turret = NodePath("../Turret")
+
+[node name="PositionSensor3D" parent="Robot/AIController3D" index="1" node_paths=PackedStringArray("objects_to_observe")]
+objects_to_observe = [NodePath("../../../map/Goal"), NodePath("../../../Turret/Ball")]
+max_distance = 5.0
+use_separate_direction = true
+
+[node name="VelocitySensor" parent="Robot/AIController3D" index="2" node_paths=PackedStringArray("objects_to_observe")]
+objects_to_observe = [NodePath("../.."), NodePath("../../../Turret/Ball")]
+max_velocity = 4.0
+
+[node name="Turret" parent="." node_paths=PackedStringArray("goal") instance=ExtResource("6_mou72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+goal = NodePath("../map/Goal")
+
+[node name="RobotBoundaries" type="StaticBody3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("7_autnx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RobotBoundaries"]
+shape = SubResource("BoxShape3D_mou72")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RobotBoundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+shape = SubResource("BoxShape3D_mou72")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RobotBoundaries"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6, 0, 4.5)
+shape = SubResource("BoxShape3D_mou72")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RobotBoundaries"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 0, 4.5)
+shape = SubResource("BoxShape3D_mou72")
+
+[connection signal="ball_entered_goal" from="map/Goal" to="Robot" method="_on_ball_entered_goal"]
+[connection signal="robot_entered_goal" from="map/Goal" to="Robot" method="_on_robot_entered_goal"]
+
+[editable path="Robot"]
+[editable path="Turret"]
+[editable path="Turret/turret"]
