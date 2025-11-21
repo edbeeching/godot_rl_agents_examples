@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://fp0m16qnoe0r"]
+
+[ext_resource type="PackedScene" uid="uid://danlnf1x033rf" path="res://scenes/game_scene/game_scene.tscn" id="1_bccmi"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="3_sbmsv"]
+
+[node name="TrainingScene" type="Node2D"]
+
+[node name="GameScene" parent="." instance=ExtResource("1_bccmi")]
+
+[node name="GameScene2" parent="." instance=ExtResource("1_bccmi")]
+position = Vector2(10000, 0)
+
+[node name="GameScene3" parent="." instance=ExtResource("1_bccmi")]
+position = Vector2(20000, 0)
+
+[node name="GameScene4" parent="." instance=ExtResource("1_bccmi")]
+position = Vector2(-10000, 0)
+
+[node name="GameScene5" parent="." instance=ExtResource("1_bccmi")]
+position = Vector2(0, 10048)
+
+[node name="GameScene6" parent="." instance=ExtResource("1_bccmi")]
+position = Vector2(10000, 10048)
+
+[node name="GameScene7" parent="." instance=ExtResource("1_bccmi")]
+position = Vector2(20000, 10048)
+
+[node name="GameScene8" parent="." instance=ExtResource("1_bccmi")]
+position = Vector2(-10000, 10048)
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("3_sbmsv")
+action_repeat = 4
+onnx_model_path = "C:\\Users\\Computer\\PycharmProjects\\godot_rl_agents\\examples\\model.onnx"

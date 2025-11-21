@@ -1,0 +1,126 @@
+[gd_scene load_steps=14 format=3 uid="uid://d2qsl7semlkyv"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_uuo8p"]
+[ext_resource type="Texture2D" uid="uid://djgf0w4s12f86" path="res://assets/player/jump/Player1Jump1.png" id="2_6wykd"]
+[ext_resource type="Texture2D" uid="uid://dtrkm6ibrh22k" path="res://assets/player/move/Player-1.png" id="2_t2oqs"]
+[ext_resource type="Texture2D" uid="uid://b5ty3hrl7jtj3" path="res://assets/player/jump/Player1Jump2.png" id="3_0ssda"]
+[ext_resource type="Texture2D" uid="uid://mohyg2vfkunp" path="res://assets/player/move/Player-2.png" id="3_y4ujj"]
+[ext_resource type="Texture2D" uid="uid://dlec4dcwqdi66" path="res://assets/player/move/Player-3.png" id="4_iy4ba"]
+[ext_resource type="Texture2D" uid="uid://f7aey6fwsl0i" path="res://assets/player/jump/Player1Jump3.png" id="4_ngojv"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd" id="6_ybkrn"]
+[ext_resource type="Script" path="res://scenes/player/extended_grid_sensor_2d.gd" id="7_jr4fg"]
+[ext_resource type="Script" path="res://scenes/player/player_ai_controller.gd" id="12_dkdhh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5tff7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6wykd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0ssda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ngojv")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t2oqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y4ujj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iy4ba")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jl23j"]
+radius = 32.0
+height = 80.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqw8d"]
+size = Vector2(68.14, 81.28)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("ai_controller")]
+collision_layer = 2
+script = ExtResource("1_uuo8p")
+ai_controller = NodePath("AIController2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.64, 0.64)
+sprite_frames = SubResource("SpriteFrames_5tff7")
+animation = &"move"
+autoplay = "move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_jl23j")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 29
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_vqw8d")
+
+[node name="AIController2D" type="Node2D" parent="." node_paths=PackedStringArray("player", "raycast_sensors")]
+script = ExtResource("12_dkdhh")
+player = NodePath("..")
+raycast_sensors = [NodePath("RaycastGround"), NodePath("RaycastSpike"), NodePath("RaycastCoin"), NodePath("RaycastCoin2"), NodePath("GridSensor2DCoin")]
+reset_after = 2500
+
+[node name="RaycastGround" type="Node2D" parent="AIController2D"]
+visible = false
+rotation = 1.5708
+script = ExtResource("6_ybkrn")
+n_rays = 32.0
+ray_length = 3000
+cone_width = 205.0
+debug_draw = false
+
+[node name="RaycastSpike" type="Node2D" parent="AIController2D"]
+visible = false
+rotation = 1.5708
+script = ExtResource("6_ybkrn")
+collision_mask = 8
+n_rays = 32.0
+ray_length = 3000
+cone_width = 205.0
+debug_draw = false
+
+[node name="RaycastCoin" type="Node2D" parent="AIController2D"]
+visible = false
+script = ExtResource("6_ybkrn")
+collision_mask = 4
+n_rays = 9.0
+ray_length = 1280
+cone_width = 100.0
+debug_draw = false
+
+[node name="RaycastCoin2" type="Node2D" parent="AIController2D"]
+visible = false
+rotation = 3.14159
+script = ExtResource("6_ybkrn")
+collision_mask = 4
+n_rays = 9.0
+ray_length = 1280
+cone_width = 100.0
+debug_draw = false
+
+[node name="GridSensor2DCoin" type="Node2D" parent="AIController2D"]
+visible = false
+position = Vector2(1000, 0)
+script = ExtResource("7_jr4fg")
+cell_width_override = 2000.0
+cell_height_override = 480.0
+detection_mask = 4
+grid_size_y = 1
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
