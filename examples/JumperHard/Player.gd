@@ -136,7 +136,6 @@ func game_over():
 
 
 func update_reward():
-	ai_controller.reward -= 0.01  # step penalty
 	ai_controller.reward += shaping_reward()
 
 
@@ -176,7 +175,7 @@ func calculate_translation(other_pad_translation: Vector3) -> Vector3:
 func _on_First_Pad_Trigger_body_entered(_body):
 	if next != 0:
 		return
-	ai_controller.reward += 100.0
+	ai_controller.reward += 20.0
 	next = 1
 	reset_best_goal_distance()
 	second_jump_pad.position = calculate_translation(first_jump_pad.position)
@@ -185,7 +184,7 @@ func _on_First_Pad_Trigger_body_entered(_body):
 func _on_Second_Trigger_body_entered(_body):
 	if next != 1:
 		return
-	ai_controller.reward += 100.0
+	ai_controller.reward += 20.0
 	next = 0
 	reset_best_goal_distance()
 	first_jump_pad.position = calculate_translation(second_jump_pad.position)
@@ -193,4 +192,5 @@ func _on_Second_Trigger_body_entered(_body):
 
 func _on_ResetTriggerBox_body_entered(_body):
 	ai_controller.done = true
+	ai_controller.reward -= 5.0
 	game_over()
