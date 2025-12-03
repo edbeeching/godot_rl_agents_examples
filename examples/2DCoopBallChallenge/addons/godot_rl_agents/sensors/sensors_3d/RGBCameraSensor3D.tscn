@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://baaywi3arsl2m"]
+
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_3d/RGBCameraSensor3D.gd" id="1"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_y72s3"]
+viewport_path = NodePath("SubViewport")
+
+[node name="RGBCameraSensor3D" type="Node3D"]
+script = ExtResource("1")
+
+[node name="RemoteTransform" type="RemoteTransform3D" parent="."]
+remote_path = NodePath("../SubViewport/Camera")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(36, 36)
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera3D" parent="SubViewport"]
+near = 0.5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CameraTexture" type="Sprite2D" parent="Control"]
+texture = SubResource("ViewportTexture_y72s3")
+centered = false
+
+[node name="ProcessedTexture" type="Sprite2D" parent="Control"]
+centered = false

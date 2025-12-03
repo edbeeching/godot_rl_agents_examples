@@ -1,0 +1,204 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6fkgmq1op7kd"]
+
+[ext_resource type="Script" uid="uid://bqt62hhqmt7bv" path="res://scenes/training_scene/camera_2d.gd" id="2_milqm"]
+[ext_resource type="Script" uid="uid://dkxvjlyxwlu3t" path="res://addons/godot_rl_agents/sync.gd" id="3_n8d1s"]
+[ext_resource type="PackedScene" uid="uid://dl1ldlvoh3s4n" path="res://scenes/game_scene/all_game_scenes.tscn" id="4_n8d1s"]
+
+[node name="TrainingScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(4166, 2894)
+zoom = Vector2(0.107, 0.107)
+script = ExtResource("2_milqm")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("3_n8d1s")
+action_repeat = 2
+
+[node name="AllGameScenes" parent="." instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport2" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport3" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport3" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport4" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport4" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport5" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport5" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport6" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport6" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport7" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport7" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport8" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport8" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport9" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport9" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport10" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport10" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport11" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport11" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport12" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport12" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport13" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport13" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport14" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport14" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport15" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport15" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport16" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport16" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport17" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport17" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport18" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport18" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport19" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport19" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport20" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport20" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport21" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport21" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport22" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport22" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport23" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport23" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport24" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport24" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport25" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport25" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport26" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport26" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport27" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport27" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport28" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport28" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport29" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport29" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport30" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport30" instance=ExtResource("4_n8d1s")]
+
+[node name="SubViewport31" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="AllGameScenes" parent="SubViewport31" instance=ExtResource("4_n8d1s")]
