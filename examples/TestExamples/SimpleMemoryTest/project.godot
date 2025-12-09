@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SimpleMemoryTestEnv"
-run/main_scene="res://scenes/recall_clue_after_delay/training.tscn"
+run/main_scene="res://scenes/recall_answer_after_delay/training.tscn"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

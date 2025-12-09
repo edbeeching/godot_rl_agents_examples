@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr5pajm6bibf4"]
+
+[ext_resource type="Script" uid="uid://b2cbhl6osc0yr" path="res://scenes/recall_answer_after_delay/recall_answer_controller.gd" id="1_0blnn"]
+
+[node name="RecallAnswerController" type="Node2D"]
+script = ExtResource("1_0blnn")
