@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpce2lhgw67ff"]
+
+[ext_resource type="PackedScene" uid="uid://dr5pajm6bibf4" path="res://scenes/recall_answer_after_delay/ai_controller.tscn" id="1_v2b7k"]
+[ext_resource type="Script" uid="uid://b2cbhl6osc0yr" path="res://scenes/recall_answer_after_delay/recall_answer_controller.gd" id="2_j5vqi"]
+[ext_resource type="Script" uid="uid://d4beros1x11jq" path="res://addons/godot_rl_agents/sync.gd" id="3_oxk6x"]
+
+[node name="TrainingScene" type="Node2D"]
+
+[node name="RecallAnswerController" parent="." instance=ExtResource("1_v2b7k")]
+
+[node name="RecallAnswerController2" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController3" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController4" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController5" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController6" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController7" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController8" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController9" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController10" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController11" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController12" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController13" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController14" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController15" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController16" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController17" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController18" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController19" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController20" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController21" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController22" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController23" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController24" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController25" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController26" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController27" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController28" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController29" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController30" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="RecallAnswerController31" type="Node2D" parent="."]
+script = ExtResource("2_j5vqi")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("3_oxk6x")
+action_repeat = 1
+speed_up = 100.0
