@@ -20,7 +20,7 @@ Observations:
 
 Actions:
 
-- Single discrete action. At the last step of the episode, it should match the correct answer.
+Single discrete action. At the last step of the episode, it should match the correct answer.
 
 Reward:
 
