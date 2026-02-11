@@ -207,7 +207,8 @@ func get_normalized_velocity_in_player_reference() -> Vector3:
 		)
 
 func _on_green_space_body_entered(body):
-	_end_episode(episode_ended_unsuccessfully_reward)
+	if body is Car:
+		_end_episode(episode_ended_unsuccessfully_reward)
 
 func _on_walls_body_entered(body):
 	_end_episode(episode_ended_unsuccessfully_reward)
