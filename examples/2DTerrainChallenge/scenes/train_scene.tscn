@@ -1,0 +1,102 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt3fadynxnb2t"]
+
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="1_ge04o"]
+[ext_resource type="PackedScene" uid="uid://ca6csk8y5nvuu" path="res://scenes/playing_area/playing_area.tscn" id="2_ogfjs"]
+
+[node name="training_scene" type="Node2D"]
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("1_ge04o")
+speed_up = 16.0
+
+[node name="playing_area" parent="." instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport2" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport3" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport3" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport4" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport4" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport5" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport5" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport6" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport6" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport7" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport7" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport8" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport8" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport9" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport9" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport10" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport10" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport11" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport11" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport12" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport12" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport13" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport13" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport14" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport14" instance=ExtResource("2_ogfjs")]
+
+[node name="SubViewport15" type="SubViewport" parent="."]
+disable_3d = true
+canvas_cull_mask = 4294967294
+
+[node name="playing_area" parent="SubViewport15" instance=ExtResource("2_ogfjs")]

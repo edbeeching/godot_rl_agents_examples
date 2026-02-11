@@ -1,0 +1,121 @@
+[gd_scene load_steps=11 format=3 uid="uid://d1uxkcttm306m"]
+
+[ext_resource type="Script" path="res://scenes/car/car.gd" id="1_6qjtc"]
+[ext_resource type="Texture2D" uid="uid://vhrtedqiiu67" path="res://assets/car_wheel.png" id="2_462h5"]
+[ext_resource type="Texture2D" uid="uid://cwtnpunccloy4" path="res://assets/car_body.png" id="3_06xwe"]
+[ext_resource type="Script" path="res://scenes/car/car_ai_controller.gd" id="4_xblv3"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sensors/sensors_2d/RaycastSensor2D.gd" id="5_6pyw6"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8y7sl"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h17rd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fs5fg"]
+radius = 55.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lhxix"]
+friction = 0.85
+bounce = 0.05
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8ifa"]
+size = Vector2(186.88, 7.29)
+
+[node name="CarAIController2D" type="Node2D" node_paths=PackedStringArray("raycast_sensors")]
+script = ExtResource("4_xblv3")
+raycast_sensors = [NodePath("Car/Base/RaycastSensorLocalTerrain")]
+reset_after = 5000
+expert_demo_save_path = "works.json"
+remove_last_episode_key = SubResource("InputEventKey_8y7sl")
+action_repeat = 2
+
+[node name="Car" type="Node2D" parent="." node_paths=PackedStringArray("ai_controller")]
+script = ExtResource("1_6qjtc")
+ai_controller = NodePath("..")
+
+[node name="Wheel" type="RigidBody2D" parent="Car"]
+position = Vector2(-98, 104.015)
+collision_layer = 2
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_h17rd")
+gravity_scale = 2.0
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car/Wheel"]
+shape = SubResource("CircleShape2D_fs5fg")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Car/Wheel"]
+node_a = NodePath("../../Base")
+node_b = NodePath("..")
+softness = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="Car/Wheel"]
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_462h5")
+
+[node name="Wheel2" type="RigidBody2D" parent="Car"]
+position = Vector2(98, 104.015)
+collision_layer = 2
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_h17rd")
+gravity_scale = 2.0
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car/Wheel2"]
+shape = SubResource("CircleShape2D_fs5fg")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Car/Wheel2"]
+node_a = NodePath("../../Base")
+node_b = NodePath("..")
+softness = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="Car/Wheel2"]
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_462h5")
+
+[node name="Base" type="RigidBody2D" parent="Car"]
+collision_layer = 2
+collision_mask = 3
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_lhxix")
+gravity_scale = 2.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 10)
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Camera2D" type="Camera2D" parent="Car/Base"]
+zoom = Vector2(0.22, 0.22)
+limit_bottom = 1200
+limit_smoothed = true
+position_smoothing_speed = 15.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Car/Base"]
+rotation = 3.14159
+scale = Vector2(0.3, -0.3)
+texture = ExtResource("3_06xwe")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Car/Base"]
+rotation = -3.14159
+scale = Vector2(0.3, -0.3)
+polygon = PackedVector2Array(303.334, -263.333, 460, 40.0012, 506.666, 140.001, 553.333, 270.001, -543.334, 269.999, -517.1, 165.2, -533.334, 89.9987, -456.667, 36.6655, -306.666, -260.001)
+
+[node name="RoofCollisionDetector" type="Area2D" parent="Car/Base"]
+position = Vector2(0, -94.09)
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car/Base/RoofCollisionDetector"]
+shape = SubResource("RectangleShape2D_e8ifa")
+
+[node name="RaycastSensorLocalTerrain" type="Node2D" parent="Car/Base"]
+rotation = 1.5708
+script = ExtResource("5_6pyw6")
+n_rays = 8.0
+ray_length = 3000
+
+[connection signal="body_entered" from="Car/Base/RoofCollisionDetector" to="." method="_on_roof_collision_detector_body_entered"]
