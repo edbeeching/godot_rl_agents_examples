@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2baxuisewykf"]
+
+[ext_resource type="PackedScene" uid="uid://danlnf1x033rf" path="res://scenes/game_scene/game_scene.tscn" id="1_pwlfw"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="3_bqjwy"]
+
+[node name="InferenceScene" type="Node2D"]
+
+[node name="GameScene" parent="." instance=ExtResource("1_pwlfw")]
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("3_bqjwy")
+control_mode = 2
+action_repeat = 4
+onnx_model_path = "model.onnx"

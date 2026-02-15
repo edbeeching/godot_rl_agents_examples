@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://danlnf1x033rf"]
+
+[ext_resource type="TileSet" uid="uid://sdmrwh4xd6qj" path="res://scenes/tileset/tileset.tres" id="1_rsvlm"]
+[ext_resource type="Script" path="res://scenes/tilemap/tile_map_layer.gd" id="2_0030j"]
+[ext_resource type="PackedScene" uid="uid://d2qsl7semlkyv" path="res://scenes/player/player.tscn" id="3_5v4jr"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_rsvlm")
+navigation_enabled = false
+script = ExtResource("2_0030j")
+total_rows = 12
+max_coins_per_row = 3
+
+[node name="Player" parent="." node_paths=PackedStringArray("map_manager") instance=ExtResource("3_5v4jr")]
+position = Vector2(50, -99.46)
+map_manager = NodePath("../TileMapLayer")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.785, 0.785)
