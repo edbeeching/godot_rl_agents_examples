@@ -12,8 +12,7 @@ func _physics_process(_delta):
 		done = true
 
 	if needs_reset:
-		needs_reset = false
-		reset()
+		_player.game_over()
 
 
 func get_reward():
